@@ -7,66 +7,77 @@ using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class CameraRatate : MonoBehaviour {
+    
+    //Kopejsko prdí a smrdí!!!
+    
     [Header("temp")] 
     [SerializeField] GameObject squader;
     NavMeshAgent agent;
     [Header("=== Variables ===")]
     [SerializeField] GameObject gameField;
-    Camera _camera;
-    PlayerInput _playerInput;
+    Camera camera;
+    PlayerInput playerInput;
     [Header("=== Camera Settings ===")] 
     [SerializeField, Range(0,5), Tooltip("Rychlost rotace okolo plochy")] float rotationSpeed = 1;
     [SerializeField, Range(0,5), Tooltip("Rychlost přibližování od a k ploše")] float zoomSpeed = 1;
+    [SerializeField, Range(0,5), Tooltip("Rychlost přibližování od a k ploše")] float moveSpeed = 1;
     [SerializeField, Range(0, 100), Tooltip("")] float minCameraDistance = 20;
     [SerializeField, Range(100, 500), Tooltip("")] float maxCameraDistance = 150;
     [SerializeField, Range(0, 10), Tooltip("")] float zoomSmoothness = 5f;
     [SerializeField, Range(0, 10), Tooltip("")] float rotationSmoothness = 5f;
+    [SerializeField, Range(0, 10), Tooltip("")] float moveSmoothness = 5f;
     
     
     #region Inputs
 
-    float _currentRotation;
-    float _smoothRotation;
-    float _currentZoom;
-    float _smoothZoom;
-    Vector2 _currentMove;
-    Vector2 _smoothMove;
+    float currentRotation;
+    float smoothRotation;
+    float currentZoom;
+    float smoothZoom;
+    Vector2 currentMove;
+    Vector2 smoothMove;
 
-    InputAction _moveAction;
-    InputAction _zoomAction;
-    InputAction _rotationAction;
+    InputAction moveAction;
+    InputAction zoomAction;
+    InputAction rotationAction;
 
-    InputAction _clickAction;
+    InputAction clickAction;
     #endregion
     void Start() {
         agent = squader.GetComponent<NavMeshAgent>();
         
-        _playerInput = GetComponent<PlayerInput>();
-        _camera = GetComponent<Camera>();
+        playerInput = GetComponent<PlayerInput>();
+        camera = GetComponent<Camera>();
         // Assign Inputs
-        _zoomAction = _playerInput.actions["Zoom"];
-        _rotationAction= _playerInput.actions["Rotation"];
-        _clickAction = _playerInput.actions["Click"];
-        _clickAction.started += _ => Clicked();
+        moveAction = playerInput.actions["Move"];
+        zoomAction = playerInput.actions["Zoom"];
+        rotationAction= playerInput.actions["Rotation"];
+        clickAction = playerInput.actions["Click"];
+        clickAction.started += _ => Clicked();
+        
     }
     void Update() {
         Move();
     }
 
     void Move() {
-        float currentInputRotation = _rotationAction.ReadValue<float>();
-        float currentInputZoom = _zoomAction.ReadValue<float>();
-        _currentRotation = Mathf.SmoothDamp(_currentRotation, currentInputRotation * rotationSpeed, ref _smoothRotation, rotationSmoothness, 20);
-        _currentZoom = Mathf.SmoothDamp(_currentZoom, currentInputZoom, ref _smoothZoom, zoomSmoothness, 20);
-        _camera.transform.Rotate(0, _currentRotation, 0, Space.World);
+        float currentInputRotation = rotationAction.ReadValue<float>();
+        float currentInputZoom = zoomAction.ReadValue<float>();
+        Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
+        currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20);
+        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20);
+        currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom, ref smoothZoom, zoomSmoothness, 20);
+        camera.transform.Rotate(0, currentRotation, 0, Space.World);
+        transform.localPosition = new Vector3(transform.position.x + currentMove.x, transform.position.y + currentZoom , transform.position.z + currentMove.y);
         //move cam
         //zoom
     }
 
     void Clicked() {
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Physics.Raycast(ray, out hit);
         //vyber co jsi hitl
