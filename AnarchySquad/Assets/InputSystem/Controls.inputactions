@@ -33,9 +33,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Click",
+                    "name": "LeftClick",
                     "type": "Button",
                     "id": "175a913b-0b36-4a86-ae21-3a93fde791d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightClick",
+                    "type": "Button",
+                    "id": "70b2e20d-3ccf-4257-8047-4fb0b53919ba",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -86,8 +95,19 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Zoom",
-                    "id": "fab4782a-8bad-4a0e-898e-805ee75938a0",
+                    "name": "",
+                    "id": "e25de316-a523-47ea-941e-87563921134e",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "f8b7f7f6-aa9e-4066-9da7-4c2f9d889e70",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
@@ -98,8 +118,8 @@
                 },
                 {
                     "name": "negative",
-                    "id": "9aa0e50c-848a-411c-9591-0e5b20502287",
-                    "path": "<Keyboard>/t",
+                    "id": "da9d1c0b-03a7-4020-a9aa-770a94de9690",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -109,8 +129,8 @@
                 },
                 {
                     "name": "positive",
-                    "id": "7cf5bb65-7f4f-4df1-8fba-7de0e0aebaea",
-                    "path": "<Keyboard>/g",
+                    "id": "b5bbf36a-312f-47c7-91aa-c9bff70af013",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -180,7 +200,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Click",
+                    "action": "LeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -192,6 +212,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9527e0d-0831-4369-be5e-a1e717c81be4",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
