@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Unit : MonoBehaviour {
     [SerializeField] protected AI behavior;
@@ -9,8 +11,8 @@ public class Unit : MonoBehaviour {
     GameObject plane;
     [SerializeField] Material sphereMat;
     [SerializeField] Material selectMaterial;
+    [SerializeField, Range(0.1f, 2), Tooltip("How often is an unit gonna update")] float responseTime; 
     NavMeshAgent agent;
-    // Start is called before the first frame update
     void Start() {
         sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         sphere.transform.localScale = new Vector3(behavior.maxEffectiveRange,behavior.maxEffectiveRange, behavior.maxEffectiveRange);
@@ -27,14 +29,33 @@ public class Unit : MonoBehaviour {
         plane.SetActive(false);
 
         agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(EnemyDetection());
+    }
+    IEnumerator EnemyDetection() {
+        WaitForSeconds waitTime = new WaitForSeconds(responseTime);
+        while (true)
+        {
+            Debug.Log("Looking for a enemy");
+            List<Unit> enemies = DetectEnemiesInProximity();
+            if (enemies != null) {
+                Debug.Log(transform.name + "fire!");
+            }
+            else {
+                Debug.Log(transform.name + " 404 enemy not found");
+            }
+            //detect enemy
+            yield return waitTime;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //check for enemy
+    List<Unit> DetectEnemiesInProximity() {
+        //Detect
+        return null;
     }
 
+    void Fire(Vector3 enemyPosition) {
+            
+    }
     public void Select() {
         plane.SetActive(true);
     }

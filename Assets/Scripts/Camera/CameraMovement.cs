@@ -100,7 +100,6 @@ public class CameraRatate : MonoBehaviour {
 
     void RightClick() {
         RaycastHit hit = CursorRaycastHit();
-        
         if (selectedUnit != null && hit.transform.CompareTag("Floor")) {
             selectedUnit.SetDestination(hit.point);
             MakePointWhereUnitIsMoving(hit.point);
@@ -133,12 +132,10 @@ public class CameraRatate : MonoBehaviour {
             if (selectedUnit != null) {
                 selectedUnit.Deselect();
             }
-            Debug.Log("sele");
             unit.Select();
             selectedUnit = unit;
         }
         else {
-            Debug.Log("desele");
             selectedUnit.Deselect();
             unit.Deselect();
             selectedUnit = null;
