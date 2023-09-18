@@ -1,22 +1,18 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
-
+[RequireComponent(typeof(Camera), typeof(PlayerInput))]
 public class CameraRatate : MonoBehaviour {
+    
     
     //Kopejsko prdí a smrdí!!!
     
-    [Header("temp")] 
-    [SerializeField] GameObject squader;
-    NavMeshAgent agent;
-    [Header("=== Variables ===")]
-    [SerializeField] GameObject gameField;
-    Camera camera;
-    PlayerInput playerInput;
+    
     [Header("=== Camera Settings ===")] 
     [SerializeField, Range(0,5), Tooltip("Rychlost rotace okolo plochy")] float rotationSpeed = 1;
     [SerializeField, Range(0,5), Tooltip("Rychlost přibližování od a k ploše")] float zoomSpeed = 1;
@@ -26,6 +22,13 @@ public class CameraRatate : MonoBehaviour {
     [SerializeField, Range(0, 10), Tooltip("")] float zoomSmoothness = 5f;
     [SerializeField, Range(0, 10), Tooltip("")] float rotationSmoothness = 5f;
     [SerializeField, Range(0, 10), Tooltip("")] float moveSmoothness = 5f;
+    //===========//===========//===========//===========//===========//
+    float timeSpeed = 1f;
+    bool pausedTime = false;
+    Camera camera;
+    PlayerInput playerInput;
+
+    [SerializeField, Tooltip("Text that will show your current time multiplayer or if you are paused")] TextMeshProUGUI timeText;
 
     //List<Unit> selectedUnits;
     Unit selectedUnit;
@@ -46,8 +49,6 @@ public class CameraRatate : MonoBehaviour {
     InputAction rightClickAction;
     #endregion
     void Start() {
-        agent = squader.GetComponent<NavMeshAgent>();
-        
         playerInput = GetComponent<PlayerInput>();
         camera = GetComponent<Camera>();
         // Assign Inputs
@@ -68,6 +69,7 @@ public class CameraRatate : MonoBehaviour {
         float currentInputRotation = rotationAction.ReadValue<float>();
         float currentInputZoom = -zoomAction.ReadValue<float>();
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
+        Debug.Log("Zoom: " + currentInputZoom);
         //smooth the values
         currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20);
         currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20);
@@ -76,7 +78,7 @@ public class CameraRatate : MonoBehaviour {
             currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20);
         }
         else {
-            currentZoom = 0;
+            currentZoom = -currentZoom * 0.5f;
         }
         
         //move camera
@@ -89,13 +91,10 @@ public class CameraRatate : MonoBehaviour {
 
     void LeftClick() {
         RaycastHit hit = CursorRaycastHit();
-        if (hit.transform.CompareTag("Squader")) {
+        if (selectedUnit != null && hit.transform.CompareTag("Squader")) {
             var unit = hit.collider.GetComponent<Unit>();
             SelectDeselectUnit(unit);
         }
-        
-        //vyber co jsi hitl
-
     }
 
     void RightClick() {
@@ -104,7 +103,6 @@ public class CameraRatate : MonoBehaviour {
             selectedUnit.SetDestination(hit.point);
             MakePointWhereUnitIsMoving(hit.point);
         }
-        
     }
     
     RaycastHit CursorRaycastHit() {
@@ -120,6 +118,7 @@ public class CameraRatate : MonoBehaviour {
     }
 
     void SelectDeselectUnit(Unit unit) {
+        //mít více označených jednotek naráz
         /*for (int i = 0; i < selectedUnits.Count; i++) {
             if (selectedUnits[i] == unit) {
                 selectedUnits.Remove(unit);

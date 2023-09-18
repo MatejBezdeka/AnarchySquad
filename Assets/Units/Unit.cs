@@ -35,13 +35,12 @@ public class Unit : MonoBehaviour {
         WaitForSeconds waitTime = new WaitForSeconds(responseTime);
         while (true)
         {
-            Debug.Log("Looking for a enemy");
             List<Unit> enemies = DetectEnemiesInProximity();
             if (enemies != null) {
-                Debug.Log(transform.name + "fire!");
+                //Debug.Log(transform.name + "fire!");
             }
             else {
-                Debug.Log(transform.name + " 404 enemy not found");
+                //Debug.Log(transform.name + " 404 enemy not found");
             }
             //detect enemy
             yield return waitTime;
