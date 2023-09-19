@@ -16,12 +16,12 @@ public class CameraRatate : MonoBehaviour {
     [Header("=== Camera Settings ===")] 
     [SerializeField, Range(0,5), Tooltip("Rychlost rotace okolo plochy")] float rotationSpeed = 1;
     [SerializeField, Range(0,5), Tooltip("Rychlost přibližování od a k ploše")] float zoomSpeed = 1;
-    [SerializeField, Range(0,5), Tooltip("Rychlost přibližování od a k ploše")] float moveSpeed = 1;
-    [SerializeField, Range(0, 100), Tooltip("")] float minCameraDistance = 20;
-    [SerializeField, Range(100, 500), Tooltip("")] float maxCameraDistance = 150;
-    [SerializeField, Range(0, 10), Tooltip("")] float zoomSmoothness = 5f;
-    [SerializeField, Range(0, 10), Tooltip("")] float rotationSmoothness = 5f;
-    [SerializeField, Range(0, 10), Tooltip("")] float moveSmoothness = 5f;
+    [SerializeField, Range(0,5), Tooltip("Rychlost pohybování po ploše")] float moveSpeed = 1;
+    [SerializeField, Range(0, 200), Tooltip("")] float minCameraDistance = 50;
+    [SerializeField, Range(100, 1000), Tooltip("")] float maxCameraDistance = 150;
+    [SerializeField, Range(0, 2), Tooltip("")] float zoomSmoothness = 0.25f;
+    [SerializeField, Range(0, 2), Tooltip("")] float rotationSmoothness = 0.25f;
+    [SerializeField, Range(0, 2), Tooltip("")] float moveSmoothness = 0.25f;
     //===========//===========//===========//===========//===========//
     float timeSpeed = 1f;
     bool pausedTime = false;
@@ -69,11 +69,10 @@ public class CameraRatate : MonoBehaviour {
         float currentInputRotation = rotationAction.ReadValue<float>();
         float currentInputZoom = -zoomAction.ReadValue<float>();
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
-        Debug.Log("Zoom: " + currentInputZoom);
         //smooth the values
         currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20);
         currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20);
-        
+        //check boundaries for camera to not go too far or too close
         if (ZoomDistanceCheck(currentInputZoom)) {
             currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20);
         }
@@ -91,15 +90,21 @@ public class CameraRatate : MonoBehaviour {
 
     void LeftClick() {
         RaycastHit hit = CursorRaycastHit();
-        if (selectedUnit != null && hit.transform.CompareTag("Squader")) {
+        if (hit.transform == null) {
+            return;
+        }
+        if (hit.transform.CompareTag("Squader")) {
             var unit = hit.collider.GetComponent<Unit>();
             SelectDeselectUnit(unit);
+        }
+        else {
+            
         }
     }
 
     void RightClick() {
         RaycastHit hit = CursorRaycastHit();
-        if (selectedUnit != null && hit.transform.CompareTag("Floor")) {
+        if (hit.transform != null && selectedUnit != null && hit.transform.CompareTag("Floor")) {
             selectedUnit.SetDestination(hit.point);
             MakePointWhereUnitIsMoving(hit.point);
         }
