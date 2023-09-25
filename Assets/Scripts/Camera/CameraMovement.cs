@@ -96,6 +96,7 @@ public class CameraRatate : MonoBehaviour {
         if (hit.transform.CompareTag("Squader")) {
             var unit = hit.collider.GetComponent<Unit>();
             SelectDeselectUnit(unit);
+            Debug.Log(selectedUnit.GetName());
         }
         else {
             

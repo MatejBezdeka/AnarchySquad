@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Unit : MonoBehaviour {
-    [SerializeField] protected AI behavior;
+    [SerializeField] AI behavior;
     
     
     GameObject selectionPlane;
@@ -58,7 +58,6 @@ public class Unit : MonoBehaviour {
     }
 
     void GetHit(int damage) {
-        Debug.Log(behavior.unitName);
     }
     public void Select() {
         selectionPlane.SetActive(true);
@@ -74,5 +73,9 @@ public class Unit : MonoBehaviour {
 
         //možná chytřejší AI?
         //agent.SetAreaCost();
+    }
+
+    public string GetName() {
+        return behavior.UnitName;
     }
 }
