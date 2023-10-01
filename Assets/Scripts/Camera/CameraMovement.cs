@@ -41,12 +41,18 @@ public class CameraRatate : MonoBehaviour {
     Vector2 currentMove;
     Vector2 smoothMove;
 
+    float currentTimeChange;
+    bool currentTimeStopStart = true;
+
     InputAction moveAction;
     InputAction zoomAction;
     InputAction rotationAction;
 
     InputAction leftClickAction;
     InputAction rightClickAction;
+
+    InputAction timeChangeAction;
+    InputAction timeStopStartAction;
     #endregion
     void Start() {
         playerInput = GetComponent<PlayerInput>();
@@ -59,6 +65,7 @@ public class CameraRatate : MonoBehaviour {
         leftClickAction.started += _ => LeftClick();
         rightClickAction = playerInput.actions["RightClick"];
         rightClickAction.started += _ => RightClick();
+        timeChangeAction = playerInput.actions["TimeControl"];
     }
     void Update() {
         Move();
@@ -77,7 +84,8 @@ public class CameraRatate : MonoBehaviour {
             currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20);
         }
         else {
-            currentZoom = -currentZoom * 0.5f;
+            //return camera to respective border if needed
+            currentZoom = -currentZoom * 0.5f + (1 - transform.position.y/100);
         }
         
         //move camera
@@ -95,8 +103,10 @@ public class CameraRatate : MonoBehaviour {
         }
         if (hit.transform.CompareTag("Squader")) {
             var unit = hit.collider.GetComponent<Unit>();
-            SelectDeselectUnit(unit);
-            Debug.Log(selectedUnit.GetName());
+            
+            if (SelectDeselectUnit(unit)) {
+                Debug.Log(selectedUnit.GetName());
+            }
         }
         else {
             
@@ -117,13 +127,16 @@ public class CameraRatate : MonoBehaviour {
     }
     //Check if camera is too far or too close
     bool ZoomDistanceCheck(float currentInputZoom) {
-        if (transform.position.y <= minCameraDistance && currentInputZoom < 0 || transform.position.y >= maxCameraDistance && currentInputZoom > 0) {
+        if (transform.position.y <= minCameraDistance|| transform.position.y >= maxCameraDistance) {
             return false;
         }
         return true;
     }
 
-    void SelectDeselectUnit(Unit unit) {
+    bool SelectDeselectUnit(Unit unit) {
+        // value vraci jestli byla jednotka právě odebrána nebo přidána
+        // false = odebrána a naopak
+        bool value = true;
         //mít více označených jednotek naráz
         /*for (int i = 0; i < selectedUnits.Count; i++) {
             if (selectedUnits[i] == unit) {
@@ -137,14 +150,16 @@ public class CameraRatate : MonoBehaviour {
             if (selectedUnit != null) {
                 selectedUnit.Deselect();
             }
-            unit.Select();
             selectedUnit = unit;
+            value = true;
         }
         else {
             selectedUnit.Deselect();
-            unit.Deselect();
             selectedUnit = null;
+            value = false;
         }
+        unit.Deselect();
+        return value;
     }
     // make a animation when unit starts moving
     
