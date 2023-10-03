@@ -4,9 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CanvasManage : MonoBehaviour {
-    [SerializeField, Range(1.1f, 4)] float maxTimeSpeed = 2;
-    float currentTimeSpeed = 1;
+public class CanvasManager : MonoBehaviour {
+    
     [SerializeField] TextMeshProUGUI timeText;
     InputAction timeAction;
 
@@ -21,6 +20,7 @@ public class CanvasManage : MonoBehaviour {
         
     }
 
-    void ChangeTime() {
+    public void ChangeTimeLabelText(string text) {
+        timeText.text = text;
     }
 }

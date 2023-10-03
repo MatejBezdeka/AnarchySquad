@@ -1,19 +1,16 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 [RequireComponent(typeof(Camera), typeof(PlayerInput))]
-public class CameraRatate : MonoBehaviour {
-    
-    
-    //Kopejsko prdí a smrdí!!!
-    
-    
-    [Header("=== Camera Settings ===")] 
+public class PlayerControl : MonoBehaviour {
+    [Header("=== Control Settings ===")] 
     [SerializeField, Range(0,5), Tooltip("Rychlost rotace okolo plochy")] float rotationSpeed = 1;
     [SerializeField, Range(0,5), Tooltip("Rychlost přibližování od a k ploše")] float zoomSpeed = 1;
     [SerializeField, Range(0,5), Tooltip("Rychlost pohybování po ploše")] float moveSpeed = 1;
@@ -22,13 +19,15 @@ public class CameraRatate : MonoBehaviour {
     [SerializeField, Range(0, 2), Tooltip("")] float zoomSmoothness = 0.25f;
     [SerializeField, Range(0, 2), Tooltip("")] float rotationSmoothness = 0.25f;
     [SerializeField, Range(0, 2), Tooltip("")] float moveSmoothness = 0.25f;
+
+    [SerializeField, Range(1, 9), ] int timeChangeSensitivity = 2;
     //===========//===========//===========//===========//===========//
-    float timeSpeed = 1f;
-    bool pausedTime = false;
+    // Events
+    public static Action<float> changedTime;
     Camera camera;
     PlayerInput playerInput;
+    bool timeStopped = false;
 
-    [SerializeField, Tooltip("Text that will show your current time multiplayer or if you are paused")] TextMeshProUGUI timeText;
 
     //List<Unit> selectedUnits;
     Unit selectedUnit;
@@ -42,7 +41,6 @@ public class CameraRatate : MonoBehaviour {
     Vector2 smoothMove;
 
     float currentTimeChange;
-    bool currentTimeStopStart = true;
 
     InputAction moveAction;
     InputAction zoomAction;
@@ -66,10 +64,17 @@ public class CameraRatate : MonoBehaviour {
         rightClickAction = playerInput.actions["RightClick"];
         rightClickAction.started += _ => RightClick();
         timeChangeAction = playerInput.actions["TimeControl"];
+        timeStopStartAction = playerInput.actions["TimeStopStart"];
+        timeStopStartAction.started += _ => { 
+            changedTime?.Invoke(Time.timeScale == 0 ? -2f : -1f);
+            timeStopped = !timeStopped;
+        };
     }
+  
     void Update() {
         Move();
-    }
+        TimeChange();
+     }
 
     void Move() {
         //get input values
@@ -89,10 +94,19 @@ public class CameraRatate : MonoBehaviour {
         }
         
         //move camera
-        camera.transform.Rotate(0, currentRotation, 0, Space.World);
+        camera.transform.Rotate(0, currentRotation * Time.deltaTime, 0, Space.World) ;
         Vector3 move = new Vector3(currentMove.x, currentZoom, currentMove.y);
         move = move.x * transform.right + move.y * Vector3.up + move.z * new Vector3(2 * transform.forward.x,0,2 * transform.forward.z);
-        transform.position += move;
+        transform.position += move * Time.deltaTime;
+    }
+
+    void TimeChange() {
+        currentTimeChange = timeChangeAction.ReadValue<float>();
+        if (currentTimeChange == 0) {
+            return;
+        }
+
+        changedTime?.Invoke(Time.timeScale + currentTimeChange * Time.deltaTime);
         
     }
 
