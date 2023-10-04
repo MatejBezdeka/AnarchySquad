@@ -77,6 +77,9 @@ public class PlayerControl : MonoBehaviour {
      }
 
     void Move() {
+        //Debug.Log("nrm: " + Time.deltaTime); //cca 0.018~
+        Debug.Log("fxd: " + Time.fixedDeltaTime); // 0.02
+        //
         //get input values
         float currentInputRotation = rotationAction.ReadValue<float>();
         float currentInputZoom = -zoomAction.ReadValue<float>();
@@ -94,10 +97,10 @@ public class PlayerControl : MonoBehaviour {
         }
         
         //move camera
-        camera.transform.Rotate(0, currentRotation * Time.deltaTime, 0, Space.World) ;
+        camera.transform.Rotate(0, currentRotation, 0, Space.World) ;
         Vector3 move = new Vector3(currentMove.x, currentZoom, currentMove.y);
         move = move.x * transform.right + move.y * Vector3.up + move.z * new Vector3(2 * transform.forward.x,0,2 * transform.forward.z);
-        transform.position += move * Time.deltaTime;
+        transform.position += move;
     }
 
     void TimeChange() {
@@ -105,9 +108,7 @@ public class PlayerControl : MonoBehaviour {
         if (currentTimeChange == 0) {
             return;
         }
-
         changedTime?.Invoke(Time.timeScale + currentTimeChange * Time.deltaTime);
-        
     }
 
     void LeftClick() {
@@ -121,9 +122,6 @@ public class PlayerControl : MonoBehaviour {
             if (SelectDeselectUnit(unit)) {
                 Debug.Log(selectedUnit.GetName());
             }
-        }
-        else {
-            
         }
     }
 

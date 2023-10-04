@@ -32,37 +32,26 @@ public class GameManager : MonoBehaviour {
     void Update() {
         //Debug.Log("Updating");
     }
-
-    int debug = 0;
     void TimeChanged(float newTime) {
-        // if (deb == 0) {
-        //     debug++;
-        // }
-        // deb++;
-        // Debug.Log(newTime + " " + deb + ":" + debug);
-
         if (newTime == -2) {
-            Debug.Log( "aa");
-
             //Unpause
             TimeChanged(time);
-            //TODO
-        }else if (newTime < minTimeSpeed && newTime > minTimeSpeed-0.5 || newTime < 0) {
-            //Debug.Log( "bb     " + time + "   " + Time.timeScale + "     " + newTime);
-            Debug.Log((newTime < minTimeSpeed) + " "  + (newTime > minTimeSpeed-0.5) + " " + (newTime < 0) + " ");
+        }else if (newTime == -1f) {
             //Pause
             if (Time.timeScale != 0) {
                 time = Time.timeScale;
             }
             Time.timeScale = 0;
             canvasManager.ChangeTimeLabelText("Paused");
-        }
-        else {
-            Debug.Log( "cc");
-
-            if (newTime > maxTimeSpeed) {
-                newTime = maxTimeSpeed;
+        }else {
+            //change time speed
+            if (newTime > maxTimeSpeed || newTime < minTimeSpeed) {
+                return;
             }
+            if (newTime == 0) {
+                newTime = time;
+            }
+
             Time.timeScale = newTime;
             canvasManager.ChangeTimeLabelText($"{Time.timeScale:0.00}" + " x");
         }
