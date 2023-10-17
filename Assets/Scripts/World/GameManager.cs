@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour {
     #region variables
     float time = 1;
     CanvasManager canvasManager;
-
+    private List<Unit> Squaders = new List<Unit>();
+    private List<Unit> Enemies = new List<Unit>();
     #endregion
     void Awake() {
         instance = this;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour {
 
     void Start() {
         canvasManager = GetComponent<CanvasManager>();
+        
     }
 
     void FixedUpdate() {
@@ -55,5 +57,9 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = newTime;
             canvasManager.ChangeTimeLabelText($"{Time.timeScale:0.00}" + " x");
         }
+    }
+
+    void PrepareGameField() {
+        
     }
 }
