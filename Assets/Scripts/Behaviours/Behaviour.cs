@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class AI : ScriptableObject {
+public class Behaviour : ScriptableObject {
     [SerializeField] protected bool friendly;
     [SerializeField] protected string unitName = "Jeff";
     [SerializeField, Range(1, 100)] protected int hp;

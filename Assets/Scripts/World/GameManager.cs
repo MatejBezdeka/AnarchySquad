@@ -35,10 +35,10 @@ public class GameManager : MonoBehaviour {
         //Debug.Log("Updating");
     }
     void TimeChanged(float newTime) {
-        if (newTime == -2) {
+        if ((int)newTime == -2) {
             //Unpause
             TimeChanged(time);
-        }else if (newTime == -1f) {
+        }else if ((int)newTime == -1) {
             //Pause
             if (Time.timeScale != 0) {
                 time = Time.timeScale;

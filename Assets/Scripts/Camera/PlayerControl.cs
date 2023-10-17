@@ -78,7 +78,7 @@ public class PlayerControl : MonoBehaviour {
 
     void Move() {
         //Debug.Log("nrm: " + Time.deltaTime); //cca 0.018~
-        Debug.Log("fxd: " + Time.fixedDeltaTime); // 0.02
+        //Debug.Log("fxd: " + Time.fixedDeltaTime); // 0.02
         //
         //get input values
         float currentInputRotation = rotationAction.ReadValue<float>();
@@ -120,7 +120,7 @@ public class PlayerControl : MonoBehaviour {
             var unit = hit.collider.GetComponent<Unit>();
             
             if (SelectDeselectUnit(unit)) {
-                Debug.Log(selectedUnit.GetName());
+                
             }
         }
     }
@@ -162,6 +162,7 @@ public class PlayerControl : MonoBehaviour {
             if (selectedUnit != null) {
                 selectedUnit.Deselect();
             }
+
             selectedUnit = unit;
             value = true;
         }
