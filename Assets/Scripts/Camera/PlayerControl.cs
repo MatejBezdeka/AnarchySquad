@@ -29,7 +29,7 @@ public class PlayerControl : MonoBehaviour {
     bool timeStopped = false;
 
 
-    List<Unit> selectedUnits;
+    List<Unit> selectedUnits = new List<Unit>();
     Unit selectedUnit;
     #region Inputs
 
@@ -53,6 +53,8 @@ public class PlayerControl : MonoBehaviour {
     InputAction timeStopStartAction;
 
     InputAction shiftAction;
+
+    Vector3 selectBoxStartPoint;
     #endregion
     void Start() {
         playerInput = GetComponent<PlayerInput>();
@@ -126,9 +128,14 @@ public class PlayerControl : MonoBehaviour {
     }
 
     void RightClick() {
+        Debug.Log("b");
+
         RaycastHit hit = CursorRaycastHit();
-        if (hit.transform != null && selectedUnit != null && hit.transform.CompareTag("Floor")) {
-            selectedUnit.SetDestination(hit.point);
+        if (hit.transform != null && selectedUnits != null && hit.transform.CompareTag("Floor")) {
+            Debug.Log("a");
+            foreach (var unit in selectedUnits) {
+                unit.SetDestination(hit.point);
+            }
             MakePointWhereUnitIsMoving(hit.point);
         }
     }
@@ -154,10 +161,10 @@ public class PlayerControl : MonoBehaviour {
                 selectedUnits.Remove(unit);
                 return;
             }
+            
         }
         selectedUnits.Add(unit);
         unit.Select();
-        
         /*if (selectedUnit == null || unit != selectedUnit) {
             if (selectedUnit != null) {
                 selectedUnit.Deselect();
