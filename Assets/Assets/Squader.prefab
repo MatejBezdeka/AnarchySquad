@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4078016084024425209}
   - component: {fileID: 7176229133394456744}
   - component: {fileID: 2913439341585279643}
-  - component: {fileID: 5105696383400089874}
+  - component: {fileID: 3567142778627616925}
   - component: {fileID: 4551351936682950417}
   m_Layer: 0
   m_Name: Squader
@@ -60,7 +60,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4481974402713970224}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
@@ -163,7 +163,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5105696383400089874
+--- !u!114 &3567142778627616925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4481974402713970224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0458147850150b846bff82a11b9fe0b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ddff9bdecfcbf341848be8667902553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   behavior: {fileID: 11400000, guid: c552fd06156b7f443af1c8506513c9dc, type: 2}
@@ -191,7 +191,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 1
+  m_Intensity: 100
   m_Range: 15
   m_SpotAngle: 45
   m_InnerSpotAngle: 4

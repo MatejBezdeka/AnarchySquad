@@ -6,12 +6,12 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Unit : MonoBehaviour {
-    [SerializeField] Behaviour behavior;
+    [SerializeField] protected Behaviour behavior;
     GameObject selectionPlane;
     [SerializeField, Tooltip("Material for debug sphere that indicates range of unit")] Material debugSphereMaterial;
     [SerializeField, Tooltip("Material for plane that will indicate selected unit")] Material selectMaterial;
     [SerializeField, Range(0.1f, 1), Tooltip("How often is an unit gonna update and respond")] protected float responseTime = 0.5f; 
-    protected NavMeshAgent agent;
+    NavMeshAgent agent;
     void Start() {
         GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         debugSphere.transform.localScale = new Vector3(behavior.maxEffectiveRange,behavior.maxEffectiveRange, behavior.maxEffectiveRange);
@@ -26,13 +26,13 @@ public class Unit : MonoBehaviour {
         selectionPlane.transform.localPosition = new Vector3(0, 0.05f, 0);
         selectionPlane.GetComponent<MeshRenderer>().material = selectMaterial;
         selectionPlane.SetActive(false);
-
         agent = GetComponent<NavMeshAgent>();
     }
     
 
     List<Unit> DetectEnemiesInProximity() {
         //Detect
+        
         return null;
     }
 
@@ -41,6 +41,9 @@ public class Unit : MonoBehaviour {
     }
 
     void GetHit(int damage) {
+        if (behavior.CalculateDamage(damage)) {
+            
+        }
     }
     public void Select() {
         selectionPlane.SetActive(true);
@@ -58,5 +61,11 @@ public class Unit : MonoBehaviour {
         //agent.SetAreaCost();
     }
 
-    
+    public Vector3 GetMoveVector() {
+        return agent.velocity;
+    }
+
+    protected virtual void Die() {
+        Destroy(this);
+    }
 }

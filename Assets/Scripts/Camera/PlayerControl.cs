@@ -29,7 +29,7 @@ public class PlayerControl : MonoBehaviour {
     bool timeStopped = false;
 
 
-    //List<Unit> selectedUnits;
+    List<Unit> selectedUnits;
     Unit selectedUnit;
     #region Inputs
 
@@ -51,6 +51,8 @@ public class PlayerControl : MonoBehaviour {
 
     InputAction timeChangeAction;
     InputAction timeStopStartAction;
+
+    InputAction shiftAction;
     #endregion
     void Start() {
         playerInput = GetComponent<PlayerInput>();
@@ -58,9 +60,10 @@ public class PlayerControl : MonoBehaviour {
         // Assign Inputs
         moveAction = playerInput.actions["Move"];
         zoomAction = playerInput.actions["Zoom"];
-        rotationAction= playerInput.actions["Rotation"];
+        rotationAction = playerInput.actions["Rotation"];
         leftClickAction = playerInput.actions["LeftClick"];
         leftClickAction.started += _ => LeftClick();
+        shiftAction = playerInput.actions["Shift"];
         rightClickAction = playerInput.actions["RightClick"];
         rightClickAction.started += _ => RightClick();
         timeChangeAction = playerInput.actions["TimeControl"];
@@ -118,10 +121,7 @@ public class PlayerControl : MonoBehaviour {
         }
         if (hit.transform.CompareTag("Squader")) {
             var unit = hit.collider.GetComponent<Unit>();
-            
-            if (SelectDeselectUnit(unit)) {
-                
-            }
+            SelectDeselectUnit(unit);
         }
     }
 
@@ -145,20 +145,20 @@ public class PlayerControl : MonoBehaviour {
         return true;
     }
 
-    bool SelectDeselectUnit(Unit unit) {
-        // value vraci jestli byla jednotka právě odebrána nebo přidána
-        // false = odebrána a naopak
+    void SelectDeselectUnit(Unit unit) {
         bool value = true;
         //mít více označených jednotek naráz
-        /*for (int i = 0; i < selectedUnits.Count; i++) {
+        for (int i = 0; i < selectedUnits.Count; i++) {
             if (selectedUnits[i] == unit) {
+                selectedUnits[i].Deselect();
                 selectedUnits.Remove(unit);
                 return;
             }
         }
-        selectedUnits.Add(unit);*/
+        selectedUnits.Add(unit);
+        unit.Select();
         
-        if (selectedUnit == null || unit != selectedUnit) {
+        /*if (selectedUnit == null || unit != selectedUnit) {
             if (selectedUnit != null) {
                 selectedUnit.Deselect();
             }
@@ -172,9 +172,8 @@ public class PlayerControl : MonoBehaviour {
             value = false;
         }
         unit.Deselect();
-        return value;
+        return value;*/
     }
-    // make a animation when unit starts moving
     
     void MakePointWhereUnitIsMoving(Vector3 point) {
         

@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour {
     #region variables
     float time = 1;
     CanvasManager canvasManager;
-    private List<Unit> Squaders = new List<Unit>();
-    private List<Unit> Enemies = new List<Unit>();
+    public List<SquadUnit> Squaders = new List<SquadUnit>();
+    public List<EnemyUnit> Enemies = new List<EnemyUnit>();
     #endregion
     void Awake() {
         instance = this;
@@ -24,7 +24,11 @@ public class GameManager : MonoBehaviour {
 
     void Start() {
         canvasManager = GetComponent<CanvasManager>();
-        
+        //generate
+        //spawnpoints
+        //spawnUnits
+        //startGame
+        //wakeup units
     }
 
     void FixedUpdate() {
