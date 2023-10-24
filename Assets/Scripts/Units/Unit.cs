@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Unit : MonoBehaviour {
-    [SerializeField] protected Behaviour behavior;
+    [SerializeField] protected Stats stats;
     GameObject selectionPlane;
     [SerializeField, Tooltip("Material for debug sphere that indicates range of unit")] Material debugSphereMaterial;
     [SerializeField, Tooltip("Material for plane that will indicate selected unit")] Material selectMaterial;
@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour {
     NavMeshAgent agent;
     void Start() {
         GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        debugSphere.transform.localScale = new Vector3(behavior.maxEffectiveRange,behavior.maxEffectiveRange, behavior.maxEffectiveRange);
+        debugSphere.transform.localScale = new Vector3(stats.maxEffectiveRange,stats.maxEffectiveRange, stats.maxEffectiveRange);
         debugSphere.transform.parent = transform;
         debugSphere.transform.localPosition = new Vector3(0, 0, 0);
         debugSphere.GetComponent<MeshRenderer>().material = debugSphereMaterial;
@@ -41,7 +41,7 @@ public class Unit : MonoBehaviour {
     }
 
     void GetHit(int damage) {
-        if (behavior.CalculateDamage(damage)) {
+        if (stats.CalculateDamage(damage)) {
             
         }
     }

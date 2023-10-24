@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-public class Behaviour : ScriptableObject {
+public class Stats : ScriptableObject {
     // [SerializeField] protected bool friendly;
     [SerializeField] protected string unitName = "Jeff";
     [SerializeField, Range(1, 100)] protected int hp;

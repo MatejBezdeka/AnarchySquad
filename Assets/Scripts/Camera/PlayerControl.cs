@@ -21,12 +21,18 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField, Range(0, 2), Tooltip("")] float moveSmoothness = 0.25f;
 
     [SerializeField, Range(1, 9), ] int timeChangeSensitivity = 2;
+
+    [Header("=== Cursor Settings ===")] 
+    [SerializeField] Texture2D normalCursor;
+    [SerializeField] Texture2D goToCursor;
+    [SerializeField] Texture2D attackCursor;
     //===========//===========//===========//===========//===========//
     // Events
     public static Action<float> changedTime;
     Camera camera;
     PlayerInput playerInput;
     bool timeStopped = false;
+    RaycastHit currentHit;
 
 
     List<Unit> selectedUnits = new List<Unit>();
@@ -79,6 +85,7 @@ public class PlayerControl : MonoBehaviour {
     void Update() {
         Move();
         TimeChange();
+        RayHit();
      }
 
     void Move() {
@@ -116,13 +123,37 @@ public class PlayerControl : MonoBehaviour {
         changedTime?.Invoke(Time.timeScale + currentTimeChange * Time.deltaTime);
     }
 
-    void LeftClick() {
-        RaycastHit hit = CursorRaycastHit();
-        if (hit.transform == null) {
+    void RayHit() {
+        if (!Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000)) {
+            Cursor.SetCursor(normalCursor, Vector2.zero, CursorMode.Auto);
             return;
         }
-        if (hit.transform.CompareTag("Squader")) {
-            var unit = hit.collider.GetComponent<Unit>();
+        currentHit = hit;
+        switch (currentHit.transform.tag) {
+            case "Floor":
+                if (selectedUnits.Count > 0) {
+                    Cursor.SetCursor(goToCursor, new Vector2(32,32), CursorMode.Auto);
+                }
+                break;
+            case "Squader":
+                break;
+            case "Anarchist":
+                break;
+            case "Building":
+                break;
+            case "Obstacle":
+                break;
+            default:
+                Cursor.SetCursor(normalCursor, Vector2.zero, CursorMode.Auto);
+                break;
+        }
+    }
+    void LeftClick() {
+        if (currentHit.transform == null) {
+            return;
+        }
+        if (currentHit.transform.CompareTag("Squader")) {
+            var unit = currentHit.collider.GetComponent<Unit>();
             SelectDeselectUnit(unit);
         }
     }
@@ -130,19 +161,18 @@ public class PlayerControl : MonoBehaviour {
     void RightClick() {
         Debug.Log("b");
 
-        RaycastHit hit = CursorRaycastHit();
-        if (hit.transform != null && selectedUnits != null && hit.transform.CompareTag("Floor")) {
+        if (currentHit.transform != null && selectedUnits != null && currentHit.transform.CompareTag("Floor")) {
             Debug.Log("a");
             foreach (var unit in selectedUnits) {
-                unit.SetDestination(hit.point);
+                unit.SetDestination(currentHit.point);
             }
-            MakePointWhereUnitIsMoving(hit.point);
+            MakePointWhereUnitIsMoving(currentHit.point);
         }
     }
     
-    RaycastHit CursorRaycastHit() {
-        Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000);
-        return hit;
+    RaycastHit? CursorRaycastHit() {
+        
+        return null;
     }
     //Check if camera is too far or too close
     bool ZoomDistanceCheck(float currentInputZoom) {
