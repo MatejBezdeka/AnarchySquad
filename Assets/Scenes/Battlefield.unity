@@ -561,6 +561,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1098030124}
     m_Modifications:
+    - target: {fileID: 3567142778627616925, guid: 4c769cdf908660e4d94d28c09a983e0b, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: c552fd06156b7f443af1c8506513c9dc, type: 2}
     - target: {fileID: 4481974402713970224, guid: 4c769cdf908660e4d94d28c09a983e0b, type: 3}
       propertyPath: m_Name
       value: Squader (1)
@@ -2346,7 +2350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837d867e7867a8444b841301b9fc5c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behavior: {fileID: 11400000, guid: c552fd06156b7f443af1c8506513c9dc, type: 2}
+  stats: {fileID: 0}
   debugSphereMaterial: {fileID: 2100000, guid: 68d6cbbe98a604745b24ed1ebd19430b, type: 2}
   selectMaterial: {fileID: 2100000, guid: 69e42600b5e857f48a2d89d013785895, type: 2}
   responseTime: 0.5
@@ -3678,6 +3682,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 98bed0cc-ab89-4729-9dd2-0ece8725a543
     m_ActionName: Controls/TimeStopStart[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9da88b4f-7f9e-410d-a211-87a4103a53fc
+    m_ActionName: Controls/Shift[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
@@ -3704,6 +3712,10 @@ MonoBehaviour:
   rotationSmoothness: 0.1
   moveSmoothness: 0.18
   timeChangeSensitivity: 1
+  normalCursor: {fileID: 2800000, guid: 0eae137b5b2256f46becc84a7ff012e5, type: 3}
+  goToCursor: {fileID: 2800000, guid: 2c89a78a419b7e842b3339fb186eb4ac, type: 3}
+  attackCursor: {fileID: 2800000, guid: 9cc96a44743eac74f97dc26efb06807a, type: 3}
+  interactCursor: {fileID: 2800000, guid: 081b56cae0c09d54e947d31e32c060b2, type: 3}
 --- !u!65 &963194234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3733,6 +3745,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1098030124}
     m_Modifications:
+    - target: {fileID: 3567142778627616925, guid: 4c769cdf908660e4d94d28c09a983e0b, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: c552fd06156b7f443af1c8506513c9dc, type: 2}
     - target: {fileID: 4481974402713970224, guid: 4c769cdf908660e4d94d28c09a983e0b, type: 3}
       propertyPath: m_Name
       value: Squader
@@ -7604,6 +7620,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1098030124}
     m_Modifications:
+    - target: {fileID: 3567142778627616925, guid: 4c769cdf908660e4d94d28c09a983e0b, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: c552fd06156b7f443af1c8506513c9dc, type: 2}
     - target: {fileID: 4481974402713970224, guid: 4c769cdf908660e4d94d28c09a983e0b, type: 3}
       propertyPath: m_Name
       value: Squader

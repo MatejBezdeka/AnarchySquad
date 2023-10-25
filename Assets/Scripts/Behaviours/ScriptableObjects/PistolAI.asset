@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e135c2f0052383741bd1784d50c3fb13, type: 3}
   m_Name: PistolAI
   m_EditorClassIdentifier: 
-  friendly: 1
-  name: Jon
+  unitName: Jeff
   hp: 81
-  speed: 60
+  armor: 0
+  speed: 5
   range: 53
-  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  model: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   accuracy: 0
   maxEffectiveRange: 18.6
+  icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  model: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}

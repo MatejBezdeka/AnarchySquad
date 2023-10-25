@@ -26,6 +26,7 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField] Texture2D normalCursor;
     [SerializeField] Texture2D goToCursor;
     [SerializeField] Texture2D attackCursor;
+    [SerializeField] Texture2D interactCursor;  
     //===========//===========//===========//===========//===========//
     // Events
     public static Action<float> changedTime;
@@ -129,24 +130,7 @@ public class PlayerControl : MonoBehaviour {
             return;
         }
         currentHit = hit;
-        switch (currentHit.transform.tag) {
-            case "Floor":
-                if (selectedUnits.Count > 0) {
-                    Cursor.SetCursor(goToCursor, new Vector2(32,32), CursorMode.Auto);
-                }
-                break;
-            case "Squader":
-                break;
-            case "Anarchist":
-                break;
-            case "Building":
-                break;
-            case "Obstacle":
-                break;
-            default:
-                Cursor.SetCursor(normalCursor, Vector2.zero, CursorMode.Auto);
-                break;
-        }
+        ChangeCursor(currentHit.transform.tag);
     }
     void LeftClick() {
         if (currentHit.transform == null) {
@@ -214,5 +198,42 @@ public class PlayerControl : MonoBehaviour {
     
     void MakePointWhereUnitIsMoving(Vector3 point) {
         
+    }
+
+    void ChangeCursor(string tag) {
+        switch (tag) {
+            case "Floor":
+                if (selectedUnits.Count > 0) {
+                    Cursor.SetCursor(goToCursor, new Vector2(16,16), CursorMode.Auto);
+                }
+                else {
+                    DefaultCursor();
+                }
+                break;
+            case "Squader":
+                    Cursor.SetCursor(interactCursor, new Vector2(8,8), CursorMode.Auto);
+                break;
+            case "Anarchist":
+                if (selectedUnits.Count > 0) {
+                    Cursor.SetCursor(attackCursor, new Vector2(16,16), CursorMode.Auto);
+                }
+                else {
+                    Cursor.SetCursor(interactCursor, new Vector2(8,8), CursorMode.Auto);
+                }
+                break;
+            /*case "Building":
+                Cursor.SetCursor(normalCursor, new Vector2(32,32), CursorMode.Auto);
+                break;*/
+            case "Obstacle":
+                Cursor.SetCursor(interactCursor, new Vector2(8,8), CursorMode.Auto);
+                break;
+            default:         
+                DefaultCursor();
+                return;
+        }
+    }
+
+    void DefaultCursor() {
+        Cursor.SetCursor(normalCursor, new Vector2(8,8), CursorMode.Auto);
     }
 }
