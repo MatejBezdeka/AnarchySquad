@@ -14,21 +14,24 @@ public class GameManager : MonoBehaviour {
     #region variables
     float time = 1;
     CanvasManager canvasManager;
-    public List<SquadUnit> Squaders = new List<SquadUnit>();
-    public List<EnemyUnit> Enemies = new List<EnemyUnit>();
+    public List<SquadUnit> Squaders /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<SquadUnit>();
+    public List<EnemyUnit> Enemies /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<EnemyUnit>();
     #endregion
     void Awake() {
         instance = this;
         PlayerControl.changedTime += TimeChanged;
+        
     }
 
     void Start() {
         canvasManager = GetComponent<CanvasManager>();
+
         //generate
         //spawnpoints
         //spawnUnits
         //startGame
         //wakeup units
+        //Start UI
     }
 
     void FixedUpdate() {

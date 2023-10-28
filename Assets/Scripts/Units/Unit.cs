@@ -6,11 +6,13 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Unit : MonoBehaviour {
-    [SerializeField] protected Stats stats;
+    [SerializeField] public Stats stats;
     GameObject selectionPlane;
     [SerializeField, Tooltip("Material for debug sphere that indicates range of unit")] Material debugSphereMaterial;
     [SerializeField, Tooltip("Material for plane that will indicate selected unit")] Material selectMaterial;
-    [SerializeField, Range(0.1f, 1), Tooltip("How often is an unit gonna update and respond")] protected float responseTime = 0.5f; 
+    [SerializeField, Range(0.1f, 1), Tooltip("How often is an unit gonna update and respond")] protected float responseTime = 0.5f;
+    [SerializeField] GameObject grenadePrefab;
+    [SerializeField] GameObject muzzle;
     NavMeshAgent agent;
     void Start() {
         GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -67,5 +69,14 @@ public class Unit : MonoBehaviour {
 
     protected virtual void Die() {
         Destroy(this);
+    }
+
+    void ThrowGrenade(Vector3 destination) {
+        GameObject grenade = Instantiate(grenadePrefab, muzzle.transform.position, Quaternion.LookRotation(destination));
+        Rigidbody rigidBody = grenade.GetComponent<Rigidbody>();
+        int angle = 45;
+        float distance = Vector3.Distance(muzzle.transform.position, destination);
+        Vector3 force = new Vector3(grenadePrefab.transform.forward.x, grenadePrefab.transform.up.y * Physics.gravity.y * (angle * 0.1f), grenadePrefab.transform.forward.z);
+        rigidBody.AddForce(force * distance);
     }
 }

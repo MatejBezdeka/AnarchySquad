@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using World;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 [RequireComponent(typeof(Camera), typeof(PlayerInput))]
@@ -23,6 +25,7 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField, Range(1, 9), ] int timeChangeSensitivity = 2;
 
     [Header("=== Cursor Settings ===")] 
+    [SerializeField, Tooltip("An arrow with animation that will indicate where are your units going")] GameObject arrowPrefab;
     [SerializeField] Texture2D normalCursor;
     [SerializeField] Texture2D goToCursor;
     [SerializeField] Texture2D attackCursor;
@@ -30,14 +33,27 @@ public class PlayerControl : MonoBehaviour {
     //===========//===========//===========//===========//===========//
     // Events
     public static Action<float> changedTime;
+    public static event Action<Stats> selectedNewUnit; 
+    //variables
     Camera camera;
     PlayerInput playerInput;
     bool timeStopped = false;
     RaycastHit currentHit;
-
-
     List<Unit> selectedUnits = new List<Unit>();
     Unit selectedUnit;
+    //states
+    enum states {
+        normal, granade, ability, timeStoped
+    }
+
+    enum stateStages {
+        entry, update, exit
+    }
+
+    states currentState = states.normal;
+    states nextState;
+    stateStages currenStage = stateStages.entry;
+    
     #region Inputs
 
     float currentRotation;
@@ -66,6 +82,8 @@ public class PlayerControl : MonoBehaviour {
     void Start() {
         playerInput = GetComponent<PlayerInput>();
         camera = GetComponent<Camera>();
+        Portrait.selectedDeselectedUnit += SelectDeselectUnit;
+        CanvasManager.grenadeAction += () => { nextState = states.granade; currenStage = stateStages.exit; };
         // Assign Inputs
         moveAction = playerInput.actions["Move"];
         zoomAction = playerInput.actions["Zoom"];
@@ -126,37 +144,58 @@ public class PlayerControl : MonoBehaviour {
 
     void RayHit() {
         if (!Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000)) {
-            Cursor.SetCursor(normalCursor, Vector2.zero, CursorMode.Auto);
+            //Debug.Log("nothing");
+            DefaultCursor();
+            currentHit = new RaycastHit();
             return;
         }
+        
         currentHit = hit;
         ChangeCursor(currentHit.transform.tag);
     }
     void LeftClick() {
         if (currentHit.transform == null) {
+            DeselectAll();
             return;
         }
-        if (currentHit.transform.CompareTag("Squader")) {
-            var unit = currentHit.collider.GetComponent<Unit>();
-            SelectDeselectUnit(unit);
+
+        switch (currentHit.transform.tag) {
+            case "Floor":
+                DeselectAll();
+                break;
+            case "Squader":
+                var unit = currentHit.collider.GetComponent<Unit>();
+                SelectDeselectUnit(unit);
+                break;
+            case "Anarchist":
+                break;
+            case "Obstacle":
+                break;
         }
     }
 
     void RightClick() {
-        Debug.Log("b");
-
-        if (currentHit.transform != null && selectedUnits != null && currentHit.transform.CompareTag("Floor")) {
-            Debug.Log("a");
-            foreach (var unit in selectedUnits) {
-                unit.SetDestination(currentHit.point);
-            }
-            MakePointWhereUnitIsMoving(currentHit.point);
+        if (currentHit.transform == null) {
+            DeselectAll();
+            return;
         }
-    }
-    
-    RaycastHit? CursorRaycastHit() {
+        switch (currentHit.transform.tag) {
+            case "Floor":
+                if (selectedUnits.Count > 0) {
+                    foreach (var unit in selectedUnits) {
+                        unit.SetDestination(currentHit.point);
+                    }
+                    MakePointWhereUnitIsMoving();
+                }
+                break;
+            case "Squader":
+                break;
+            case "Anarchist":
+                break;
+            case "Obstacle":
+                break;
+        }
         
-        return null;
     }
     //Check if camera is too far or too close
     bool ZoomDistanceCheck(float currentInputZoom) {
@@ -167,19 +206,23 @@ public class PlayerControl : MonoBehaviour {
     }
 
     void SelectDeselectUnit(Unit unit) {
-        bool value = true;
         //mít více označených jednotek naráz
         for (int i = 0; i < selectedUnits.Count; i++) {
             if (selectedUnits[i] == unit) {
                 selectedUnits[i].Deselect();
                 selectedUnits.Remove(unit);
+                UpdateProfile();
                 return;
             }
             
         }
         selectedUnits.Add(unit);
         unit.Select();
-        /*if (selectedUnit == null || unit != selectedUnit) {
+        UpdateProfile();
+        #region oneMax
+        /*
+        bool value = true;
+         if (selectedUnit == null || unit != selectedUnit) {
             if (selectedUnit != null) {
                 selectedUnit.Deselect();
             }
@@ -194,10 +237,32 @@ public class PlayerControl : MonoBehaviour {
         }
         unit.Deselect();
         return value;*/
+        #endregion
+    }
+
+    void UpdateProfile() {
+        if (selectedUnits.Count == 1) {
+            selectedUnit = selectedUnits[0];
+            selectedNewUnit?.Invoke(selectedUnits[0].stats);
+        }
+        else {
+            selectedUnit = null;
+            selectedNewUnit?.Invoke(null);
+        }
+    }
+
+    void DeselectAll() {
+        foreach (var unit in selectedUnits) {
+            unit.Deselect();
+        }
+        selectedUnits.Clear();
     }
     
-    void MakePointWhereUnitIsMoving(Vector3 point) {
-        
+    void MakePointWhereUnitIsMoving() {
+        //static values tied to the arrow and the animation made with it!
+        Vector3 pos = currentHit.point;
+        pos.y += 1.5f;
+        Instantiate(arrowPrefab, pos, Quaternion.Euler(90,0,-90));
     }
 
     void ChangeCursor(string tag) {
@@ -234,6 +299,6 @@ public class PlayerControl : MonoBehaviour {
     }
 
     void DefaultCursor() {
-        Cursor.SetCursor(normalCursor, new Vector2(8,8), CursorMode.Auto);
+        Cursor.SetCursor(normalCursor, new Vector2(4,8), CursorMode.Auto);
     }
 }
