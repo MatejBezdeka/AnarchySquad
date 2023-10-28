@@ -13,7 +13,7 @@ public class EnemyUnit : Unit {
         WaitForSeconds waitTime = new WaitForSeconds(responseTime);
         while (true) {
             if (GetClosestEnemy()) {
-                stats.Shoot(closestEnemy, closestEnemy.GetMoveVector(), closestDistance);
+                //weapon.Shoot(closestEnemy, closestEnemy.GetMoveVector(), closestDistance);
             }
             yield return waitTime;
         }

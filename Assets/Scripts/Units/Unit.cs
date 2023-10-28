@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Units;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -7,6 +8,8 @@ using UnityEngine.UI;
 
 public class Unit : MonoBehaviour {
     [SerializeField] public Stats stats;
+    [SerializeField] public Weapon weapon;
+    [SerializeField] public Weapon secondaryWeapon;
     GameObject selectionPlane;
     [SerializeField, Tooltip("Material for debug sphere that indicates range of unit")] Material debugSphereMaterial;
     [SerializeField, Tooltip("Material for plane that will indicate selected unit")] Material selectMaterial;
@@ -29,6 +32,8 @@ public class Unit : MonoBehaviour {
         selectionPlane.GetComponent<MeshRenderer>().material = selectMaterial;
         selectionPlane.SetActive(false);
         agent = GetComponent<NavMeshAgent>();
+        stats.Start();
+        weapon.Start();
     }
     
 
@@ -56,9 +61,7 @@ public class Unit : MonoBehaviour {
     }
 
     public void SetDestination(Vector3 destination) {
-        
         agent.SetDestination(destination);
-
         //možná chytřejší AI?
         //agent.SetAreaCost();
     }
@@ -71,11 +74,14 @@ public class Unit : MonoBehaviour {
         Destroy(this);
     }
 
-    void ThrowGrenade(Vector3 destination) {
+    public void ThrowGrenade(Vector3 destination) {
         GameObject grenade = Instantiate(grenadePrefab, muzzle.transform.position, Quaternion.LookRotation(destination));
         Rigidbody rigidBody = grenade.GetComponent<Rigidbody>();
         int angle = 45;
         float distance = Vector3.Distance(muzzle.transform.position, destination);
+        if (distance > stats.MaxEffectiveRange) {
+            distance = stats.MaxEffectiveRange;
+        }
         Vector3 force = new Vector3(grenadePrefab.transform.forward.x, grenadePrefab.transform.up.y * Physics.gravity.y * (angle * 0.1f), grenadePrefab.transform.forward.z);
         rigidBody.AddForce(force * distance);
     }

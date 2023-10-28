@@ -16,10 +16,7 @@ public class CanvasManager : MonoBehaviour {
     [SerializeField] GameObject portraitContainer;
     [SerializeField] GameObject portraitPrefab;
     List<Portrait> portraits;
-    [Header("Profile")] 
-    [SerializeField] Slider hpSlider;
-    [SerializeField] Slider ammoSlider;
-    [SerializeField] Slider staminaSlider;
+    Profile profile;
     [Header("Buttons")] 
     [SerializeField] Button reloadButton;
     [SerializeField] Button grenadeButton;
@@ -30,7 +27,6 @@ public class CanvasManager : MonoBehaviour {
     
 
     void Start() {
-        PlayerControl.selectedNewUnit += ChangeUnitProfile;
         portraits = new List<Portrait>();
         foreach (var unit in GameManager.instance.Squaders) {
             GameObject portrait = Instantiate(portraitPrefab, portraitContainer.transform);
@@ -42,15 +38,8 @@ public class CanvasManager : MonoBehaviour {
 
     void Update()
     {
-        
     }
 
-    void ChangeUnitProfile(Stats unit) {
-        if (unit == null) {
-            return;
-        }
-        hpSlider.value = unit.Hp;
-    }
     public void ChangeTimeLabelText(string text) {
         timeText.text = text;
     }

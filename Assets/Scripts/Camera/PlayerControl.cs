@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Camera;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,7 +11,7 @@ using UnityEngine.InputSystem;
 using World;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
-[RequireComponent(typeof(Camera), typeof(PlayerInput))]
+[RequireComponent(typeof(UnityEngine.Camera), typeof(PlayerInput))]
 public class PlayerControl : MonoBehaviour {
     [Header("=== Control Settings ===")] 
     [SerializeField, Range(0,5), Tooltip("Rychlost rotace okolo plochy")] float rotationSpeed = 1;
@@ -21,39 +22,37 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField, Range(0, 2), Tooltip("")] float zoomSmoothness = 0.25f;
     [SerializeField, Range(0, 2), Tooltip("")] float rotationSmoothness = 0.25f;
     [SerializeField, Range(0, 2), Tooltip("")] float moveSmoothness = 0.25f;
-
-    [SerializeField, Range(1, 9), ] int timeChangeSensitivity = 2;
+    [SerializeField, Range(1, 9), Tooltip("Not used currently")] int timeChangeSensitivity = 2;
 
     [Header("=== Cursor Settings ===")] 
     [SerializeField, Tooltip("An arrow with animation that will indicate where are your units going")] GameObject arrowPrefab;
     [SerializeField] Texture2D normalCursor;
     [SerializeField] Texture2D goToCursor;
     [SerializeField] Texture2D attackCursor;
-    [SerializeField] Texture2D interactCursor;  
+    [SerializeField] Texture2D interactCursor;
+    [SerializeField] GameObject grenadeIndicator;
     //===========//===========//===========//===========//===========//
     // Events
     public static Action<float> changedTime;
-    public static event Action<Stats> selectedNewUnit; 
+    public static event Action<Unit> selectedNewUnit;
+
+    public event Action leftMouseButtonClicked;
+    public event Action rightMouseButtonClicked;
+    public event Action escButtonClicked;
     //variables
-    Camera camera;
+    UnityEngine.Camera camera;
     PlayerInput playerInput;
     bool timeStopped = false;
     RaycastHit currentHit;
-    List<Unit> selectedUnits = new List<Unit>();
-    Unit selectedUnit;
+    public List<Unit> selectedUnits { get; private set; } = new List<Unit>();
+    public Unit selectedUnit { get; private set; }
     //states
-    enum states {
-        normal, granade, ability, pause
+    PlayerState currentState;
+    public PlayerState nextState;
+    public enum cursorTypes {
+        normal, goTo, attack, interact
     }
-
-    enum stateStages {
-        entry, update, exit
-    }
-
-    states currentState = states.normal;
-    states nextState;
-    stateStages currentStage = stateStages.entry;
-    
+    public bool hitSomething { get; private set; } = false;
     #region Inputs
 
     float currentRotation;
@@ -81,10 +80,11 @@ public class PlayerControl : MonoBehaviour {
     Vector3 selectBoxStartPoint;
     #endregion
     void Start() {
+        currentState = new NormalState(this);
         playerInput = GetComponent<PlayerInput>();
-        camera = GetComponent<Camera>();
+        camera = GetComponent<UnityEngine.Camera>();
         Portrait.selectedDeselectedUnit += SelectDeselectUnit;
-        CanvasManager.grenadeAction += () => { nextState = states.granade; currentStage = stateStages.exit; };
+        CanvasManager.grenadeAction += () => { currentState.Exit(new GrenadeState(this, grenadeIndicator));};
         // Assign Inputs
         #region Assign Inputs
 
@@ -92,10 +92,10 @@ public class PlayerControl : MonoBehaviour {
         zoomAction = playerInput.actions["Zoom"];
         rotationAction = playerInput.actions["Rotation"];
         leftClickAction = playerInput.actions["LeftClick"];
-        leftClickAction.started += _ => LeftClick();
+        leftClickAction.started += _ => leftMouseButtonClicked?.Invoke();
         shiftAction = playerInput.actions["Shift"];
         rightClickAction = playerInput.actions["RightClick"];
-        rightClickAction.started += _ => RightClick();
+        rightClickAction.started += _ => rightMouseButtonClicked?.Invoke();
         timeChangeAction = playerInput.actions["TimeControl"];
         timeStopStartAction = playerInput.actions["TimeStopStart"];
         timeStopStartAction.started += _ => { 
@@ -103,25 +103,17 @@ public class PlayerControl : MonoBehaviour {
             timeStopped = !timeStopped;
         };
         escapeAction = playerInput.actions["Esc"];
-        escapeAction.started += _ => EscPressed();
+        escapeAction.started += _ => escButtonClicked?.Invoke();
 
-            #endregion
+        #endregion
         
     }
   
     void Update() {
         Move();
         TimeChange();
-        switch (currentState) {
-            case states.normal:
-                RayHit();
-                ChangeCursor(currentHit.transform.tag);
-                break;
-            case states.granade:
-                RayHit();
-                break;
-        }
-     }
+        currentState = Process();
+    }
 
     void Move() {
         //get input values
@@ -129,11 +121,11 @@ public class PlayerControl : MonoBehaviour {
         float currentInputZoom = -zoomAction.ReadValue<float>();
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
         //smooth the values
-        currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20);
-        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20);
+        currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * (moveSpeed * Time.unscaledDeltaTime), ref smoothMove, moveSmoothness, 20);
+        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * (rotationSpeed * Time.unscaledDeltaTime), ref smoothRotation, rotationSmoothness, 20);
         //check boundaries for camera to not go too far or too close
         if (ZoomDistanceCheck(currentInputZoom)) {
-            currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20);
+            currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * (zoomSpeed * Time.unscaledDeltaTime), ref smoothZoom, zoomSmoothness, 20);
         }
         else {
             //return camera to respective border if needed
@@ -155,59 +147,17 @@ public class PlayerControl : MonoBehaviour {
         changedTime?.Invoke(Time.timeScale + currentTimeChange * Time.deltaTime);
     }
 
-    RaycastHit RayHit() {
+    public RaycastHit RayHit() {
         if (!Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000)) {
             //Debug.Log("nothing");
-            DefaultCursor();
+            UpdateCursor(cursorTypes.normal);
             currentHit = new RaycastHit();
+            hitSomething = false;
             return currentHit;
         }
-        
+
+        hitSomething = true;
         return currentHit = hit;
-    }
-    void LeftClick() {
-        if (currentHit.transform == null) {
-            DeselectAll();
-            return;
-        }
-
-        switch (currentHit.transform.tag) {
-            case "Floor":
-                DeselectAll();
-                break;
-            case "Squader":
-                var unit = currentHit.collider.GetComponent<Unit>();
-                SelectDeselectUnit(unit);
-                break;
-            case "Anarchist":
-                break;
-            case "Obstacle":
-                break;
-        }
-    }
-
-    void RightClick() {
-        if (currentHit.transform == null) {
-            DeselectAll();
-            return;
-        }
-        switch (currentHit.transform.tag) {
-            case "Floor":
-                if (selectedUnits.Count > 0) {
-                    foreach (var unit in selectedUnits) {
-                        unit.SetDestination(currentHit.point);
-                    }
-                    MakePointWhereUnitIsMoving();
-                }
-                break;
-            case "Squader":
-                break;
-            case "Anarchist":
-                break;
-            case "Obstacle":
-                break;
-        }
-        
     }
     bool ZoomDistanceCheck(float currentInputZoom) {
         if (transform.position.y <= minCameraDistance|| transform.position.y >= maxCameraDistance) {
@@ -216,7 +166,7 @@ public class PlayerControl : MonoBehaviour {
         return true;
     }
 
-    void SelectDeselectUnit(Unit unit) {
+    public void SelectDeselectUnit(Unit unit) {
         //mít více označených jednotek naráz
         for (int i = 0; i < selectedUnits.Count; i++) {
             if (selectedUnits[i] == unit) {
@@ -254,7 +204,7 @@ public class PlayerControl : MonoBehaviour {
     void UpdateProfile() {
         if (selectedUnits.Count == 1) {
             selectedUnit = selectedUnits[0];
-            selectedNewUnit?.Invoke(selectedUnits[0].stats);
+            selectedNewUnit?.Invoke(selectedUnits[0]);
         }
         else {
             selectedUnit = null;
@@ -262,71 +212,66 @@ public class PlayerControl : MonoBehaviour {
         }
     }
 
-    void DeselectAll() {
+    public void DeselectAll() {
         foreach (var unit in selectedUnits) {
             unit.Deselect();
         }
         selectedUnits.Clear();
     }
     
-    void MakePointWhereUnitIsMoving() {
+    public void MakePointWhereUnitIsMoving(Vector3 hit) {
         //static values tied to the arrow and the animation made with it!
-        Vector3 pos = currentHit.point;
-        pos.y += 1.5f;
-        Instantiate(arrowPrefab, pos, Quaternion.Euler(90,0,-90));
+        hit.y += 1.5f;
+        Instantiate(arrowPrefab, hit, Quaternion.Euler(90,0,-90));
     }
 
-    void ChangeCursor(string tag) {
-        switch (tag) {
-            case "Floor":
-                if (selectedUnits.Count > 0) {
-                    Cursor.SetCursor(goToCursor, new Vector2(16,16), CursorMode.Auto);
-                }
-                else {
-                    DefaultCursor();
-                }
+    public void UpdateCursor(cursorTypes type) {
+        switch (type) {
+            case cursorTypes.normal:
+                Cursor.SetCursor(normalCursor, new Vector2(4,8), CursorMode.Auto);
                 break;
-            case "Squader":
-                    Cursor.SetCursor(interactCursor, new Vector2(8,8), CursorMode.Auto);
+            case cursorTypes.attack:
+                Cursor.SetCursor(attackCursor, new Vector2(16,16), CursorMode.ForceSoftware);
                 break;
-            case "Anarchist":
-                if (selectedUnits.Count > 0) {
-                    Cursor.SetCursor(attackCursor, new Vector2(16,16), CursorMode.Auto);
-                }
-                else {
-                    Cursor.SetCursor(interactCursor, new Vector2(8,8), CursorMode.Auto);
-                }
+            case cursorTypes.interact:
+                Cursor.SetCursor(interactCursor, new Vector2(8,8), CursorMode.ForceSoftware);
                 break;
-            /*case "Building":
-                Cursor.SetCursor(normalCursor, new Vector2(32,32), CursorMode.Auto);
-                break;*/
-            case "Obstacle":
-                Cursor.SetCursor(interactCursor, new Vector2(8,8), CursorMode.Auto);
+            case cursorTypes.goTo:
+                Cursor.SetCursor(goToCursor, new Vector2(16,16), CursorMode.ForceSoftware);
                 break;
             default:         
-                DefaultCursor();
+                Cursor.SetCursor(normalCursor, new Vector2(4,8), CursorMode.Auto);
                 return;
         }
     }
-
-    void DefaultCursor() {
-        Cursor.SetCursor(normalCursor, new Vector2(4,8), CursorMode.Auto);
-    }
-
-    void EscPressed() {
-        switch (currentState) {
-            case states.normal:
-                currentState = states.pause;
-                
+    /*void EscPressed() {
+        switch (currentState.currentState) {
+            case PlayerState.state.normal:
+                currentState.ChangeState(new PauseState(this));
                 break;
-            case states.granade:
-            case states.ability:
-                currentState = states.normal;
+            case PlayerState.state.grenade:
+                currentState.ChangeState(new NormalState(this));
                 break;
-            case states.pause:
-                currentState = states.normal;
+            case PlayerState.state.pause:
+                currentState.ChangeState(new NormalState(this));
                 break;
         }
-        currentStage = stateStages.entry;
+        //currentStage = stateStages.entry;
+    }*/
+
+    PlayerState Process() {
+        switch (currentState.currentStage) {
+            case PlayerState.stateStages.entry:
+                currentState.Enter();
+                break;
+            case PlayerState.stateStages.update:
+                currentState.Update();
+                break;
+            case PlayerState.stateStages.exit:
+            default:
+                currentState.currentStage = PlayerState.stateStages.exit;
+                return nextState;
+        }
+        return currentState;
     }
 }
