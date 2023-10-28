@@ -43,7 +43,7 @@ public class PlayerControl : MonoBehaviour {
     Unit selectedUnit;
     //states
     enum states {
-        normal, granade, ability, timeStoped
+        normal, granade, ability, pause
     }
 
     enum stateStages {
@@ -52,7 +52,7 @@ public class PlayerControl : MonoBehaviour {
 
     states currentState = states.normal;
     states nextState;
-    stateStages currenStage = stateStages.entry;
+    stateStages currentStage = stateStages.entry;
     
     #region Inputs
 
@@ -76,6 +76,7 @@ public class PlayerControl : MonoBehaviour {
     InputAction timeStopStartAction;
 
     InputAction shiftAction;
+    InputAction escapeAction;
 
     Vector3 selectBoxStartPoint;
     #endregion
@@ -83,8 +84,10 @@ public class PlayerControl : MonoBehaviour {
         playerInput = GetComponent<PlayerInput>();
         camera = GetComponent<Camera>();
         Portrait.selectedDeselectedUnit += SelectDeselectUnit;
-        CanvasManager.grenadeAction += () => { nextState = states.granade; currenStage = stateStages.exit; };
+        CanvasManager.grenadeAction += () => { nextState = states.granade; currentStage = stateStages.exit; };
         // Assign Inputs
+        #region Assign Inputs
+
         moveAction = playerInput.actions["Move"];
         zoomAction = playerInput.actions["Zoom"];
         rotationAction = playerInput.actions["Rotation"];
@@ -99,18 +102,28 @@ public class PlayerControl : MonoBehaviour {
             changedTime?.Invoke(Time.timeScale == 0 ? -2f : -1f);
             timeStopped = !timeStopped;
         };
+        escapeAction = playerInput.actions["Esc"];
+        escapeAction.started += _ => EscPressed();
+
+            #endregion
+        
     }
   
     void Update() {
         Move();
         TimeChange();
-        RayHit();
+        switch (currentState) {
+            case states.normal:
+                RayHit();
+                ChangeCursor(currentHit.transform.tag);
+                break;
+            case states.granade:
+                RayHit();
+                break;
+        }
      }
 
     void Move() {
-        //Debug.Log("nrm: " + Time.deltaTime); //cca 0.018~
-        //Debug.Log("fxd: " + Time.fixedDeltaTime); // 0.02
-        //
         //get input values
         float currentInputRotation = rotationAction.ReadValue<float>();
         float currentInputZoom = -zoomAction.ReadValue<float>();
@@ -142,16 +155,15 @@ public class PlayerControl : MonoBehaviour {
         changedTime?.Invoke(Time.timeScale + currentTimeChange * Time.deltaTime);
     }
 
-    void RayHit() {
+    RaycastHit RayHit() {
         if (!Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000)) {
             //Debug.Log("nothing");
             DefaultCursor();
             currentHit = new RaycastHit();
-            return;
+            return currentHit;
         }
         
-        currentHit = hit;
-        ChangeCursor(currentHit.transform.tag);
+        return currentHit = hit;
     }
     void LeftClick() {
         if (currentHit.transform == null) {
@@ -197,7 +209,6 @@ public class PlayerControl : MonoBehaviour {
         }
         
     }
-    //Check if camera is too far or too close
     bool ZoomDistanceCheck(float currentInputZoom) {
         if (transform.position.y <= minCameraDistance|| transform.position.y >= maxCameraDistance) {
             return false;
@@ -300,5 +311,22 @@ public class PlayerControl : MonoBehaviour {
 
     void DefaultCursor() {
         Cursor.SetCursor(normalCursor, new Vector2(4,8), CursorMode.Auto);
+    }
+
+    void EscPressed() {
+        switch (currentState) {
+            case states.normal:
+                currentState = states.pause;
+                
+                break;
+            case states.granade:
+            case states.ability:
+                currentState = states.normal;
+                break;
+            case states.pause:
+                currentState = states.normal;
+                break;
+        }
+        currentStage = stateStages.entry;
     }
 }
