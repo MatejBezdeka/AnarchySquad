@@ -9,8 +9,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using World;
-using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
 [RequireComponent(typeof(UnityEngine.Camera), typeof(PlayerInput))]
 public class PlayerControl : MonoBehaviour {
     [Header("=== Control Settings ===")] 
@@ -121,11 +119,11 @@ public class PlayerControl : MonoBehaviour {
         float currentInputZoom = -zoomAction.ReadValue<float>();
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
         //smooth the values
-        currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * (moveSpeed * Time.unscaledDeltaTime), ref smoothMove, moveSmoothness, 20);
-        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * (rotationSpeed * Time.unscaledDeltaTime), ref smoothRotation, rotationSmoothness, 20);
+        currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20);
+        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20);
         //check boundaries for camera to not go too far or too close
         if (ZoomDistanceCheck(currentInputZoom)) {
-            currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * (zoomSpeed * Time.unscaledDeltaTime), ref smoothZoom, zoomSmoothness, 20);
+            currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20);
         }
         else {
             //return camera to respective border if needed

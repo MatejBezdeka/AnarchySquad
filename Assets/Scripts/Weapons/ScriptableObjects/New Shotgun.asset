@@ -16,6 +16,6 @@ MonoBehaviour:
   maxAmmo: 6
   timeBetweenShots: 2
   reloadTime: 1
-  effectiveRange: 0
-  maxEffectiveRange: 0
+  effectiveRange: 10
+  maxEffectiveRange: 25
   pelletCount: 12

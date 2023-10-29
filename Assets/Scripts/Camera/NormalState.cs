@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Camera {
     public class NormalState : PlayerState {
@@ -6,7 +8,6 @@ namespace Camera {
         public NormalState(PlayerControl player) : base(player) { }
 
         public override void Enter() {
-            currentState = state.normal;
             base.Enter();
         }
 
@@ -84,21 +85,31 @@ namespace Camera {
             switch (hit.transform.tag) {
                 case "Floor":
                     if (player.selectedUnits.Count > 0) {
-                        foreach (var unit in player.selectedUnits) {
-                            unit.SetDestination(hit.point);
+                        for (int i = 0; i < player.selectedUnits.Count; i++) {
+                            float angle = i * (360 / player.selectedUnits.Count);
+                            Vector3 dir = ApplyRotationVector(new Vector3(1, 0, 1), angle);
+                            Vector3 position = hit.point + dir * 1f;
+                            player.selectedUnits[i].SetDestination(position);
+                            Debug.Log(position);
+                            player.MakePointWhereUnitIsMoving(position);
                         }
-                        player.MakePointWhereUnitIsMoving(hit.point);
                     }
                     break;
                 case "Squader":
                     break;
                 case "Anarchist":
+                    foreach (SquadUnit unit in player.selectedUnits) {
+                        unit.SetTarget(hit.transform.gameObject.GetComponent<Unit>());
+                    }
                     break;
                 case "Obstacle":
                     break;
             }
         }
 
+        Vector3 ApplyRotationVector(Vector3 vec, float angle) {
+            return Quaternion.Euler(0, angle, 0) * vec;
+        }
         protected override void Esc() {
             Exit(new PauseState(player));
         }

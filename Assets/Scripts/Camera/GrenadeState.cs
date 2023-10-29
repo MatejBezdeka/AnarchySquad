@@ -15,7 +15,6 @@ namespace Camera {
         }
         public override void Enter() {
             indicator.enabled = true;
-            currentState = state.grenade;
             base.Enter();
         }
 

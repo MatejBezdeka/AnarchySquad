@@ -12,7 +12,7 @@ public class Stats : ScriptableObject {
     [SerializeField, Range(20, 200)] float maxStamina;
     float stamina;
     [SerializeField, Range(1,100)] float range;
-    [SerializeField, Range(1,100)] float accuracy;
+    [SerializeField, Range(1,10)] float accuracy;
     [SerializeField, Range(1, 100)] float maxEffectiveRange;
     [SerializeField] protected Sprite icon;
     Unit[] enemiesInRange;
@@ -23,6 +23,7 @@ public class Stats : ScriptableObject {
     public int Hp => hp;
     public float Armor => armor;
     public float Speed => speed;
+    public float MaxStamina => maxStamina;
     public float Stamina => stamina;
     public float Range => range;
     public float Accuracy => accuracy;

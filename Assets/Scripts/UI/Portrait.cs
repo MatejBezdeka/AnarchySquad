@@ -18,6 +18,7 @@ namespace World {
         void Start() {
             button.onClick.AddListener(Clicked);
             PlayerControl.selectedNewUnit += Updated;
+            unit.updateUI += UpdateHpSlider;
         }
 
         public void AssignUnit(SquadUnit unit){

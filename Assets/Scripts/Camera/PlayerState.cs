@@ -8,10 +8,9 @@
             normal, grenade, pause
         }
 
-        public state currentState = state.normal;
         public stateStages currentStage = stateStages.entry;
         protected PlayerControl player;
-        public PlayerState(PlayerControl player) {
+        protected PlayerState(PlayerControl player) {
             this.player = player;
         }
         public virtual void Enter() {
