@@ -30,7 +30,7 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField] Texture2D goToCursor;
     [SerializeField] Texture2D attackCursor;
     [SerializeField] Texture2D interactCursor;
-    [SerializeField] GameObject grenadeIndicator;
+    [SerializeField] MeshRenderer grenadeIndicator;
     //===========//===========//===========//===========//===========//
     // Events
     public static Action<float> changedTime;
@@ -209,6 +209,7 @@ public class PlayerControl : MonoBehaviour {
         else {
             selectedUnit = null;
             selectedNewUnit?.Invoke(null);
+            currentState.Exit(new NormalState(this));
         }
     }
 
@@ -217,6 +218,7 @@ public class PlayerControl : MonoBehaviour {
             unit.Deselect();
         }
         selectedUnits.Clear();
+        UpdateProfile();
     }
     
     public void MakePointWhereUnitIsMoving(Vector3 hit) {

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6745a745e80b564faefecf83ae37d00, type: 3}
-  m_Name: testStats
+  m_Name: Jeff
   m_EditorClassIdentifier: 
   unitName: Jeff
   maxHp: 40
   armor: 15.7
   speed: 1.52
+  maxStamina: 0
   range: 19.1
   accuracy: 53.2
   maxEffectiveRange: 39.1
   icon: {fileID: 21300000, guid: 0ce78b2a81ccc774481e8120c9c2e1cc, type: 3}
-  model: {fileID: 21300000, guid: 0ce78b2a81ccc774481e8120c9c2e1cc, type: 3}

@@ -17,19 +17,31 @@ namespace World {
 
         void Start() {
             button.onClick.AddListener(Clicked);
+            PlayerControl.selectedNewUnit += Updated;
         }
 
         public void AssignUnit(SquadUnit unit){
             this.unit = unit;
+            picture.sprite = unit.stats.Icon;
+            nameLabel.text = unit.stats.UnitName;
+            hpSlider.maxValue = unit.stats.MaxHp;
+            UpdateHpSlider();
         }
 
+        void Updated(Unit ignore) {
+            if (unit.selected) {
+                outline.enabled = true;
+            }
+            else {
+                outline.enabled = false;
+            }
+        }
         void Clicked() {
             selectedDeselectedUnit?.Invoke(unit);
-            clicked = !clicked;
-            outline.enabled = clicked;
+            Updated(null);
         }
-        public void UpdateHpSlider(int value) {
-            hpSlider.value = value;
+        void UpdateHpSlider() {
+            hpSlider.value = unit.stats.Hp;
         }
     }
 }

@@ -3,23 +3,25 @@
 namespace Camera {
     public class NormalState : PlayerState {
         private RaycastHit hit;
+        public NormalState(PlayerControl player) : base(player) { }
+
         public override void Enter() {
             currentState = state.normal;
             base.Enter();
         }
 
         public override void Update() {
-            if(CursorOverUI()) { return; }
             hit = player.RayHit();
-            if (player.hitSomething) {
+            //if (player.hitSomething) {
                 ChangeCursor();
-            }
+            //}
         }
-
-        public NormalState(PlayerControl player) : base(player) {
-        }
-
+        
         void ChangeCursor() {
+            if (CursorOverUI() || !player.hitSomething) {
+                player.UpdateCursor(PlayerControl.cursorTypes.normal);
+                return;
+            }
             switch (hit.transform.tag) {
                 case "Floor":
                     if (player.selectedUnits.Count > 0) {

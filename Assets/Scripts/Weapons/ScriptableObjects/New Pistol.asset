@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a571742f3fc440fb220ba010da212c2, type: 3}
   m_Name: New Pistol
   m_EditorClassIdentifier: 
-  maxAmmo: 0
+  Damage: 6
+  maxAmmo: 12
   timeBetweenShots: 2
-  reloadTime: 1
+  reloadTime: 3
+  effectiveRange: 0
+  maxEffectiveRange: 0

@@ -31,7 +31,7 @@ public class CanvasManager : MonoBehaviour {
         foreach (var unit in GameManager.instance.Squaders) {
             GameObject portrait = Instantiate(portraitPrefab, portraitContainer.transform);
             portraits.Add(portrait.GetComponent<Portrait>());
-            portraits[portraits.Count-1].AssignUnit(unit);
+            portraits[^1].AssignUnit(unit);
         }
         grenadeButton.onClick.AddListener(GrenadeButtonClicked);
     }

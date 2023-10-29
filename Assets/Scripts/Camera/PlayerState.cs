@@ -21,7 +21,6 @@
             player.escButtonClicked += Esc;
         }
         public virtual void Update() { }
-
         protected virtual void LeftClick(){}
         protected virtual void RightClick(){}
         protected virtual void Esc(){}

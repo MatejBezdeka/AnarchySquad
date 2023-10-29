@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f220e4e72f43f2acdbcc6775455a32, type: 3}
   m_Name: New Shotgun
   m_EditorClassIdentifier: 
-  maxAmmo: 0
+  Damage: 15
+  maxAmmo: 6
   timeBetweenShots: 2
   reloadTime: 1
-  pelletCount: 0
+  effectiveRange: 0
+  maxEffectiveRange: 0
+  pelletCount: 12

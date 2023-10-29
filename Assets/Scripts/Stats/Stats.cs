@@ -4,18 +4,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 [CreateAssetMenu(menuName = "Units/Stats")]
 public class Stats : ScriptableObject {
-    [SerializeField] protected string unitName = "Jeff";
-    [SerializeField, Range(1, 100)] protected int maxHp;
-    protected int hp;
-    [SerializeField, Range(1,100)] protected float armor;
-    [SerializeField, Range(0.1f,5)] protected float speed;
-    [SerializeField, Range(20, 200)] protected float maxStamina;
-    protected float stamina;
-    [SerializeField, Range(1,100)] protected float range;
-    [SerializeField, Range(1,100)] protected float accuracy;
-    [SerializeField, Range(1, 100)] public float maxEffectiveRange;
+    [SerializeField] string unitName = "Jeff";
+    [SerializeField, Range(1, 100)] int maxHp;
+    int hp;
+    [SerializeField, Range(1,100)] float armor;
+    [SerializeField, Range(0.1f,5)] float speed;
+    [SerializeField, Range(20, 200)] float maxStamina;
+    float stamina;
+    [SerializeField, Range(1,100)] float range;
+    [SerializeField, Range(1,100)] float accuracy;
+    [SerializeField, Range(1, 100)] float maxEffectiveRange;
     [SerializeField] protected Sprite icon;
-    [SerializeField] protected Sprite model;
     Unit[] enemiesInRange;
 
     #region getters
@@ -24,11 +23,11 @@ public class Stats : ScriptableObject {
     public int Hp => hp;
     public float Armor => armor;
     public float Speed => speed;
+    public float Stamina => stamina;
     public float Range => range;
     public float Accuracy => accuracy;
     public float MaxEffectiveRange => maxEffectiveRange;
     public Sprite Icon => icon;
-    public Sprite Model => model;
     #endregion
 
     //protected Inventory inventory
@@ -37,6 +36,15 @@ public class Stats : ScriptableObject {
         return (hp -= damage) <= 0;
     }
 
+    public float Sprint() {
+        //remove stamina
+        return stamina;
+    }
+
+    public float Rest() {
+        //add stamina
+        return stamina;
+    }
     public void Start() {
         hp = MaxHp;
     }

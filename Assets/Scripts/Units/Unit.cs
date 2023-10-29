@@ -17,9 +17,10 @@ public class Unit : MonoBehaviour {
     [SerializeField] GameObject grenadePrefab;
     [SerializeField] GameObject muzzle;
     NavMeshAgent agent;
+    public bool selected { get; private set; } = false;
     void Start() {
         GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        debugSphere.transform.localScale = new Vector3(stats.maxEffectiveRange,stats.maxEffectiveRange, stats.maxEffectiveRange);
+        debugSphere.transform.localScale = new Vector3(stats.MaxEffectiveRange,stats.MaxEffectiveRange, stats.MaxEffectiveRange);
         debugSphere.transform.parent = transform;
         debugSphere.transform.localPosition = new Vector3(0, 0, 0);
         debugSphere.GetComponent<MeshRenderer>().material = debugSphereMaterial;
@@ -54,10 +55,12 @@ public class Unit : MonoBehaviour {
     }
     public void Select() {
         selectionPlane.SetActive(true);
+        selected = true;
     }
 
     public void Deselect() {
         selectionPlane.SetActive(false);
+        selected = false;
     }
 
     public void SetDestination(Vector3 destination) {
