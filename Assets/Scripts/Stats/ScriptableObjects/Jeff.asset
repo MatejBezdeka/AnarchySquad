@@ -16,8 +16,8 @@ MonoBehaviour:
   maxHp: 40
   armor: 15.7
   speed: 1.52
-  maxStamina: 0
+  maxStamina: 49
   range: 19.1
-  accuracy: 53.2
+  accuracy: 10
   maxEffectiveRange: 39.1
   icon: {fileID: 21300000, guid: 0ce78b2a81ccc774481e8120c9c2e1cc, type: 3}

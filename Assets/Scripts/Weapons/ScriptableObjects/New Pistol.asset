@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a571742f3fc440fb220ba010da212c2, type: 3}
   m_Name: New Pistol
   m_EditorClassIdentifier: 
-  Damage: 6
+  bulletPrefab: {fileID: 2660651700256969146, guid: 48b0fd2765c962441b5909b59ea8ab9b, type: 3}
+  damage: 25
   maxAmmo: 12
   timeBetweenShots: 2
   reloadTime: 3
   effectiveRange: 20
   maxEffectiveRange: 25
+  Spread: 0.1
