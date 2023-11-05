@@ -1,24 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Units;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class AttackUnitState : UnitState {
     Unit target;
-    NavMeshAgent targetAgent;
     SquadUnit unit;
-    NavMeshAgent unitAgent;
     bool conditionsMet = false;
-    public AttackUnitState(SquadUnit unit, NavMeshAgent unitAgent,Unit target) : base(unit) {
+    public AttackUnitState(SquadUnit unit, Unit target) : base(unit) {
         this.target = target;
-        targetAgent = target.gameObject.GetComponent<NavMeshAgent>();
-        this.unitAgent = unitAgent;
         this.unit = unit;
     }
     protected override void Enter() {
         //StartCoroutine(CheckConditions());
         base.Enter();
-        unit.weapon.LockOn(target.gameObject, targetAgent, unit, unitAgent, unit.muzzle);
+        unit.weapon.LockOn(target, unit, unit.muzzle);
+        unit.weapon.needToReload += Reload;
     }
 
     protected override void UpdateState() {
@@ -36,6 +34,10 @@ public class AttackUnitState : UnitState {
             }
             conditionsMet = true;
         }
+    }
+
+    void Reload(float reloadTime) {
+        Exit(new ReloadUnitState(unit, reloadTime, this));
     }
     protected override void Exit(UnitState state) {
         unit.weapon.LockOff();

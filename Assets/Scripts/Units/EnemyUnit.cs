@@ -7,6 +7,7 @@ public class EnemyUnit : Unit {
     private float closestDistance = float.MaxValue;
     // Start is called before the first frame update
     void Start() {
+        base.Start();
 //         StartCoroutine(SlowUpdate());
     }
     IEnumerator SlowUpdate() {

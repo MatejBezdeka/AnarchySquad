@@ -20,13 +20,11 @@ namespace Units {
         [SerializeField] protected float reloadTime = 1;
         [SerializeField, Tooltip("How far will bullets without any damage penalty")] protected float effectiveRange;
         [SerializeField, Tooltip("How far will bullets go")] protected float maxEffectiveRange;
-        [SerializeField, Range(0.01f,0.15f)] float Spread;
+        [SerializeField, Range(0.01f,1.15f)] float Spread;
         int currentAmmo;
-        float currentCooldown = 0;
+        protected float currentCooldown = 0;
         Unit unit;
-        NavMeshAgent unitAgent;
-        GameObject target;
-        NavMeshAgent targetAgent;
+        Unit target;
         GameObject muzzle;
         
 
@@ -39,33 +37,46 @@ namespace Units {
         public void Start() {
             currentAmmo = maxAmmo;
         }
-        public void Update() {
+        public virtual void Update() {
             currentCooldown += Time.deltaTime;
             if (currentCooldown > timeBetweenShots) {
                 Shoot();
-                currentAmmo--;
+                DeductAmmo();
                 currentCooldown = 0;
             }
         }
 
-        public void LockOn(GameObject target, NavMeshAgent targetAgent, Unit unit, NavMeshAgent unitAgent, GameObject muzzle) {
+        protected bool DeductAmmo() {
+            currentAmmo--;
+            if (currentAmmo == 0) {
+                needToReload?.Invoke(reloadTime);
+                return true;
+            }
+            return false;
+        }
+        public void LockOn(Unit target, Unit unit, GameObject muzzle) {
             this.target = target;
-            this.targetAgent = targetAgent;
             this.unit = unit;
-            this.unitAgent = unitAgent;
             this.muzzle = muzzle;
         }
         public void LockOff() {
-            //unsub
             currentCooldown = 0;
         }
         protected virtual void Shoot() {
-            Vector3 newPos = target.transform.position + targetAgent.velocity;
-            Vector3 offset = new Vector3(0.01f * Random.Range(0,unit.stats.Accuracy) + Random.Range(0,Spread), 0.01f * Random.Range(0,unit.stats.Accuracy) + Random.Range(0,Spread),0.01f * Random.Range(0,unit.stats.Accuracy) + Random.Range(0,Spread));
+            Vector3 newPos = target.transform.position + target.agent.velocity;
+            Vector3 offset = new Vector3(RandomOffset(), RandomOffset(),RandomOffset());
             newPos += offset;
             GameObject bullet = Instantiate(bulletPrefab, muzzle.transform.position, Quaternion.RotateTowards(new Quaternion(0f,0f,0f,0f), new Quaternion(newPos.x, newPos.y, newPos.z,0), 1080));
             bullet.GetComponent<Bullet>().StartBullet(unit);
             bullet.GetComponent<Rigidbody>().AddForce(newPos - muzzle.transform.position);
+        }
+
+        float RandomOffset() {
+            return 0.01f * Random.Range(-unit.stats.Accuracy, unit.stats.Accuracy) + Random.Range(-Spread, Spread);
+        }
+
+        public void Reloaded() {
+            currentAmmo = maxAmmo;
         }
     }
 }

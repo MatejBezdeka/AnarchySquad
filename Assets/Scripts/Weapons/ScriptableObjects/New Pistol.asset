@@ -15,8 +15,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2660651700256969146, guid: 48b0fd2765c962441b5909b59ea8ab9b, type: 3}
   damage: 25
   maxAmmo: 12
-  timeBetweenShots: 2
+  timeBetweenShots: 0.17
   reloadTime: 3
   effectiveRange: 20
   maxEffectiveRange: 25
-  Spread: 0.1
+  Spread: 0.0805

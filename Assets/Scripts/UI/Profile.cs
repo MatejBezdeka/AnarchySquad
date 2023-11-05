@@ -19,8 +19,10 @@ public class Profile : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameLabel;
     Stats stats;
     Weapon weapon;
+    bool reloading = false;
+    float reloadTime = 0;
 
-    private void Start() {
+    void Start() {
         PlayerControl.selectedNewUnit += UpdateProfile;
     }
 
@@ -29,8 +31,19 @@ public class Profile : MonoBehaviour
         hpSlider.value = stats.Hp;
         hpText.text = stats.Hp + "/" + stats.MaxHp;
         ammoSlider.maxValue = weapon.MaxAmmo;
-        ammoSlider.value = weapon.CurrentAmmo;
-        ammoText.text = weapon.CurrentAmmo + "/" + weapon.MaxAmmo;
+        if (reloading) {
+            reloadTime -= Time.deltaTime;
+            ammoText.text = "Reloading (" + Mathf.Round((reloadTime)*100)/100 + "s)";
+            if (reloadTime <= 0) {
+                reloading = false;
+                UpdateData();
+            }
+        }
+        else {
+            ammoText.text = weapon.CurrentAmmo + "/" + weapon.MaxAmmo;
+            ammoSlider.value = weapon.CurrentAmmo;
+
+        }
         staminaSlider.maxValue = stats.MaxStamina;
         staminaSlider.value = stats.Stamina;
         staminaText.text = stats.Stamina + "/" + stats.MaxStamina;
@@ -44,10 +57,21 @@ public class Profile : MonoBehaviour
         else {
             SquadUnit squader = (SquadUnit)unit;
             squader.updateUI += UpdateData;
+            squader.startReloading += StartReloading;
             panel.SetActive(true);
             stats = unit.stats;
             weapon = unit.weapon;
             UpdateData();
         }
+    }
+
+    void StartReloading(float reloadTime) {
+        if (reloadTime == 0) {
+            reloading = false;
+            this.reloadTime = 0;
+            UpdateData();
+        }
+        reloading = true;
+        this.reloadTime = reloadTime;
     }
 }

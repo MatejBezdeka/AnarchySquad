@@ -47,6 +47,8 @@ public class PlayerControl : MonoBehaviour {
     //states
     PlayerState currentState;
     public PlayerState nextState;
+    public bool shiftIsPressed => playerInput.actions["ShiftAction"].ReadValue<bool>();
+
     public enum cursorTypes {
         normal, goTo, attack, interact
     }
@@ -72,7 +74,6 @@ public class PlayerControl : MonoBehaviour {
     InputAction timeChangeAction;
     InputAction timeStopStartAction;
 
-    InputAction shiftAction;
     InputAction escapeAction;
 
     Vector3 selectBoxStartPoint;
@@ -91,7 +92,6 @@ public class PlayerControl : MonoBehaviour {
         rotationAction = playerInput.actions["Rotation"];
         leftClickAction = playerInput.actions["LeftClick"];
         leftClickAction.started += _ => leftMouseButtonClicked?.Invoke();
-        shiftAction = playerInput.actions["Shift"];
         rightClickAction = playerInput.actions["RightClick"];
         rightClickAction.started += _ => rightMouseButtonClicked?.Invoke();
         timeChangeAction = playerInput.actions["TimeControl"];
@@ -164,11 +164,11 @@ public class PlayerControl : MonoBehaviour {
         return true;
     }
 
-    public void SelectDeselectUnit(Unit unit) {
+    public void SelectDeselectUnit(SquadUnit unit) {
         //mít více označených jednotek naráz
         for (int i = 0; i < selectedUnits.Count; i++) {
             if (selectedUnits[i] == unit) {
-                selectedUnits[i].Deselect();
+                unit.Deselect();
                 selectedUnits.Remove(unit);
                 UpdateProfile();
                 return;
@@ -212,8 +212,8 @@ public class PlayerControl : MonoBehaviour {
     }
 
     public void DeselectAll() {
-        foreach (var unit in selectedUnits) {
-            unit.Deselect();
+        foreach (SquadUnit unit in selectedUnits) {
+             unit.Deselect();
         }
         selectedUnits.Clear();
         UpdateProfile();

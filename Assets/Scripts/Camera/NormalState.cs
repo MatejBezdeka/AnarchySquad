@@ -66,7 +66,7 @@ namespace Camera {
                     player.DeselectAll();
                     break;
                 case "Squader":
-                    var unit = hit.collider.GetComponent<Unit>();
+                    SquadUnit unit = hit.collider.GetComponent<SquadUnit>();
                     player.SelectDeselectUnit(unit);
                     break;
                 case "Anarchist":

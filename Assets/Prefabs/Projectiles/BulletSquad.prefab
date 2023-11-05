@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4123656585304972593}
   - component: {fileID: 6476125955551081699}
   - component: {fileID: 1956421267478174890}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletSquad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ Rigidbody:
     m_Bits: 375
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0

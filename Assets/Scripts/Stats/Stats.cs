@@ -38,12 +38,18 @@ public class Stats : ScriptableObject {
     }
 
     public float Sprint() {
-        //remove stamina
+        stamina -= 2f;
+        if (stamina < 0) {
+            stamina = 0;
+        }
         return stamina;
     }
 
-    public float Rest() {
-        //add stamina
+    public float AddStamina() {
+        stamina += 1.5f;
+        if (stamina >= maxStamina) {
+            stamina = maxStamina;
+        }
         return stamina;
     }
     public void Start() {

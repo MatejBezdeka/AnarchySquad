@@ -11,7 +11,6 @@ public class WaitUnitState : UnitState
     }
 
     protected override void UpdateState() {
-        base.UpdateState();
     }
 
     protected override void Exit(UnitState state) {
