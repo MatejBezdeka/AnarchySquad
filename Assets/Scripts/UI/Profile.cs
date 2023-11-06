@@ -17,6 +17,12 @@ public class Profile : MonoBehaviour
     [SerializeField] TextMeshProUGUI staminaText;
     [SerializeField] GameObject panel;
     [SerializeField] TextMeshProUGUI nameLabel;
+    
+    [SerializeField] Button runButton;
+    [SerializeField] Button switchButton;
+    [SerializeField] Button abilityOneButton;
+    [SerializeField] Button reloadButton;
+
     Stats stats;
     Weapon weapon;
     bool reloading = false;
@@ -24,6 +30,8 @@ public class Profile : MonoBehaviour
 
     void Start() {
         PlayerControl.selectedNewUnit += UpdateProfile;
+        reloadButton.onClick.AddListener(ReloadButtonClicked);
+        runButton.onClick.AddListener(RunButtonClicked);
     }
 
     void UpdateData() {
@@ -33,11 +41,7 @@ public class Profile : MonoBehaviour
         ammoSlider.maxValue = weapon.MaxAmmo;
         if (reloading) {
             reloadTime -= Time.deltaTime;
-            ammoText.text = "Reloading (" + Mathf.Round((reloadTime)*100)/100 + "s)";
-            if (reloadTime <= 0) {
-                reloading = false;
-                UpdateData();
-            }
+            ammoText.text = "Reloading (" + (reloadTime).ToString("F1") + "s)";
         }
         else {
             ammoText.text = weapon.CurrentAmmo + "/" + weapon.MaxAmmo;
@@ -49,7 +53,7 @@ public class Profile : MonoBehaviour
         staminaText.text = stats.Stamina + "/" + stats.MaxStamina;
         nameLabel.text = stats.UnitName;
     }
-
+    
     void UpdateProfile(Unit unit) {
         if (unit == null) {
             panel.SetActive(false);
@@ -66,12 +70,19 @@ public class Profile : MonoBehaviour
     }
 
     void StartReloading(float reloadTime) {
-        if (reloadTime == 0) {
+        if (reloadTime >= 0) {
             reloading = false;
             this.reloadTime = 0;
             UpdateData();
         }
         reloading = true;
         this.reloadTime = reloadTime;
+    }
+    void RunButtonClicked() {
+        runAction?.Invoke();
+    }
+
+    void ReloadButtonClicked() {
+        reloadAction?.Invoke();
     }
 }

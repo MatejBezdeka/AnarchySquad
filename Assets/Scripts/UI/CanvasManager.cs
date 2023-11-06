@@ -21,11 +21,8 @@ public class CanvasManager : MonoBehaviour {
     List<Portrait> portraits;
     Profile profile;
     [Header("Buttons")] 
-    [SerializeField] Button reloadButton;
     [SerializeField] Button grenadeButton;
-    [SerializeField] Button runButton;
-    [SerializeField] Button switchButton;
-    [SerializeField] Button abilityOneButton;
+    
     float timeCooldown = 0;
     int seconds = 0;
     int minutes = 0;
@@ -40,8 +37,7 @@ public class CanvasManager : MonoBehaviour {
             portraits[^1].AssignUnit(unit);
         }
         grenadeButton.onClick.AddListener(GrenadeButtonClicked);
-        reloadButton.onClick.AddListener(ReloadButtonClicked);
-        runButton.onClick.AddListener(RunButtonClicked);
+        
     }
 
     void Update() {
@@ -65,15 +61,7 @@ public class CanvasManager : MonoBehaviour {
         grenadeAction?.Invoke();
     }
 
-    void RunButtonClicked() {
-        runAction?.Invoke();
-        Debug.Log("not implemeted yet");
-    }
-
-    void ReloadButtonClicked() {
-        reloadAction?.Invoke();
-        Debug.Log("not implemeted yet");
-    }
+    
 
     void SwitchButtonClicked() {
         Debug.Log("not implemeted yet");
