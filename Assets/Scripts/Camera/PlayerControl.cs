@@ -83,7 +83,7 @@ public class PlayerControl : MonoBehaviour {
         playerInput = GetComponent<PlayerInput>();
         camera = GetComponent<UnityEngine.Camera>();
         Portrait.selectedDeselectedUnit += SelectDeselectUnit;
-        CanvasManager.grenadeAction += () => { currentState.Exit(new GrenadeState(this, grenadeIndicator));};
+        Profile.grenadeAction += () => { currentState.Exit(new GrenadeState(this, grenadeIndicator));};
         // Assign Inputs
         #region Assign Inputs
 

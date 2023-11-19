@@ -3095,11 +3095,6 @@ MonoBehaviour:
   objectiveText: {fileID: 6181524482936935920}
   portraitContainer: {fileID: 1950524263}
   portraitPrefab: {fileID: 2728281248549074514, guid: 7e69b61c0d3faa34baaf1c8fb1040339, type: 3}
-  reloadButton: {fileID: 101161962}
-  grenadeButton: {fileID: 888503705}
-  runButton: {fileID: 1282832717}
-  switchButton: {fileID: 1694962562}
-  abilityOneButton: {fileID: 332438435}
 --- !u!4 &870416256
 Transform:
   m_ObjectHideFlags: 0
@@ -5703,6 +5698,11 @@ MonoBehaviour:
   staminaText: {fileID: 517968797}
   panel: {fileID: 884507234}
   nameLabel: {fileID: 901080422}
+  runButton: {fileID: 1282832717}
+  switchButton: {fileID: 1694962562}
+  abilityOneButton: {fileID: 332438435}
+  reloadButton: {fileID: 101161962}
+  grenadeButton: {fileID: 888503705}
 --- !u!1 &1574447839
 GameObject:
   m_ObjectHideFlags: 0

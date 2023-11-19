@@ -30,12 +30,14 @@ public class ReloadUnitState : UnitState {
     }
 
     protected override void Exit(UnitState state) {
-        if (state.GetType() == typeof(AttackUnitState) && !reloaded) {
+        currentCooldown = 0;
+        unit.InvokeReloading(0);
+        
+        if (state is AttackUnitState && !reloaded || state is ReloadUnitState) {
             currentStage = stateStages.update;
             return;
         }
-        currentCooldown = 0;
-        unit.InvokeReloading(0);
+        
         base.Exit(state);
     }
 }

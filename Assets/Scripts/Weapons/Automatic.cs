@@ -15,7 +15,6 @@ namespace Units {
             if (attacking) {
                 if (currentCooldown > timeBetweenBullets) {
                     Shoot();
-                    DeductAmmo();
                     currentBurst++;
                     currentCooldown = 0;
                     if (currentBurst >= burstSize) {

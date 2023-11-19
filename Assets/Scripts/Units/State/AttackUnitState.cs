@@ -15,8 +15,8 @@ public class AttackUnitState : UnitState {
     protected override void Enter() {
         //StartCoroutine(CheckConditions());
         base.Enter();
-        unit.weapon.LockOn(target, unit, unit.muzzle);
         unit.weapon.needToReload += Reload;
+        unit.weapon.LockOn(target, unit, unit.muzzle);
     }
 
     protected override void UpdateState() {

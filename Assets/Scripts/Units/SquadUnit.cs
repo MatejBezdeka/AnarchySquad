@@ -57,4 +57,13 @@ public class SquadUnit : Unit {
     public void InvokeReloading(float time) {
         startReloading?.Invoke(time);
     }
+    public void ToggleSprint() {
+        if (currentState is RunUnitState) { currentState.ForceChangeState(new NormalUnitState(this)); }
+        currentState.ForceChangeState(new RunUnitState(this));
+    }
+
+    public void ReloadNow() {
+        if (currentState is ReloadUnitState) { return; }
+        currentState.ForceChangeState(new ReloadUnitState(this, weapon.ReloadTime));
+    }
 }

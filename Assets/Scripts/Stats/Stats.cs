@@ -54,5 +54,6 @@ public class Stats : ScriptableObject {
     }
     public void Start() {
         hp = MaxHp;
+        stamina = maxStamina;
     }
 }

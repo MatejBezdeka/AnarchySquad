@@ -66,6 +66,7 @@ public class Unit : MonoBehaviour {
         direction.y += distance * 2;
         rigidBody.AddForce(direction  * -Physics.gravity.y * rigidBody.mass);
     }
+
     
     
 }

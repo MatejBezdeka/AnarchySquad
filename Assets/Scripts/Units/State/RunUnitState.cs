@@ -20,6 +20,7 @@ public class RunUnitState : UnitState {
             if (unit.stats.Sprint() == 0) {
                 Exit(new NormalUnitState(unit));
             }
+            currentCooldown = 0;
         }
     }
 

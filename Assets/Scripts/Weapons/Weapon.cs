@@ -33,6 +33,7 @@ namespace Units {
         public int CurrentAmmo => currentAmmo;
         public float EffectiveRange => effectiveRange;
         public float MaxEffectiveRange => maxEffectiveRange;
+        public float ReloadTime => reloadTime;
         
         public void Start() {
             currentAmmo = maxAmmo;
@@ -41,20 +42,14 @@ namespace Units {
             currentCooldown += Time.deltaTime;
             if (currentCooldown > timeBetweenShots) {
                 Shoot();
-                DeductAmmo();
                 currentCooldown = 0;
             }
         }
 
-        protected bool DeductAmmo() {
-            currentAmmo--;
-            if (currentAmmo == 0) {
-                needToReload?.Invoke(reloadTime);
-                return true;
-            }
-            return false;
-        }
         public void LockOn(Unit target, Unit unit, GameObject muzzle) {
+            if (currentAmmo <= 0) {
+                needToReload?.Invoke(reloadTime);
+            }
             this.target = target;
             this.unit = unit;
             this.muzzle = muzzle;
@@ -69,6 +64,10 @@ namespace Units {
             GameObject bullet = Instantiate(bulletPrefab, muzzle.transform.position, Quaternion.RotateTowards(new Quaternion(0f,0f,0f,0f), new Quaternion(newPos.x, newPos.y, newPos.z,0), 1080));
             bullet.GetComponent<Bullet>().StartBullet(unit);
             bullet.GetComponent<Rigidbody>().AddForce(newPos - muzzle.transform.position);
+            currentAmmo--;
+            if (currentAmmo == 0) {
+                needToReload?.Invoke(reloadTime);
+            }
         }
 
         float RandomOffset() {

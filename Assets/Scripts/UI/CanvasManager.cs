@@ -9,9 +9,7 @@ using UnityEngine.UI;
 using World;
 
 public class CanvasManager : MonoBehaviour {
-    public static event Action grenadeAction;
-    public static event Action reloadAction; 
-    public static event Action runAction; 
+    
     [Header("Objective & Time")]
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] TextMeshProUGUI objectiveText;
@@ -21,7 +19,6 @@ public class CanvasManager : MonoBehaviour {
     List<Portrait> portraits;
     Profile profile;
     [Header("Buttons")] 
-    [SerializeField] Button grenadeButton;
     
     float timeCooldown = 0;
     int seconds = 0;
@@ -36,7 +33,6 @@ public class CanvasManager : MonoBehaviour {
             portraits.Add(portrait.GetComponent<Portrait>());
             portraits[^1].AssignUnit(unit);
         }
-        grenadeButton.onClick.AddListener(GrenadeButtonClicked);
         
     }
 
@@ -57,9 +53,7 @@ public class CanvasManager : MonoBehaviour {
         timeText.text = text;
     }
 
-    void GrenadeButtonClicked() {
-        grenadeAction?.Invoke();
-    }
+    
 
     
 
