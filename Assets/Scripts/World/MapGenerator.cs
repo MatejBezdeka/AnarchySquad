@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,14 +12,15 @@ public class MapGenerator : MonoBehaviour {
     [SerializeField] Transform floorNavMeshMask;
     [SerializeField, Range(1, 100)] int mapSizeX;
     [SerializeField, Range(1, 100)] int mapSizeY;
-    [SerializeField] int maxMapSizeX = 100;
-    [SerializeField] int maxMapSizeY = 100;
+    static int maxMapSizeX = 100;
+    static int maxMapSizeY = 100;
     [SerializeField, Range(0, 0.15f)] float outlinePercent;
     [SerializeField] float tileSize = 1;
     [SerializeField, Range(0, 1)] float obstaclePercent;
-    [SerializeField, Range(int.MinValue, int.MaxValue)]
-    int seed;
+    [SerializeField, Range(int.MinValue, int.MaxValue)] int seed;
 
+    public static int MaxMapSizeX => maxMapSizeX;
+    public static int MaxMapSizeY => maxMapSizeY;
     List<Coord> allTileCoords;
     Queue<Coord> shuffledTileCoords;
     Coord playerSpawn;
@@ -29,6 +31,11 @@ public class MapGenerator : MonoBehaviour {
         GenerateMap();
     }
 
+    public void SetMapParameters(int sizeX, int sizeY, float obstaclePercent) {
+        this.mapSizeX = sizeX;
+        this.mapSizeY = sizeY;
+        this.obstaclePercent = obstaclePercent;
+    }
     public void GenerateMap() {
         allTileCoords = new List<Coord>();
         for (int x = 0; x < mapSizeX; x++) {
