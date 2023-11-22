@@ -16,7 +16,7 @@ public class MapGenerator : MonoBehaviour {
     [SerializeField, Range(0, 0.15f)] float outlinePercent;
     [SerializeField] float tileSize = 1;
     [SerializeField, Range(0, 1)] float obstaclePercent;
-    [SerializeField, Range(0, int.MaxValue)]
+    [SerializeField, Range(int.MinValue, int.MaxValue)]
     int seed;
 
     List<Coord> allTileCoords;
