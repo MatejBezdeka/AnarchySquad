@@ -12,7 +12,6 @@ public class startMissionButton : MonoBehaviour
     }
 
     void StartMission() {
-        
-        SceneManager.LoadScene("Battlefield");
+        SceneManager.LoadSceneAsync("Battlefield");
     }
 }

@@ -28,7 +28,6 @@ public class Unit : MonoBehaviour {
 
     List<Unit> DetectEnemiesInProximity() {
         //Detect
-        
         return null;
     }
 

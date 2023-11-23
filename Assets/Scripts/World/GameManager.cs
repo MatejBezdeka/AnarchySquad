@@ -18,11 +18,6 @@ public class GameManager : MonoBehaviour {
     public List<EnemyUnit> Enemies /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<EnemyUnit>();
     #endregion
     
-    //
-    private int sizeX;
-    private int sizeY;
-    private float obstaclePercent;
-    private int seed;
     void Awake() {
         instance = this;
         PlayerControl.changedTime += TimeChanged;
@@ -30,7 +25,6 @@ public class GameManager : MonoBehaviour {
     }
     void Start() {
         canvasManager = GetComponent<CanvasManager>();
-        mapGenerator.SetMapParameters(sizeX, sizeY, obstaclePercent, seed);  
         mapGenerator.GenerateMap();
         //generate
         //spawnpoints
@@ -48,12 +42,7 @@ public class GameManager : MonoBehaviour {
         //Debug.Log("Updating");
     }
     
-    public void SetMap(int sizeX, int sizeY, float obstaclePercent, int seed) {
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
-        this.obstaclePercent = obstaclePercent;
-        this.seed = seed;
-    }
+    
     void TimeChanged(float newTime) {
         if ((int)newTime == -2) {
             //Unpause
