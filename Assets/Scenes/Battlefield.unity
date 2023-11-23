@@ -16830,8 +16830,6 @@ MonoBehaviour:
   floorNavMeshMask: {fileID: 6729724040208100282, guid: cbd002f6cd038ae4f8760729efb86be9, type: 3}
   mapSizeX: 18
   mapSizeY: 18
-  maxMapSizeX: 100
-  maxMapSizeY: 100
   outlinePercent: 0.04
   tileSize: 10
   obstaclePercent: 0.335
@@ -23084,6 +23082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTimeSpeed: 2
   minTimeSpeed: 0.2
+  mapGenerator: {fileID: 645280332}
   Squaders:
   - {fileID: 218934222}
   - {fileID: 1918422361}

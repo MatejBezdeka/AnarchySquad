@@ -12,29 +12,30 @@ public class MapGenerator : MonoBehaviour {
     [SerializeField] Transform floorNavMeshMask;
     [SerializeField, Range(1, 100)] int mapSizeX;
     [SerializeField, Range(1, 100)] int mapSizeY;
-    static int maxMapSizeX = 100;
-    static int maxMapSizeY = 100;
+    //When changing max size you have to bake the navMesh!
+    public static int maxMapSizeX { get; } = 100;
+    public static int maxMapSizeY { get; } = 100;
+    public static int minMapSizeX { get; } = 5;
+    public static int minMapSizeY { get; } = 5;
     [SerializeField, Range(0, 0.15f)] float outlinePercent;
     [SerializeField] float tileSize = 1;
-    [SerializeField, Range(0, 1)] float obstaclePercent;
+    [SerializeField, Range(0.2f, 1)] float obstaclePercent;
     [SerializeField, Range(int.MinValue, int.MaxValue)] int seed;
-
-    public static int MaxMapSizeX => maxMapSizeX;
-    public static int MaxMapSizeY => maxMapSizeY;
     List<Coord> allTileCoords;
     Queue<Coord> shuffledTileCoords;
     Coord playerSpawn;
     Coord enemySpawn;
     Coord objectiveCoord;
 
-    void Start() {
+    /*void Start() {
         GenerateMap();
-    }
+    }*/
 
-    public void SetMapParameters(int sizeX, int sizeY, float obstaclePercent) {
+    public void SetMapParameters(int sizeX, int sizeY, float obstaclePercent, int seed) {
         this.mapSizeX = sizeX;
         this.mapSizeY = sizeY;
         this.obstaclePercent = obstaclePercent;
+        this.seed = seed;
     }
     public void GenerateMap() {
         allTileCoords = new List<Coord>();
@@ -59,7 +60,7 @@ public class MapGenerator : MonoBehaviour {
                 
                 Vector3 tilePosition = CoordToPosition(x, y);
                 Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(0, 0, 0));
-                newTile.localScale = Vector3.one /** ((1 - outlinePercent)*/ * tileSize;
+                newTile.localScale = Vector3.one /* * ((1 - outlinePercent)*/ * tileSize;
                 newTile.parent = mapHolder;
                 if (x == playerSpawn.x && y == playerSpawn.y) {
                     //Spawn Units
@@ -87,18 +88,18 @@ public class MapGenerator : MonoBehaviour {
             }
         }
 
-        Transform maskLeft = Instantiate(floorNavMeshMask, Vector3.left * ((mapSizeX + maxMapSizeX) / 4 * tileSize), Quaternion.identity);
+        Transform maskLeft = Instantiate(floorNavMeshMask, Vector3.left * ((mapSizeX + maxMapSizeX) / 4f * tileSize), Quaternion.identity);
         maskLeft.parent = mapHolder;
-        maskLeft.localScale = new Vector3((maxMapSizeX-mapSizeX)/2, 2 ,mapSizeY*2) * tileSize;
-        Transform maskRight = Instantiate(floorNavMeshMask, Vector3.right * ((mapSizeX + maxMapSizeX) / 4 * tileSize), Quaternion.identity);
+        maskLeft.localScale = new Vector3((maxMapSizeX-mapSizeX)/2f, 2 ,mapSizeY*2) * tileSize;
+        Transform maskRight = Instantiate(floorNavMeshMask, Vector3.right * ((mapSizeX + maxMapSizeX) / 4f * tileSize), Quaternion.identity);
         maskRight.parent = mapHolder;
-        maskRight.localScale = new Vector3((maxMapSizeX-mapSizeX)/2, 2 ,mapSizeY*2) * tileSize;
-        Transform maskTop = Instantiate(floorNavMeshMask, Vector3.forward * (((mapSizeY + maxMapSizeY) / 4 + 0.5f) * tileSize), Quaternion.identity);
+        maskRight.localScale = new Vector3((maxMapSizeX-mapSizeX)/2f, 2 ,mapSizeY*2) * tileSize;
+        Transform maskTop = Instantiate(floorNavMeshMask, Vector3.forward * (((mapSizeY + maxMapSizeY) / 4f + 0.5f) * tileSize), Quaternion.identity);
         maskTop.parent = mapHolder;
-        maskTop.localScale = new Vector3(mapSizeX, 2 , (maxMapSizeY - mapSizeY)/2) * tileSize;
-        Transform maskBottom = Instantiate(floorNavMeshMask, Vector3.back * (((mapSizeY + maxMapSizeY) / 4 -0.5f)* tileSize), Quaternion.identity);
+        maskTop.localScale = new Vector3(mapSizeX, 2 , (maxMapSizeY - mapSizeY)/2f) * tileSize;
+        Transform maskBottom = Instantiate(floorNavMeshMask, Vector3.back * (((mapSizeY + maxMapSizeY) / 4f -0.5f)* tileSize), Quaternion.identity);
         maskBottom.parent = mapHolder;
-        maskBottom.localScale = new Vector3(mapSizeX, 2 ,(maxMapSizeY - mapSizeY)/2) * tileSize;
+        maskBottom.localScale = new Vector3(mapSizeX, 2 ,(maxMapSizeY - mapSizeY)/2f) * tileSize;
         
         floorNavMesh.localScale = new Vector3(maxMapSizeX, 1, maxMapSizeY) * tileSize;
     }
@@ -135,7 +136,7 @@ public class MapGenerator : MonoBehaviour {
     }
 
     Vector3 CoordToPosition(int x, int y) {
-        return new Vector3(-mapSizeX / 2 + 0.5f + x, outlinePercent/2, -mapSizeY / 2 + 0.5f + y) * tileSize;
+        return new Vector3(-mapSizeX / 2f + 0.5f + x, outlinePercent/2, -mapSizeY / 2f + 0.5f + y) * tileSize;
     }
     
     Coord GetRandomCoord() {

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasManager))]
 public class GameManager : MonoBehaviour {
     //Singleton
-    public static GameManager instance;
+    public static GameManager instance = new GameManager();
     
     [Header("=== Game Settings ===")]
     [SerializeField, Range(1.1f, 4)] float maxTimeSpeed = 2;
@@ -17,15 +17,21 @@ public class GameManager : MonoBehaviour {
     public List<SquadUnit> Squaders /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<SquadUnit>();
     public List<EnemyUnit> Enemies /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<EnemyUnit>();
     #endregion
+    
+    //
+    private int sizeX;
+    private int sizeY;
+    private float obstaclePercent;
+    private int seed;
     void Awake() {
         instance = this;
         PlayerControl.changedTime += TimeChanged;
         
     }
-
     void Start() {
         canvasManager = GetComponent<CanvasManager>();
-
+        mapGenerator.SetMapParameters(sizeX, sizeY, obstaclePercent, seed);  
+        mapGenerator.GenerateMap();
         //generate
         //spawnpoints
         //spawnUnits
@@ -40,6 +46,13 @@ public class GameManager : MonoBehaviour {
 
     void Update() {
         //Debug.Log("Updating");
+    }
+    
+    public void SetMap(int sizeX, int sizeY, float obstaclePercent, int seed) {
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        this.obstaclePercent = obstaclePercent;
+        this.seed = seed;
     }
     void TimeChanged(float newTime) {
         if ((int)newTime == -2) {
