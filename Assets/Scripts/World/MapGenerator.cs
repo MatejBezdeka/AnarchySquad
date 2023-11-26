@@ -6,6 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class MapGenerator : MonoBehaviour {
+    [Header("Settings")]
     [SerializeField] Transform tilePrefab;
     [SerializeField] Transform obstaclePrefab;
     [SerializeField] Transform floorNavMesh;
@@ -13,15 +14,17 @@ public class MapGenerator : MonoBehaviour {
     [SerializeField, Range(1, 50)] int mapSizeX;
     [SerializeField, Range(1, 50)] int mapSizeY;
     //When changing max size you have to bake the navMesh!
+    
+    [SerializeField, Range(0, 0.15f)] float outlinePercent;
+    [SerializeField] float tileSize = 1;
+    [SerializeField, Range(0, 1)] float obstaclePercent;
+    [SerializeField, Range(int.MinValue, int.MaxValue)] int seed;
     public static int maxMapSizeX => 50;
     public static int maxMapSizeY => 50;
     public static int minMapSizeX => 5;
     public static int minMapSizeY => 5;
-    [SerializeField, Range(0, 0.15f)] float outlinePercent;
-    [SerializeField] float tileSize = 1;
-    [SerializeField, Range(0.2f, 1)] float obstaclePercent;
-    [SerializeField, Range(int.MinValue, int.MaxValue)] int seed;
-    List<Coord> allTileCoords;
+
+     List<Coord> allTileCoords;
     Queue<Coord> shuffledTileCoords;
     Coord playerSpawn;
     Coord enemySpawn;

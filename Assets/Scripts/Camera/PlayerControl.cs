@@ -52,6 +52,8 @@ public class PlayerControl : MonoBehaviour {
     public enum cursorTypes {
         normal, goTo, attack, interact
     }
+
+    cursorTypes currentCursor = cursorTypes.normal;
     public bool hitSomething { get; private set; } = false;
     #region Inputs
 
@@ -226,6 +228,9 @@ public class PlayerControl : MonoBehaviour {
     }
 
     public void UpdateCursor(cursorTypes type) {
+        if (type == currentCursor) {
+            return;
+        }
         switch (type) {
             case cursorTypes.normal:
                 Cursor.SetCursor(normalCursor, new Vector2(4,8), CursorMode.Auto);
@@ -243,6 +248,7 @@ public class PlayerControl : MonoBehaviour {
                 Cursor.SetCursor(normalCursor, new Vector2(4,8), CursorMode.Auto);
                 return;
         }
+        currentCursor = type;
     }
     /*void EscPressed() {
         switch (currentState.currentState) {
