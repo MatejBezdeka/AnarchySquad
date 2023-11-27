@@ -16,19 +16,19 @@ public class GameManager : MonoBehaviour {
     CanvasManager canvasManager;
     public List<SquadUnit> Squaders /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<SquadUnit>();
     public List<EnemyUnit> Enemies /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<EnemyUnit>();
+    
     #endregion
     
     void Awake() {
         instance = this;
         PlayerControl.changedTime += TimeChanged;
-        
     }
     void Start() {
+        //generate
         canvasManager = GetComponent<CanvasManager>();
         mapGenerator.GenerateMap();
-        //generate
-        //spawnpoints
         //spawnUnits
+        SpawnUnits(mapGenerator.spawnCubePostion());
         //startGame
         //wakeup units
         //Start UI
@@ -70,5 +70,12 @@ public class GameManager : MonoBehaviour {
 
     void PrepareGameField() {
         
+    }
+
+    void SpawnUnits(Vector3 spawnPoint) {
+        for (int i = 0; i < Squaders.Count; i++) {
+            Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(Squaders.Count, i);
+            Squaders[i].transform.position = new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1.5f, rotatedSpawnPoint.z);
+        }
     }
 }

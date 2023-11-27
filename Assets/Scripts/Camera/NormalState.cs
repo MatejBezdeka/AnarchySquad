@@ -86,11 +86,8 @@ namespace Camera {
                 case "Floor":
                     if (player.selectedUnits.Count > 0) {
                         for (int i = 0; i < player.selectedUnits.Count; i++) {
-                            float angle = i * (360 / player.selectedUnits.Count);
-                            Vector3 dir = ApplyRotationVector(new Vector3(1, 0, 1), angle);
-                            Vector3 position = hit.point + dir * 1f;
+                            Vector3 position = hit.point.GetRotatedVector3(player.selectedUnits.Count, i);
                             player.selectedUnits[i].SetDestination(position);
-                            Debug.Log(position);
                             player.MakePointWhereUnitIsMoving(position);
                         }
                     }
@@ -107,9 +104,7 @@ namespace Camera {
             }
         }
 
-        Vector3 ApplyRotationVector(Vector3 vec, float angle) {
-            return Quaternion.Euler(0, angle, 0) * vec;
-        }
+        
         protected override void Esc() {
             Exit(new PauseState(player));
         }

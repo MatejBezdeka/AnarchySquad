@@ -1,17 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class startMissionButton : MonoBehaviour
-{
-    private void Start() {
-        GetComponent<Button>().onClick.AddListener(StartMission);
-    }
+namespace UI {
+    public class StartMissionButton : MonoBehaviour
+    {
+        private void Start() {
+            GetComponent<Button>().onClick.AddListener(StartMission);
+        }
 
-    void StartMission() {
-        SceneManager.LoadSceneAsync("Battlefield");
+        void StartMission() {
+            SceneManager.LoadSceneAsync("Battlefield");
+        }
     }
 }
