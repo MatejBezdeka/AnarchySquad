@@ -42,7 +42,7 @@ public static class Extensions
     public static Vector3 GetRotatedVector3(this Vector3 point,int count, int index) {
             float angle = index * (360 / count);
             Vector3 dir = ApplyRotationVector(new Vector3(1, 0, 1), angle);
-            return point + dir * 1f;
+            return point + dir * 1.5f;
     }
     static Vector3 ApplyRotationVector(Vector3 vec, float angle) {
         return Quaternion.Euler(0, angle, 0) * vec;

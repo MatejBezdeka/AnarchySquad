@@ -11,12 +11,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField, Range(1.1f, 4)] float maxTimeSpeed = 2;
     [SerializeField, Range(0.1f, 1f)] float minTimeSpeed = 0.2f;
     [SerializeField] MapGenerator mapGenerator;
+    public MapGenerator MapGenerator => mapGenerator;
     #region variables
     float time = 1;
     CanvasManager canvasManager;
     public List<SquadUnit> Squaders /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<SquadUnit>();
     public List<EnemyUnit> Enemies /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<EnemyUnit>();
-    
+    [SerializeField] GameObject[] tmpList;
     #endregion
     
     void Awake() {
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour {
         canvasManager = GetComponent<CanvasManager>();
         mapGenerator.GenerateMap();
         //spawnUnits
-        SpawnUnits(mapGenerator.spawnCubePostion());
+        SpawnUnits(mapGenerator.SpawnCubePosition());
         //startGame
         //wakeup units
         //Start UI
@@ -73,9 +74,19 @@ public class GameManager : MonoBehaviour {
     }
 
     void SpawnUnits(Vector3 spawnPoint) {
-        for (int i = 0; i < Squaders.Count; i++) {
+        //Debug.Log(spawnPoint);
+        /*for (int i = 0; i < Squaders.Count; i++) {
             Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(Squaders.Count, i);
-            Squaders[i].transform.position = new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1.5f, rotatedSpawnPoint.z);
+            Debug.Log(Squaders[i].transform.position);
+            Squaders[i].gameObject.transform.position = new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z);
+            Debug.Log(Squaders[i].transform.position);
+            
+        }*/
+        
+        for (int i = 0; i < tmpList.Length; i++) {
+            Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(tmpList.Length, i);
+            Instantiate(tmpList[i], new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
+            
         }
     }
 }

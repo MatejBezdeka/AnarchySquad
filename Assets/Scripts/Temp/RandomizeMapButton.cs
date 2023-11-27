@@ -10,7 +10,7 @@ using Random = System.Random;
 public class RandomizeMapButton : MonoBehaviour {
     [SerializeField] TextMeshProUGUI text;
     Random rn = new Random();
-    private string[] o = new[] { "Low", "Med","High" };
+    private string[] obstacleIntensityTitles = new[] { "Low", "Med","High" };
     [Header("RandomGeneration Settings")] 
     [SerializeField, Range(0,100)] int minObstaclePercentage = 10;
     [SerializeField, Range(0,100)] int maxObstaclePercentage = 80;
@@ -18,6 +18,9 @@ public class RandomizeMapButton : MonoBehaviour {
     void Start() {
         GetComponent<Button>().onClick.AddListener(Randomize);
         Randomize();
+        for (int i = minObstaclePercentage; i < maxObstaclePercentage+1; i++) {
+            Debug.Log( i + ": " + GetText(  i/100f));
+        }
     }
 
     void Randomize() {
@@ -33,11 +36,13 @@ public class RandomizeMapButton : MonoBehaviour {
     }
 
     string GetText(float obstaclePer) {
-        int difference = maxObstaclePercentage - minObstaclePercentage;
-        difference /= o.Length;
-        for (int i = 0; i < o.Length; i++) {
-            if (i * difference >= obstaclePer * 100) {
-                return o[i];
+        float difference = maxObstaclePercentage - minObstaclePercentage;
+        difference /= obstacleIntensityTitles.Length;
+        for (int i = 1; i < obstacleIntensityTitles.Length+1; i++) {
+            //Debug.Log(i * difference + " " + obstaclePer * 100  );
+            if (i * difference >= obstaclePer * 100 - minObstaclePercentage) {
+                
+                return obstacleIntensityTitles[i-1];
             }
         }
         return "null";

@@ -13,22 +13,25 @@ public class MapGenerator : MonoBehaviour {
     [SerializeField] Transform floorNavMeshMask;
     [SerializeField, Range(1, 50)] int mapSizeX;
     [SerializeField, Range(1, 50)] int mapSizeY;
-    //When changing max size you have to bake the navMesh!
     
     [SerializeField, Range(0, 0.15f)] float outlinePercent;
     [SerializeField] float tileSize = 1;
     [SerializeField, Range(0, 1)] float obstaclePercent;
     [SerializeField, Range(int.MinValue, int.MaxValue)] int seed;
+    //When changing max size you have to rebake the navMesh!
     public static int maxMapSizeX => 50;
     public static int maxMapSizeY => 50;
     public static int minMapSizeX => 5;
     public static int minMapSizeY => 5;
 
-     List<Coord> allTileCoords;
+    List<Coord> allTileCoords;
     Queue<Coord> shuffledTileCoords;
+    Queue<Coord> shuffledOpenTileCoords;
     Coord playerSpawn;
     Coord enemySpawn;
     Coord objectiveCoord;
+
+    Transform[,] tileMap;
 
     /*void Start() {
         GenerateMap();
@@ -42,6 +45,7 @@ public class MapGenerator : MonoBehaviour {
     }
     public void GenerateMap() {
         SetMapParameters();
+        tileMap = new Transform[mapSizeX,mapSizeY];
         allTileCoords = new List<Coord>();
         for (int x = 0; x < mapSizeX; x++) {
             for (int y = 0; y < mapSizeY; y++) {
@@ -66,15 +70,15 @@ public class MapGenerator : MonoBehaviour {
                 Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(0, 0, 0));
                 newTile.localScale = Vector3.one /* * ((1 - outlinePercent)*/ * tileSize;
                 newTile.parent = mapHolder;
-                if (x == playerSpawn.x && y == playerSpawn.y) {
-                    //Spawn Units
-                }
+                tileMap[x, y] = newTile;
             }
         }
 
         bool[,] obstacleMap = new bool[mapSizeX, mapSizeY];
         int obstacleCount = (int)(mapSizeX * mapSizeY * obstaclePercent);
         int currentObstacleCount = 0;
+        List<Coord> allOpenCoords = allTileCoords;
+
         for (int i = 0; i < obstacleCount; i++) {
             
             Coord randomCoord = GetRandomCoord();
@@ -85,13 +89,15 @@ public class MapGenerator : MonoBehaviour {
                 Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + Vector3.up * tileSize, Quaternion.identity);
                 newObstacle.localScale = Vector3.one * ((1 - outlinePercent) * tileSize);
                 newObstacle.parent = mapHolder;
+                allOpenCoords.Remove(randomCoord);
             }
             else {
                 obstacleMap[randomCoord.x, randomCoord.y] = false;
                 currentObstacleCount--;
             }
         }
-
+        
+        shuffledOpenTileCoords = new Queue<Coord>(Extensions.ShuffleArray(allOpenCoords.ToArray(), seed));
         Transform maskLeft = Instantiate(floorNavMeshMask, Vector3.left * ((mapSizeX + maxMapSizeX) / 4f * tileSize), Quaternion.identity);
         maskLeft.parent = mapHolder;
         maskLeft.localScale = new Vector3((maxMapSizeX-mapSizeX)/2f, 2 ,mapSizeY*2) * tileSize;
@@ -148,6 +154,12 @@ public class MapGenerator : MonoBehaviour {
         shuffledTileCoords.Enqueue(randomCoord);
         return randomCoord;
     }
+
+    public Transform GetRandomOpenTile() {
+        Coord randomCoord = shuffledOpenTileCoords.Dequeue();
+        shuffledOpenTileCoords.Enqueue(randomCoord);
+        return tileMap[randomCoord.x,randomCoord.y];
+    }
     struct Coord {
         public int x;
         public int y;
@@ -164,7 +176,10 @@ public class MapGenerator : MonoBehaviour {
             return !(c1 == c2);
         }
     }
-    public Vector3 spawnCubePostion() {
-        return CoordToPosition(playerSpawn.x, playerSpawn.y);
+    public Vector3 SpawnCubePosition() {
+        Vector3 point = CoordToPosition(playerSpawn.x, playerSpawn.y);
+        point.y += tileSize / 2;
+        Debug.Log(point);
+        return point;
     }
 }

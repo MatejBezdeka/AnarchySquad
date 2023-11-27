@@ -1,18 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
+using Units;
 using UnityEngine;
 
-public class ClassAddingComponent : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+namespace UI {
+    public class ClassAddingComponent : MonoBehaviour {
+        [SerializeField] UnitClass[] classes;
+        void Start()
+        {
+            
+        }
     }
 }
