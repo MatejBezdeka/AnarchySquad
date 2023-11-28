@@ -15,14 +15,14 @@ public class Unit : MonoBehaviour {
     [SerializeField, Range(0.1f, 1), Tooltip("How often is an unit gonna update and respond")] protected float responseTime = 0.5f;
     [SerializeField] GameObject grenadePrefab;
     [SerializeField] public GameObject muzzle;
-    public NavMeshAgent agent { get; private set; }
+    [SerializeField] NavMeshAgent agent;
+    public NavMeshAgent Agent => agent;
     Unit targetedUnit;
     bool sprinting;
     
     protected virtual void Start() {
+        Debug.Log("nazdar");
         agent = GetComponent<NavMeshAgent>();
-        stats.Start();
-        weapon.Start();
     }
     
 

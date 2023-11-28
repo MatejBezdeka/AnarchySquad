@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UI;
 using UnityEngine;
 
 public class TeamSelectedContainer : MonoBehaviour {
@@ -11,6 +12,7 @@ public class TeamSelectedContainer : MonoBehaviour {
     void Start() {
         ClassComponent.AddUnit += AddUnit;
         SelectedTeamMemberContainer.RemoveUnit += RemoveUnit;
+        StartMissionButton.startingGame += SaveUnitsForNextScene;
     }
 
     void RemoveUnit(SquadUnit unit) {
@@ -31,5 +33,9 @@ public class TeamSelectedContainer : MonoBehaviour {
 
     void UpdateCount() {
         unitCounter.text = units.Count + "/" + maxUnitsCount;
+    }
+
+    void SaveUnitsForNextScene() {
+        SquadParameters.units = units;
     }
 }

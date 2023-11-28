@@ -11,7 +11,7 @@ public class RunUnitState : UnitState {
     }
     protected override void Enter() {
         base.Enter();
-        unit.agent.speed *= speedMultiplayer;
+        unit.Agent.speed *= speedMultiplayer;
     }
 
     protected override void UpdateState() {
@@ -25,7 +25,7 @@ public class RunUnitState : UnitState {
     }
 
     protected override void Exit(UnitState state) {
-        unit.agent.speed /= speedMultiplayer;
+        unit.Agent.speed /= speedMultiplayer;
         base.Exit(state);
     }
 }

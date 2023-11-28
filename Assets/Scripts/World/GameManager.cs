@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 [RequireComponent(typeof(CanvasManager))]
 public class GameManager : MonoBehaviour {
     //Singleton
@@ -15,14 +17,16 @@ public class GameManager : MonoBehaviour {
     #region variables
     float time = 1;
     CanvasManager canvasManager;
-    public List<SquadUnit> Squaders /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<SquadUnit>();
+    public List<SquadUnit> units;
     public List<EnemyUnit> Enemies /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<EnemyUnit>();
     [SerializeField] GameObject[] tmpList;
+    [SerializeField] GameObject unitPrefab;
     #endregion
     
     void Awake() {
         instance = this;
         PlayerControl.changedTime += TimeChanged;
+        units = SquadParameters.units;
     }
     void Start() {
         //generate
@@ -74,18 +78,11 @@ public class GameManager : MonoBehaviour {
     }
 
     void SpawnUnits(Vector3 spawnPoint) {
-        //Debug.Log(spawnPoint);
-        /*for (int i = 0; i < Squaders.Count; i++) {
-            Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(Squaders.Count, i);
-            Debug.Log(Squaders[i].transform.position);
-            Squaders[i].gameObject.transform.position = new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z);
-            Debug.Log(Squaders[i].transform.position);
-            
-        }*/
-        
-        for (int i = 0; i < tmpList.Length; i++) {
-            Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(tmpList.Length, i);
+        for (int i = 0; i < units.Count; i++) {
+            Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(units.Count, i);
+            GameObject newUnit = Instantiate(unitPrefab, new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
             Instantiate(tmpList[i], new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
+            newUnit.GetComponent<SquadUnit>().SetAttributes(units[i].stats,units[i].weapon, units[i].secondaryWeapon);
             
         }
     }

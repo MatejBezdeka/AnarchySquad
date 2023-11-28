@@ -58,7 +58,7 @@ namespace Units {
             currentCooldown = 0;
         }
         protected virtual void Shoot() {
-            Vector3 newPos = target.transform.position + target.agent.velocity;
+            Vector3 newPos = target.transform.position + target.Agent.velocity;
             Vector3 offset = new Vector3(RandomOffset(), RandomOffset(),RandomOffset());
             newPos += offset;
             GameObject bullet = Instantiate(bulletPrefab, muzzle.transform.position, Quaternion.RotateTowards(new Quaternion(0f,0f,0f,0f), new Quaternion(newPos.x, newPos.y, newPos.z,0), 1080));

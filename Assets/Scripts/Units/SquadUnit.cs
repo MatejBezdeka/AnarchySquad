@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Units;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,13 +13,15 @@ public class SquadUnit : Unit {
     public bool selected { get; private set; } = false;
 
     protected override void Start() {
+        Debug.Log("ahoj");
         base.Start();
-        GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        
+        /*GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         debugSphere.transform.localScale = new Vector3(stats.MaxEffectiveRange,stats.MaxEffectiveRange, stats.MaxEffectiveRange);
         debugSphere.transform.parent = transform;
         debugSphere.transform.localPosition = new Vector3(0, 0, 0);
         debugSphere.GetComponent<MeshRenderer>().material = debugSphereMaterial;
-        Destroy(debugSphere.GetComponent<SphereCollider>());
+        Destroy(debugSphere.GetComponent<SphereCollider>());*/
 
         selectionPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
         selectionPlane.transform.localScale = new Vector3(1, 1, 1);
@@ -27,6 +30,14 @@ public class SquadUnit : Unit {
         selectionPlane.GetComponent<MeshRenderer>().material = selectMaterial;
         selectionPlane.SetActive(false);
         currentState = new NormalUnitState(this);
+    }
+
+    public void SetAttributes(Stats newStats, Weapon mainWeapon, Weapon secondaryWeapon) {
+        stats = newStats;
+        weapon = mainWeapon;
+        this.secondaryWeapon = secondaryWeapon;
+        stats.Start();
+        weapon.Start();
     }
     public void SetTarget(Unit target) {
         currentState.ForceChangeState(new AttackUnitState(this,target));
@@ -41,12 +52,12 @@ public class SquadUnit : Unit {
         
     }
     public void Select() {
-        selectionPlane.SetActive(true);
+        //selectionPlane.SetActive(true);
         selected = true;
     }
 
     public void Deselect() {
-        selectionPlane.SetActive(false);
+        //selectionPlane.SetActive(false);
         selected = false;
     }
     void Update() {

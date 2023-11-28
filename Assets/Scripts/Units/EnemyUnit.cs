@@ -21,7 +21,7 @@ public class EnemyUnit : Unit {
     }
 
     SquadUnit GetClosestEnemy() {
-        foreach (var unit in GameManager.instance.Squaders) {
+        foreach (var unit in GameManager.instance.units) {
             unit.transform.CalculateDistance(transform, out float distance);
             if (distance < closestDistance) {
                 closestDistance = distance;

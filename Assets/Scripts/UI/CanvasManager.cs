@@ -28,7 +28,7 @@ public class CanvasManager : MonoBehaviour {
 
     void Start() {
         portraits = new List<Portrait>();
-        foreach (var unit in GameManager.instance.Squaders) {
+        foreach (var unit in GameManager.instance.units) {
             GameObject portrait = Instantiate(portraitPrefab, portraitContainer.transform);
             portraits.Add(portrait.GetComponent<Portrait>());
             portraits[^1].AssignUnit(unit);
