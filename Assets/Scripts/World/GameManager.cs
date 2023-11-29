@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 public class GameManager : MonoBehaviour {
     //Singleton
     public static GameManager instance = new GameManager();
+    UnitFactory unitFactory = new UnitFactory();
     
     [Header("=== Game Settings ===")]
     [SerializeField, Range(1.1f, 4)] float maxTimeSpeed = 2;
@@ -27,13 +28,14 @@ public class GameManager : MonoBehaviour {
         instance = this;
         PlayerControl.changedTime += TimeChanged;
         units = SquadParameters.units;
-    }
-    void Start() {
         //generate
         canvasManager = GetComponent<CanvasManager>();
         mapGenerator.GenerateMap();
         //spawnUnits
         SpawnUnits(mapGenerator.SpawnCubePosition());
+    }
+    void Start() {
+        
         //startGame
         //wakeup units
         //Start UI
@@ -80,9 +82,10 @@ public class GameManager : MonoBehaviour {
     void SpawnUnits(Vector3 spawnPoint) {
         for (int i = 0; i < units.Count; i++) {
             Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(units.Count, i);
-            GameObject newUnit = Instantiate(unitPrefab, new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
-            Instantiate(tmpList[i], new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
-            newUnit.GetComponent<SquadUnit>().SetAttributes(units[i].stats,units[i].weapon, units[i].secondaryWeapon);
+            rotatedSpawnPoint.y += 1;
+            //GameObject newUnit = Instantiate(unitPrefab, new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
+            //Instantiate(tmpList[i], new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
+            units[i] = unitFactory.SpawnUnit(unitPrefab, units[i].stats, units[i].weapon, units[i].secondaryWeapon, rotatedSpawnPoint);
             
         }
     }

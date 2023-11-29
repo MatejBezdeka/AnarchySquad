@@ -40,7 +40,7 @@ public static class Extensions
     }
 
     public static Vector3 GetRotatedVector3(this Vector3 point,int count, int index) {
-            float angle = index * (360 / count);
+            float angle = index * (360f / count);
             Vector3 dir = ApplyRotationVector(new Vector3(1, 0, 1), angle);
             return point + dir * 1.5f;
     }

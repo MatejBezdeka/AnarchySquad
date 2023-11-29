@@ -32,13 +32,13 @@ public class SquadUnit : Unit {
         currentState = new NormalUnitState(this);
     }
 
-    public void SetAttributes(Stats newStats, Weapon mainWeapon, Weapon secondaryWeapon) {
+    /*public void SetAttributes(Stats newStats, Weapon mainWeapon, Weapon secondaryWeapon) {
         stats = newStats;
         weapon = mainWeapon;
         this.secondaryWeapon = secondaryWeapon;
         stats.Start();
         weapon.Start();
-    }
+    }*/
     public void SetTarget(Unit target) {
         currentState.ForceChangeState(new AttackUnitState(this,target));
         //weapon.LockOn(target.gameObject, , this, agent);
