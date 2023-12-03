@@ -418,8 +418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1924427864}
   minObstaclePercentage: 15
-  maxObstaclePercentage: 70
-  maxSideDifference: 10
+  maxObstaclePercentage: 40
+  maxSideDifference: 5
 --- !u!114 &345867803
 MonoBehaviour:
   m_ObjectHideFlags: 0

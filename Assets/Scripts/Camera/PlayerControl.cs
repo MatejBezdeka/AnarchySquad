@@ -91,7 +91,7 @@ public class PlayerControl : MonoBehaviour {
 
         moveAction = playerInput.actions["Move"];
         zoomAction = playerInput.actions["Zoom"];
-        rotationAction = playerInput.actions["Rotation"];
+        rotationAction = playerInput.actions["Move"];
         leftClickAction = playerInput.actions["LeftClick"];
         leftClickAction.started += _ => leftMouseButtonClicked?.Invoke();
         rightClickAction = playerInput.actions["RightClick"];
@@ -117,12 +117,14 @@ public class PlayerControl : MonoBehaviour {
 
     void Move() {
         //get input values
-        float currentInputRotation = rotationAction.ReadValue<float>();
+        float currentInputRotation = -rotationAction.ReadValue<Vector2>().x;
         float currentInputZoom = -zoomAction.ReadValue<float>();
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
         //smooth the values
         currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20);
-        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20);
+        currentRotation = -currentMove.x;
+        currentMove.y = 0;
+        //currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20);
         //check boundaries for camera to not go too far or too close
         if (ZoomDistanceCheck(currentInputZoom)) {
             currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20);

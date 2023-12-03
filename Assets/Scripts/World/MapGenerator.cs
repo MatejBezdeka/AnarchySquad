@@ -19,10 +19,10 @@ public class MapGenerator : MonoBehaviour {
     [SerializeField, Range(0, 1)] float obstaclePercent;
     [SerializeField, Range(int.MinValue, int.MaxValue)] int seed;
     //When changing max size you have to rebake the navMesh!
-    public static int maxMapSizeX => 50;
-    public static int maxMapSizeY => 50;
-    public static int minMapSizeX => 5;
-    public static int minMapSizeY => 5;
+    public static int maxMapSizeX => 22;
+    public static int maxMapSizeY => 22;
+    public static int minMapSizeX => 10;
+    public static int minMapSizeY => 10;
 
     List<Coord> allTileCoords;
     Queue<Coord> shuffledTileCoords;
@@ -33,18 +33,20 @@ public class MapGenerator : MonoBehaviour {
 
     Transform[,] tileMap;
 
-    /*void Start() {
-        GenerateMap();
-    }*/
+    void Awake() {
+        SetMapParameters();
+    }
 
     void SetMapParameters() {
+        if (MapParameters.sizeX == 0) {
+            return;
+        }
         mapSizeX = MapParameters.sizeX;
         mapSizeY = MapParameters.sizeY;
         obstaclePercent = MapParameters.obstaclePercent;
         seed = MapParameters.seed;
     }
     public void GenerateMap() {
-        SetMapParameters();
         tileMap = new Transform[mapSizeX,mapSizeY];
         allTileCoords = new List<Coord>();
         for (int x = 0; x < mapSizeX; x++) {
@@ -86,8 +88,8 @@ public class MapGenerator : MonoBehaviour {
             currentObstacleCount++;
             if (randomCoord != playerSpawn && MapIsFullyAccessible(obstacleMap, currentObstacleCount)) {
                 Vector3 obstaclePosition = CoordToPosition(randomCoord.x, randomCoord.y);
-                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + Vector3.up * tileSize, Quaternion.identity);
-                newObstacle.localScale = Vector3.one * ((1 - outlinePercent) * tileSize);
+                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + Vector3.up * tileSize, Quaternion.Euler(0,rn.Next(0,4) * 90,0));
+                //newObstacle.localScale = Vector3.one * ((1 - outlinePercent) * tileSize);
                 newObstacle.parent = mapHolder;
                 allOpenCoords.Remove(randomCoord);
             }

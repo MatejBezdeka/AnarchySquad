@@ -12,9 +12,9 @@ public class RandomizeMapButton : MonoBehaviour {
     Random rn = new Random();
     string[] obstacleIntensityTitles = new[] { "Low", "Med","High" };
     [Header("RandomGeneration Settings")] 
-    [SerializeField, Range(0,100)] int minObstaclePercentage = 15;
+    [SerializeField, Range(0,100)] int minObstaclePercentage = 5;
     [SerializeField, Range(0,100)] int maxObstaclePercentage = 70;
-    [SerializeField, Tooltip("Biggest difference tile count between sides")] int maxSideDifference = 10;
+    [SerializeField, Tooltip("Biggest difference tile count between sides")] int maxSideDifference = 5;
     void Start() {
         GetComponent<Button>().onClick.AddListener(Randomize);
         Randomize();
