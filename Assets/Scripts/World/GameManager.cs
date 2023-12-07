@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour {
         SpawnUnits(mapGenerator.SpawnCubePosition());
     }
     void Start() {
-        
         //startGame
         //wakeup units
         //Start UI
