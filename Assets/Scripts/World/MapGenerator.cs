@@ -11,13 +11,16 @@ public class MapGenerator : MonoBehaviour {
     [SerializeField] Transform obstaclePrefab;
     [SerializeField] Transform floorNavMesh;
     [SerializeField] Transform floorNavMeshMask;
+    [SerializeField] List<Transform> roofsPrefab;
     [SerializeField, Range(1, 50)] int mapSizeX;
     [SerializeField, Range(1, 50)] int mapSizeY;
+    [SerializeField, Range(1, 10)] float minBuildingSize;
+    [SerializeField, Range(5, 25)] float maxBuildingSize;
     
     [SerializeField, Range(0, 0.15f)] float outlinePercent;
     [SerializeField] float tileSize = 1;
     [SerializeField, Range(0, 1)] float obstaclePercent;
-    [SerializeField, Range(int.MinValue, int.MaxValue)] int seed;
+    [SerializeField, Range(int.MinValue+64, int.MaxValue-64)] int seed = 0;
     //When changing max size you have to rebake the navMesh!
     public static int maxMapSizeX => 22;
     public static int maxMapSizeY => 22;

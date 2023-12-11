@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Roof
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Office 2
+  m_Shader: {fileID: 4800000, guid: 84bd9e40c45b4f84e9e65d4d27e418da, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -59,25 +59,43 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Bands: 10
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0.163
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _HorizontalSpeed: 0.2
+    - _Limiter: 0
+    - _MaxValue: 0.75
+    - _Metallic: 0.271
+    - _MinValue: 0.25
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Outline: 0
     - _Parallax: 0.02
+    - _Scale: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _VerticalSpeed: 0.2
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.30977878, g: 0.8000157, b: 0.43636534, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - Color_1C7EE47: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    - Color_6FAA8252: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
+    - _Background: {r: 1, g: 1, b: 1, a: 1}
+    - _BottomColor: {r: 1, g: 0.4155844, b: 0, a: 1}
+    - _Color: {r: 0.41509432, g: 0.40138838, b: 0.40138838, a: 1}
+    - _EmissionColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TopColor: {r: 0.9528302, g: 0.7337792, b: 0.04045032, a: 1}
   m_BuildTextureStacks: []
