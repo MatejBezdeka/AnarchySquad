@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;

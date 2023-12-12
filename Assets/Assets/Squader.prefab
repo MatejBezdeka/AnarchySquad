@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 2913439341585279643}
   - component: {fileID: 3567142778627616925}
   - component: {fileID: 4551351936682950417}
+  - component: {fileID: -5678055229963176020}
   m_Layer: 7
   m_Name: Squader
   m_TagString: Squader
@@ -208,11 +209,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 428bc9961a581fa409489bd317a50872, type: 2}
+  weapon: {fileID: 0}
+  secondaryWeapon: {fileID: 0}
   debugSphereMaterial: {fileID: 2100000, guid: c2ee77bb888c4d24f982b84f5494aad7, type: 2}
   selectMaterial: {fileID: 2100000, guid: 69e42600b5e857f48a2d89d013785895, type: 2}
   responseTime: 0.5
-  grenadePrefab: {fileID: 8158859370022644794, guid: a7c37722dfff3274ca852e1d4530807a, type: 3}
+  grenadePrefab: {fileID: 8158859370022644794, guid: a7c37722dfff3274ca852e1d4530807a,
+    type: 3}
   muzzle: {fileID: 1321221357531205585}
+  agent: {fileID: 0}
 --- !u!108 &4551351936682950417
 Light:
   m_ObjectHideFlags: 0
@@ -275,6 +280,29 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &-5678055229963176020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481974402713970224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &5303238265507817966
 GameObject:
   m_ObjectHideFlags: 0

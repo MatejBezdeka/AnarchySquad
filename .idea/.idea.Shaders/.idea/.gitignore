@@ -2,9 +2,9 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
-/modules.xml
+/.idea.Shaders.iml
 /projectSettingsUpdater.xml
-/.idea.AnarchySquad.iml
+/modules.xml
 /contentModel.xml
 # Editor-based HTTP Client requests
 /httpRequests/

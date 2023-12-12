@@ -15,13 +15,14 @@ GameObject:
   - component: {fileID: 9004440039575480807}
   - component: {fileID: 8615689583686220656}
   - component: {fileID: 1925555394972035555}
+  - component: {fileID: 2280997462952752939}
   m_Layer: 7
-  m_Name: Squader 1
+  m_Name: Empty
   m_TagString: Squader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7811506541159780211
 Transform:
   m_ObjectHideFlags: 0
@@ -38,7 +39,7 @@ Transform:
   - {fileID: 8394727689452832606}
   - {fileID: 8590831737322180057}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3169025110931227087
 MeshFilter:
@@ -151,7 +152,8 @@ MonoBehaviour:
   debugSphereMaterial: {fileID: 2100000, guid: c2ee77bb888c4d24f982b84f5494aad7, type: 2}
   selectMaterial: {fileID: 2100000, guid: 69e42600b5e857f48a2d89d013785895, type: 2}
   responseTime: 0.5
-  grenadePrefab: {fileID: 8158859370022644794, guid: a7c37722dfff3274ca852e1d4530807a, type: 3}
+  grenadePrefab: {fileID: 8158859370022644794, guid: a7c37722dfff3274ca852e1d4530807a,
+    type: 3}
   muzzle: {fileID: 7807617141368890752}
   agent: {fileID: 9004440039575480807}
 --- !u!108 &1925555394972035555
@@ -216,6 +218,29 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2280997462952752939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781461764380167393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &7156338350041530065
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +304,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2b41483b97cc4534daa6e83d2c48c0c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
