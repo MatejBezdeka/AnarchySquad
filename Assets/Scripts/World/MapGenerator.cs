@@ -14,8 +14,8 @@ public class MapGenerator : MonoBehaviour {
     [SerializeField] List<Transform> roofsPrefab;
     [SerializeField, Range(1, 50)] int mapSizeX;
     [SerializeField, Range(1, 50)] int mapSizeY;
-    [SerializeField, Range(1, 10)] float minBuildingSize;
-    [SerializeField, Range(5, 25)] float maxBuildingSize;
+    [SerializeField, Range(1, 10)] int minBuildingSize;
+    [SerializeField, Range(5, 25)] int maxBuildingSize;
     
     [SerializeField, Range(0, 0.15f)] float outlinePercent;
     [SerializeField] float tileSize = 1;
@@ -91,8 +91,11 @@ public class MapGenerator : MonoBehaviour {
             currentObstacleCount++;
             if (randomCoord != playerSpawn && MapIsFullyAccessible(obstacleMap, currentObstacleCount)) {
                 Vector3 obstaclePosition = CoordToPosition(randomCoord.x, randomCoord.y);
+                Vector3 newScale = Vector3.one * ((1 - outlinePercent) * tileSize);
+                newScale.y = rn.Next(minBuildingSize, maxBuildingSize);
+                //obstaclePosition.y = tileSize + (tileSize - newScale.y/2);
                 Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + Vector3.up * tileSize, Quaternion.Euler(0,rn.Next(0,4) * 90,0));
-                //newObstacle.localScale = Vector3.one * ((1 - outlinePercent) * tileSize);
+                newObstacle.localScale = newScale;
                 newObstacle.parent = mapHolder;
                 allOpenCoords.Remove(randomCoord);
             }
