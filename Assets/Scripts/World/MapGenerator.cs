@@ -91,11 +91,11 @@ public class MapGenerator : MonoBehaviour {
             currentObstacleCount++;
             if (randomCoord != playerSpawn && MapIsFullyAccessible(obstacleMap, currentObstacleCount)) {
                 Vector3 obstaclePosition = CoordToPosition(randomCoord.x, randomCoord.y);
-                Vector3 newScale = Vector3.one * ((1 - outlinePercent) * tileSize);
-                newScale.y = rn.Next(minBuildingSize, maxBuildingSize);
+                float newScale = (1 - outlinePercent) * tileSize;
+                newScale = rn.Next(minBuildingSize, maxBuildingSize);
                 //obstaclePosition.y = tileSize + (tileSize - newScale.y/2);
-                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + Vector3.up * tileSize, Quaternion.Euler(0,rn.Next(0,4) * 90,0));
-                newObstacle.localScale = newScale;
+                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + Vector3.up * (tileSize/2 + newScale/2), Quaternion.Euler(0,rn.Next(0,4) * 90,0));
+                newObstacle.localScale = new Vector3(tileSize,newScale,tileSize);
                 newObstacle.parent = mapHolder;
                 allOpenCoords.Remove(randomCoord);
             }

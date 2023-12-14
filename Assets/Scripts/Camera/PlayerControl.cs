@@ -138,6 +138,7 @@ public class PlayerControl : MonoBehaviour {
         Vector3 move = new Vector3(currentMove.x, currentZoom, currentMove.y);
         move = move.x * transform.right + move.y * Vector3.up + move.z * new Vector3(2 * transform.forward.x,0,2 * transform.forward.z);
         transform.position += move;
+        Debug.Log(transform.forward);
     }
 
     void TimeChange() {
