@@ -102,6 +102,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _First_Color_Stregth: 1
     - _Float: 1.17
     - _Float_1: 1
     - _GlossMapScale: 1
@@ -111,6 +112,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Second_Color_Strength: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -122,12 +124,16 @@ Material:
     - _Strength: 0.281
     - _UVSec: 0
     - _UseUIAlphaClip: 0
+    - _X_axis: 0
+    - _Y_axis: 1
     - _ZWrite: 1
     m_Colors:
     - _BottomColor: {r: 1, g: 0.80166054, b: 0, a: 1}
     - _Color: {r: 0.6933962, g: 1, b: 0.9555124, a: 1}
     - _Color_1: {r: 1, g: 0, b: 0.21621177, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _First_Color: {r: 0.11764706, g: 0.2509804, b: 0.5372549, a: 1}
+    - _Second_Color: {r: 0.058823533, g: 0.1254902, b: 0.2627451, a: 1}
     - _TopColor: {r: 1, g: 0.4481132, b: 0.4481132, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6597055242943031193

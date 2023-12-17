@@ -6,23 +6,43 @@
   <component name="ChangeListManager">
     <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Empty.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Empty.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gradient.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gradient.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Misc/Arrow.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Misc/Arrow.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Projectiles/Grenade.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Projectiles/Grenade.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Roof.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Roof.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/UI/Hub/RemoveMemberButtonAnimation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/UI/Hub/RemoveMemberButtonAnimation.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gradient.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gradient.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Background/Background 2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Background/Background 2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Background/Background 3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Background/Background 3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Misc/Sun.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Misc/Sun.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Profile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Profile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/TeamMember.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/TeamMember.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Cursors/8_white 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Cursors/8_white 1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Cursors/8_white 2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Cursors/8_white 2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Cursors/8_white 3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Cursors/8_white 3.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Cursors/8_white.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Cursors/8_white.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Racoon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Racoon.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/pixel.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/pixel.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Gradient.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI Gradient.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield/Main Camera Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battlefield/Main Camera Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CanvasManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CanvasManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/TeamSelectedContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/TeamSelectedContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity-Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity-Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Bullets.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Bullets.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right fill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right fill.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right filling.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right filling.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right outline.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right outline.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Hearth.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Hearth.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Lungs.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Lungs.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/Basic Punk FOnt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/Basic Punk FOnt.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF 1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF 1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI Gradient.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI Gradient.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +51,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/ExitButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Runtime/ScriptableRendererData.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2ZVKxx1ta8UPL3w7vxkZkAdeSbk" />
   <component name="ProjectViewState">
@@ -105,6 +129,9 @@
       <updated>1702502059535</updated>
       <workItem from="1702502062902" duration="1907000" />
       <workItem from="1702577934926" duration="3729000" />
+      <workItem from="1702670154068" duration="1450000" />
+      <workItem from="1702748071513" duration="2853000" />
+      <workItem from="1702806395016" duration="9424000" />
     </task>
     <servers />
   </component>

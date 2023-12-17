@@ -11,7 +11,7 @@ public class SquadUnit : Unit {
     UnitState currentState;
     GameObject selectionPlane;
     public bool selected { get; private set; } = false;
-
+    [SerializeField] Material trajectoryLine;
     protected override void Start() {
         Debug.Log("ahoj");
         base.Start();
@@ -76,5 +76,12 @@ public class SquadUnit : Unit {
     public void ReloadNow() {
         if (currentState is ReloadUnitState) { return; }
         currentState.ForceChangeState(new ReloadUnitState(this, weapon.ReloadTime));
+    }
+
+    void ShowTrajectory(Vector3 target) {
+        Vector3 grenadeVelocity = Vector3.RotateTowards(transform.position, target, 360, 360).normalized *
+                                  Mathf.Min(Vector3.Distance(transform.position, target), maxGrenadeDistance);
+        List<Vector3> points = new List<Vector3>();
+        //trajectoryLine.
     }
 }
