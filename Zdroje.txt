@@ -4,3 +4,7 @@ cursory
 https://kaboff.itch.io/mouse-cursors-pack
 generace mapy
 https://www.youtube.com/playlist?list=PLFt_AvWsXl0ctd4dgE1F8g3uec4zKNRV0
+jména
+https://github.com/dominictarr/random-name
+shader vody
+https://ameye.dev/notes/stylized-water-shader/
