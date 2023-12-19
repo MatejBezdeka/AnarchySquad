@@ -27,7 +27,8 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField] Texture2D goToCursor;
     [SerializeField] Texture2D attackCursor;
     [SerializeField] Texture2D interactCursor;
-    [SerializeField] MeshRenderer grenadeIndicator;
+    //[SerializeField] MeshRenderer grenadeIndicator;
+    [SerializeField] LineRenderer grenadeIndicator;
     //===========//===========//===========//===========//===========//
     // Events
     public static Action<float> changedTime;
@@ -138,7 +139,7 @@ public class PlayerControl : MonoBehaviour {
         Vector3 move = new Vector3(currentMove.x, currentZoom, currentMove.y);
         move = move.x * transform.right + move.y * Vector3.up + move.z * new Vector3(2 * transform.forward.x,0,2 * transform.forward.z);
         transform.position += move;
-        Debug.Log(transform.forward);
+        //Debug.Log(transform.forward);
     }
 
     void TimeChange() {
@@ -206,7 +207,7 @@ public class PlayerControl : MonoBehaviour {
     void UpdateProfile() {
         if (selectedUnits.Count == 1) {
             selectedUnit = selectedUnits[0];
-            selectedNewUnit?.Invoke(selectedUnits[0]);
+            selectedNewUnit?.Invoke(selectedUnit);
         }
         else {
             selectedUnit = null;

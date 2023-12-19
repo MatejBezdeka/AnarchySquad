@@ -54,19 +54,31 @@ public class Unit : MonoBehaviour {
     }
 
     public void ThrowGrenade(Vector3 destination) {
-        GameObject grenade = Instantiate(grenadePrefab, muzzle.transform.position, Quaternion.LookRotation(destination));
+        GameObject grenade = Instantiate(grenadePrefab, muzzle.transform.position, Quaternion.identity);
         Rigidbody rigidBody = grenade.GetComponent<Rigidbody>();
-        float distance = Vector3.Distance(muzzle.transform.position, destination);
-        if (distance > stats.MaxEffectiveRange) {
-            distance = stats.MaxEffectiveRange;
-        }
-        //grenadePrefab.transform.forward.x, grenadePrefab.transform.up.y * Physics.gravity.y, grenadePrefab.transform.forward.z
-        Vector3 direction = destination - grenade.transform.position;
+        float launchAngle = 45;
+        //float distance = Mathf.Min(Vector3.Distance(muzzle.transform.position, destination), stats.MaxEffectiveRange);
         
-        direction.y += distance * 2;
-        rigidBody.AddForce(direction  * -Physics.gravity.y * rigidBody.mass);
-    }
+        // Calculate direction vector
+        Vector3 direction = destination - transform.position;
 
-    
-    
+        // Calculate the horizontal distance
+        float horizontalDistance = Mathf.Sqrt(direction.x * direction.x + direction.z * direction.z);
+
+        // Calculate the initial velocity required for the specified launch angle
+        float initialVelocity = horizontalDistance / (Mathf.Cos(Mathf.Deg2Rad * launchAngle) * Mathf.Sqrt(2f * Mathf.Abs(Physics.gravity.y)));
+
+        // Calculate the initial velocity components
+        float Vx = initialVelocity * Mathf.Cos(Mathf.Deg2Rad * launchAngle);
+        float Vy = initialVelocity * Mathf.Sin(Mathf.Deg2Rad * launchAngle);
+
+        // Calculate the time of flight
+        float flightTime = 5f * Vy / Mathf.Abs(Physics.gravity.y);
+
+        // Calculate the initial force vector
+        Vector3 force = new Vector3(Vx, Vy, direction.z / flightTime);
+
+        // Apply force to the rigidbody
+        rigidBody.AddForce(force, ForceMode.VelocityChange);
+    }
 }

@@ -185,8 +185,10 @@ MonoBehaviour:
   responseTime: 0.5
   grenadePrefab: {fileID: 8158859370022644794, guid: a7c37722dfff3274ca852e1d4530807a,
     type: 3}
+  maxGrenadeDistance: 0
   muzzle: {fileID: 7807617141368890752}
   agent: {fileID: 9004440039575480807}
+  trajectoryLine: {fileID: 2100000, guid: b11da1f94de926446a015aec9b023eda, type: 2}
 --- !u!108 &1925555394972035555
 Light:
   m_ObjectHideFlags: 0

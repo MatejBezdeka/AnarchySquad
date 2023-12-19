@@ -17,7 +17,7 @@ namespace World {
 
         void Start() {
             button.onClick.AddListener(Clicked);
-            PlayerControl.selectedNewUnit += Updated;
+            PlayerControl.selectedNewUnit += UpdateOutline;
             unit.updateUI += UpdateHpSlider;
         }
 
@@ -29,17 +29,13 @@ namespace World {
             UpdateHpSlider();
         }
 
-        void Updated(Unit ignore) {
-            if (unit.selected) {
-                outline.enabled = true;
-            }
-            else {
-                outline.enabled = false;
-            }
+        //Unit ignnore -> connected with profile with one event
+        void UpdateOutline(Unit ignore) {
+            outline.enabled = unit.selected;
         }
         void Clicked() {
             selectedDeselectedUnit?.Invoke(unit);
-            Updated(null);
+            UpdateOutline(null);
         }
         void UpdateHpSlider() {
             hpSlider.value = unit.stats.Hp;

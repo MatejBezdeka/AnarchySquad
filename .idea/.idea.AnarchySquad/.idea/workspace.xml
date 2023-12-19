@@ -6,43 +6,44 @@
   <component name="ChangeListManager">
     <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/UI/Hub/RemoveMemberButtonAnimation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/UI/Hub/RemoveMemberButtonAnimation.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gradient.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gradient.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Background/Background 2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Background/Background 2.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Background/Background 3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Background/Background 3.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Misc/Sun.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Misc/Sun.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Profile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Profile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/TeamMember.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/TeamMember.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cross 45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cross 45.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cross.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cross.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeleteSaveButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeleteSaveButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExitButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExitButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flag right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flag right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame Left Fill.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame Left Fill.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LoadSaveButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LoadSaveButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewGameButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NewGameButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/Grenade.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/Grenade.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RadioButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RadioButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Reverse Flag.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Reverse Flag.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Right leaning only.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Right leaning only.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield/Main Camera Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battlefield/Main Camera Profile.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CanvasManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CanvasManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/TeamSelectedContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/TeamSelectedContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/GrenadeState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/GrenadeState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Portrait.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Portrait.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Profile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Profile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity-Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity-Renderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Bullets.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Bullets.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right fill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right fill.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right filling.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right filling.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right outline.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right outline.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Hearth.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Hearth.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Lungs.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Lungs.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/Basic Punk FOnt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/Basic Punk FOnt.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Gradient.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI Gradient.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Squader.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Squader.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/arrow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/left leaning only inverted.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/left leaning only inverted.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/left leaning only.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/left leaning only.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +54,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/ExitButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Runtime/ScriptableRendererData.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2ZVKxx1ta8UPL3w7vxkZkAdeSbk" />
@@ -131,7 +132,8 @@
       <workItem from="1702577934926" duration="3729000" />
       <workItem from="1702670154068" duration="1450000" />
       <workItem from="1702748071513" duration="2853000" />
-      <workItem from="1702806395016" duration="9424000" />
+      <workItem from="1702806395016" duration="10019000" />
+      <workItem from="1703014153234" duration="11765000" />
     </task>
     <servers />
   </component>
@@ -140,4 +142,24 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Runtime/ScriptableRendererData.cs</url>
+          <line>218</line>
+          <properties documentPath="C:\Users\mata\Documents\GitHub\AnarchySquad\Library\PackageCache\com.unity.render-pipelines.universal@14.0.8\Runtime\ScriptableRendererData.cs" initialLine="218" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+            <startOffsets>
+              <option value="-1" />
+            </startOffsets>
+            <endOffsets>
+              <option value="-1" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>

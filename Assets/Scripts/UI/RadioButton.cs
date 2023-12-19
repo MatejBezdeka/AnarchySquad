@@ -10,11 +10,11 @@ public class RadioButton : MonoBehaviour {
     [SerializeField] List<RadioButton> buttonsInGroup;
     [SerializeField] bool enabledFromStart = true;
     [SerializeField] GameObject childObject;
-    public bool enabled {
+    public bool Enabled {
         get => button.interactable;
         set {
             button.interactable = value;
-            childObject.SetActive(value);
+            childObject.SetActive(!value);
         } }
     void Start() {
         if (buttonsInGroup.Count == 0) {
@@ -27,15 +27,14 @@ public class RadioButton : MonoBehaviour {
         button = GetComponent<Button>();
         button.onClick.AddListener(Clicked);
         button.interactable = enabledFromStart;
+        Enabled = enabledFromStart;
         childObject.SetActive(!enabledFromStart);
-        enabled = enabledFromStart;
     }
 
     void Clicked() {
         foreach (RadioButton btn in buttonsInGroup) {
-            btn.enabled = true;
+            btn.Enabled = true;
         }
-        button.interactable = false;
-        childObject.SetActive(false);
+        Enabled = false;
     }
 }

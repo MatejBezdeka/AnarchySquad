@@ -97,6 +97,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _First_Color_Stregth: 1
     - _Float: 0
     - _Float_1: 1
     - _GlossMapScale: 0
@@ -107,6 +108,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Second_Color_Strength: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -115,16 +117,16 @@ Material:
     - _Surface: 0
     - _Top: 1
     - _WorkflowMode: 1
-    - _X_axis: 0
-    - _Y_axis: 1.42
+    - _X_axis: 1
+    - _Y_axis: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BottomColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _First_Color: {r: 0, g: 1, b: 0.9353578, a: 1}
-    - _Second_Color: {r: 0, g: 0.2706621, b: 0.5566038, a: 1}
+    - _First_Color: {r: 0.058823533, g: 0.1254902, b: 0.2627451, a: 1}
+    - _Second_Color: {r: 0.11764707, g: 0.2509804, b: 0.5372549, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _TopColor: {r: 0.16398183, g: 0.5188679, b: 0.45577705, a: 1}
   m_BuildTextureStacks: []

@@ -71,7 +71,7 @@ public class Profile : MonoBehaviour
                 squader.startReloading += StartReloading;
             }
             else {
-                
+                //Enemy
             }
             panel.SetActive(true);
             UpdateData();
