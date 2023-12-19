@@ -4,47 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cross 45.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cross 45.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Cross.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeleteSaveButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeleteSaveButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExitButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExitButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Flag right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Flag right.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Frame Left Fill.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Frame Left Fill.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LoadSaveButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LoadSaveButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NewGameButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NewGameButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/Grenade.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/Grenade.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RadioButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RadioButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Reverse Flag.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Reverse Flag.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Right leaning only.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Right leaning only.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/GrenadeState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/GrenadeState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Portrait.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Portrait.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Profile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Profile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Squader.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Squader.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/arrow.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/left leaning only inverted.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/left leaning only inverted.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/left leaning only.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/left leaning only.png.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -133,7 +93,7 @@
       <workItem from="1702670154068" duration="1450000" />
       <workItem from="1702748071513" duration="2853000" />
       <workItem from="1702806395016" duration="10019000" />
-      <workItem from="1703014153234" duration="11765000" />
+      <workItem from="1703014153234" duration="12535000" />
     </task>
     <servers />
   </component>

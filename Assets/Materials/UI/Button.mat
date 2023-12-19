@@ -126,14 +126,14 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _WorkflowMode: 1
-    - _X_axis: 0
-    - _Y_axis: 1
+    - _X_axis: 0.75
+    - _Y_axis: 0.21
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _First_Color: {r: 0.058823533, g: 0.1254902, b: 0.2627451, a: 1}
-    - _Second_Color: {r: 0.20000002, g: 0.3803922, b: 0.6745098, a: 1}
+    - _First_Color: {r: 0.20000002, g: 0.3803922, b: 0.6745098, a: 1}
+    - _Second_Color: {r: 0.058823533, g: 0.1254902, b: 0.2627451, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
