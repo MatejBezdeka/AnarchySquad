@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField] Texture2D goToCursor;
     [SerializeField] Texture2D attackCursor;
     [SerializeField] Texture2D interactCursor;
-    //[SerializeField] MeshRenderer grenadeIndicator;
+    //[SerializeField] GameObject grenadeIndicatorRadius;
     [SerializeField] LineRenderer grenadeIndicator;
     //===========//===========//===========//===========//===========//
     // Events

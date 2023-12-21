@@ -5,28 +5,26 @@ namespace Camera {
     public class GrenadeState : PlayerState {
         LineRenderer line;
         Unit unit;
-        //Vector3 startPosition;
         Vector3 destination;
-        float maxRange;
-        Vector3[] points = new Vector3[25];
-        public GrenadeState(PlayerControl player, LineRenderer prefab) : base(player) {
+        Vector3 direction;
+        float horizontalDistance;
+        float initialVelocityY;
+        public GrenadeState(PlayerControl player, LineRenderer line) : base(player) {
             unit = player.selectedUnit;
-            //startPosition = player.selectedUnit.transform.position;
-            maxRange = player.selectedUnit.stats.MaxEffectiveRange;
-            line = prefab;
-            line.positionCount = points.Length;
+            this.line = line;
             player.UpdateCursor(PlayerControl.cursorTypes.attack);
         }
         public override void Enter() {
-            line.enabled = true;
             base.Enter();
         }
 
         public override void Update() {
-            if(CursorOverUI()) {line.enabled = false; line.enabled = true; return; }
+            if (CursorOverUI()) {
+                line.enabled = false; return;
+            }
+            line.enabled = true;
             destination = player.RayHit().point;
-            ShowTrajectory(destination);
-            //line.transform.position = new Vector3(destination.x, destination.y + 0.1f, destination.z);
+            ShowTrajectory(player.selectedUnit.LaunchAngle,player.selectedUnit.MaxGrenadeDistance);
         }
 
         protected override void LeftClick() {
@@ -47,28 +45,19 @@ namespace Camera {
             line.enabled = false; 
             Exit(new NormalState(player));
         }
-
-        void ShowTrajectory(Vector3 target) {
-            float launchAngle = angle(target);
-            float radianAngle = Mathf.Deg2Rad * launchAngle;
-            float initialVelocity = 10;
-            for (int i = 0; i < points.Length; i++)
-            {
-                float time = i * 0.1f;
-                float x = unit.transform.position.x + initialVelocity * Mathf.Cos(radianAngle) * time;
-                float y = unit.transform.position.y + initialVelocity * Mathf.Sin(radianAngle) * time - 0.5f * Physics.gravity.magnitude * time * time;
-                float z = unit.transform.position.z + initialVelocity * Mathf.Cos(radianAngle) * time;
-
-                points[i] = new Vector3(x, y, z);
+        
+        void ShowTrajectory(float angle, float maxRange) {
+            direction = destination - unit.transform.position;
+            direction.y = 0;
+            horizontalDistance = Mathf.Min(Mathf.Sqrt(direction.x * direction.x + direction.z * direction.z), maxRange);
+            initialVelocityY = Mathf.Sqrt(Physics.gravity.magnitude * (direction.y + Mathf.Tan(Mathf.Deg2Rad * angle) * horizontalDistance));
+            line.positionCount = Mathf.RoundToInt(horizontalDistance)+1;
+            for (int i = 0; i < line.positionCount; i++) {
+                float time = i / (float)(line.positionCount - 1);
+                float t = time * Time.fixedDeltaTime * line.positionCount * 5;
+                Vector3 position = unit.transform.position + direction.normalized * (horizontalDistance * time) + Vector3.up * (initialVelocityY * t - 0.5f * Physics.gravity.magnitude * t * t);
+                line.SetPosition(i,position);
             }
         }
-        float angle(Vector3 target) {
-            float initialVelocity = 10;
-            float horizontalRange = Vector2.Distance(new Vector2(unit.transform.position.x, unit.transform.transform.position.z), new Vector2(target.x, target.z));
-            float launchAngle = Mathf.Asin((horizontalRange * Physics.gravity.magnitude) / (initialVelocity * initialVelocity));
-            launchAngle = Mathf.Rad2Deg * launchAngle;
-            return launchAngle;
-        }
-
     }
 }

@@ -110,9 +110,9 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline:
-    - - {x: -85, y: 100}
+    - - {x: -83, y: 100}
       - {x: -100, y: -100}
-      - {x: 85, y: -100}
+      - {x: 83, y: -100}
       - {x: 100, y: 100}
     physicsShape:
     - - {x: -85, y: 100}

@@ -50,6 +50,7 @@ public class MapGenerator : MonoBehaviour {
         seed = MapParameters.seed;
     }
     public void GenerateMap() {
+        transform.position = new Vector3(0, -tileSize, 0);
         tileMap = new Transform[mapSizeX,mapSizeY];
         allTileCoords = new List<Coord>();
         for (int x = 0; x < mapSizeX; x++) {

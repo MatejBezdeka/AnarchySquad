@@ -12,6 +12,7 @@ namespace UI {
 
         void StartMission() {
             startingGame?.Invoke();
+            SceneManager.LoadSceneAsync("LoadingScene");
             SceneManager.LoadSceneAsync("Battlefield");
         }
     }
