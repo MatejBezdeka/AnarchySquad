@@ -4,12 +4,14 @@ using UnityEngine;
 namespace Camera {
     public class GrenadeState : PlayerState {
         LineRenderer line;
-        Vector3 startPosition;
+        Unit unit;
+        //Vector3 startPosition;
         Vector3 destination;
         float maxRange;
-        Vector3[] points = new Vector3[5];
+        Vector3[] points = new Vector3[25];
         public GrenadeState(PlayerControl player, LineRenderer prefab) : base(player) {
-            startPosition = player.selectedUnit.transform.position;
+            unit = player.selectedUnit;
+            //startPosition = player.selectedUnit.transform.position;
             maxRange = player.selectedUnit.stats.MaxEffectiveRange;
             line = prefab;
             line.positionCount = points.Length;
@@ -45,29 +47,28 @@ namespace Camera {
             line.enabled = false; 
             Exit(new NormalState(player));
         }
-        
+
         void ShowTrajectory(Vector3 target) {
-            points[^1] = target;
-            points[0] = startPosition;
-            int launchAngle = 45;
-            
-            Vector3 direction = target - startPosition;
+            float launchAngle = angle(target);
+            float radianAngle = Mathf.Deg2Rad * launchAngle;
+            float initialVelocity = 10;
+            for (int i = 0; i < points.Length; i++)
+            {
+                float time = i * 0.1f;
+                float x = unit.transform.position.x + initialVelocity * Mathf.Cos(radianAngle) * time;
+                float y = unit.transform.position.y + initialVelocity * Mathf.Sin(radianAngle) * time - 0.5f * Physics.gravity.magnitude * time * time;
+                float z = unit.transform.position.z + initialVelocity * Mathf.Cos(radianAngle) * time;
 
-            float horizontalDistance = Mathf.Sqrt(direction.x * direction.x + direction.z * direction.z);
-
-            float initialVelocity = horizontalDistance / (Mathf.Cos(Mathf.Deg2Rad * launchAngle) * Mathf.Sqrt(2f * Mathf.Abs(Physics.gravity.y)));
-
-            float Vx = initialVelocity * Mathf.Cos(Mathf.Deg2Rad * launchAngle);
-            float Vy = initialVelocity * Mathf.Sin(Mathf.Deg2Rad * launchAngle);
-
-            float flightTime = 2f * Vy / Mathf.Abs(Physics.gravity.y);
-
-            for (int i = 0; i < points.Length; i++) {
-                points[i] = new Vector3(Vx, Vy, direction.z / flightTime)/(i+1);
-                Debug.Log(startPosition + " " + direction);
+                points[i] = new Vector3(x, y, z);
             }
-            line.SetPositions(points);
         }
-        
+        float angle(Vector3 target) {
+            float initialVelocity = 10;
+            float horizontalRange = Vector2.Distance(new Vector2(unit.transform.position.x, unit.transform.transform.position.z), new Vector2(target.x, target.z));
+            float launchAngle = Mathf.Asin((horizontalRange * Physics.gravity.magnitude) / (initialVelocity * initialVelocity));
+            launchAngle = Mathf.Rad2Deg * launchAngle;
+            return launchAngle;
+        }
+
     }
 }
