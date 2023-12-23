@@ -11,7 +11,6 @@ public class ClassComponent : MonoBehaviour {
     [SerializeField] Button addButton;
     [SerializeField] Button nextButton;
     [SerializeField] Button backButton;
-    [SerializeField] Button infoButton;
     //tmp seriealze
     [SerializeField] SquadUnit currentUnit;
     void Start()
@@ -19,7 +18,6 @@ public class ClassComponent : MonoBehaviour {
         addButton.onClick.AddListener(AddButtonPressed);
         nextButton.onClick.AddListener(NextButtonPressed);
         backButton.onClick.AddListener(BackButtonPressed);
-        infoButton.onClick.AddListener(InfoButtonPressed);
     }
 
     void AddButtonPressed() {

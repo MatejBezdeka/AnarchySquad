@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(menuName = "Units/Stats")]
 public class Stats : ScriptableObject {
-    [SerializeField] string unitName = "Jeff";
+    [HideInInspector] public string unitName = "No name";
     [SerializeField, Range(1, 100)] int maxHp;
-    int hp;
+    int currentHp;
     [SerializeField, Range(1,100)] float armor;
     [SerializeField, Range(0.1f,5)] float speed;
     [SerializeField, Range(20, 200)] float maxStamina;
-    float stamina;
+    float currentStamina;
     [SerializeField, Range(1,100)] float range;
     [SerializeField, Range(1,10)] float accuracy;
     [SerializeField, Range(1, 100)] float maxEffectiveRange;
@@ -19,40 +19,39 @@ public class Stats : ScriptableObject {
     #region getters
     public string UnitName => unitName;
     public int MaxHp => maxHp;
-    public int Hp => hp;
+    public int CurrentHp => currentHp;
     public float Armor => armor;
     public float Speed => speed;
     public float MaxStamina => maxStamina;
-    public float Stamina => stamina;
+    public float CurrentStamina => currentStamina;
     public float Range => range;
     public float Accuracy => accuracy;
     public float MaxEffectiveRange => maxEffectiveRange;
     public Sprite Icon => icon;
     #endregion
-
     //protected Inventory inventory
     public bool CalculateDamage(int damage) {
         damage = (int)(damage * (1f - (armor * 0.25f) * 0.04f));
-        return (hp -= damage) <= 0;
+        return (currentHp -= damage) <= 0;
     }
 
     public float Sprint() {
-        stamina -= 2f;
-        if (stamina < 0) {
-            stamina = 0;
+        currentStamina -= 2f;
+        if (currentStamina < 0) {
+            currentStamina = 0;
         }
-        return stamina;
+        return currentStamina;
     }
 
     public float AddStamina() {
-        stamina += 1.5f;
-        if (stamina >= maxStamina) {
-            stamina = maxStamina;
+        currentStamina += 1.5f;
+        if (currentStamina >= maxStamina) {
+            currentStamina = maxStamina;
         }
-        return stamina;
+        return currentStamina;
     }
     public void Start() {
-        hp = MaxHp;
-        stamina = maxStamina;
+        currentHp = MaxHp;
+        currentStamina = maxStamina;
     }
 }

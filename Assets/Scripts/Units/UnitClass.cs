@@ -2,7 +2,6 @@
 using UnityEngine;
 
 namespace Units {
-    [CreateAssetMenu(menuName = "Units/Class")]
     public class UnitClass : ScriptableObject {
         [SerializeField] Stats[] statsPool;
         [SerializeField] Weapon weapon;

@@ -38,7 +38,7 @@ namespace World {
             UpdateOutline(null);
         }
         void UpdateHpSlider() {
-            hpSlider.value = unit.stats.Hp;
+            hpSlider.value = unit.stats.CurrentHp;
         }
     }
 }

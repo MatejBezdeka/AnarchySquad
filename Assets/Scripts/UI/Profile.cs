@@ -41,8 +41,8 @@ public class Profile : MonoBehaviour
 
     void UpdateData() {
         hpSlider.maxValue = currentUnit.stats.MaxHp;
-        hpSlider.value = currentUnit.stats.Hp;
-        hpText.text = currentUnit.stats.Hp + "/" + currentUnit.stats.MaxHp;
+        hpSlider.value = currentUnit.stats.CurrentHp;
+        hpText.text = currentUnit.stats.CurrentHp + "/" + currentUnit.stats.MaxHp;
         ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
         if (reloading) {
             reloadTime -= Time.deltaTime;
@@ -54,8 +54,8 @@ public class Profile : MonoBehaviour
 
         }
         staminaSlider.maxValue = currentUnit.stats.MaxStamina;
-        staminaSlider.value = currentUnit.stats.Stamina;
-        staminaText.text = currentUnit.stats.Stamina + "/" + currentUnit.stats.MaxStamina;
+        staminaSlider.value = currentUnit.stats.CurrentStamina;
+        staminaText.text = currentUnit.stats.CurrentStamina + "/" + currentUnit.stats.MaxStamina;
         nameLabel.text = currentUnit.stats.UnitName;
     }
     
