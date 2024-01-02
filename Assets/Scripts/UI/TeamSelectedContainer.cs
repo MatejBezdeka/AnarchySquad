@@ -10,8 +10,9 @@ public class TeamSelectedContainer : MonoBehaviour {
     [SerializeField] GameObject plusMemberPrefab;
     private int maxUnitsCount = 6;
     private List<SquadUnit> units = new List<SquadUnit>();
+    private int selected;
     void Start() {
-        ClassComponent.AddUnit += AddUnit;
+        Shop.addStats += AddUnit;
         SelectedTeamMemberContainer.RemoveUnit += RemoveUnit;
         StartMissionButton.startingGame += SaveUnitsForNextScene;
         plusMemberPrefab = Instantiate(plusMemberPrefab, transform);
@@ -23,7 +24,9 @@ public class TeamSelectedContainer : MonoBehaviour {
         UpdateCount();
     }
 
-    void AddUnit(SquadUnit unit) {
+    void AddUnit(Stats unitStats) {
+        SquadUnit unit = new SquadUnit();
+        unit.stats = unitStats;
         if (units.Count == maxUnitsCount) {
             return;
         }

@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.Serialization;
 
 public class Shop : MonoBehaviour {
+    public static event Action<Stats> addStats; 
     public enum types {
         unit,weapon,item
     }
@@ -15,23 +14,26 @@ public class Shop : MonoBehaviour {
     [SerializeField] TextMeshProUGUI descriptionText;
     [Header("Shop")] 
     [SerializeField] GameObject itemPrefab;
-    [SerializeField] ShopUnit[] units = new ShopUnit[1];
+    [SerializeField] List<ShopUnit> units;
     [SerializeField] GameObject unitsShopGameObject;
-    [SerializeField] ShopWeapon[] weapons = new ShopWeapon[1];
+    [SerializeField] List<ShopWeapon> weapons;
     [SerializeField] GameObject weaponsShopGameObject;
-    [SerializeField] ShopItem[] items = new ShopItem[1];
+    [SerializeField] List<ShopItem> items;
     [SerializeField] GameObject itemsShopGameObject;
     void Start() {
         ShopButton.itemClicked += ClickedItem;
-        InstantiateList(unitsShopGameObject, units);
-        InstantiateList(weaponsShopGameObject, weapons);
-        InstantiateList(itemsShopGameObject, items);
+        ShopButton.showDescription += ShowDescription;
+        ShopButton.hideDescription += HideDescription;
+        InstantiateList(unitsShopGameObject, new List<ShopItemBase>(units));
+        InstantiateList(weaponsShopGameObject, new List<ShopItemBase>(weapons));
+        InstantiateList(itemsShopGameObject, new List<ShopItemBase>(items));
     }
 
-    void InstantiateList(GameObject body,Array list) {
-        for (int i = 0; i < list.Length; i++) {
-            var comp = Instantiate(itemsShopGameObject).GetComponent<ShopButton>();
-            comp.type = GetEnumFromType(list.GetValue(0).GetType());
+    void InstantiateList(GameObject body,List<ShopItemBase> list) {
+        for (int i = 0; i < list.Count; i++) {
+            var comp = Instantiate(itemPrefab).GetComponent<ShopButton>();
+            comp.transform.parent = body.transform;
+            comp.type = GetEnumFromType(list[0].GetType());
             comp.id = i;
         }
     }
@@ -41,13 +43,28 @@ public class Shop : MonoBehaviour {
         switch (identification.Item1) {
             case types.unit:
                 Debug.Log("unit");
-                var a = units[identification.Item2];
+                //units[identification.Item2];
+                addStats.Invoke(units[identification.Item2].Stats);
                 break;
             case types.weapon:
                 Debug.Log("wp");
+                
                 break;
             case types.item:
                 Debug.Log("it");
+                break;
+        }
+    }void ShowDescription(Tuple<types, int> identification) {
+        description.SetActive(true);
+        switch (identification.Item1) {
+            case types.unit:
+                descriptionText.text = units[identification.Item2].Description;
+                break;
+            case types.weapon:
+                descriptionText.text = weapons[identification.Item2].Description;
+                break;
+            case types.item:
+                descriptionText.text = items[identification.Item2].Description;
                 break;
         }
     }
@@ -64,5 +81,9 @@ public class Shop : MonoBehaviour {
         }
 
         return types.unit;
+    }
+
+    void HideDescription() {
+        description.SetActive(false);
     }
 }

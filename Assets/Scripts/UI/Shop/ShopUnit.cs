@@ -7,8 +7,8 @@ public class ShopUnit : ShopItemBase {
     [SerializeField] Stats stats;
     //ability
     //ability2
-
-    static string GetRandomName() {
+    public Stats Stats => stats;
+    public static string GetRandomName() {
         return "random name";
     }
     
