@@ -44,7 +44,9 @@ public class Shop : MonoBehaviour {
             case types.unit:
                 Debug.Log("unit");
                 //units[identification.Item2];
-                addStats.Invoke(units[identification.Item2].Stats);
+                Stats stats = units[identification.Item2].Stats;
+                stats.unitName = Names.GetRandomName();
+                addStats.Invoke(stats);
                 break;
             case types.weapon:
                 Debug.Log("wp");

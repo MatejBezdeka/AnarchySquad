@@ -4,7 +4,11 @@ cursory
 https://kaboff.itch.io/mouse-cursors-pack
 generace mapy
 https://www.youtube.com/playlist?list=PLFt_AvWsXl0ctd4dgE1F8g3uec4zKNRV0
-jména
-https://github.com/dominictarr/random-name
+jména měst
+https://github.com/dominictarr/random-name/blob/master/places.txt
+křestní jména
+https://www.cs.cmu.edu/Groups/AI/areas/nlp/corpora/names/male.txt
+příjmení
+https://www.powershellgallery.com/packages/TelligentCommunitySample/0.1.1/Content/Surnames.txt
 shader vody
 https://ameye.dev/notes/stylized-water-shader/

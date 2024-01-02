@@ -18,7 +18,7 @@ public class SelectedTeamMemberContainer : MonoBehaviour {
     }
     public void Set(SquadUnit unit) {
         this.unit = unit;
-        unitName.text = name;
+        unitName.text = unit.stats.UnitName;
         //unitImage.sprite = unit.stats.Icon;
         //get name
         //get class
