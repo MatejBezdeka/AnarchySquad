@@ -2505,7 +2505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 56.09497}
+  m_AnchoredPosition: {x: 0.00012207031, y: 56.09503}
   m_SizeDelta: {x: 0, y: 112.189575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142491304
@@ -4221,7 +4221,7 @@ MonoBehaviour:
     type: 3}
   units:
   - {fileID: 11400000, guid: 9d73be2a10f66744b975235aa1774164, type: 2}
-  - {fileID: 11400000, guid: 9d73be2a10f66744b975235aa1774164, type: 2}
+  - {fileID: 11400000, guid: 7eabd27cc8fc33c459c825a6d8647572, type: 2}
   unitsShopGameObject: {fileID: 167753620}
   weapons:
   - {fileID: 11400000, guid: bce4ed312a5b85441804502c6a68fd70, type: 2}

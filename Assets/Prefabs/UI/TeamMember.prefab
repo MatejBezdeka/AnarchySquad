@@ -375,7 +375,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -50, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7552027104480354671
 CanvasRenderer:
@@ -909,4 +909,4 @@ MonoBehaviour:
   removeButton: {fileID: 5624560565889522262}
   unitName: {fileID: 991954928221429377}
   className: {fileID: 1644278289176496741}
-  unitImage: {fileID: 487333709428895374}
+  unitImage: {fileID: 6277806380403758427}

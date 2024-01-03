@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a201255e39fbb4195e9f5e7d98ff6a, type: 3}
   m_Name: Scout
   m_EditorClassIdentifier: 
-  cost: 0
-  className: Scout
+  cost: 25
   description: Basic unit with little HEALTH and armor, smarll range but some speed
     with stamina may come handy
   stats: {fileID: 11400000, guid: 7581dadd708834a48873ba4941ce90dd, type: 2}

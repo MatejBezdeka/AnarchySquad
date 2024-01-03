@@ -5,4 +5,7 @@ using UnityEngine;
 public class ShopItem : ShopItemBase
 {
     //Item
+    protected override string GetItemName() {
+        return "not implemented";
+    }
 }

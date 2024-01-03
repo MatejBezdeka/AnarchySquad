@@ -20,7 +20,6 @@ public class Names : MonoBehaviour {
         firstNamesFileLength = GetFileRowCount(firstNamesFilePath);
         lastNamesFileLength = GetFileRowCount(lastNamesFilePath);
         cityNamesFileLength = GetFileRowCount(cityNamesFilePath);
-        Debug.Log(firstNamesFileLength + " " + lastNamesFileLength + " " + cityNamesFileLength);
     }
 
     int GetFileRowCount(string filePath) {
@@ -47,13 +46,14 @@ public class Names : MonoBehaviour {
         }
         string name = "";
         StreamReader reader = new StreamReader(firstNamesFilePath);
-        reader.ReadLine().Skip(firstNameId);
+        for (int i = 1; i < firstNameId; i++)
+            if (reader.ReadLine() == null) return null;
         name += reader.ReadLine();
         reader = new StreamReader(lastNamesFilePath);
-        reader.ReadLine();
+        for (int i = 1; i < lastNameId; i++)
+            if (reader.ReadLine() == null) return null;
         name += " " + reader.ReadLine();
         Debug.Log(name);
-        Debug.Log(reader.ReadLine());
         return name;
     }
     public static string GetRandomCityName(int seed) {

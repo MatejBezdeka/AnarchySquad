@@ -12,8 +12,8 @@ public class MapGenerator : MonoBehaviour {
     [SerializeField] Transform floorNavMesh;
     [SerializeField] Transform floorNavMeshMask;
     [SerializeField] List<Transform> roofsPrefab;
-    [SerializeField, Range(1, 50)] int mapSizeX;
-    [SerializeField, Range(1, 50)] int mapSizeY;
+    [SerializeField, Range(10, 22)] int mapSizeX;
+    [SerializeField, Range(10, 22)] int mapSizeY;
     [SerializeField, Range(1, 10)] int minBuildingSize;
     [SerializeField, Range(5, 25)] int maxBuildingSize;
     

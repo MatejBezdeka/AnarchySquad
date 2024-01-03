@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEditor;
 using UnityEngine;
 [CreateAssetMenu(menuName = "Shop/Unit")]
@@ -8,8 +9,7 @@ public class ShopUnit : ShopItemBase {
     //ability
     //ability2
     public Stats Stats => stats;
-    public static string GetRandomName() {
-        return Names.GetRandomName();
+    protected override string GetItemName() {
+        return stats.UnitClass.ToString();
     }
-    
 }

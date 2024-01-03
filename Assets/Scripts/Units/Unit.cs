@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-
+[RequireComponent(typeof(NavMeshAgent))]
 public class Unit : MonoBehaviour {
     [SerializeField] public Stats stats;
     [SerializeField] public Weapon weapon;
@@ -26,7 +26,6 @@ public class Unit : MonoBehaviour {
     bool sprinting;
     
     protected virtual void Start() {
-        Debug.Log("nazdar");
         agent = GetComponent<NavMeshAgent>();
     }
     

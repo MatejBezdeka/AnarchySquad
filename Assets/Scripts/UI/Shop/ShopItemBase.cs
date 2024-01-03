@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class ShopItemBase : ScriptableObject {
+public abstract class ShopItemBase : ScriptableObject {
     [SerializeField] protected int cost;
-    [SerializeField] protected string className;
-    [SerializeField,TextArea] protected string description;
+    [HideInInspector] public string itemName => GetItemName();
+    [SerializeField,TextArea(3,10)] protected string description;
     public string Description => description;
+    public int Cost => cost;
+
+    protected abstract string GetItemName();
 }

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 
 public class Shop : MonoBehaviour {
+    private int points=100;
     public static event Action<Stats> addStats; 
     public enum types {
         unit,weapon,item
@@ -35,6 +36,7 @@ public class Shop : MonoBehaviour {
             comp.transform.parent = body.transform;
             comp.type = GetEnumFromType(list[0].GetType());
             comp.id = i;
+            comp.SetText(list[i].itemName + "\n" + list[i].Cost + " PT");
         }
     }
     
@@ -42,11 +44,10 @@ public class Shop : MonoBehaviour {
     void ClickedItem(Tuple<types, int> identification) {
         switch (identification.Item1) {
             case types.unit:
-                Debug.Log("unit");
-                //units[identification.Item2];
                 Stats stats = units[identification.Item2].Stats;
                 stats.unitName = Names.GetRandomName();
                 addStats.Invoke(stats);
+                //subtract points
                 break;
             case types.weapon:
                 Debug.Log("wp");

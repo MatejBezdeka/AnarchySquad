@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67a201255e39fbb4195e9f5e7d98ff6a, type: 3}
-  m_Name: Scout
+  m_Name: Assault
   m_EditorClassIdentifier: 
-  cost: 15
-  description: basic unit with little HEALTH and little armor, better speed and stamina
-  stats: {fileID: 11400000, guid: 008227dc5d650804a915146828d55ca4, type: 2}
+  cost: 45
+  description: unit with higher accuracy and higher cost
+  stats: {fileID: 11400000, guid: 2f6f5ae1026fb484e97689bc02db592b, type: 2}
