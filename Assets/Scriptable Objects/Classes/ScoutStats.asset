@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ScoutStats
   m_EditorClassIdentifier: 
   unitName: Jeff
+  unitClass: 0
   maxHp: 25
   armor: 5
   speed: 1.5
@@ -20,4 +21,4 @@ MonoBehaviour:
   range: 20
   accuracy: 3.5
   maxEffectiveRange: 30
-  icon: {fileID: 21300000, guid: 72c15c40ee69e6f49977c4f92a6b9ecf, type: 3}
+  icon: {fileID: 21300000, guid: 88087fc41c50f3f4eb10af3ae9122565, type: 3}
