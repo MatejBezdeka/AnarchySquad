@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class TeamSelectedContainer : MonoBehaviour {
     [SerializeField] GameObject memberPrefab;
-    [SerializeField] private TextMeshProUGUI unitCounter;
-    [SerializeField] GameObject plusMemberPrefab;
-    private int maxUnitsCount = 6;
-    private List<SquadUnit> units = new List<SquadUnit>();
-    private int selected;
+    [SerializeField] TextMeshProUGUI unitCounter;
+    [SerializeField] GameObject plusMemberPrefab; 
+    int maxUnitsCount = 6;
+    List<SquadUnit> units = new List<SquadUnit>();
+    int selected;
     void Start() {
         Shop.addStats += AddUnit;
         SelectedTeamMemberContainer.RemoveUnit += RemoveUnit;

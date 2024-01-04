@@ -8,7 +8,7 @@ public class Stats : ScriptableObject {
     public enum unitClasses {
         Scout, Breacher
     }
-    [SerializeField] private unitClasses unitClass;
+    [SerializeField] unitClasses unitClass;
     [SerializeField, Range(1, 100)] int maxHp;
     int currentHp;
     [SerializeField, Range(1,100)] float armor;

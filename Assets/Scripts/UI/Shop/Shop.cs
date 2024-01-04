@@ -25,6 +25,7 @@ public class Shop : MonoBehaviour {
         ShopButton.itemClicked += ClickedItem;
         ShopButton.showDescription += ShowDescription;
         ShopButton.hideDescription += HideDescription;
+        IUnitButton.clickedUnitButton += ClickedUnit;
         InstantiateList(unitsShopGameObject, new List<ShopItemBase>(units));
         InstantiateList(weaponsShopGameObject, new List<ShopItemBase>(weapons));
         InstantiateList(itemsShopGameObject, new List<ShopItemBase>(items));
@@ -39,7 +40,14 @@ public class Shop : MonoBehaviour {
             comp.SetText(list[i].itemName + "\n" + list[i].Cost + " PT");
         }
     }
-    
+
+    void ClickedUnit(SquadUnit unit) {
+        
+        if (unit == null) {
+            //addStats.Invoke(selectedStats);
+        }
+        
+    }
 
     void ClickedItem(Tuple<types, int> identification) {
         switch (identification.Item1) {

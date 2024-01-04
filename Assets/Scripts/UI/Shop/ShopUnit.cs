@@ -10,6 +10,7 @@ public class ShopUnit : ShopItemBase {
     //ability2
     public Stats Stats => stats;
     protected override string GetItemName() {
+        Debug.Log(stats.UnitClass);
         return stats.UnitClass.ToString();
     }
 }

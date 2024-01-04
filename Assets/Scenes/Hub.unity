@@ -1130,8 +1130,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.39038086, y: 0.7417908}
+  m_AnchoredPosition: {x: -0.09979248, y: 0}
+  m_SizeDelta: {x: -0.1908, y: 0.7418}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &451481687
 MonoBehaviour:
@@ -1163,12 +1163,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 45
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 15
+  m_Spacing: 75
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1686,7 +1686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -0.20818329}
+  m_AnchoredPosition: {x: -0.2743988, y: -0.20819092}
   m_SizeDelta: {x: 0.5487976, y: 0.4162979}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &764195049
@@ -4297,7 +4297,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 8175060594449953475, guid: 3f89bf9970331b740bf4158d15ff8e57,
     type: 3}
   units:
-  - {fileID: 11400000, guid: 9d73be2a10f66744b975235aa1774164, type: 2}
+  - {fileID: 11400000, guid: 89bffd964eb533846bdfdcfdffa658db, type: 2}
   - {fileID: 11400000, guid: 7eabd27cc8fc33c459c825a6d8647572, type: 2}
   unitsShopGameObject: {fileID: 167753620}
   weapons:

@@ -5,17 +5,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SelectedTeamMemberContainer : MonoBehaviour {
+public class SelectedTeamMemberContainer : IUnitButton {
     public static event Action<SquadUnit> RemoveUnit;
     private SquadUnit unit;
     [SerializeField] Button removeButton;
     [SerializeField] TextMeshProUGUI unitName;
     [SerializeField] TextMeshProUGUI className;
     [SerializeField] Image unitImage;
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         removeButton.onClick.AddListener(RemoveButtonClicked);
     }
+
+    protected override SquadUnit ReturnUnit() {
+        return unit;
+    }
+
     public void Set(SquadUnit unit) {
         this.unit = unit;
         unitName.text = unit.stats.UnitName;

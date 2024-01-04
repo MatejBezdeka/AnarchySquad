@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6745a745e80b564faefecf83ae37d00, type: 3}
   m_Name: ScoutStats
   m_EditorClassIdentifier: 
-  unitName: Jeff
+  unitName: Rinaldo Pierce
   unitClass: 0
   maxHp: 25
   armor: 5
