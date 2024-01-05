@@ -29,31 +29,26 @@ public class Profile : MonoBehaviour
     Unit currentUnit;
     bool isPlayerUnit;
     bool reloading = false;
-    float reloadTime = 0;
+    float reloadTime;
 
     void Start() {
         PlayerControl.selectedNewUnit += UpdateProfile;
         reloadButton.onClick.AddListener(ReloadButtonClicked);
         runButton.onClick.AddListener(RunButtonClicked);
         grenadeButton.onClick.AddListener(GrenadeButtonClicked);
-
     }
 
     void UpdateData() {
-        hpSlider.maxValue = currentUnit.stats.MaxHp;
         hpSlider.value = currentUnit.stats.CurrentHp;
         hpText.text = currentUnit.stats.CurrentHp + "/" + currentUnit.stats.MaxHp;
-        ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
         if (reloading) {
-            reloadTime -= Time.deltaTime;
-            ammoText.text = "Reloading (" + (reloadTime).ToString("F1") + "s)";
+            ammoText.text = "Reloading (" + reloadTime.ToString("F1") + "s)";
+            ammoSlider.value = ammoSlider.maxValue - reloadTime;
         }
         else {
             ammoText.text = currentUnit.weapon.CurrentAmmo + "/" + currentUnit.weapon.MaxAmmo;
             ammoSlider.value = currentUnit.weapon.CurrentAmmo;
-
         }
-        staminaSlider.maxValue = currentUnit.stats.MaxStamina;
         staminaSlider.value = currentUnit.stats.CurrentStamina;
         staminaText.text = currentUnit.stats.CurrentStamina + "/" + currentUnit.stats.MaxStamina;
         nameLabel.text = currentUnit.stats.UnitName;
@@ -69,6 +64,10 @@ public class Profile : MonoBehaviour
                 SquadUnit squader = (SquadUnit)unit;
                 squader.updateUI += UpdateData;
                 squader.startReloading += StartReloading;
+                squader.reloading += Reloading;
+                hpSlider.maxValue = currentUnit.stats.MaxHp;
+                ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
+                staminaSlider.maxValue = currentUnit.stats.MaxStamina;
             }
             else {
                 //Enemy
@@ -79,15 +78,25 @@ public class Profile : MonoBehaviour
     }
 
     void StartReloading(float reloadTime) {
+        reloading = true;
+        this.reloadTime = reloadTime;   
+        ammoSlider.maxValue = this.reloadTime;
+        UpdateData();
+        Debug.Log("start");
+    }
+
+    void Reloading(float remainingReloadTime) {
         if (reloadTime <= 0) {
+            Debug.Log("stopped");
             reloading = false;
+            ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
         }
         else {
-            reloading = true;
-            this.reloadTime = reloadTime;   
+            Debug.Log("reloading");
+            reloadTime = remainingReloadTime;
         }
         UpdateData();
-
+        
     }
     // these interact with the unit
     void RunButtonClicked() {

@@ -16,12 +16,13 @@ public class ReloadUnitState : UnitState {
         previousState = new NormalUnitState(unit);
     }
     protected override void Enter() {
-        unit.InvokeReloading(reloadTime);
+        unit.InvokeStartReloading(reloadTime);
         base.Enter();
     }
 
     protected override void UpdateState() {
         currentCooldown += Time.deltaTime;
+        unit.InvokeReloading(reloadTime-currentCooldown);
         if (currentCooldown > reloadTime) {
             unit.weapon.Reloaded();
             reloaded = true;
@@ -31,8 +32,8 @@ public class ReloadUnitState : UnitState {
 
     protected override void Exit(UnitState state) {
         currentCooldown = 0;
-        unit.InvokeReloading(0);
-        
+        unit.InvokeReloading(-1);
+        //prevents repeating reload while reloading
         if (state is AttackUnitState && !reloaded || state is ReloadUnitState) {
             currentStage = stateStages.update;
             return;

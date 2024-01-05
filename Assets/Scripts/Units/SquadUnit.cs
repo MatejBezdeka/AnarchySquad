@@ -7,13 +7,13 @@ using UnityEngine.AI;
 
 public class SquadUnit : Unit {
     public event Action updateUI;
+    public event Action<float> reloading;
     public event Action<float> startReloading;
     UnitState currentState;
     GameObject selectionPlane;
     public bool selected { get; private set; } = false;
     [SerializeField] Material trajectoryLine;
     protected override void Start() {
-        Debug.Log("ahoj");
         base.Start();
         
         /*GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -66,6 +66,10 @@ public class SquadUnit : Unit {
     }
 
     public void InvokeReloading(float time) {
+        reloading?.Invoke(time);
+    }
+
+    public void InvokeStartReloading(float time) {
         startReloading?.Invoke(time);
     }
     public void ToggleSprint() {
@@ -74,7 +78,7 @@ public class SquadUnit : Unit {
     }
 
     public void ReloadNow() {
-        if (currentState is ReloadUnitState) { return; }
+        if (currentState is ReloadUnitState || weapon.CurrentAmmo == weapon.MaxAmmo) { return; }
         currentState.ForceChangeState(new ReloadUnitState(this, weapon.ReloadTime));
     }
 
