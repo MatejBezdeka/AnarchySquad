@@ -31,4 +31,12 @@ public class ShopButton : MonoBehaviour {
     void Clicked() {
         itemClicked.Invoke(new Tuple<Shop.types, int>(type, id));
     }
+
+    public void Deselect() {
+        
+    }
+
+    void Select() {
+        
+    }
 }
