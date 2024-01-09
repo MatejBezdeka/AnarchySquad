@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public static class SquadParameters {
-    public static List<SquadUnit> units { get; set; }
+namespace SceneBridges {
+    public static class SquadParameters {
+        public static List<SquadUnit> Units { get; set; } = new List<SquadUnit>();
+    }
 }

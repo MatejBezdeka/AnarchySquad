@@ -1,19 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+namespace UI.Shop {
+    [RequireComponent(typeof(Button))]
+    public abstract class IUnitButton : MonoBehaviour {
+        public int Id => GetId();
+        public static event Action<Tuple<SquadUnit,int>> clickedUnitButton;
+        protected virtual void Start() {
+            GetComponent<Button>().onClick.AddListener(Clicked);
+        }
 
-[RequireComponent(typeof(Button))]
-public abstract class IUnitButton : MonoBehaviour {
-    public static event Action<SquadUnit> clickedUnitButton;
-    protected virtual void Start() {
-        GetComponent<Button>().onClick.AddListener(Clicked);
+        protected abstract int GetId();
+        void Clicked() {
+            clickedUnitButton!.Invoke(new Tuple<SquadUnit, int>(ReturnUnit(), GetId()));    
+        }
+
+        protected abstract SquadUnit ReturnUnit();
     }
-
-    void Clicked() {
-        clickedUnitButton!.Invoke(ReturnUnit());    
-    }
-
-    protected abstract SquadUnit ReturnUnit();
 }

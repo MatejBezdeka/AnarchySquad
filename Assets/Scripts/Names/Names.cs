@@ -40,7 +40,6 @@ public class Names : MonoBehaviour {
         return GetName(rn.Next(0, firstNamesFileLength), rn.Next(0, lastNamesFileLength));
     }
     public static string GetName(int firstNameId,int lastNameId) {
-        Debug.Log(firstNameId + " " + lastNameId);
         if (firstNameId >= firstNamesFileLength || lastNameId >= lastNamesFileLength) {
             return "out of bound";
         }
@@ -53,7 +52,6 @@ public class Names : MonoBehaviour {
         for (int i = 1; i < lastNameId; i++)
             if (reader.ReadLine() == null) return null;
         name += " " + reader.ReadLine();
-        Debug.Log(name);
         return name;
     }
     public static string GetRandomCityName(int seed) {

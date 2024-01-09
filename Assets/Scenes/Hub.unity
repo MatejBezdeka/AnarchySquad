@@ -1145,11 +1145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f76fb9a4ec5924da1944aa3612b68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  memberPrefab: {fileID: 9177208608969291808, guid: dacfd13731ea7f74e85298a03bd18621,
-    type: 3}
-  unitCounter: {fileID: 764195049}
-  plusMemberPrefab: {fileID: 8395815831965780596, guid: 3914106bbf4ca9143855b4e28e840ee3,
-    type: 3}
 --- !u!114 &451481688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3071,7 +3066,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1461092188}
   m_FillRect: {fileID: 993327878}
   m_HandleRect: {fileID: 0}
@@ -4294,6 +4289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: {fileID: 229656516}
   descriptionText: {fileID: 358958610}
+  pointsSlider: {fileID: 1461092190}
+  pointsText: {fileID: 1532918018}
   itemPrefab: {fileID: 8175060594449953475, guid: 3f89bf9970331b740bf4158d15ff8e57,
     type: 3}
   units:
@@ -4307,6 +4304,13 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: 912d24e2a8d2cdc47b7af570840ab840, type: 2}
   itemsShopGameObject: {fileID: 125266763}
+  maxUnitsCount: 6
+  containerGameObject: {fileID: 451481685}
+  memberPrefab: {fileID: 9177208608969291808, guid: dacfd13731ea7f74e85298a03bd18621,
+    type: 3}
+  unitCounter: {fileID: 764195049}
+  plusMemberPrefab: {fileID: 8395815831965780596, guid: 3914106bbf4ca9143855b4e28e840ee3,
+    type: 3}
 --- !u!114 &1945136907
 MonoBehaviour:
   m_ObjectHideFlags: 0

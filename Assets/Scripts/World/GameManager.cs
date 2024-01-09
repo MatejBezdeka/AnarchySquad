@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SceneBridges;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour {
     void Awake() {
         instance = this;
         PlayerControl.changedTime += TimeChanged;
-        units = SquadParameters.units;
+        units = SquadParameters.Units;
         //generate
         canvasManager = GetComponent<CanvasManager>();
         mapGenerator.GenerateMap();
