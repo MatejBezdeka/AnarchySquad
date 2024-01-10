@@ -8,9 +8,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectedTeamMemberContainer : IUnitButton {
-    public static event Action<SquadUnit> RemoveUnit;
+    public static event Action<int> RemoveUnit;
     int id;
-    SquadUnit unit;
+    UnitBlueprint unit = new UnitBlueprint();
     [SerializeField] Button removeButton;
     [SerializeField] TextMeshProUGUI unitName;
     [SerializeField] TextMeshProUGUI className;
@@ -18,11 +18,9 @@ public class SelectedTeamMemberContainer : IUnitButton {
     [SerializeField] Sprite placeHolderImg;
     [SerializeField] string placeHolderName;
     [SerializeField] string placeHolderClass;
-    public SquadUnit Unit => unit;
+    public UnitBlueprint Unit => unit;
     
     protected override void Start() {
-        unit = gameObject.AddComponent<SquadUnit>();
-        unit.enabled = false;
         base.Start();
         removeButton.onClick.AddListener(RemoveButtonClicked);
         unitImage.sprite = placeHolderImg;
@@ -37,11 +35,12 @@ public class SelectedTeamMemberContainer : IUnitButton {
     public void SetId(int newId) {
         id = newId;
     }
-    protected override SquadUnit ReturnUnit() {
+    protected override UnitBlueprint ReturnUnit() {
         return unit;
     }
 
-    public void SetStats(Stats stats) {
+    public void SetStatsGraphics(Stats stats) {
+        unit.stats = stats;
         unitName.text = stats.UnitName;
         unitImage.sprite = stats.Icon;
         className.text = stats.UnitClass.ToString();
@@ -69,7 +68,7 @@ public class SelectedTeamMemberContainer : IUnitButton {
     //TODO:
     //public void SetItem()
     void RemoveButtonClicked() {
-        RemoveUnit?.Invoke(unit);
+        RemoveUnit?.Invoke(id);
         Destroy(gameObject);
     }
 }

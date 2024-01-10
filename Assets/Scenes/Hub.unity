@@ -1104,7 +1104,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451481686}
-  - component: {fileID: 451481687}
   - component: {fileID: 451481688}
   m_Layer: 5
   m_Name: SelectedTeam
@@ -1133,18 +1132,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.09979248, y: 0}
   m_SizeDelta: {x: -0.1908, y: 0.7418}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &451481687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451481685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42f76fb9a4ec5924da1944aa3612b68f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &451481688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4293,7 +4280,7 @@ MonoBehaviour:
   pointsText: {fileID: 1532918018}
   itemPrefab: {fileID: 8175060594449953475, guid: 3f89bf9970331b740bf4158d15ff8e57,
     type: 3}
-  units:
+  unitStats:
   - {fileID: 11400000, guid: 89bffd964eb533846bdfdcfdffa658db, type: 2}
   - {fileID: 11400000, guid: 7eabd27cc8fc33c459c825a6d8647572, type: 2}
   unitsShopGameObject: {fileID: 167753620}

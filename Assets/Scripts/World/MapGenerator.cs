@@ -40,6 +40,9 @@ public class MapGenerator : MonoBehaviour {
         SetMapParameters();
     }
 
+    public Vector3 GetCentre() {
+        return new Vector3((mapSizeX * tileSize) / 2f, tileSize / 2, (mapSizeY * tileSize) / 2f);
+    }
     void SetMapParameters() {
         if (MapParameters.sizeX == 0) {
             return;

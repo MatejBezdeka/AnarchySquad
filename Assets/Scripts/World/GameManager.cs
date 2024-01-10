@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour {
     void Awake() {
         instance = this;
         PlayerControl.changedTime += TimeChanged;
-        units = SquadParameters.Units;
         //generate
         canvasManager = GetComponent<CanvasManager>();
         mapGenerator.GenerateMap();
@@ -80,12 +79,12 @@ public class GameManager : MonoBehaviour {
     }
 
     void SpawnUnits(Vector3 spawnPoint) {
-        for (int i = 0; i < units.Count; i++) {
-            Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(units.Count, i);
+        for (int i = 0; i < SquadParameters.Units.Count; i++) {
+            Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(SquadParameters.Units.Count, i);
             rotatedSpawnPoint.y += 1;
             //GameObject newUnit = Instantiate(unitPrefab, new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
             //Instantiate(tmpList[i], new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
-            units[i] = unitFactory.SpawnUnit(unitPrefab, units[i].stats, units[i].weapon, units[i].secondaryWeapon, rotatedSpawnPoint);
+            units.Add(unitFactory.SpawnUnit(unitPrefab, SquadParameters.Units[i], rotatedSpawnPoint));
             
         }
     }

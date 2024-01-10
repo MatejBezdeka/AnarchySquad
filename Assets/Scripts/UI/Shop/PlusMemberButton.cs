@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlusMemberButton : IUnitButton
 {
     
-    protected override SquadUnit ReturnUnit() {
+    protected override UnitBlueprint ReturnUnit() {
         return null;
     }
 

@@ -6,6 +6,7 @@ using TMPro;
 using UI;
 using UI.Shop;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour {
@@ -24,7 +25,7 @@ public class Shop : MonoBehaviour {
     [SerializeField] TextMeshProUGUI pointsText;
     [Header("Shop")] 
     [SerializeField] GameObject itemPrefab;
-    [SerializeField] List<ShopUnit> units;
+    [SerializeField] List<ShopUnit> unitStats;
     [SerializeField] GameObject unitsShopGameObject;
     [SerializeField] List<ShopWeapon> weapons;
     [SerializeField] GameObject weaponsShopGameObject;
@@ -37,7 +38,8 @@ public class Shop : MonoBehaviour {
     [SerializeField] TextMeshProUGUI unitCounter;
     [SerializeField] GameObject plusMemberPrefab; 
     List<SelectedTeamMemberContainer> containers = new List<SelectedTeamMemberContainer>();
-    
+    [SerializeField] List<UnitBlueprint> unitBlueprints = new List<UnitBlueprint>();
+
     void Start() {
         ShopButton.itemClicked += ClickedItem;
         ShopButton.showDescription += ShowDescription;
@@ -45,7 +47,7 @@ public class Shop : MonoBehaviour {
         ShopButton.deselected += Deselect;
         IUnitButton.clickedUnitButton += ClickedUnit;
         StartMissionButton.startingGame += SaveUnitsForNextScene;
-        InstantiateList(unitsShopGameObject, new List<ShopItemBase>(units));
+        InstantiateList(unitsShopGameObject, new List<ShopItemBase>(unitStats));
         InstantiateList(weaponsShopGameObject, new List<ShopItemBase>(weapons));
         InstantiateList(itemsShopGameObject, new List<ShopItemBase>(items));
         SelectedTeamMemberContainer.RemoveUnit += RemoveUnit;
@@ -61,22 +63,25 @@ public class Shop : MonoBehaviour {
         }
     }
 
-    void ClickedUnit(Tuple<SquadUnit, int> obj) {
+    void ClickedUnit(int id) {
         //plus button
-        if (obj.Item2 == -1) {
+        if (id == -1) {
             AddUnit();
-            //add new unit with either stats/weapon or item in invenotry 
-            //addStats.Invoke(selectedStats);
             return;
         }
         switch (selectedItemType) { 
             case types.unit:
-                var newStats = units[selectedId].Stats;
+                var newStats = unitStats[selectedId].Stats;
                 newStats.unitName = Names.GetRandomName();
-                containers[obj.Item2].SetStats(newStats);
+                unitBlueprints[id].stats = newStats;
+                containers[id].SetStatsGraphics(newStats);
                 break;
             case types.weapon:
-                var weapon = weapons[selectedId].Weapon;
+                var newWeapon = weapons[selectedId].Weapon;
+                unitBlueprints[id].weapon = newWeapon;
+                unitBlueprints[id].secondaryWeapon = newWeapon;
+                containers[id].SetWeapon(newWeapon,false);
+                containers[id].SetWeapon(newWeapon,true);
                 break;
             case types.item:
                 //TODO:
@@ -97,7 +102,7 @@ public class Shop : MonoBehaviour {
         description.SetActive(true);
         switch (identification.Item1) {
             case types.unit:
-                descriptionText.text = units[identification.Item2].Description;
+                descriptionText.text = unitStats[identification.Item2].Description;
                 break;
             case types.weapon:
                 descriptionText.text = weapons[identification.Item2].Description;
@@ -121,7 +126,7 @@ public class Shop : MonoBehaviour {
 
         return types.unit;
     }
-    void RemoveUnit(SquadUnit unit) {
+    /*void RemoveUnit(int id) {
         foreach (var comp in containers) {
             if (comp.Unit == unit) {
                 containers.Remove(comp);
@@ -129,7 +134,11 @@ public class Shop : MonoBehaviour {
                 return;
             }
         }
-        
+    }*/
+    void RemoveUnit(int id) {
+        unitBlueprints.RemoveAt(id);
+        containers.RemoveAt(id);
+        UpdateCount();
     }
     void AddUnit() {
         if (containers.Count == maxUnitsCount) {
@@ -139,13 +148,15 @@ public class Shop : MonoBehaviour {
         var comp = container.GetComponent<SelectedTeamMemberContainer>();
         comp.SetId(containers.Count);
         containers.Add(comp);
+        var newUnit = new UnitBlueprint();
+        unitBlueprints.Add(newUnit);
         UpdateCount();
     }
     void UpdateCount() {
-        unitCounter.text = containers.Count + "/" + maxUnitsCount;
+        unitCounter.text = unitBlueprints.Count + "/" + maxUnitsCount;
         plusMemberPrefab.SetActive(true);
         plusMemberPrefab.transform.SetSiblingIndex(transform.childCount);
-        if (containers.Count == maxUnitsCount) {
+        if (unitBlueprints.Count == maxUnitsCount) {
             plusMemberPrefab.SetActive(false);
         }
     }
@@ -159,8 +170,8 @@ public class Shop : MonoBehaviour {
         selectedItemType = types.none;
     }
     void SaveUnitsForNextScene() {
-        foreach (var comp in containers) {
-            SquadParameters.Units.Add(comp.Unit);    
+        foreach (var comp in unitBlueprints) {
+            SquadParameters.Units.Add(comp);    
         }
     }
 }
