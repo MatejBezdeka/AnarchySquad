@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using SceneBridges;
 using TMPro;
 using UI;
-using UI.Shop;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -15,7 +14,7 @@ public class Shop : MonoBehaviour {
     types selectedItemType;
     public static event Action<SquadUnit> addNewUnit; 
     public enum types {
-        none,unit,weapon,item
+        none,unit,weapon,secondaryWeapon,item
     }
     [Header("Description Text")]
     [SerializeField] GameObject description;
@@ -38,7 +37,7 @@ public class Shop : MonoBehaviour {
     [SerializeField] TextMeshProUGUI unitCounter;
     [SerializeField] GameObject plusMemberPrefab; 
     List<SelectedTeamMemberContainer> containers = new List<SelectedTeamMemberContainer>();
-    [SerializeField] List<UnitBlueprint> unitBlueprints = new List<UnitBlueprint>();
+    List<UnitBlueprint> unitBlueprints = new List<UnitBlueprint>();
 
     void Start() {
         ShopButton.itemClicked += ClickedItem;
@@ -53,6 +52,8 @@ public class Shop : MonoBehaviour {
         SelectedTeamMemberContainer.RemoveUnit += RemoveUnit;
         plusMemberPrefab = Instantiate(plusMemberPrefab, containerGameObject.transform);
     }
+
+
     void InstantiateList(GameObject body,List<ShopItemBase> list) {
         for (int i = 0; i < list.Count; i++) {
             var comp = Instantiate(itemPrefab).GetComponent<ShopButton>();
@@ -63,25 +64,38 @@ public class Shop : MonoBehaviour {
         }
     }
 
-    void ClickedUnit(int id) {
+    void ClickedUnit(Tuple<int, types> obj) {
         //plus button
+        int id = obj.Item1;
         if (id == -1) {
             AddUnit();
             return;
         }
-        switch (selectedItemType) { 
+        if (obj.Item2 != selectedItemType) {
+            Debug.Log(obj.Item2 + "  : " + selectedItemType);
+            if (obj.Item2 == types.secondaryWeapon && selectedItemType == types.weapon) {
+                //ignore
+            }
+            else {
+                return;
+            }
+        }
+        switch (obj.Item2) { 
             case types.unit:
                 var newStats = unitStats[selectedId].Stats;
                 newStats.unitName = Names.GetRandomName();
                 unitBlueprints[id].stats = newStats;
-                containers[id].SetStatsGraphics(newStats);
+                containers[id].SetStats(newStats);
                 break;
             case types.weapon:
                 var newWeapon = weapons[selectedId].Weapon;
                 unitBlueprints[id].weapon = newWeapon;
-                unitBlueprints[id].secondaryWeapon = newWeapon;
-                containers[id].SetWeapon(newWeapon,false);
-                containers[id].SetWeapon(newWeapon,true);
+                containers[id].SetWeapon(newWeapon);
+                break;
+            case types.secondaryWeapon:
+                var newSecWeapon = weapons[selectedId].Weapon;
+                unitBlueprints[id].secondaryWeapon = newSecWeapon;
+                containers[id].SetSecondaryWeapon(newSecWeapon);
                 break;
             case types.item:
                 //TODO:
@@ -170,6 +184,11 @@ public class Shop : MonoBehaviour {
         selectedItemType = types.none;
     }
     void SaveUnitsForNextScene() {
+        foreach (var comp in unitBlueprints) {
+            if (!comp.IsValid()) {
+                return;
+            }
+        }
         foreach (var comp in unitBlueprints) {
             SquadParameters.Units.Add(comp);    
         }

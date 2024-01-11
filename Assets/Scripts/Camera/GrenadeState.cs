@@ -51,11 +51,11 @@ namespace Camera {
             direction.y = 0;
             horizontalDistance = Mathf.Min(Mathf.Sqrt(direction.x * direction.x + direction.z * direction.z), maxRange);
             initialVelocityY = Mathf.Sqrt(Physics.gravity.magnitude * (direction.y + Mathf.Tan(Mathf.Deg2Rad * angle) * horizontalDistance));
-            line.positionCount = Mathf.RoundToInt(horizontalDistance)+1;
+            line.positionCount = Mathf.RoundToInt(horizontalDistance)*3;
             for (int i = 0; i < line.positionCount; i++) {
-                float time = i / (float)(line.positionCount - 1);
-                float t = time * Time.fixedDeltaTime * line.positionCount * 5;
-                Vector3 position = unit.transform.position + direction.normalized * (horizontalDistance * time) + Vector3.up * (initialVelocityY * t - 0.5f * Physics.gravity.magnitude * t * t);
+                float time = i / (float)(line.positionCount-1);
+                float t = time * Time.fixedDeltaTime * line.positionCount;
+                Vector3 position = unit.transform.position + direction.normalized * (horizontalDistance * time) + Vector3.up * (initialVelocityY * t -1 * Physics.gravity.magnitude * t * t);
                 line.SetPosition(i,position);
             }
         }

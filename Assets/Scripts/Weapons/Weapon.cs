@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 
@@ -17,11 +18,13 @@ namespace Units {
         [SerializeField, Tooltip("How far will bullets without any damage penalty")] protected float effectiveRange;
         [SerializeField, Tooltip("How far will bullets go")] protected float maxEffectiveRange;
         [SerializeField, Range(0.01f,1.15f)] float Spread;
+        [FormerlySerializedAs("img")] [SerializeField] Sprite icon;
         int currentAmmo;
         protected float currentCooldown = 0;
         Unit unit;
         Unit target;
         GameObject muzzle;
+        public Sprite Icon => icon;
         
 
         public int Damage => damage;

@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UI.Shop;
 using Units;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,52 +7,85 @@ using UnityEngine.UI;
 public class SelectedTeamMemberContainer : IUnitButton {
     public static event Action<int> RemoveUnit;
     int id;
-    UnitBlueprint unit = new UnitBlueprint();
-    [SerializeField] Button removeButton;
-    [SerializeField] TextMeshProUGUI unitName;
-    [SerializeField] TextMeshProUGUI className;
-    [SerializeField] Image unitImage;
-    [SerializeField] Sprite placeHolderImg;
+    Shop.types clickedButton;
+    [Header("PlaceHolders")]
+    [SerializeField] Sprite placeholderStatsImg;
+    [SerializeField] Sprite placeholderWeaponImg;
     [SerializeField] string placeHolderName;
-    [SerializeField] string placeHolderClass;
-    public UnitBlueprint Unit => unit;
+    [SerializeField] Button removeButton;
+    [Header("Stats")]
+    [SerializeField] TextMeshProUGUI unitName;
+    [SerializeField] Button statsAddButton;
+    [SerializeField] Button statsRemoveButton;
+    [SerializeField] GameObject statsRButton;
+    //[SerializeField] TextMeshProUGUI className;
+    [SerializeField] Image statsImage;
+    [Header("Weapons")]
+    [SerializeField] Image weaponImg;
+    [SerializeField] Button weaponAddButton;
+    [SerializeField] Button weaponRemoveButton;
+    [SerializeField] GameObject weaponRButton;
+    [SerializeField] Image secondaryWeaponImg;
+    [SerializeField] Button secondaryWeaponAddButton;
+    [SerializeField] Button secondaryWeaponRemoveButton;
+    [SerializeField] GameObject secondaryWeaponRButton;
+    //[SerializeField] string placeHolderClass;
     
-    protected override void Start() {
-        base.Start();
+    protected void Start() {
         removeButton.onClick.AddListener(RemoveButtonClicked);
-        unitImage.sprite = placeHolderImg;
+
+        statsAddButton.onClick.AddListener(() => { clickedButton = Shop.types.unit; Clicked(); });
+        statsRemoveButton.onClick.AddListener(RemoveStats);
+        
+        weaponAddButton.onClick.AddListener(() => { clickedButton = Shop.types.weapon; Clicked(); });
+        weaponRemoveButton.onClick.AddListener(RemoveWeapon);
+        secondaryWeaponAddButton.onClick.AddListener(() => { clickedButton = Shop.types.secondaryWeapon; Clicked(); });
+        secondaryWeaponRemoveButton.onClick.AddListener(RemoveSecondaryWeapon);
+        statsImage.sprite = placeholderStatsImg;
         unitName.text = placeHolderName;
-        className.text = placeHolderClass;
+        
     }
 
     protected override int GetId() {
         return id;
     }
 
+    protected override Shop.types GetButtonType() {
+        return clickedButton;
+    }
+
     public void SetId(int newId) {
         id = newId;
     }
-    protected override UnitBlueprint ReturnUnit() {
-        return unit;
-    }
-
-    public void SetStatsGraphics(Stats stats) {
-        unit.stats = stats;
+    
+    public void SetStats(Stats stats) {
         unitName.text = stats.UnitName;
-        unitImage.sprite = stats.Icon;
-        className.text = stats.UnitClass.ToString();
+        statsImage.sprite = stats.Icon;
+        statsRButton.SetActive(true);
     }
 
-    public void SetWeapon(Weapon weapon, bool secondary) {
-        if (secondary) {
-            unit.secondaryWeapon = weapon;
-        }
-        else {
-            unit.weapon = weapon;
-        }
-        
+    void RemoveStats() {
+        unitName.text = placeHolderName;
+        statsImage.sprite = placeholderStatsImg;
+        statsRButton.SetActive(false);
+    }
+    public void SetWeapon(Weapon weapon) {
+        weaponImg.sprite = weapon.Icon;
+        weaponRButton.SetActive(true);
     }
 
+    void RemoveWeapon() {
+        weaponImg.sprite = placeholderWeaponImg;
+        weaponRButton.SetActive(false);
+    }
+    public void SetSecondaryWeapon(Weapon weapon) {
+        secondaryWeaponImg.sprite = weapon.Icon;
+       secondaryWeaponRButton.SetActive(true);
+    }
+    void RemoveSecondaryWeapon() {
+        secondaryWeaponImg.sprite = placeholderWeaponImg;
+        secondaryWeaponRButton.SetActive(false);
+    }
     /*public void SetUnit(SquadUnit unit, int id) {
         this.id = id;
         this.unit = unit;
@@ -65,8 +95,6 @@ public class SelectedTeamMemberContainer : IUnitButton {
             className.text = unit.stats.UnitClass.ToString();
         }
     }*/
-    //TODO:
-    //public void SetItem()
     void RemoveButtonClicked() {
         RemoveUnit?.Invoke(id);
         Destroy(gameObject);

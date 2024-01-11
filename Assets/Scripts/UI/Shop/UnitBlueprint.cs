@@ -7,4 +7,7 @@ public class UnitBlueprint {
     public Stats stats;
     public Weapon weapon;
     public Weapon secondaryWeapon;
+    public bool IsValid() {
+        return stats != null && weapon != null;
+    }
 }
