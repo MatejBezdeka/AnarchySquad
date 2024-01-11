@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/UI/Hub/RemoveMemberButtonAnimation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/UI/Hub/RemoveMemberButtonAnimation.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Portrait.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Portrait.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/TeamMember.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/TeamMember.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/BasicPistolStats.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/BasicPistolStats.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/GrenadeState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/GrenadeState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/IUnitButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/IUnitButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/PlusMemberButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/PlusMemberButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/SelectedTeamMemberContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/SelectedTeamMemberContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/Shop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitBlueprint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitBlueprint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/left leaning only inverted.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/left leaning only inverted.png.meta" afterDir="false" />
-    </list>
+    <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +115,7 @@
       <workItem from="1704731395350" duration="17529000" />
       <workItem from="1704831138301" duration="7728000" />
       <workItem from="1704914080795" duration="7213000" />
-      <workItem from="1705003237654" duration="10464000" />
+      <workItem from="1705003237654" duration="10747000" />
     </task>
     <servers />
   </component>
