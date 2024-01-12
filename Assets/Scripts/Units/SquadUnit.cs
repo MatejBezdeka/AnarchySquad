@@ -61,7 +61,6 @@ public class SquadUnit : Unit {
         selected = false;
     }
     void Update() {
-        Debug.Log("a");
         currentState = currentState.Process();
         updateUI?.Invoke();
     }

@@ -92,7 +92,7 @@ public class PlayerControl : MonoBehaviour {
 
         moveAction = playerInput.actions["Move"];
         zoomAction = playerInput.actions["Zoom"];
-        rotationAction = playerInput.actions["Move"];
+        rotationAction = playerInput.actions["Rotation"];
         leftClickAction = playerInput.actions["LeftClick"];
         leftClickAction.started += _ => leftMouseButtonClicked?.Invoke();
         rightClickAction = playerInput.actions["RightClick"];
@@ -118,21 +118,22 @@ public class PlayerControl : MonoBehaviour {
 
     void Move() {
         //get input values
-        float currentInputRotation = -rotationAction.ReadValue<Vector2>().x;
+        float currentInputRotation = rotationAction.ReadValue<float>();
         float currentInputZoom = -zoomAction.ReadValue<float>();
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
         //smooth the values
-        currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20);
-        currentRotation = -currentMove.x;
-        currentMove.y = 0;
-        //currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20);
+        currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20, Time.fixedDeltaTime);
+        //currentRotation = -currentRotation.x;
+        //currentMove.y = 0;
+        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20, Time.fixedDeltaTime);
         //check boundaries for camera to not go too far or too close
+        Debug.Log(currentInputZoom);
         if (ZoomDistanceCheck(currentInputZoom)) {
-            currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20);
+            currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20, Time.fixedDeltaTime);
         }
         else {
             //return camera to respective border if needed
-            currentZoom = -currentZoom * 0.5f + (1 - transform.position.y/100);
+            currentZoom = -currentZoom * 0.2f + (0.5f    - transform.position.y/100);
         }
         
         //move camera
@@ -164,7 +165,7 @@ public class PlayerControl : MonoBehaviour {
         return currentHit = hit;
     }
     bool ZoomDistanceCheck(float currentInputZoom) {
-        if (transform.position.y <= minCameraDistance|| transform.position.y >= maxCameraDistance) {
+        if (transform.position.y <= minCameraDistance && currentInputZoom < 0 || transform.position.y >= maxCameraDistance && currentInputZoom > 0) {
             return false;
         }
         return true;

@@ -256,7 +256,7 @@
                     "id": "2905c67d-21c3-4516-a26c-1a4d98ffd571",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Normalize(max=0.5)",
                     "groups": "",
                     "action": "Move",
                     "isComposite": false,

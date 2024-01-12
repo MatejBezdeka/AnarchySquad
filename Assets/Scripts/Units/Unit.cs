@@ -20,6 +20,7 @@ public class Unit : MonoBehaviour {
     [SerializeField, Range(1,100)] protected float maxGrenadeDistance;
     [SerializeField, Range(1,89)] float launchAngle = 35f;
     public NavMeshAgent Agent => agent;
+    public float CurrentSpeed => agent.velocity.x + agent.velocity.z;
     public float LaunchAngle => launchAngle;
     public float MaxGrenadeDistance => maxGrenadeDistance;
     Unit targetedUnit;
