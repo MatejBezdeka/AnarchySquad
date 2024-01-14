@@ -1,0 +1,12 @@
+kamera může po stranách do nekonečna
+pod odstranění jednotek v shopu je potřeba přeindexovat profily
+(spojit Shop SO s normálním SO)
+jednotky střílí přes zeď (měl by si najít cestu)
+v shopu dodělat obrázky a zbytek možností
+implementace bodů
+stats description na jednotkách
+kontrola validnost jednotek - secundární zbraň opt
+stamina když jednotka stojí -> přičíst
+vypnout tlačítka navíc
+animace tlačítek
+
