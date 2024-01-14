@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67a201255e39fbb4195e9f5e7d98ff6a, type: 3}
-  m_Name: Assault
+  m_Script: {fileID: 11500000, guid: 12568edd72669ad43b54d66f6e3b6e69, type: 3}
+  m_Name: ShopPistol
   m_EditorClassIdentifier: 
-  cost: 45
-  description: unit with higher accuracy and higher cost
-  stats: {fileID: 11400000, guid: 2f6f5ae1026fb484e97689bc02db592b, type: 2}
+  cost: 5
+  description: basic pistol
+  weapon: {fileID: 11400000, guid: 9c31afbd0d61c1347a28627ddcd39c5f, type: 2}

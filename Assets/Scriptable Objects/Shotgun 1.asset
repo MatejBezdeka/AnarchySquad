@@ -9,16 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a571742f3fc440fb220ba010da212c2, type: 3}
-  m_Name: Pistol
+  m_Script: {fileID: 11500000, guid: f7f220e4e72f43f2acdbcc6775455a32, type: 3}
+  m_Name: Shotgun 1
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2660651700256969146, guid: 48b0fd2765c962441b5909b59ea8ab9b,
     type: 3}
-  damage: 5
-  maxAmmo: 5
+  damage: 10
+  maxAmmo: 6
   timeBetweenShots: 2
-  reloadTime: 1
-  effectiveRange: 15
-  maxEffectiveRange: 25
-  Spread: 0
+  reloadTime: 10
+  effectiveRange: 5
+  maxEffectiveRange: 15
+  Spread: 0.296
   icon: {fileID: 21300000, guid: 34c52e30cdda7d94899bec8786e44bbe, type: 3}
+  pelletCount: 10

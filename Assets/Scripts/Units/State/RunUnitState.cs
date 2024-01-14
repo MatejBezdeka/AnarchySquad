@@ -17,7 +17,6 @@ public class RunUnitState : UnitState {
     protected override void UpdateState() {
         currentCooldown += Time.deltaTime;
         if (currentCooldown > tickCooldown) {
-            Debug.Log(unit.CurrentSpeed );
             if (unit.CurrentSpeed < 0.05f) {
                 unit.stats.AddStamina();
             }else if (unit.stats.Sprint() == 0) {

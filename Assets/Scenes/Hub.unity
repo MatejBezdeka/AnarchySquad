@@ -1150,7 +1150,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 75
+  m_Spacing: 30
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -3194,7 +3194,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 66
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3411,7 +3411,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 78/100 PT
+  m_text: 100/100 PT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4462,13 +4462,15 @@ MonoBehaviour:
   unitStats:
   - {fileID: 11400000, guid: 89bffd964eb533846bdfdcfdffa658db, type: 2}
   - {fileID: 11400000, guid: 7eabd27cc8fc33c459c825a6d8647572, type: 2}
+  - {fileID: 11400000, guid: b058284fc3c9e6341b17788834643670, type: 2}
   unitsShopGameObject: {fileID: 167753620}
   weapons:
   - {fileID: 11400000, guid: bce4ed312a5b85441804502c6a68fd70, type: 2}
-  - {fileID: 11400000, guid: bce4ed312a5b85441804502c6a68fd70, type: 2}
+  - {fileID: 11400000, guid: fead07cf5dadde6469207f3c57d76782, type: 2}
+  - {fileID: 11400000, guid: 41f0face380aa894193be437d03eb348, type: 2}
+  - {fileID: 11400000, guid: a5fd11d5fc7e966418a93fadc4efb02b, type: 2}
   weaponsShopGameObject: {fileID: 702693054}
-  items:
-  - {fileID: 11400000, guid: 912d24e2a8d2cdc47b7af570840ab840, type: 2}
+  items: []
   itemsShopGameObject: {fileID: 125266763}
   maxUnitsCount: 6
   containerGameObject: {fileID: 451481685}

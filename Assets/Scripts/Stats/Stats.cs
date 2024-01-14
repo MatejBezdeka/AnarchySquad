@@ -4,11 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Units/Stats")]
 public class Stats : ScriptableObject {
     [HideInInspector] public string unitName = "No name";
-
-    public enum unitClasses {
-        Scout, Breacher
-    }
-    [SerializeField] unitClasses unitClass;
     [SerializeField, Range(1, 100)] int maxHp;
     int currentHp;
     [SerializeField, Range(1,100)] float armor;
@@ -22,7 +17,6 @@ public class Stats : ScriptableObject {
     Unit[] enemiesInRange;
 
     #region getters
-    public unitClasses UnitClass => unitClass;
     public string UnitName => unitName;
     public int MaxHp => maxHp;
     public int CurrentHp => currentHp;

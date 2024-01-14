@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6745a745e80b564faefecf83ae37d00, type: 3}
-  m_Name: AssaultStats
+  m_Name: TankStats
   m_EditorClassIdentifier: 
-  unitName: Wolfram Stern
-  unitClass: 1
-  maxHp: 25
-  armor: 5
-  speed: 1.5
-  maxStamina: 50
-  range: 20
-  accuracy: 6.01
-  maxEffectiveRange: 30
-  icon: {fileID: 21300000, guid: 72c15c40ee69e6f49977c4f92a6b9ecf, type: 3}
+  unitName: Jeremie Decker
+  maxHp: 52
+  armor: 33.2
+  speed: 0.67
+  maxStamina: 41.2
+  range: 23.5
+  accuracy: 4.02
+  maxEffectiveRange: 31.5
+  icon: {fileID: 21300000, guid: 4ff4ed7986c4e9a45a0c56ff37c3d4be, type: 3}

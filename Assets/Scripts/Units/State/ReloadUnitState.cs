@@ -19,7 +19,6 @@ public class ReloadUnitState : UnitState {
         unit.InvokeStartReloading(reloadTime);
         base.Enter();
     }
-
     protected override void UpdateState() {
         currentCooldown += Time.deltaTime;
         unit.InvokeReloading(reloadTime-currentCooldown);
@@ -29,7 +28,6 @@ public class ReloadUnitState : UnitState {
             Exit(previousState);
         }
     }
-
     protected override void Exit(UnitState state) {
         currentCooldown = 0;
         unit.InvokeReloading(-1);
@@ -38,7 +36,6 @@ public class ReloadUnitState : UnitState {
             currentStage = stateStages.update;
             return;
         }
-        
         base.Exit(state);
     }
 }
