@@ -5,6 +5,7 @@ using SceneBridges;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -60,7 +61,7 @@ public class Shop : MonoBehaviour {
             comp.transform.parent = body.transform;
             comp.type = GetEnumFromType(list[0].GetType());
             comp.id = i;
-            comp.SetText(list[i].itemName + "\n" + list[i].Cost + " PT");
+            comp.SetGraphics(list[i].itemName, list[i].Cost, list[i].GetSprite());
         }
     }
 
@@ -153,6 +154,9 @@ public class Shop : MonoBehaviour {
         unitBlueprints.RemoveAt(id);
         containers.RemoveAt(id);
         UpdateCount();
+        for (int i = 0; i < unitBlueprints.Count; i++) {
+            containers[i].SetId(i);
+        }
     }
     void AddUnit() {
         if (containers.Count == maxUnitsCount) {

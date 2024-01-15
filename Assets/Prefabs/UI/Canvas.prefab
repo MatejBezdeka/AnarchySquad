@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -47.646973}
+  m_AnchoredPosition: {x: 509.1, y: -47.642}
   m_SizeDelta: {x: 371.8037, y: 95.2937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2411894890569695508
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579619687878129830}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -452,7 +452,7 @@ RectTransform:
   - {fileID: 2425622154094530424}
   - {fileID: 6112095217083070345}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -759,7 +759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6112095217083070345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -902,39 +902,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityOneButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1229756685272783236, guid: e8c078ec686155345b6043bd621c82ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1465535343196131040, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1465535343196131040, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1465535343196131040, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 1465535343196131040, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 1465535343196131040, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 174.64
       objectReference: {fileID: 0}
     - target: {fileID: 1465535343196131040, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -173.2214
       objectReference: {fileID: 0}
     - target: {fileID: 2416860450212256360, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593675567896962829, guid: e8c078ec686155345b6043bd621c82ce,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2703360142595502440, guid: e8c078ec686155345b6043bd621c82ce,
@@ -1337,6 +1347,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5084226014257382116, guid: e8c078ec686155345b6043bd621c82ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5087521800614132294, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_Sprite
@@ -1473,10 +1488,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7271994518580671085, guid: e8c078ec686155345b6043bd621c82ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7868757822839561240, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_Name
       value: AbilityTwoButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868757822839561240, guid: e8c078ec686155345b6043bd621c82ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8234346648038718284, guid: e8c078ec686155345b6043bd621c82ce,
+        type: 3}
+      propertyPath: m_Spacing.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8234346648038718284, guid: e8c078ec686155345b6043bd621c82ce,
+        type: 3}
+      propertyPath: m_Spacing.y
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8550172932485616291, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
@@ -1491,32 +1526,32 @@ PrefabInstance:
     - target: {fileID: 9205716129738161414, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9205716129738161414, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9205716129738161414, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 9205716129738161414, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 9205716129738161414, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 284.64
       objectReference: {fileID: 0}
     - target: {fileID: 9205716129738161414, guid: e8c078ec686155345b6043bd621c82ce,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -63.221405
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

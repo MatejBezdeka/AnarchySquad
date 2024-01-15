@@ -12,4 +12,8 @@ public class ShopUnit : ShopItemBase {
     protected override string GetItemName() {
         return name;
     }
+
+    public override Sprite GetSprite() {
+        return stats.Icon;
+    }
 }

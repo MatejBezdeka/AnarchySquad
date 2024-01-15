@@ -9,4 +9,8 @@ public class ShopWeapon : ShopItemBase {
     protected override string GetItemName() {
         return weapon.name;
     }
+
+    public override Sprite GetSprite() {
+        return weapon.Icon;
+    }
 }

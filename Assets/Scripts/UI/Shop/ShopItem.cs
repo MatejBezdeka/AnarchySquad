@@ -8,4 +8,8 @@ public class ShopItem : ShopItemBase
     protected override string GetItemName() {
         return "not implemented";
     }
+
+    public override Sprite GetSprite() {
+        return null;
+    }
 }

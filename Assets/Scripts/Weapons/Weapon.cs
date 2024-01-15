@@ -18,7 +18,7 @@ namespace Units {
         [SerializeField, Tooltip("How far will bullets without any damage penalty")] protected float effectiveRange;
         [SerializeField, Tooltip("How far will bullets go")] protected float maxEffectiveRange;
         [SerializeField, Range(0.01f,1.15f)] float Spread;
-        [FormerlySerializedAs("img")] [SerializeField] Sprite icon;
+        [SerializeField] Sprite icon;
         int currentAmmo;
         protected float currentCooldown = 0;
         Unit unit;
