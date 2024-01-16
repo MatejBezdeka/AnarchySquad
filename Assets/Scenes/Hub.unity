@@ -4460,15 +4460,15 @@ MonoBehaviour:
   itemPrefab: {fileID: 8175060594449953475, guid: 3f89bf9970331b740bf4158d15ff8e57,
     type: 3}
   unitStats:
-  - {fileID: 11400000, guid: 89bffd964eb533846bdfdcfdffa658db, type: 2}
-  - {fileID: 11400000, guid: 7eabd27cc8fc33c459c825a6d8647572, type: 2}
-  - {fileID: 11400000, guid: b058284fc3c9e6341b17788834643670, type: 2}
+  - {fileID: 11400000, guid: 7581dadd708834a48873ba4941ce90dd, type: 2}
+  - {fileID: 11400000, guid: 2f6f5ae1026fb484e97689bc02db592b, type: 2}
+  - {fileID: 11400000, guid: bef305316cddc344cbb78200d9ef5878, type: 2}
   unitsShopGameObject: {fileID: 167753620}
   weapons:
-  - {fileID: 11400000, guid: bce4ed312a5b85441804502c6a68fd70, type: 2}
-  - {fileID: 11400000, guid: fead07cf5dadde6469207f3c57d76782, type: 2}
+  - {fileID: 11400000, guid: 9c31afbd0d61c1347a28627ddcd39c5f, type: 2}
   - {fileID: 11400000, guid: 41f0face380aa894193be437d03eb348, type: 2}
-  - {fileID: 11400000, guid: a5fd11d5fc7e966418a93fadc4efb02b, type: 2}
+  - {fileID: 11400000, guid: 807236b62ed529849a091faae88e78e8, type: 2}
+  - {fileID: 11400000, guid: 0394dc9aa30b8474eaef36036ae4158a, type: 2}
   weaponsShopGameObject: {fileID: 702693054}
   items: []
   itemsShopGameObject: {fileID: 125266763}

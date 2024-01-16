@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc6ffd154f14bd1a1ad552f2ad584d3, type: 3}
   m_Name: SMG 1
   m_EditorClassIdentifier: 
-  cost: 15
+  cost: 500
   description: smg
   bulletPrefab: {fileID: 2660651700256969146, guid: 48b0fd2765c962441b5909b59ea8ab9b,
     type: 3}
@@ -23,5 +23,5 @@ MonoBehaviour:
   effectiveRange: 20
   maxEffectiveRange: 30
   Spread: 0.192
-  icon: {fileID: 21300000, guid: f3d4d67b2a0b708478931598d62b3dbf, type: 3}
+  icon: {fileID: 21300000, guid: 267d8cc73fc803248bf280c1cc21f3a8, type: 3}
   burstSize: 6
