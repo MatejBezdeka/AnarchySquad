@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using SceneBridges;
 using TMPro;
 using UI;
+using Units;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour {
-    int points = 100;
+    int points = 1000;
     int selectedId;
     types selectedItemType;
     public static event Action<SquadUnit> addNewUnit; 
@@ -25,9 +26,9 @@ public class Shop : MonoBehaviour {
     [SerializeField] TextMeshProUGUI pointsText;
     [Header("Shop")] 
     [SerializeField] GameObject itemPrefab;
-    [SerializeField] List<ShopUnit> unitStats;
+    [SerializeField] List<Stats> unitStats;
     [SerializeField] GameObject unitsShopGameObject;
-    [SerializeField] List<ShopWeapon> weapons;
+    [SerializeField] List<Weapon> weapons;
     [SerializeField] GameObject weaponsShopGameObject;
     [SerializeField] List<ShopItem> items;
     [SerializeField] GameObject itemsShopGameObject;
@@ -47,19 +48,26 @@ public class Shop : MonoBehaviour {
         ShopButton.deselected += Deselect;
         IUnitButton.clickedUnitButton += ClickedUnit;
         StartMissionButton.startingGame += SaveUnitsForNextScene;
-        InstantiateList(unitsShopGameObject, new List<ShopItemBase>(unitStats));
-        InstantiateList(weaponsShopGameObject, new List<ShopItemBase>(weapons));
-        InstantiateList(itemsShopGameObject, new List<ShopItemBase>(items));
+        InstantiateList(unitsShopGameObject, new List<ShopItem>(unitStats));
+        InstantiateList(weaponsShopGameObject, new List<ShopItem>(weapons));
+        //InstantiateList(itemsShopGameObject, new List<ShopItemBase>(items));
         SelectedTeamMemberContainer.RemoveUnit += RemoveUnit;
+        SelectedTeamMemberContainer.RemoveElement += RemoveElement;
         plusMemberPrefab = Instantiate(plusMemberPrefab, containerGameObject.transform);
+        pointsSlider.maxValue = points;
+        UpdateSlider();        
     }
 
+    void UpdateSlider() {
+        pointsSlider.value = points;
+        pointsText.text = points + "/" + pointsSlider.maxValue;
+    }
 
-    void InstantiateList(GameObject body,List<ShopItemBase> list) {
+    void InstantiateList(GameObject body,List<ShopItem> list) {
         for (int i = 0; i < list.Count; i++) {
             var comp = Instantiate(itemPrefab).GetComponent<ShopButton>();
             comp.transform.parent = body.transform;
-            comp.type = GetEnumFromType(list[0].GetType());
+            comp.type = list[0].GetType();
             comp.id = i;
             comp.SetGraphics(list[i].itemName, list[i].Cost, list[i].GetSprite());
         }
@@ -81,20 +89,31 @@ public class Shop : MonoBehaviour {
                 return;
             }
         }
+
+        int cost = 0;
         switch (obj.Item2) { 
             case types.unit:
-                var newStats = unitStats[selectedId].Stats;
+                var newStats = unitStats[selectedId];
+                cost = newStats.Cost;
+                if (cost - (unitBlueprints[id].stats ? unitBlueprints[id].stats.Cost : 0) > points) return;
+                if (unitBlueprints[id].stats != null) RemoveElement(new Tuple<types, int>(types.unit, id)); 
                 newStats.unitName = Names.GetRandomName();
                 unitBlueprints[id].stats = newStats;
                 containers[id].SetStats(newStats);
                 break;
             case types.weapon:
-                var newWeapon = weapons[selectedId].Weapon;
+                var newWeapon = weapons[selectedId];
+                cost = newWeapon.Cost;
+                if (cost - (unitBlueprints[id].weapon ? unitBlueprints[id].weapon.Cost : 0) > points) return;
+                if (unitBlueprints[id].weapon != null) RemoveElement(new Tuple<types, int>(types.weapon, id)); 
                 unitBlueprints[id].weapon = newWeapon;
                 containers[id].SetWeapon(newWeapon);
                 break;
             case types.secondaryWeapon:
-                var newSecWeapon = weapons[selectedId].Weapon;
+                var newSecWeapon = weapons[selectedId];
+                cost = newSecWeapon.Cost;
+                if (cost - (unitBlueprints[id].secondaryWeapon ? unitBlueprints[id].secondaryWeapon.Cost : 0) > points) return;
+                if (unitBlueprints[id].secondaryWeapon != null) RemoveElement(new Tuple<types, int>(types.secondaryWeapon, id)); 
                 unitBlueprints[id].secondaryWeapon = newSecWeapon;
                 containers[id].SetSecondaryWeapon(newSecWeapon);
                 break;
@@ -102,9 +121,11 @@ public class Shop : MonoBehaviour {
                 //TODO:
                 break;
             default:
+                cost = 0;
                 break;
         }
-        
+        points -= cost;
+        UpdateSlider();
         //add or overwrite items on unit
     }
 
@@ -127,20 +148,6 @@ public class Shop : MonoBehaviour {
                 break;
         }
     }
-
-    types GetEnumFromType(Type item) {
-        if (item == typeof(ShopUnit)) {
-            return types.unit;
-        }
-        if (item == typeof(ShopWeapon)) {
-            return types.weapon;
-        }
-        if (item == typeof(ShopItem)) {
-            return types.item;
-        }
-
-        return types.unit;
-    }
     /*void RemoveUnit(int id) {
         foreach (var comp in containers) {
             if (comp.Unit == unit) {
@@ -150,7 +157,27 @@ public class Shop : MonoBehaviour {
             }
         }
     }*/
+    void RemoveElement(Tuple<types, int>obj) {
+        var unit = unitBlueprints[obj.Item2];
+        switch (obj.Item1) {
+            case types.unit:
+                points += unit.stats.Cost;
+                unit.stats = null;
+                break;
+            case types.weapon:
+                points += unit.weapon.Cost;
+                unit.weapon = null;
+                break;
+            case types.secondaryWeapon:
+                points += unit.secondaryWeapon.Cost;
+                unit.secondaryWeapon = null;
+                break;
+        }
+        UpdateSlider();
+    }
     void RemoveUnit(int id) {
+        points += unitBlueprints[id].GetCurrentValue();
+        UpdateSlider();
         unitBlueprints.RemoveAt(id);
         containers.RemoveAt(id);
         UpdateCount();

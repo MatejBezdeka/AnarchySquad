@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(menuName = "Units/Stats")]
-public class Stats : ScriptableObject {
+public class Stats : ShopItem {
+    [Header("stats")]
     [HideInInspector] public string unitName = "No name";
     [SerializeField, Range(1, 100)] int maxHp;
     int currentHp;
@@ -53,5 +54,13 @@ public class Stats : ScriptableObject {
     public void Start() {
         currentHp = MaxHp;
         currentStamina = maxStamina;
+    }
+
+    public override Shop.types GetType() {
+        return Shop.types.unit;
+    }
+
+    public override Sprite GetSprite() {
+        return icon;
     }
 }

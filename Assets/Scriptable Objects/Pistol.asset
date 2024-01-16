@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a571742f3fc440fb220ba010da212c2, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
+  cost: 1
+  description: "pistol\t"
   bulletPrefab: {fileID: 2660651700256969146, guid: 48b0fd2765c962441b5909b59ea8ab9b,
     type: 3}
   damage: 5
-  maxAmmo: 5
+  maxAmmo: 7
   timeBetweenShots: 2
-  reloadTime: 1
+  reloadTime: 5
   effectiveRange: 15
   maxEffectiveRange: 25
   Spread: 0

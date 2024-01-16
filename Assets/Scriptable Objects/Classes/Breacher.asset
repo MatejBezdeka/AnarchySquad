@@ -9,10 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67a201255e39fbb4195e9f5e7d98ff6a, type: 3}
+  m_Script: {fileID: 11500000, guid: c6745a745e80b564faefecf83ae37d00, type: 3}
   m_Name: Breacher
   m_EditorClassIdentifier: 
-  cost: 45
-  description: unit with higher accuracy and higher cost
-  stats: {fileID: 11400000, guid: 2f6f5ae1026fb484e97689bc02db592b, type: 2}
-  className: Breacher
+  cost: 25
+  description: breach with gim
+  unitName: Tann Petersen
+  maxHp: 25
+  armor: 5
+  speed: 1.5
+  maxStamina: 50
+  range: 20
+  accuracy: 6.01
+  maxEffectiveRange: 30
+  icon: {fileID: 21300000, guid: bd1eaf6262beea24681c3c962e55aeb3, type: 3}

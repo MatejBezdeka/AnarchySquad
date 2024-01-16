@@ -1,15 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName = "Shop/Item")]
-public class ShopItem : ShopItemBase
-{
-    //Item
-    protected override string GetItemName() {
-        return "not implemented";
+public abstract class ShopItem : ScriptableObject {
+    [Header("Shop item stats")]
+    [SerializeField] protected int cost;
+    public string itemName => GetItemName();
+    [SerializeField,TextArea(3,10)] protected string description;
+    public string Description => description;
+    public int Cost => cost;
+    public string GetItemName() {
+        return name;
     }
-
-    public override Sprite GetSprite() {
-        return null;
-    }
+    public abstract Shop.types GetType();
+    public abstract Sprite GetSprite();
 }

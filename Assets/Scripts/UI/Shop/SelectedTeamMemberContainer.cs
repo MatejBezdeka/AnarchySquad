@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SelectedTeamMemberContainer : IUnitButton {
     public static event Action<int> RemoveUnit;
+    public static event Action<Tuple<Shop.types, int>> RemoveElement;
     int id;
     Shop.types clickedButton;
     [Header("PlaceHolders")]
@@ -68,6 +69,8 @@ public class SelectedTeamMemberContainer : IUnitButton {
         unitName.text = placeHolderName;
         statsImage.sprite = placeholderStatsImg;
         statsRButton.SetActive(false);
+        RemoveElement!.Invoke(new Tuple<Shop.types, int>(Shop.types.unit, id));
+
     }
     public void SetWeapon(Weapon weapon) {
         weaponImg.sprite = weapon.Icon;
@@ -77,6 +80,8 @@ public class SelectedTeamMemberContainer : IUnitButton {
     void RemoveWeapon() {
         weaponImg.sprite = placeholderWeaponImg;
         weaponRButton.SetActive(false);
+        RemoveElement!.Invoke(new Tuple<Shop.types, int>(Shop.types.weapon, id));
+
     }
     public void SetSecondaryWeapon(Weapon weapon) {
         secondaryWeaponImg.sprite = weapon.Icon;
@@ -85,6 +90,7 @@ public class SelectedTeamMemberContainer : IUnitButton {
     void RemoveSecondaryWeapon() {
         secondaryWeaponImg.sprite = placeholderWeaponImg;
         secondaryWeaponRButton.SetActive(false);
+        RemoveElement!.Invoke(new Tuple<Shop.types, int>(Shop.types.secondaryWeapon, id));
     }
     /*public void SetUnit(SquadUnit unit, int id) {
         this.id = id;

@@ -10,4 +10,21 @@ public class UnitBlueprint {
     public bool IsValid() {
         return stats != null && weapon != null;
     }
+
+    public int GetCurrentValue() {
+        int value = 0;
+        if (stats != null) {
+            value += stats.Cost;
+        }
+
+        if (weapon != null) {
+            value += weapon.Cost;
+        }
+
+        if (secondaryWeapon != null) {
+            value += secondaryWeapon.Cost;
+        }
+
+        return value;
+    }
 }

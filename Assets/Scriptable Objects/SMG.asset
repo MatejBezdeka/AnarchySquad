@@ -9,17 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7f220e4e72f43f2acdbcc6775455a32, type: 3}
-  m_Name: Shotgun 1
+  m_Script: {fileID: 11500000, guid: 9bc6ffd154f14bd1a1ad552f2ad584d3, type: 3}
+  m_Name: SMG
   m_EditorClassIdentifier: 
+  cost: 15
+  description: smg
   bulletPrefab: {fileID: 2660651700256969146, guid: 48b0fd2765c962441b5909b59ea8ab9b,
     type: 3}
   damage: 10
-  maxAmmo: 6
-  timeBetweenShots: 2
-  reloadTime: 10
-  effectiveRange: 5
-  maxEffectiveRange: 15
-  Spread: 0.296
-  icon: {fileID: 21300000, guid: 34c52e30cdda7d94899bec8786e44bbe, type: 3}
-  pelletCount: 10
+  maxAmmo: 30
+  timeBetweenShots: 2.5
+  reloadTime: 6
+  effectiveRange: 20
+  maxEffectiveRange: 30
+  Spread: 0.192
+  icon: {fileID: 21300000, guid: f3d4d67b2a0b708478931598d62b3dbf, type: 3}
+  burstSize: 6
