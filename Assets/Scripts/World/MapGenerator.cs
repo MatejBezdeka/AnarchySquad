@@ -191,7 +191,6 @@ public class MapGenerator : MonoBehaviour {
     public Vector3 SpawnCubePosition() {
         Vector3 point = CoordToPosition(playerSpawn.x, playerSpawn.y);
         point.y += tileSize / 2;
-        Debug.Log(point);
         return point;
     }
 }

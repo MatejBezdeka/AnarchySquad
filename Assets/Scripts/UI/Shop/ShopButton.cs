@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class ShopButton : MonoBehaviour {
     public static Action deselected;
+    static Action buttonSelected;
     public static event Action<Tuple<Shop.types, int>> itemClicked;
     public static event Action<Tuple<Shop.types, int>> showDescription;
     public static event Action hideDescription;
@@ -15,10 +16,13 @@ public class ShopButton : MonoBehaviour {
     [SerializeField] TextMeshProUGUI costText;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] Image image;
+    private Button button;
     //[SerializeField] private TextMeshProUGUI priceText;
     void Start() {
-        GetComponent<Button>().onClick.AddListener(Clicked);
+        button = GetComponent<Button>();
+        button.onClick.AddListener(Clicked);
         transform.localScale = Vector3.one;
+        buttonSelected += () => { button.interactable = true; };
     }
 
     public void SetGraphics(string name, int cost, Sprite image) {
@@ -34,6 +38,8 @@ public class ShopButton : MonoBehaviour {
     }
     void Clicked() {
         itemClicked!.Invoke(new Tuple<Shop.types, int>(type, id));
+        buttonSelected.Invoke();
+        button.interactable = false;
     }
 
     public void Selected() {

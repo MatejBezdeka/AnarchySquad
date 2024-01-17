@@ -93,7 +93,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _MaxValue: 1
-    - _Metalic: 0.5
+    - _Metalic: 0
     - _Metallic: 0
     - _MinValue: 0
     - _Mode: 0
@@ -106,7 +106,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Strength: 1
+    - _Strength: 93.94
     - _Surface: 0
     - _Top_Strength: 0.93
     - _UVSec: 0
@@ -116,7 +116,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _BottomColor: {r: 0.23137252, g: 0.8862745, b: 0.51473886, a: 1}
-    - _Bottom_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
+    - _Bottom_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
     - _Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
     - _Color_1: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

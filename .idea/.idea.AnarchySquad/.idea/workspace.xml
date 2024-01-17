@@ -6,46 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Assault Rifle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Assault Rifle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/BreacherStats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/BreacherStats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/ScoutStats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/ScoutStats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/TankStats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/TankStats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Pistol.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Pistol.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/ShopAssaultRifle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/ShopAssaultRifle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/ShopPistol.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/ShopPistol.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Shotgun 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Shotgun 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Shotgun.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Shotgun.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SniperRifle 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SniperRifle 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SniperRifle.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SniperRifle.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/SelectedTeamMemberContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/SelectedTeamMemberContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/Shop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopItem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopItem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopItemBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopItemBase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopUnit.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopUnit.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopWeapon.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopWeapon.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitBlueprint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitBlueprint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Pistol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Pistol.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bezdeka_dokumentaceAS.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Bezdeka_dokumentaceAS.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/UI/Grow Button.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/UI/Grow Button.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/ShopButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/ShopButton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/PointArrowTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/PointArrowTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,10 +87,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15276">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="15276" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />

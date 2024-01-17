@@ -127,7 +127,6 @@ public class PlayerControl : MonoBehaviour {
         //currentMove.y = 0;
         currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20, Time.fixedDeltaTime);
         //check boundaries for camera to not go too far or too close
-        Debug.Log(currentInputZoom);
         if (ZoomDistanceCheck(currentInputZoom)) {
             currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20, Time.fixedDeltaTime);
         }
