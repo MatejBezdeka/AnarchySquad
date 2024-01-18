@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class SelectedTeamMemberContainer : IUnitButton {
     public static event Action<int> RemoveUnit;
     public static event Action<Tuple<Shop.types, int>> RemoveElement;
+    public static event Action hideDescription;
+    public static event Action<int> showUnitDescription;
     int id;
     Shop.types clickedButton;
     [Header("PlaceHolders")]
@@ -46,7 +48,7 @@ public class SelectedTeamMemberContainer : IUnitButton {
         unitName.text = placeHolderName;
         
     }
-
+    
     protected override int GetId() {
         return id;
     }
@@ -104,5 +106,12 @@ public class SelectedTeamMemberContainer : IUnitButton {
     void RemoveButtonClicked() {
         RemoveUnit?.Invoke(id);
         Destroy(gameObject);
+    }
+    public void PointerEnter() {
+        Debug.Log("aa");
+        showUnitDescription!.Invoke(id);
+    }
+    public void PointerExit() {
+        hideDescription!.Invoke();
     }
 }

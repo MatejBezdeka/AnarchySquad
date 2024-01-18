@@ -17,9 +17,14 @@ public class UnitFactory : MonoBehaviour {
         SquadUnit comp = newUnit.GetComponent<SquadUnit>();
         comp.UnitName = blueprint.name;
         comp.stats = blueprint.stats;
-        comp.weapon = blueprint.weapon;
-        if (blueprint.secondaryWeapon) {
-            comp.secondaryWeapon = blueprint.secondaryWeapon;
+        if (blueprint.useSecAsMain) {
+            comp.weapon = blueprint.secondaryWeapon;
+        }
+        else {
+            comp.weapon = blueprint.weapon;
+            if (blueprint.secondaryWeapon) {
+                comp.secondaryWeapon = blueprint.secondaryWeapon;
+            }
         }
         return comp;
     }

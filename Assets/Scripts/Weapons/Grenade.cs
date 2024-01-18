@@ -27,9 +27,7 @@ public class Grenade : MonoBehaviour {
             if (collision.tag == "Squader" && hitSquaders) {
                 collision.GetComponent<Unit>().GetHit(damage);
             }
-            Debug.Log(collision.name);
         }
-        Debug.Log("ded");
         Destroy(gameObject);
     }
 }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6745a745e80b564faefecf83ae37d00, type: 3}
-  m_Name: Tank
+  m_Name: Marksman
   m_EditorClassIdentifier: 
-  cost: 45
-  description: tank it
-  maxHp: 52
-  armor: 33.2
-  speed: 0.67
-  maxStamina: 20
-  accuracy: 6.56
-  icon: {fileID: 21300000, guid: 4ff4ed7986c4e9a45a0c56ff37c3d4be, type: 3}
+  cost: 100
+  description: 
+  maxHp: 30
+  armor: 5
+  speed: 1.5
+  maxStamina: 30
+  accuracy: 10
+  icon: {fileID: 21300000, guid: 666759b5af7b1ac4a82dda4fb6b79c63, type: 3}

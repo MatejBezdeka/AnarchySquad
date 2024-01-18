@@ -2113,6 +2113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7462003152933570862}
   - component: {fileID: 6565939515046123610}
+  - component: {fileID: 7594992740834540298}
   m_Layer: 5
   m_Name: TeamMember
   m_TagString: Untagged
@@ -2178,3 +2179,48 @@ MonoBehaviour:
   secondaryWeaponAddButton: {fileID: 1454964658641134607}
   secondaryWeaponRemoveButton: {fileID: 6351239846721813453}
   secondaryWeaponRButton: {fileID: 3861816821654036667}
+--- !u!114 &7594992740834540298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9177208608969291808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6565939515046123610}
+          m_TargetAssemblyTypeName: SelectedTeamMemberContainer, Assembly-CSharp
+          m_MethodName: PointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6565939515046123610}
+          m_TargetAssemblyTypeName: SelectedTeamMemberContainer, Assembly-CSharp
+          m_MethodName: PointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

@@ -25,18 +25,20 @@ public class Unit : MonoBehaviour {
     public float LaunchAngle => launchAngle;
     public float MaxGrenadeDistance => maxGrenadeDistance;
     protected Unit targetedUnit;
-    public int CurrentHp { get; private set; }
-    public float CurrentStamina { get; private set; }
-    public int CurrentAmmo { get; private set; }
-    protected int SecondaryAmmo; 
+    public int CurrentHp { get; protected set; }
+    public float CurrentStamina { get; protected set; }
+    public int CurrentAmmo { get; protected set; }
+    protected int secondaryAmmo; 
     public string UnitName = "No name";
     protected virtual void Start() {
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = stats.Speed;
+        agent.angularSpeed *= 2;
         CurrentHp = stats.MaxHp;
         CurrentStamina = stats.MaxStamina;
         CurrentAmmo = weapon.MaxAmmo;
         if (secondaryWeapon) {
-            SecondaryAmmo = secondaryWeapon.MaxAmmo;
+            secondaryAmmo = secondaryWeapon.MaxAmmo;
         }
     }
     public float Sprint() {

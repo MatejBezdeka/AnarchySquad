@@ -7,6 +7,7 @@ using UI;
 using Units;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ public class Shop : MonoBehaviour {
     int points = 1000;
     int selectedId;
     types selectedItemType;
-    public static event Action<SquadUnit> addNewUnit; 
+    public static event Action<SquadUnit> addNewUnit;
     public enum types {
         none,unit,weapon,secondaryWeapon,item
     }
@@ -24,6 +25,8 @@ public class Shop : MonoBehaviour {
     [Header("Points Slider")] 
     [SerializeField] Slider pointsSlider;
     [SerializeField] TextMeshProUGUI pointsText;
+    [Header("Error message")]
+    [SerializeField] ErrorMessage errorMessageManager;
     [Header("Shop")] 
     [SerializeField] GameObject itemPrefab;
     [SerializeField] List<Stats> unitStats;
@@ -53,6 +56,8 @@ public class Shop : MonoBehaviour {
         //InstantiateList(itemsShopGameObject, new List<ShopItemBase>(items));
         SelectedTeamMemberContainer.RemoveUnit += RemoveUnit;
         SelectedTeamMemberContainer.RemoveElement += RemoveElement;
+        SelectedTeamMemberContainer.hideDescription += HideDescription;
+        SelectedTeamMemberContainer.showUnitDescription += ShowUnitDescription;
         plusMemberPrefab = Instantiate(plusMemberPrefab, containerGameObject.transform);
         pointsSlider.maxValue = points;
         UpdateSlider();        
@@ -136,18 +141,23 @@ public class Shop : MonoBehaviour {
         //subtract points
     }
     void ShowDescription(Tuple<types, int> identification) {
-        description.SetActive(true);
         switch (identification.Item1) {
             case types.unit:
-                descriptionText.text = unitStats[identification.Item2].Description;
+                descriptionText.text = unitStats[identification.Item2].GetDescription();
+                //descriptionText.text = unitStats[identification.Item2].Description;
                 break;
             case types.weapon:
-                descriptionText.text = weapons[identification.Item2].Description;
+                descriptionText.text = weapons[identification.Item2].GetDescription();
+                //descriptionText.text = weapons[identification.Item2].Description;
                 break;
             case types.item:
                 descriptionText.text = items[identification.Item2].Description;
                 break;
         }
+    }
+
+    void ShowUnitDescription(int id) {
+        descriptionText.text = unitBlueprints[id].GetDescription();
     }
     /*void RemoveUnit(int id) {
         foreach (var comp in containers) {
@@ -207,7 +217,8 @@ public class Shop : MonoBehaviour {
         }
     }
     void HideDescription() {
-        description.SetActive(false);
+        descriptionText.text = "";
+        //description.SetActive(false);
     }
 
     void Deselect() {
@@ -216,13 +227,21 @@ public class Shop : MonoBehaviour {
         selectedItemType = types.none;
     }
     void SaveUnitsForNextScene() {
+        if (unitBlueprints.Count == 0) {
+            errorMessageManager.SetErrorMessage("You need at least 1 unit!");
+            return;
+        }
         foreach (var comp in unitBlueprints) {
             if (!comp.IsValid()) {
+                errorMessageManager.SetErrorMessage("Every unit needs class and at least 1 weapon!");
                 return;
             }
         }
         foreach (var comp in unitBlueprints) {
             SquadParameters.Units.Add(comp);    
         }
+
+        SceneManager.LoadSceneAsync("LoadingScene");
+        SceneManager.LoadSceneAsync("Battlefield");
     }
 }

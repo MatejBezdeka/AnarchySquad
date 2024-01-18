@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8926659569415803853}
   - component: {fileID: 830159433488083691}
   - component: {fileID: 6411595062142441171}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Anarchist
   m_Icon: {fileID: 0}
@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6849713316551132462}
-  m_LocalRotation: {x: -0, y: -0.46560657, z: -0, w: -0.8849919}
+  m_LocalRotation: {x: -0, y: -0.4656067, z: 0, w: -0.88499177}
   m_LocalPosition: {x: -4.3636613, y: 6, z: -2.032}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 415.499, z: 0}
 --- !u!33 &3781138811666936490
 MeshFilter:
@@ -99,13 +99,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 428bc9961a581fa409489bd317a50872, type: 2}
-  weapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 9c31afbd0d61c1347a28627ddcd39c5f, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: 9c31afbd0d61c1347a28627ddcd39c5f, type: 2}
   debugSphereMaterial: {fileID: 2100000, guid: 68d6cbbe98a604745b24ed1ebd19430b, type: 2}
   selectMaterial: {fileID: 2100000, guid: 69e42600b5e857f48a2d89d013785895, type: 2}
   responseTime: 0.5
-  grenadePrefab: {fileID: 754246055655193558, guid: b845c9ada5f169b49b852f90f869d686, type: 3}
   muzzle: {fileID: 0}
+  agent: {fileID: 0}
+  grenadePrefab: {fileID: 754246055655193558, guid: b845c9ada5f169b49b852f90f869d686,
+    type: 3}
+  maxGrenadeDistance: 0
+  launchAngle: 35
+  UnitName: No name
 --- !u!65 &830159433488083691
 BoxCollider:
   m_ObjectHideFlags: 0

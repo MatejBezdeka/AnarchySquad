@@ -85,6 +85,9 @@ namespace Camera {
                 case "Floor":
                     if (player.selectedUnits.Count > 0) {
                         for (int i = 0; i < player.selectedUnits.Count; i++) {
+                            if (player.selectedUnits[i].CurrentState.GetType() == typeof(AttackUnitState)) {
+                                player.selectedUnits[i].SetNewState(new NormalUnitState(player.selectedUnits[i]));
+                            }
                             Vector3 position = hit.point.GetRotatedVector3(player.selectedUnits.Count, i);
                             player.selectedUnits[i].SetDestination(position);
                             player.MakePointWhereUnitIsMoving(position);
@@ -94,8 +97,9 @@ namespace Camera {
                 case "Squader":
                     break;
                 case "Anarchist":
+                    var anarchist = hit.transform.gameObject.GetComponent<Unit>();
                     foreach (SquadUnit unit in player.selectedUnits) {
-                        unit.SetTarget(hit.transform.gameObject.GetComponent<Unit>());
+                        unit.SetNewState(new AttackUnitState(unit, anarchist));
                     }
                     break;
                 case "Obstacle":

@@ -27,7 +27,7 @@ public class Weapon : ShopItem {
     [SerializeField, Tooltip("How far will bullets go")]
     protected float maxEffectiveRange;
 
-    [SerializeField, Range(0.01f, 1.15f)] float Spread;
+    [SerializeField, Range(0.01f, 1.15f)] protected float Spread;
     [SerializeField] Sprite icon;
     public Sprite Icon => icon;
     
@@ -69,5 +69,10 @@ public class Weapon : ShopItem {
 
     public override Sprite GetSprite() {
         return icon;
+    }
+
+    public virtual string GetDescription() {
+        return name + "\n" + "Bullet dmg: " + damage + "\nAmmo: " + maxAmmo + "\nCooldown: " + timeBetweenShots + "\nRange: 0 - " +
+               effectiveRange + " - " + maxEffectiveRange + "\nSpread: " + Spread + "\n";
     }
 }

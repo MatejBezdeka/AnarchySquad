@@ -8,20 +8,16 @@ public class Stats : ShopItem {
     [SerializeField, Range(1,100)] float armor;
     [SerializeField, Range(0.1f,5)] float speed;
     [SerializeField, Range(20, 200)] float maxStamina;
-    [SerializeField, Range(1,100)] float range;
     [SerializeField, Range(1,10)] float accuracy;
-    [SerializeField, Range(1, 100)] float maxEffectiveRange;
     [SerializeField] protected Sprite icon;
-    Unit[] enemiesInRange;
+    //Unit[] enemiesInRange;
 
     #region getters
     public int MaxHp => maxHp;
     public float Armor => armor;
     public float Speed => speed;
     public float MaxStamina => maxStamina;
-    public float Range => range;
     public float Accuracy => accuracy;
-    public float MaxEffectiveRange => maxEffectiveRange;
     public Sprite Icon => icon;
     #endregion
 
@@ -31,5 +27,10 @@ public class Stats : ShopItem {
 
     public override Sprite GetSprite() {
         return icon;
+    }
+
+    public string GetDescription() {
+        return name + "\n" + "Hp: " + maxHp + "\nArmor: " + armor + "\nSpeed: " + speed + "\nStamina: " + maxStamina + "\nAccuracy: " +
+               Accuracy + "\n";
     }
 }

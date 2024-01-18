@@ -9,12 +9,13 @@ public static class Extensions
         distance = (float) Math.Sqrt(Math.Pow(unit.position.x - point.position.x,2) + Math.Pow(unit.position.y - point.position.y,2));
     }
     public static bool TargetVisibility(this Transform transform, Vector3 targetPos, string tag) {
-        //Debug.Log("visible");
-        Physics.Raycast(new Ray( transform.position, targetPos), out RaycastHit hit, 999);
+        Physics.Raycast(new Ray(transform.position, targetPos - transform.position), out RaycastHit hit, 299);
+        //Debug.DrawRay(transform.position, targetPos - transform.position,Color.red, 1);
+        Debug.Log(tag + " " + hit.transform.tag);
         if (hit.transform.CompareTag(tag)) {
+
             return true;
         }
-        //Obstacle in way
         return false;
     }
 
@@ -31,7 +32,6 @@ public static class Extensions
         System.Random rn = new System.Random(seed);
         for (int i = 0; i < array.Length-1; i++) {
             int randomIndex = rn.Next(i, array.Length);
-            
             T temp = array[randomIndex];
             array[randomIndex] = array[i];
             array[i] = temp;

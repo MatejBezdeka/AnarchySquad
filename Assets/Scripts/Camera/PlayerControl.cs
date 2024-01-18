@@ -37,6 +37,7 @@ public class PlayerControl : MonoBehaviour {
     // Events
     public static Action<float> changedTime;
     public static event Action<Unit> selectedNewUnit;
+    public static event Action<Unit> deselectUnit;
     public event Action leftMouseButtonClicked;
     public event Action rightMouseButtonClicked;
     public event Action escButtonClicked;
@@ -45,7 +46,7 @@ public class PlayerControl : MonoBehaviour {
     PlayerInput playerInput;
     bool timeStopped = false;
     RaycastHit currentHit;
-    public List<Unit> selectedUnits { get; private set; } = new List<Unit>();
+    public List<SquadUnit> selectedUnits { get; private set; } = new List<SquadUnit>();
     public Unit selectedUnit { get; private set; }
     //states
     PlayerState currentState;
@@ -185,6 +186,7 @@ public class PlayerControl : MonoBehaviour {
         for (int i = 0; i < selectedUnits.Count; i++) {
             if (selectedUnits[i] == unit) {
                 unit.Deselect();
+                deselectUnit?.Invoke(unit);
                 selectedUnits.Remove(unit);
                 UpdateProfile();
                 return;

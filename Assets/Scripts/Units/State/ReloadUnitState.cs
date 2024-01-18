@@ -21,7 +21,9 @@ public class ReloadUnitState : UnitState {
     }
     protected override void UpdateState() {
         currentCooldown += Time.deltaTime;
-        unit.InvokeReloading(reloadTime-currentCooldown);
+        if (unit.selected) {
+            unit.InvokeReloading(reloadTime - currentCooldown);
+        }
         if (currentCooldown > reloadTime) {
             unit.Reloaded();
             reloaded = true;

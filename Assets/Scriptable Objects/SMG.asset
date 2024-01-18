@@ -16,12 +16,13 @@ MonoBehaviour:
   description: smg
   bulletPrefab: {fileID: 2660651700256969146, guid: 48b0fd2765c962441b5909b59ea8ab9b,
     type: 3}
-  damage: 10
-  maxAmmo: 30
+  damage: 9
+  maxAmmo: 24
   timeBetweenShots: 2.5
-  reloadTime: 6
+  reloadTime: 4
   effectiveRange: 20
-  maxEffectiveRange: 30
+  maxEffectiveRange: 25
   Spread: 0.192
-  icon: {fileID: 21300000, guid: f3d4d67b2a0b708478931598d62b3dbf, type: 3}
-  burstSize: 6
+  icon: {fileID: 21300000, guid: 0c3a9103270d6764db1dae0c52b30cf3, type: 3}
+  burstSize: 3
+  timeBetweenBullets: 0.1

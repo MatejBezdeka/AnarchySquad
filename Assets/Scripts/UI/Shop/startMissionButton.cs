@@ -7,13 +7,12 @@ namespace UI {
     public class StartMissionButton : MonoBehaviour {
         public static event Action startingGame;
         private void Start() {
-            GetComponent<Button>().onClick.AddListener(StartMission);
+            
+            GetComponent<Button>().onClick.AddListener(Clicked);
         }
 
-        void StartMission() {
+        void Clicked() {
             startingGame?.Invoke();
-            SceneManager.LoadSceneAsync("LoadingScene");
-            SceneManager.LoadSceneAsync("Battlefield");
         }
     }
 }

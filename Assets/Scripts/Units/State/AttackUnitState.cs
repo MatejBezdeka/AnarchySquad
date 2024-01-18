@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Units;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class AttackUnitState : UnitState {
     Unit target;
-    bool conditionsMet = false;
     bool attacking = false;
     float currentCooldown = 0;
     int currentBurst = 0;
@@ -16,35 +16,37 @@ public class AttackUnitState : UnitState {
     protected override void Enter() {
         //StartCoroutine(CheckConditions());
         unit.needToReload += Reload;
-        unit.SetTarget(target);
         base.Enter();
     }
 
     protected override void UpdateState() {
-        currentCooldown += Time.deltaTime;
-        unit.weapon.UpdateWeapon(unit, target, ref attacking,ref currentBurst, ref currentCooldown);
+        if (CheckConditions()) {
+            unit.transform.Rotate(Vector3.RotateTowards(unit.transform.forward, target.transform.position - unit.transform.position, 5, 5));
+            currentCooldown += Time.deltaTime;
+            unit.weapon.UpdateWeapon(unit, target, ref attacking,ref currentBurst, ref currentCooldown);
+        }
     }
 
-    IEnumerator CheckConditions() {
-        WaitForSeconds waitTime = new WaitForSeconds(0.2f);
-        while (!conditionsMet) {
+    bool CheckConditions() {
             if (!unit.transform.TargetDistance(target.transform.position, unit.weapon.EffectiveRange)) {
                 unit.Agent.SetDestination(target.transform.position);
-                yield return waitTime;
+                currentCooldown /= 2;
+                return false;
             }
             if (!unit.transform.TargetVisibility(target.transform.position, "Anarchist")) {
                 unit.Agent.SetDestination(target.transform.position);
-                yield return waitTime;
+                currentCooldown /= 2;
+                return false;
             }
-            unit.Agent.SetDestination(unit.transform.position);
-            conditionsMet = true;
-        }
+            unit.Agent.ResetPath();
+            return true;
     }
 
     void Reload(float reloadTime) {
         Exit(new ReloadUnitState(unit, reloadTime, this));
     }
     protected override void Exit(UnitState state) {
+        unit.Agent.ResetPath();
         base.Exit(state);
     }
     

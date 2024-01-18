@@ -30,5 +30,9 @@ namespace Units {
                 }
             }
         }
+        public override string GetDescription() {
+            return name + "\n" + "Bullet dmg: " + damage + "\nAmmo: " + maxAmmo + "\nCooldown: " + timeBetweenShots + "\nRange: 0 - " +
+                   effectiveRange + " - " + maxEffectiveRange + "\nSpread: " + Spread+ "\nBurst Size: " + burstSize + "\n";
+        }
     }
 }

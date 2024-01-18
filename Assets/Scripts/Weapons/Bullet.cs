@@ -13,8 +13,9 @@ namespace Units {
         float distance;
         public void StartBullet(Unit shotBy) {
             start = shotBy.transform.position;
-            range = shotBy.weapon.Damage;
+            range = shotBy.weapon.EffectiveRange;
             maxRange = shotBy.weapon.MaxEffectiveRange;
+            
         }
 
         void Update() {

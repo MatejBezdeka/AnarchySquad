@@ -10,28 +10,22 @@ public class SquadUnit : Unit {
     public event Action updateUI;
     public event Action<float> reloading;
     public event Action<float> startReloading;
+    public event Action<float> switching;
+    public event Action<float> startSwitching;
     UnitState currentState;
-    GameObject selectionPlane;
+    [SerializeField] GameObject selectionIndicator;
     public bool selected { get; private set; } = false;
     [SerializeField] Material trajectoryLine;
+    public UnitState CurrentState => currentState;
     protected override void Start() {
         
         base.Start();
-        Debug.Log("start");
         /*GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         debugSphere.transform.localScale = new Vector3(stats.MaxEffectiveRange,stats.MaxEffectiveRange, stats.MaxEffectiveRange);
         debugSphere.transform.parent = transform;
         debugSphere.transform.localPosition = new Vector3(0, 0, 0);
         debugSphere.GetComponent<MeshRenderer>().material = debugSphereMaterial;
         Destroy(debugSphere.GetComponent<SphereCollider>());*/
-
-        /*selectionPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        selectionPlane.transform.localScale = new Vector3(1, 1, 1);
-        selectionPlane.transform.parent = transform;
-        selectionPlane.transform.localPosition = new Vector3(0, -0.49f, 0);
-        selectionPlane.GetComponent<MeshRenderer>().material = selectMaterial;
-        selectionPlane.SetActive(false);*/
-        //currentState = this.gameObject.AddComponent<NormalUnitState>();
         currentState = new NormalUnitState(this);
     }
 
@@ -42,25 +36,17 @@ public class SquadUnit : Unit {
         stats.Start();
         weapon.Start();
     }*/
-    public void SetTarget(Unit target) {
-        targetedUnit = target;
-        currentState.ForceChangeState(new AttackUnitState(this,targetedUnit));
-        //weapon.LockOn(target.gameObject, , this, agent);
-        //checkVisibilty
-        //checkDistance
-        //shoot
-    }
 
     public override void GetHit(int damage) {
         base.GetHit(damage);
     }
     public void Select() {
-        //selectionPlane.SetActive(true);
+        selectionIndicator.SetActive(true);
         selected = true;
     }
 
     public void Deselect() {
-        //selectionPlane.SetActive(false);
+        selectionIndicator.SetActive(false);
         selected = false;
     }
     void Update() {
@@ -75,9 +61,16 @@ public class SquadUnit : Unit {
     public void InvokeStartReloading(float time) {
         startReloading?.Invoke(time);
     }
+    public void InvokeSwitching(float time) {
+        switching?.Invoke(time);
+    }
+
+    public void InvokeStartSwitching(float time) {
+        startSwitching?.Invoke(time);
+    }
     public void ToggleSprint() {
         if (currentState is RunUnitState) { currentState.ForceChangeState(new NormalUnitState(this)); }
-        currentState.ForceChangeState(new RunUnitState(this));
+        else currentState.ForceChangeState(new RunUnitState(this));
     }
 
     public void ReloadNow() {
@@ -85,5 +78,20 @@ public class SquadUnit : Unit {
         currentState.ForceChangeState(new ReloadUnitState(this, weapon.ReloadTime));
     }
 
-    
+    public void SetNewState(UnitState newState) {
+        currentState.ForceChangeState(newState);
+    }
+
+    public void StartSwitchingWeaponsNow() {
+        if (currentState is SwitchWeaponState) { return; }
+        currentState.ForceChangeState(new SwitchWeaponState(this));
+    }
+    public void SwapWeapons() {
+        Weapon temp = weapon;
+        int tempAmmo = CurrentAmmo;
+        weapon = secondaryWeapon;
+        CurrentAmmo = secondaryAmmo;
+        secondaryWeapon = temp;
+        secondaryAmmo = tempAmmo;
+    }
 }

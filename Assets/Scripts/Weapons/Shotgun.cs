@@ -9,5 +9,9 @@ namespace Units {
                 base.Shoot(unit, target);
             }
         }
+        public override string GetDescription() {
+            return name + "\n" + "Bullet dmg: " + damage + "\nAmmo: " + maxAmmo + "\nCooldown: " + timeBetweenShots + "\nRange: 0 - " +
+                   effectiveRange + " - " + maxEffectiveRange + "\nSpread: " + Spread+ "\nPellet count: " + pelletCount + "\n";
+        }
     }
 }

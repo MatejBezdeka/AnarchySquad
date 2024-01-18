@@ -11,6 +11,7 @@ public class CanvasManager : MonoBehaviour {
     
     [Header("Objective & Time")]
     [SerializeField] TextMeshProUGUI timeText;
+    [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI objectiveText;
     [Header("Portraits")]
     [SerializeField] GameObject portraitContainer;
@@ -27,6 +28,7 @@ public class CanvasManager : MonoBehaviour {
 
     void Start() {
         portraits = new List<Portrait>();
+        StartCoroutine(Clock());
         if (GameManager.instance.units == null) {
             return;
         }
@@ -38,21 +40,29 @@ public class CanvasManager : MonoBehaviour {
         
     }
 
-    void Update() {
-        timeCooldown += Time.deltaTime;
-        if (timeCooldown >= 1) {
-            timeCooldown -= 1;
+    IEnumerator Clock() {
+        WaitForSecondsRealtime waitForSecondsRealtime = new WaitForSecondsRealtime(1);
+        //WaitForSeconds waitForSeconds = new WaitForSeconds(1);
+        while (true) {
             seconds++;
             if (seconds == 60) {
                 minutes++;
-                seconds = 0;
-                ChangeTimeLabelText( minutes + ":" + seconds);
+                seconds = 0; 
             }
+            ChangeTimerLabelText(minutes + ":" + (seconds < 10? "0" : "")+ seconds);
+            yield return waitForSecondsRealtime;
         }
+    }
+    void Update() {
+        
     }
     
     public void ChangeTimeLabelText(string text) {
         timeText.text = text;
+    }
+
+    void ChangeTimerLabelText(string text) {
+        timerText.text = text;
     }
 
     

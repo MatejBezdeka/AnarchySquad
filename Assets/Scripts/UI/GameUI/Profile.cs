@@ -29,23 +29,29 @@ public class Profile : MonoBehaviour
     Unit currentUnit;
     bool isPlayerUnit;
     bool reloading = false;
-    float reloadTime;
+    bool switching = false;
+    float timeRemaining;
 
     void Start() {
         PlayerControl.selectedNewUnit += UpdateProfile;
         reloadButton.onClick.AddListener(ReloadButtonClicked);
         runButton.onClick.AddListener(RunButtonClicked);
         grenadeButton.onClick.AddListener(GrenadeButtonClicked);
+        switchButton.onClick.AddListener(SwitchWeaponsClicked);
     }
 
     void UpdateData() {
         hpSlider.value = currentUnit.CurrentHp;
         hpText.text = currentUnit.CurrentHp + "/" + currentUnit.stats.MaxHp;
-        if (reloading) {
-            ammoText.text = "Reloading (" + reloadTime.ToString("F1") + "s)";
-            ammoSlider.value = ammoSlider.maxValue - reloadTime;
+        if (reloading && (int)timeRemaining != -1) {
+            ammoText.text = "Reloading (" + timeRemaining.ToString("F1") + "s)";
+            ammoSlider.value = ammoSlider.maxValue - timeRemaining;
+        }else if (switching && (int)timeRemaining != -1) {
+            ammoText.text = "Switching (" + timeRemaining.ToString("F1") + "s)";
+            ammoSlider.value = ammoSlider.maxValue - timeRemaining;
         }
         else {
+            ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
             ammoText.text = currentUnit.CurrentAmmo + "/" + currentUnit.weapon.MaxAmmo;
             ammoSlider.value = currentUnit.CurrentAmmo;
         }
@@ -65,10 +71,12 @@ public class Profile : MonoBehaviour
                 squader.updateUI += UpdateData;
                 squader.startReloading += StartReloading;
                 squader.reloading += Reloading;
+                squader.startSwitching += StartSwitching;
+                squader.switching += Switching;
                 hpSlider.maxValue = currentUnit.stats.MaxHp;
                 ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
                 staminaSlider.maxValue = currentUnit.stats.MaxStamina;
-                switchButton.interactable = unit.secondaryWeapon != null;
+                switchButton.interactable = unit.secondaryWeapon;
             }
             else {
                 //Enemy
@@ -78,26 +86,54 @@ public class Profile : MonoBehaviour
         }
     }
 
+    void DeselectUnit(SquadUnit unit) {
+        unit.updateUI -= UpdateData;
+        unit.startReloading -= StartReloading;
+        unit.reloading -= Reloading;
+        unit.switching -= Switching;
+        unit.startSwitching -= StartSwitching;
+    }
     void StartReloading(float reloadTime) {
         reloading = true;
-        this.reloadTime = reloadTime;   
-        ammoSlider.maxValue = this.reloadTime;
+        switching = false;
+        this.timeRemaining = reloadTime;   
+        ammoSlider.maxValue = this.timeRemaining;
+        ammoSlider.value = currentUnit.CurrentAmmo;
         UpdateData();
-        Debug.Log("start");
     }
-
+    
     void Reloading(float remainingReloadTime) {
-        if (reloadTime <= 0) {
-            Debug.Log("stopped");
+        if (timeRemaining <= 0) {
             reloading = false;
             ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
+            ammoSlider.value = currentUnit.CurrentAmmo;
         }
         else {
-            Debug.Log("reloading");
-            reloadTime = remainingReloadTime;
+            timeRemaining = remainingReloadTime;
         }
         UpdateData();
         
+    }
+
+    void StartSwitching(float switchTime) {
+        switching = true;
+        reloading = false;
+        this.timeRemaining = switchTime;   
+        ammoSlider.maxValue = this.timeRemaining;
+        ammoSlider.value = currentUnit.CurrentAmmo;
+        UpdateData();
+    }
+
+    void Switching(float remainingSwitchTime) {
+        if (timeRemaining <= 0) {
+            switching = false;
+            ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
+            ammoSlider.value = currentUnit.CurrentAmmo;
+        }
+        else {
+            timeRemaining = remainingSwitchTime;
+        }
+        UpdateData();
     }
     // these interact with the unit
     void RunButtonClicked() {
@@ -109,7 +145,7 @@ public class Profile : MonoBehaviour
     }
 
     void SwitchWeaponsClicked() {
-        
+        ((SquadUnit)currentUnit).StartSwitchingWeaponsNow();
     }
     // this one interacts with playerControl
     void GrenadeButtonClicked() {

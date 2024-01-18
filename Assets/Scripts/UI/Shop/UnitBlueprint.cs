@@ -8,8 +8,12 @@ public class UnitBlueprint {
     public Stats stats;
     public Weapon weapon;
     public Weapon secondaryWeapon;
+    public bool useSecAsMain = false;
     public bool IsValid() {
-        return stats != null && weapon != null;
+        if (weapon == null && secondaryWeapon != null) {
+            useSecAsMain = true;
+        }
+        return stats != null && weapon != null || stats != null && secondaryWeapon != null;
     }
 
     public int GetCurrentValue() {
@@ -27,5 +31,21 @@ public class UnitBlueprint {
         }
 
         return value;
+    }
+
+    public string GetDescription() {
+        string description = "";
+        if (stats) {
+            description += name + "\n" + stats.GetDescription();
+        }
+
+        if (weapon) {
+            description += "\n" + weapon.GetDescription();
+        }
+
+        if (secondaryWeapon) {
+            description += "\n" + secondaryWeapon.GetDescription();
+        }
+        return description;
     }
 }
