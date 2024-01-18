@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class SquadUnit : Unit {
+    
     public event Action updateUI;
     public event Action<float> reloading;
     public event Action<float> startReloading;
@@ -14,8 +15,9 @@ public class SquadUnit : Unit {
     public bool selected { get; private set; } = false;
     [SerializeField] Material trajectoryLine;
     protected override void Start() {
-        base.Start();
         
+        base.Start();
+        Debug.Log("start");
         /*GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         debugSphere.transform.localScale = new Vector3(stats.MaxEffectiveRange,stats.MaxEffectiveRange, stats.MaxEffectiveRange);
         debugSphere.transform.parent = transform;
@@ -23,12 +25,13 @@ public class SquadUnit : Unit {
         debugSphere.GetComponent<MeshRenderer>().material = debugSphereMaterial;
         Destroy(debugSphere.GetComponent<SphereCollider>());*/
 
-        selectionPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        /*selectionPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
         selectionPlane.transform.localScale = new Vector3(1, 1, 1);
         selectionPlane.transform.parent = transform;
         selectionPlane.transform.localPosition = new Vector3(0, -0.49f, 0);
         selectionPlane.GetComponent<MeshRenderer>().material = selectMaterial;
-        selectionPlane.SetActive(false);
+        selectionPlane.SetActive(false);*/
+        //currentState = this.gameObject.AddComponent<NormalUnitState>();
         currentState = new NormalUnitState(this);
     }
 
@@ -40,16 +43,16 @@ public class SquadUnit : Unit {
         weapon.Start();
     }*/
     public void SetTarget(Unit target) {
-        currentState.ForceChangeState(new AttackUnitState(this,target));
+        targetedUnit = target;
+        currentState.ForceChangeState(new AttackUnitState(this,targetedUnit));
         //weapon.LockOn(target.gameObject, , this, agent);
         //checkVisibilty
         //checkDistance
         //shoot
     }
 
-    protected override void GetHit(int damage) {
+    public override void GetHit(int damage) {
         base.GetHit(damage);
-        
     }
     public void Select() {
         //selectionPlane.SetActive(true);
@@ -78,7 +81,7 @@ public class SquadUnit : Unit {
     }
 
     public void ReloadNow() {
-        if (currentState is ReloadUnitState || weapon.CurrentAmmo == weapon.MaxAmmo) { return; }
+        if (currentState is ReloadUnitState || CurrentAmmo == weapon.MaxAmmo) { return; }
         currentState.ForceChangeState(new ReloadUnitState(this, weapon.ReloadTime));
     }
 

@@ -97,12 +97,13 @@ public class Shop : MonoBehaviour {
                 cost = newStats.Cost;
                 if (cost - (unitBlueprints[id].stats ? unitBlueprints[id].stats.Cost : 0) > points) return;
                 if (unitBlueprints[id].stats != null) RemoveElement(new Tuple<types, int>(types.unit, id)); 
-                newStats.unitName = Names.GetRandomName();
+                unitBlueprints[id].name = Names.GetRandomName();
                 unitBlueprints[id].stats = newStats;
-                containers[id].SetStats(newStats);
+                containers[id].SetStats(unitBlueprints[id].name,newStats.Icon);
                 break;
             case types.weapon:
-                var newWeapon = weapons[selectedId];
+                Weapon newWeapon = weapons[selectedId];
+                
                 cost = newWeapon.Cost;
                 if (cost - (unitBlueprints[id].weapon ? unitBlueprints[id].weapon.Cost : 0) > points) return;
                 if (unitBlueprints[id].weapon != null) RemoveElement(new Tuple<types, int>(types.weapon, id)); 

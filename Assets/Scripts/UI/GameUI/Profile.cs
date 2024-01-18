@@ -39,19 +39,19 @@ public class Profile : MonoBehaviour
     }
 
     void UpdateData() {
-        hpSlider.value = currentUnit.stats.CurrentHp;
-        hpText.text = currentUnit.stats.CurrentHp + "/" + currentUnit.stats.MaxHp;
+        hpSlider.value = currentUnit.CurrentHp;
+        hpText.text = currentUnit.CurrentHp + "/" + currentUnit.stats.MaxHp;
         if (reloading) {
             ammoText.text = "Reloading (" + reloadTime.ToString("F1") + "s)";
             ammoSlider.value = ammoSlider.maxValue - reloadTime;
         }
         else {
-            ammoText.text = currentUnit.weapon.CurrentAmmo + "/" + currentUnit.weapon.MaxAmmo;
-            ammoSlider.value = currentUnit.weapon.CurrentAmmo;
+            ammoText.text = currentUnit.CurrentAmmo + "/" + currentUnit.weapon.MaxAmmo;
+            ammoSlider.value = currentUnit.CurrentAmmo;
         }
-        staminaSlider.value = currentUnit.stats.CurrentStamina;
-        staminaText.text = currentUnit.stats.CurrentStamina + "/" + currentUnit.stats.MaxStamina;
-        nameLabel.text = currentUnit.stats.UnitName;
+        staminaSlider.value = currentUnit.CurrentStamina;
+        staminaText.text = currentUnit.CurrentStamina + "/" + currentUnit.stats.MaxStamina;
+        nameLabel.text = currentUnit.UnitName;
     }
     
     void UpdateProfile(Unit unit) {
@@ -68,6 +68,7 @@ public class Profile : MonoBehaviour
                 hpSlider.maxValue = currentUnit.stats.MaxHp;
                 ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
                 staminaSlider.maxValue = currentUnit.stats.MaxStamina;
+                switchButton.interactable = unit.secondaryWeapon != null;
             }
             else {
                 //Enemy
@@ -105,6 +106,10 @@ public class Profile : MonoBehaviour
 
     void ReloadButtonClicked() {
         ((SquadUnit)currentUnit).ReloadNow();
+    }
+
+    void SwitchWeaponsClicked() {
+        
     }
     // this one interacts with playerControl
     void GrenadeButtonClicked() {

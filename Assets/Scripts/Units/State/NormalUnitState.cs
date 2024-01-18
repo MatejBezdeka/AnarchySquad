@@ -5,6 +5,7 @@ using UnityEngine;
 public class NormalUnitState : UnitState {
     float restCooldown = 2;
     float currentCooldown = 0;
+    public SquadUnit bel;
     public NormalUnitState(SquadUnit unit) : base(unit) {
     }
 
@@ -15,7 +16,7 @@ public class NormalUnitState : UnitState {
     protected override void UpdateState() {
         currentCooldown += Time.deltaTime;
         if (currentCooldown >= restCooldown) {
-            unit.stats.AddStamina();
+            unit.AddStamina();
             currentCooldown = 0;
         }
     }

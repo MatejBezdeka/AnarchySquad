@@ -6,15 +6,15 @@ namespace Units {
     public class Automatic : Weapon {
         [SerializeField, Range(1,50), Tooltip("How many bullets will gun shoot in one burst")] protected int burstSize = 1;
         //[SerializeField, Range(0.1f,5), Tooltip("How long will it take to shoot another bullet in a burst")] 
-        float timeBetweenBullets = 0.2f;
-        int currentBurst = 0;
-        bool attacking = false;
+        [SerializeField, Tooltip("How long until next bullet in a burst")] float timeBetweenBullets = 0.2f;
         
-        public override void Update() {
-            currentCooldown += Time.deltaTime;
+        
+        public override void UpdateWeapon(Unit unit, Unit target,ref bool attacking, ref int currentBurst, ref float currentCooldown) {
+            //unit.currentCooldown += Time.deltaTime;
             if (attacking) {
                 if (currentCooldown > timeBetweenBullets) {
-                    Shoot();
+                    Shoot(unit, target);
+                    unit.DeductAmmo();
                     currentBurst++;
                     currentCooldown = 0;
                     if (currentBurst >= burstSize) {
@@ -29,7 +29,6 @@ namespace Units {
                     currentCooldown = 0;
                 }
             }
-            
         }
     }
 }

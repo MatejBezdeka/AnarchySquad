@@ -28,7 +28,7 @@ namespace Units {
             switch (other.transform.tag) {
                 case "Squader":
                 case "Anarchist":
-                    other.gameObject.GetComponent<Unit>().stats.CalculateDamage(Damage());
+                    other.gameObject.GetComponent<Unit>().GetHit(Damage());
                     break;
             }
             Destroy(gameObject);

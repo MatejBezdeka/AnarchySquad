@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UnitState : MonoBehaviour
+public abstract class UnitState
 {
     protected enum stateStages {
         entry, update, exit
@@ -10,9 +11,11 @@ public abstract class UnitState : MonoBehaviour
     protected stateStages currentStage = stateStages.entry;
     UnitState nextState;
     protected SquadUnit unit;
-    public UnitState(SquadUnit unit) {
+
+    protected UnitState(SquadUnit unit) {
         this.unit = unit;
     }
+
     protected virtual void Enter() {
         currentStage = stateStages.update;
     }

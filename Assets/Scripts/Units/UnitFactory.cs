@@ -10,20 +10,17 @@ public class UnitFactory : MonoBehaviour {
         comp.stats = newStats;
         comp.weapon = weapon;
         comp.secondaryWeapon = secondary;
-        comp.stats.Start();
-        comp.weapon.Start();
-        comp.secondaryWeapon.Start();
         return comp;
     }
     public SquadUnit SpawnUnit(GameObject prefab, UnitBlueprint blueprint, Vector3 position) {
         GameObject newUnit = Instantiate(prefab, position, Quaternion.identity);
         SquadUnit comp = newUnit.GetComponent<SquadUnit>();
+        comp.UnitName = blueprint.name;
         comp.stats = blueprint.stats;
         comp.weapon = blueprint.weapon;
-        comp.secondaryWeapon = blueprint.secondaryWeapon;
-        comp.stats.Start();
-        comp.weapon.Start();
-        comp.secondaryWeapon.Start();
+        if (blueprint.secondaryWeapon) {
+            comp.secondaryWeapon = blueprint.secondaryWeapon;
+        }
         return comp;
     }
 }

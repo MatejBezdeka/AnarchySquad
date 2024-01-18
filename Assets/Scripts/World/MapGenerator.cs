@@ -26,6 +26,8 @@ public class MapGenerator : MonoBehaviour {
     public static int maxMapSizeY => 22;
     public static int minMapSizeX => 10;
     public static int minMapSizeY => 10;
+    public float MapSizeX => mapSizeX * tileSize;
+    public float MapSizeY => mapSizeY * tileSize;
 
     List<Coord> allTileCoords;
     Queue<Coord> shuffledTileCoords;

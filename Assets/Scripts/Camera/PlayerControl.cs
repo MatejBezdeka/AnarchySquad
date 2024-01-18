@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Camera;
 using TMPro;
@@ -29,11 +30,13 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField] Texture2D interactCursor;
     //[SerializeField] GameObject grenadeIndicatorRadius;
     [SerializeField] LineRenderer grenadeIndicator;
+
+    float xBorder;
+    float zBorder;
     //===========//===========//===========//===========//===========//
     // Events
     public static Action<float> changedTime;
     public static event Action<Unit> selectedNewUnit;
-
     public event Action leftMouseButtonClicked;
     public event Action rightMouseButtonClicked;
     public event Action escButtonClicked;
@@ -87,6 +90,8 @@ public class PlayerControl : MonoBehaviour {
         Portrait.selectedDeselectedUnit += SelectDeselectUnit;
         Profile.grenadeAction += () => { currentState.Exit(new GrenadeState(this, grenadeIndicator));};
         GameManager.instance.MapGenerator.GetCentre();
+        xBorder = GameManager.instance.MapGenerator.MapSizeX / 2f + 150;
+        zBorder = GameManager.instance.MapGenerator.MapSizeY / 2f + 150;
         // Assign Inputs
         #region Assign Inputs
 
@@ -123,23 +128,25 @@ public class PlayerControl : MonoBehaviour {
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
         //smooth the values
         currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20, Time.fixedDeltaTime);
-        //currentRotation = -currentRotation.x;
-        //currentMove.y = 0;
-        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20, Time.fixedDeltaTime);
-        //check boundaries for camera to not go too far or too close
-        if (ZoomDistanceCheck(currentInputZoom)) {
-            currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20, Time.fixedDeltaTime);
-        }
-        else {
-            //return camera to respective border if needed
-            currentZoom = -currentZoom * 0.2f + (0.5f    - transform.position.y/100);
-        }
         
+        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20, Time.fixedDeltaTime);
+        
+        currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20, Time.fixedDeltaTime);
+        //check boundaries for camera to not go too far or too close
+        ZoomDistanceCheck(currentZoom < 0, ref currentZoom);
         //move camera
         camera.transform.Rotate(0, currentRotation, 0, Space.World) ;
         Vector3 move = new Vector3(currentMove.x, currentZoom, currentMove.y);
-        move = move.x * transform.right + move.y * Vector3.up + move.z * new Vector3(2 * transform.forward.x,0,2 * transform.forward.z);
+        move = move.x * transform.right + move.y * Vector3.up + move.z * new Vector3(2*transform.forward.x,0,2*transform.forward.z);
+        if (transform.position.x + move.x > xBorder || transform.position.x + move.x < -xBorder) {
+            move.x = 0;
+        }
+
+        if (transform.position.z + move.z > zBorder || transform.position.z + move.z < -zBorder) {
+            move.z = 0;
+        }
         transform.position += move;
+        
         //Debug.Log(transform.forward);
     }
 
@@ -163,12 +170,15 @@ public class PlayerControl : MonoBehaviour {
         hitSomething = true;
         return currentHit = hit;
     }
-    bool ZoomDistanceCheck(float currentInputZoom) {
-        if (transform.position.y <= minCameraDistance && currentInputZoom < 0 || transform.position.y >= maxCameraDistance && currentInputZoom > 0) {
-            return false;
+    void ZoomDistanceCheck(bool minus, ref float currentZoom) {
+        if (transform.position.y - 10 + currentZoom <= minCameraDistance && minus) {
+            currentZoom *= (float)((Math.Pow(transform.position.y - minCameraDistance, 2) / minCameraDistance)/1.5);
         }
-        return true;
+        if (transform.position.y + currentZoom >= maxCameraDistance - 20 && !minus) {
+            currentZoom *= (float)((Math.Pow(maxCameraDistance - transform.position.y, 2) / maxCameraDistance)/1.5);
+        }
     }
+    
 
     public void SelectDeselectUnit(SquadUnit unit) {
         //mít více označených jednotek naráz

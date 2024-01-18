@@ -23,7 +23,7 @@ public class ReloadUnitState : UnitState {
         currentCooldown += Time.deltaTime;
         unit.InvokeReloading(reloadTime-currentCooldown);
         if (currentCooldown > reloadTime) {
-            unit.weapon.Reloaded();
+            unit.Reloaded();
             reloaded = true;
             Exit(previousState);
         }

@@ -59,9 +59,9 @@ public class SelectedTeamMemberContainer : IUnitButton {
         id = newId;
     }
     
-    public void SetStats(Stats stats) {
-        unitName.text = stats.UnitName;
-        statsImage.sprite = stats.Icon;
+    public void SetStats(string name, Sprite icon) {
+        unitName.text = name;
+        statsImage.sprite = icon;
         statsRButton.SetActive(true);
     }
 

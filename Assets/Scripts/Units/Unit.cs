@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Units;
@@ -7,6 +8,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Unit : MonoBehaviour {
+    public event Action<float> needToReload;
     [SerializeField] public Stats stats;
     [SerializeField] public Weapon weapon;
     [SerializeField] public Weapon secondaryWeapon;
@@ -20,28 +22,50 @@ public class Unit : MonoBehaviour {
     [SerializeField, Range(1,100)] protected float maxGrenadeDistance;
     [SerializeField, Range(1,89)] float launchAngle = 35f;
     public NavMeshAgent Agent => agent;
-    public float CurrentSpeed => agent.velocity.x + agent.velocity.z;
     public float LaunchAngle => launchAngle;
     public float MaxGrenadeDistance => maxGrenadeDistance;
-    Unit targetedUnit;
-    bool sprinting;
-    
+    protected Unit targetedUnit;
+    public int CurrentHp { get; private set; }
+    public float CurrentStamina { get; private set; }
+    public int CurrentAmmo { get; private set; }
+    protected int SecondaryAmmo; 
+    public string UnitName = "No name";
     protected virtual void Start() {
         agent = GetComponent<NavMeshAgent>();
+        CurrentHp = stats.MaxHp;
+        CurrentStamina = stats.MaxStamina;
+        CurrentAmmo = weapon.MaxAmmo;
+        if (secondaryWeapon) {
+            SecondaryAmmo = secondaryWeapon.MaxAmmo;
+        }
     }
-    
-
+    public float Sprint() {
+        CurrentStamina -= 2f;
+        if (CurrentStamina < 0) {
+            CurrentStamina = 0;
+        }
+        return CurrentStamina;
+    }
+    public void Reloaded() {
+        CurrentAmmo = weapon.MaxAmmo;
+    }
+    public void AddStamina() {
+        CurrentStamina += 1.5f;
+        if (CurrentStamina >= stats.MaxStamina) {
+            CurrentStamina = stats.MaxStamina;
+        }
+    }
     List<Unit> DetectEnemiesInProximity() {
         //Detect
         return null;
     }
 
-    protected virtual void GetHit(int damage) {
-        if (stats.CalculateDamage(damage)) {
+    public virtual void GetHit(int damage) {
+        damage = (int)(damage * (1f - (stats.Armor * 0.25f) * 0.04f));
+        if ((CurrentHp -= damage) <= 0) {
             Destroy(gameObject);
         }
     }
-    
 
     public void SetDestination(Vector3 destination) {
         agent.SetDestination(destination);
@@ -57,6 +81,12 @@ public class Unit : MonoBehaviour {
         Destroy(this);
     }
 
+    public void DeductAmmo() {
+        CurrentAmmo--;
+        if (CurrentAmmo == 0) {
+            needToReload?.Invoke(weapon.ReloadTime);
+        }
+    }
     public void ThrowGrenade(Vector3 target) {
         GameObject grenade = Instantiate(grenadePrefab, muzzle.transform.position, Quaternion.identity);
         Rigidbody rigidBody = grenade.GetComponent<Rigidbody>();

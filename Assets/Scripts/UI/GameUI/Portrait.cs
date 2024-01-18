@@ -24,7 +24,7 @@ namespace World {
         public void AssignUnit(SquadUnit unit){
             this.unit = unit;
             picture.sprite = unit.stats.Icon;
-            nameLabel.text = unit.stats.UnitName;
+            nameLabel.text = unit.UnitName;
             hpSlider.maxValue = unit.stats.MaxHp;
             UpdateHpSlider();
         }
@@ -38,7 +38,7 @@ namespace World {
             UpdateOutline(null);
         }
         void UpdateHpSlider() {
-            hpSlider.value = unit.stats.CurrentHp;
+            hpSlider.value = unit.CurrentHp;
         }
     }
 }

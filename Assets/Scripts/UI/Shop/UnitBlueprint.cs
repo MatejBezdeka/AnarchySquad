@@ -4,6 +4,7 @@ using Units;
 using UnityEngine;
 
 public class UnitBlueprint {
+    public string name;
     public Stats stats;
     public Weapon weapon;
     public Weapon secondaryWeapon;

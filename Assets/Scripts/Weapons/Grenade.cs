@@ -21,11 +21,11 @@ public class Grenade : MonoBehaviour {
         Debug.Log(hit.Length);
         foreach (var collision in hit) {
             if (collision.tag == "Anarchist" && !hitSquaders) {
-                collision.GetComponent<Unit>().stats.CalculateDamage(damage);
+                collision.GetComponent<Unit>().GetHit(damage);
             }
 
             if (collision.tag == "Squader" && hitSquaders) {
-                collision.GetComponent<Unit>().stats.CalculateDamage(damage);
+                collision.GetComponent<Unit>().GetHit(damage);
             }
             Debug.Log(collision.name);
         }

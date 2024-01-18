@@ -6,32 +6,37 @@ using UnityEngine.AI;
 
 public class AttackUnitState : UnitState {
     Unit target;
-    SquadUnit unit;
     bool conditionsMet = false;
+    bool attacking = false;
+    float currentCooldown = 0;
+    int currentBurst = 0;
     public AttackUnitState(SquadUnit unit, Unit target) : base(unit) {
         this.target = target;
-        this.unit = unit;
     }
     protected override void Enter() {
         //StartCoroutine(CheckConditions());
+        unit.needToReload += Reload;
+        unit.SetTarget(target);
         base.Enter();
-        unit.weapon.needToReload += Reload;
-        unit.weapon.LockOn(target, unit, unit.muzzle);
     }
 
     protected override void UpdateState() {
-        unit.weapon.Update();
+        currentCooldown += Time.deltaTime;
+        unit.weapon.UpdateWeapon(unit, target, ref attacking,ref currentBurst, ref currentCooldown);
     }
 
     IEnumerator CheckConditions() {
         WaitForSeconds waitTime = new WaitForSeconds(0.2f);
         while (!conditionsMet) {
             if (!unit.transform.TargetDistance(target.transform.position, unit.weapon.EffectiveRange)) {
+                unit.Agent.SetDestination(target.transform.position);
                 yield return waitTime;
             }
             if (!unit.transform.TargetVisibility(target.transform.position, "Anarchist")) {
+                unit.Agent.SetDestination(target.transform.position);
                 yield return waitTime;
             }
+            unit.Agent.SetDestination(unit.transform.position);
             conditionsMet = true;
         }
     }
@@ -40,7 +45,6 @@ public class AttackUnitState : UnitState {
         Exit(new ReloadUnitState(unit, reloadTime, this));
     }
     protected override void Exit(UnitState state) {
-        unit.weapon.LockOff();
         base.Exit(state);
     }
     
