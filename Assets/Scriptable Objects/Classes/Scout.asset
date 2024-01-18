@@ -16,7 +16,7 @@ MonoBehaviour:
   description: scout
   maxHp: 25
   armor: 5
-  speed: 2
+  speed: 2.2
   maxStamina: 50
   accuracy: 3.5
   icon: {fileID: 21300000, guid: f3d4d67b2a0b708478931598d62b3dbf, type: 3}

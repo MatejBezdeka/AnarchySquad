@@ -4776,12 +4776,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7581dadd708834a48873ba4941ce90dd, type: 2}
   - {fileID: 11400000, guid: 2f6f5ae1026fb484e97689bc02db592b, type: 2}
   - {fileID: 11400000, guid: bef305316cddc344cbb78200d9ef5878, type: 2}
+  - {fileID: 11400000, guid: 2088552c2339924429f1736b07efcf43, type: 2}
+  - {fileID: 11400000, guid: 6446f9272c26c8f4d92da028decfcae9, type: 2}
   unitsShopGameObject: {fileID: 167753620}
   weapons:
   - {fileID: 11400000, guid: 9c31afbd0d61c1347a28627ddcd39c5f, type: 2}
-  - {fileID: 11400000, guid: 41f0face380aa894193be437d03eb348, type: 2}
   - {fileID: 11400000, guid: 807236b62ed529849a091faae88e78e8, type: 2}
-  - {fileID: 11400000, guid: 0394dc9aa30b8474eaef36036ae4158a, type: 2}
+  - {fileID: 11400000, guid: 41f0face380aa894193be437d03eb348, type: 2}
+  - {fileID: 11400000, guid: 7aebebfa9d56b3c4cbe93bdac0ffb617, type: 2}
+  - {fileID: 11400000, guid: 1520d73e90f700f42af6bbe505637ba8, type: 2}
   weaponsShopGameObject: {fileID: 702693054}
   items: []
   itemsShopGameObject: {fileID: 125266763}

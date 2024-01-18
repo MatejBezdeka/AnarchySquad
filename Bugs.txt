@@ -1,5 +1,3 @@
-jednotky střílí přes zeď (měl by si najít cestu)+
-v shopu dodělat obrázky a zbytek možností++
-stats description na jednotkách -
-esc grenade state+
-stop attacking++
+v shopu dodělat obrázky a zbytek možností+
+select ctverec + ||
+name panel (list na spodní liště) - ||

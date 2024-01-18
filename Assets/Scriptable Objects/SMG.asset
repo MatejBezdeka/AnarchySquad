@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc6ffd154f14bd1a1ad552f2ad584d3, type: 3}
   m_Name: SMG
   m_EditorClassIdentifier: 
-  cost: 15
+  cost: 40
   description: smg
   bulletPrefab: {fileID: 2660651700256969146, guid: 48b0fd2765c962441b5909b59ea8ab9b,
     type: 3}
