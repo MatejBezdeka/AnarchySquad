@@ -66,7 +66,20 @@ public class MapGenerator : MonoBehaviour {
 
         shuffledTileCoords = new Queue<Coord>(Extensions.ShuffleArray(allTileCoords.ToArray(), seed));
         System.Random rn = new System.Random(seed);
-        playerSpawn = new Coord(rn.Next(0,mapSizeX), rn.Next(0,mapSizeY));
+        int spawnX = 0;
+        int spawnY = 0;
+        switch (rn.Next(0, 2)) {
+            case 0:
+                spawnX = rn.Next(0, mapSizeX);
+                spawnY = rn.Next(0,2) * (mapSizeY-1);
+                break;
+            case 1:
+                spawnX = rn.Next(0,2) * (mapSizeX-1);
+                spawnY = rn.Next(0, mapSizeY);
+                break;
+        }
+        playerSpawn = new Coord(spawnX, spawnY);
+        Debug.Log(spawnX + " " + spawnY);
         string holderName = "generatedMap";
         if (transform.Find(holderName)) {
             DestroyImmediate(transform.Find(holderName).gameObject);
@@ -132,6 +145,7 @@ public class MapGenerator : MonoBehaviour {
         bool[,] mapFlags = new bool[obstacleMap.GetLength(0), obstacleMap.GetLength(1)];
         Queue<Coord> queue = new Queue<Coord>();
         queue.Enqueue(playerSpawn);
+        Debug.Log(mapFlags.GetLength(0) + " " + mapFlags.GetLength(1));
         mapFlags[playerSpawn.x, playerSpawn.y] = true;
         int accessibleTileCount = queue.Count;
 

@@ -113,7 +113,6 @@ public class PlayerControl : MonoBehaviour {
         escapeAction.started += _ => escButtonClicked?.Invoke();
 
         #endregion
-        
     }
   
     void Update() {

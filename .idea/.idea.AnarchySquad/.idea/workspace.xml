@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="" />
+    <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,6 +133,7 @@
       <workItem from="1705502666687" duration="26803000" />
       <workItem from="1705533305434" duration="2708000" />
       <workItem from="1705590845448" duration="21992000" />
+      <workItem from="1705945005985" duration="7395000" />
     </task>
     <servers />
   </component>
@@ -136,4 +142,23 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs</url>
+          <line>20</line>
+          <properties documentPath="C:\Users\mata\Documents\GitHub\AnarchySquad\Assets\Scripts\Stats\Stats.cs" initialLine="20" containingFunctionPresentation="Property 'Icon'">
+            <startOffsets>
+              <option value="725" />
+            </startOffsets>
+            <endOffsets>
+              <option value="729" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>
