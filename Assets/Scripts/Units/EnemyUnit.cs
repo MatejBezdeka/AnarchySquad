@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyUnit : Unit {
     private SquadUnit closestEnemy = null;
     private float closestDistance = float.MaxValue;
-    // Start is called before the first frame update
     void Start() {
         base.Start();
 //         StartCoroutine(SlowUpdate());
