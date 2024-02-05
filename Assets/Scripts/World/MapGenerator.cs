@@ -28,7 +28,7 @@ public class MapGenerator : MonoBehaviour {
     public static int minMapSizeY => 10;
     public float MapSizeX => mapSizeX * tileSize;
     public float MapSizeY => mapSizeY * tileSize;
-
+    public int SpawnSide { get; private set; }
     List<Coord> allTileCoords;
     Queue<Coord> shuffledTileCoords;
     Queue<Coord> shuffledOpenTileCoords;
@@ -70,16 +70,20 @@ public class MapGenerator : MonoBehaviour {
         int spawnY = 0;
         switch (rn.Next(0, 2)) {
             case 0:
+                //down / up
                 spawnX = rn.Next(0, mapSizeX);
                 spawnY = rn.Next(0,2) * (mapSizeY-1);
+                SpawnSide = spawnY == 0 ? 0 : 1;
                 break;
             case 1:
+                // left / right
                 spawnX = rn.Next(0,2) * (mapSizeX-1);
                 spawnY = rn.Next(0, mapSizeY);
+                SpawnSide = spawnX == 0 ? 2 : 3;
                 break;
         }
+        Debug.Log(SpawnSide);
         playerSpawn = new Coord(spawnX, spawnY);
-        Debug.Log(spawnX + " " + spawnY);
         string holderName = "generatedMap";
         if (transform.Find(holderName)) {
             DestroyImmediate(transform.Find(holderName).gameObject);

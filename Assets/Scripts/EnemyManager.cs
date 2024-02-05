@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
     [SerializeField] GameObject enemyPrefab;
+
+    [SerializeField] List<Stats> statsList;
+    [SerializeField] List<Weapon> weaponsList;
     //one time, contiunious spawning, wave, after some die
     
     void Start() {
         StartCoroutine(EnemySpawner());
     }
 
-    
-    void Update()
-    {
-        
+    void SpawnWave(int count) {
+        for (int i = 0; i < count; i++) {
+            SpawnEnemy();
+        }
     }
-
     IEnumerator EnemySpawner() {
         WaitForSeconds waitTime = new WaitForSeconds(5);
         while (true) {
@@ -26,7 +28,7 @@ public class EnemyManager : MonoBehaviour {
     void SpawnEnemy() {
         Transform randomTile = GameManager.instance.MapGenerator.GetRandomOpenTile();
         Vector3 position = randomTile.position;
-        position.y = 6.2f;
+        position.y = 6 + 1;
         Instantiate(enemyPrefab, position, Quaternion.identity);
     }
 }

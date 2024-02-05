@@ -93,6 +93,28 @@ public class PlayerControl : MonoBehaviour {
         GameManager.instance.MapGenerator.GetCentre();
         xBorder = GameManager.instance.MapGenerator.MapSizeX / 2f + 150;
         zBorder = GameManager.instance.MapGenerator.MapSizeY / 2f + 150;
+        MapGenerator map = GameManager.instance.MapGenerator;
+        switch (GameManager.instance.MapGenerator.SpawnSide) {
+            case 0:
+                //down
+                transform.position = new Vector3(0, transform.position.y ,-map.MapSizeY/2 - 50);
+                break;
+            case 1:
+                //up
+                transform.Rotate(0,180,0, Space.World);
+                transform.position = new Vector3(0, transform.position.y ,map.MapSizeY/2 + 50);
+                break;
+            case 2:
+                //left
+                transform.Rotate(0,90,0, Space.World);
+                transform.position = new Vector3(-map.MapSizeX/2 - 50,transform.position.y,0);
+                break;
+            case 3:
+                //right
+                transform.Rotate(0,-90,0, Space.World);
+                transform.position = new Vector3(map.MapSizeX/2 + 50,transform.position.y,0);
+                break;
+        }
         // Assign Inputs
         #region Assign Inputs
 
@@ -137,7 +159,7 @@ public class PlayerControl : MonoBehaviour {
         //move camera
         camera.transform.Rotate(0, currentRotation, 0, Space.World) ;
         Vector3 move = new Vector3(currentMove.x, currentZoom, currentMove.y);
-        move = move.x * transform.right + move.y * Vector3.up + move.z * new Vector3(2*transform.forward.x,0,2*transform.forward.z);
+        move = move.x * transform.right + move.y * Vector3.up + move.z * new Vector3(2 * transform.forward.x,0,2 * transform.forward.z);
         if (transform.position.x + move.x > xBorder || transform.position.x + move.x < -xBorder) {
             move.x = 0;
         }

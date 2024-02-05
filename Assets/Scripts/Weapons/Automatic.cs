@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEditor.Timeline.Actions;
+﻿
 using UnityEngine;
 namespace Units {
     [CreateAssetMenu(menuName = "Units/Weapon/Automatic Gun")]
@@ -7,7 +6,6 @@ namespace Units {
         [SerializeField, Range(1,50), Tooltip("How many bullets will gun shoot in one burst")] protected int burstSize = 1;
         //[SerializeField, Range(0.1f,5), Tooltip("How long will it take to shoot another bullet in a burst")] 
         [SerializeField, Tooltip("How long until next bullet in a burst")] float timeBetweenBullets = 0.2f;
-        
         
         public override void UpdateWeapon(Unit unit, Unit target,ref bool attacking, ref int currentBurst, ref float currentCooldown) {
             //unit.currentCooldown += Time.deltaTime;
