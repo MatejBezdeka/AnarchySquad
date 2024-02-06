@@ -8,6 +8,10 @@ public class EnemyManager : MonoBehaviour {
     [SerializeField] List<Stats> statsList;
     [SerializeField] List<Weapon> weaponsList;
     //one time, contiunious spawning, wave, after some die
+    float confidance;
+    float difficulty;
+    float currentWaveCooldown;
+    float waveCooldown;
     
     void Start() {
         StartCoroutine(EnemySpawner());
