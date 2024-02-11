@@ -13,8 +13,11 @@ public class EnemyManager : MonoBehaviour {
     float currentWaveCooldown;
     float waveCooldown;
     
+    MapGenerator map;
     void Start() {
+        map = GameManager.instance.MapGenerator;
         StartCoroutine(EnemySpawner());
+        //CalculateMapSpawnSuitability();
     }
 
     void SpawnWave(int count) {
@@ -25,14 +28,16 @@ public class EnemyManager : MonoBehaviour {
     IEnumerator EnemySpawner() {
         WaitForSeconds waitTime = new WaitForSeconds(5);
         while (true) {
-            SpawnEnemy();
+            //SpawnEnemy();
             yield return waitTime;
         }
     }
     void SpawnEnemy() {
-        Transform randomTile = GameManager.instance.MapGenerator.GetRandomOpenTile();
+        Transform randomTile = map.GetRandomOpenTile();
         Vector3 position = randomTile.position;
         position.y = 6 + 1;
         Instantiate(enemyPrefab, position, Quaternion.identity);
     }
+
+    
 }

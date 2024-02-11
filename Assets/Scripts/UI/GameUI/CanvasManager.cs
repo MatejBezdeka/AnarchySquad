@@ -29,10 +29,10 @@ public class CanvasManager : MonoBehaviour {
     void Start() {
         portraits = new List<Portrait>();
         StartCoroutine(Clock());
-        if (GameManager.instance.units == null) {
+        if (GameManager.instance.Units == null) {
             return;
         }
-        foreach (var unit in GameManager.instance.units) {
+        foreach (var unit in GameManager.instance.Units) {
             GameObject portrait = Instantiate(portraitPrefab, portraitContainer.transform);
             portraits.Add(portrait.GetComponent<Portrait>());
             portraits[^1].AssignUnit(unit);

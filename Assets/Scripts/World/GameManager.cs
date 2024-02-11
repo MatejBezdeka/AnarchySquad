@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour {
     #region variables
     float time = 1;
     CanvasManager canvasManager;
-    public List<SquadUnit> units;
+    List<SquadUnit> units;
+    public List<SquadUnit> Units => units;
     public List<EnemyUnit> Enemies /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<EnemyUnit>();
     [SerializeField] GameObject[] tmpList;
     [SerializeField] GameObject unitPrefab;
@@ -81,9 +82,6 @@ public class GameManager : MonoBehaviour {
     void SpawnUnits(Vector3 spawnPoint) {
         Vector3 rotatedpawnPoint = spawnPoint.GetRotatedVector3(1, 0);
         Instantiate(tmpList[0], new Vector3(rotatedpawnPoint.x, rotatedpawnPoint.y + 1f, rotatedpawnPoint.z), Quaternion.identity);
-
-        
-        
         for (int i = 0; i < SquadParameters.Units.Count; i++) {
             Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(SquadParameters.Units.Count, i);
             rotatedSpawnPoint.y += 1;

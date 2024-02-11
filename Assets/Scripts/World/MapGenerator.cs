@@ -28,6 +28,8 @@ public class MapGenerator : MonoBehaviour {
     public static int minMapSizeY => 10;
     public float MapSizeX => mapSizeX * tileSize;
     public float MapSizeY => mapSizeY * tileSize;
+    public int TilesX => mapSizeX;
+    public int TilesY => mapSizeY;
     public int SpawnSide { get; private set; }
     List<Coord> allTileCoords;
     Queue<Coord> shuffledTileCoords;
@@ -35,8 +37,8 @@ public class MapGenerator : MonoBehaviour {
     Coord playerSpawn;
     Coord enemySpawn;
     Coord objectiveCoord;
-
     Transform[,] tileMap;
+    int[,] mapSpawnSuitabilityValues;
 
     void Awake() {
         SetMapParameters();
@@ -82,7 +84,6 @@ public class MapGenerator : MonoBehaviour {
                 SpawnSide = spawnX == 0 ? 2 : 3;
                 break;
         }
-        Debug.Log(SpawnSide);
         playerSpawn = new Coord(spawnX, spawnY);
         string holderName = "generatedMap";
         if (transform.Find(holderName)) {
@@ -108,7 +109,6 @@ public class MapGenerator : MonoBehaviour {
         List<Coord> allOpenCoords = allTileCoords;
 
         for (int i = 0; i < obstacleCount; i++) {
-            
             Coord randomCoord = GetRandomCoord();
             obstacleMap[randomCoord.x, randomCoord.y] = true;
             currentObstacleCount++;
@@ -127,7 +127,21 @@ public class MapGenerator : MonoBehaviour {
                 currentObstacleCount--;
             }
         }
-        
+
+        mapSpawnSuitabilityValues = new int[mapSizeX,mapSizeY];
+        for (var x = 0; x < obstacleMap.GetLength(0); x++)
+        for (var y = 0; y < obstacleMap.GetLength(1); y++) {
+            var tile = obstacleMap[x, y];
+            if (tile == true) {
+                //building
+                mapSpawnSuitabilityValues[x, y] = -10;
+            }
+            else {
+                //no obstacle
+                mapSpawnSuitabilityValues[x, y] = 1;
+            }
+        }
+
         shuffledOpenTileCoords = new Queue<Coord>(Extensions.ShuffleArray(allOpenCoords.ToArray(), seed));
         Transform maskLeft = Instantiate(floorNavMeshMask, Vector3.left * ((mapSizeX + maxMapSizeX) / 4f * tileSize), Quaternion.identity);
         maskLeft.parent = mapHolder;
@@ -149,7 +163,6 @@ public class MapGenerator : MonoBehaviour {
         bool[,] mapFlags = new bool[obstacleMap.GetLength(0), obstacleMap.GetLength(1)];
         Queue<Coord> queue = new Queue<Coord>();
         queue.Enqueue(playerSpawn);
-        Debug.Log(mapFlags.GetLength(0) + " " + mapFlags.GetLength(1));
         mapFlags[playerSpawn.x, playerSpawn.y] = true;
         int accessibleTileCount = queue.Count;
 
@@ -213,4 +226,11 @@ public class MapGenerator : MonoBehaviour {
         point.y += tileSize / 2;
         return point;
     }
+    void CalculateMapSpawnSuitability() {
+        //take map and units / spawnpoint
+        foreach (var unit in GameManager.instance.Units) {
+            
+        }
+    }
+    
 }

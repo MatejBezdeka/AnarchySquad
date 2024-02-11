@@ -18584,7 +18584,6 @@ MonoBehaviour:
   maxTimeSpeed: 2
   minTimeSpeed: 0.2
   mapGenerator: {fileID: 645280332}
-  units: []
   Enemies:
   - {fileID: 0}
   tmpList:
@@ -18631,13 +18630,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870416253}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5638f1e602bb4ec4ead5cb0c5b1653b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6849713316551132462, guid: ac01b368dfdf31940a37b4de68e3d448,
     type: 3}
+  statsList: []
+  weaponsList: []
 --- !u!1 &877806333
 GameObject:
   m_ObjectHideFlags: 0
@@ -43923,6 +43924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491059952285679985, guid: a598edf61c06c4c4f8b364e3df939f04,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -47.649902
       objectReference: {fileID: 0}
     - target: {fileID: 6103329400094784761, guid: a598edf61c06c4c4f8b364e3df939f04,
         type: 3}
