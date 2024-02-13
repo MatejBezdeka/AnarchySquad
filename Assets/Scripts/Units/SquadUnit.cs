@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Units;
 using UnityEngine;
 using UnityEngine.AI;
-
+[System.Serializable]
 public class SquadUnit : Unit {
     
     public event Action updateUI;

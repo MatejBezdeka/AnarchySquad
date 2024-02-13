@@ -18,10 +18,12 @@ public class EnemyManager : MonoBehaviour {
         map = GameManager.instance.MapGenerator;
         StartCoroutine(EnemySpawner());
         //CalculateMapSpawnSuitability();
+        SpawnWave(1);
     }
 
     void SpawnWave(int count) {
         for (int i = 0; i < count; i++) {
+            map.CalculateMapSpawnSuitability();
             SpawnEnemy();
         }
     }

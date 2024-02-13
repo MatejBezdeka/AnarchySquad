@@ -38,6 +38,7 @@ public class MapGenerator : MonoBehaviour {
     Coord enemySpawn;
     Coord objectiveCoord;
     Transform[,] tileMap;
+    [SerializeField]
     int[,] mapSpawnSuitabilityValues;
 
     void Awake() {
@@ -134,7 +135,7 @@ public class MapGenerator : MonoBehaviour {
             var tile = obstacleMap[x, y];
             if (tile == true) {
                 //building
-                mapSpawnSuitabilityValues[x, y] = -10;
+                mapSpawnSuitabilityValues[x, y] = -1;
             }
             else {
                 //no obstacle
@@ -193,6 +194,10 @@ public class MapGenerator : MonoBehaviour {
     Vector3 CoordToPosition(int x, int y) {
         return new Vector3(-mapSizeX / 2f + 0.5f + x, outlinePercent/2, -mapSizeY / 2f + 0.5f + y) * tileSize;
     }
+    Coord PositionToCoord(float x, float y) {
+        Debug.Log("Tile: " + (int)(x/(tileSize/2)) + " : " +(int)(y/(tileSize/2)));
+        return new Coord((int)(x/(tileSize/2)),(int)(y/(tileSize/2)));
+    }
     
     Coord GetRandomCoord() {
         Coord randomCoord = shuffledTileCoords.Dequeue();
@@ -226,11 +231,41 @@ public class MapGenerator : MonoBehaviour {
         point.y += tileSize / 2;
         return point;
     }
-    void CalculateMapSpawnSuitability() {
-        //take map and units / spawnpoint
+    public void CalculateMapSpawnSuitability() {
+        int[,] tmpMap = new int[mapSizeX,mapSizeY];
+        int defaultValue = (mapSizeX * mapSizeY) * 2;
+        //reset map values
+        for (int i = 0; i < tmpMap.GetLength(0); i++) {
+            for (int j = 0; j < tmpMap.GetLength(1); j++) {
+                //higher than any possible distance can be or -1 (building)
+                mapSpawnSuitabilityValues[i,j] = mapSpawnSuitabilityValues[i, j] == -1 ? -1 : defaultValue;
+            }
+        }
+        tmpMap = mapSpawnSuitabilityValues;
         foreach (var unit in GameManager.instance.Units) {
-            
+            Coord unitTile = PositionToCoord(unit.transform.position.x, unit.transform.position.z);
+            CalculateDistances(tmpMap, unitTile.x,unitTile.y);
         }
     }
-    
+    void CalculateDistances(int[,] map, int playerRow, int playerCol) {
+        Queue<(int, int, int)> queue = new Queue<(int, int, int)>();
+        queue.Enqueue((playerRow, playerCol, 0));
+        while (queue.Count > 0) {
+            var (row, col, distance) = queue.Dequeue();
+            UpdateDistance(map, row - 1, col, distance + 1, queue);
+            UpdateDistance(map, row, col + 1, distance + 1, queue);
+            UpdateDistance(map, row + 1, col, distance + 1, queue);
+            UpdateDistance(map, row, col - 1, distance + 1, queue);
+        }
+        Debug.Log(mapSpawnSuitabilityValues);
+    }
+    void UpdateDistance(int[,] map, int row, int col, int distance, Queue<(int, int, int)> queue) {
+        if (row >= 0 && row < map.GetLength(0) && col >= 0 && col < map.GetLength(1) && map[row, col] < (mapSizeX * mapSizeY) * 2) {
+            map[row, col] = distance;
+            if (mapSpawnSuitabilityValues[row, col] > distance) {
+                mapSpawnSuitabilityValues[row, col] = distance;
+            } 
+            queue.Enqueue((row, col, distance));
+        }
+    }
 }
