@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class MapGenerator : MonoBehaviour {
     [Header("Settings")]
@@ -40,6 +39,8 @@ public class MapGenerator : MonoBehaviour {
     Transform[,] tileMap;
     int[,] mapSpawnSuitabilityValues;
     public int[,] MapSpawnSuitabilityValues => mapSpawnSuitabilityValues;
+    List<Vector3> viableSpawnPositions;
+    public List<Vector3> ViableSpawnPositionses => viableSpawnPositions;
     void Awake() {
         SetMapParameters();
     }
@@ -94,7 +95,6 @@ public class MapGenerator : MonoBehaviour {
         mapHolder.parent = transform;
         for (int x = 0; x < mapSizeX; x++) {
             for (int y = 0; y < mapSizeY; y++) {
-                
                 Vector3 tilePosition = CoordToPosition(x, y);
                 Transform newTile = Instantiate(tilePrefab, tilePosition, Quaternion.Euler(0, 0, 0));
                 newTile.localScale = Vector3.one /* * ((1 - outlinePercent)*/ * tileSize;
@@ -194,9 +194,9 @@ public class MapGenerator : MonoBehaviour {
         return new Vector3(-mapSizeX / 2f + 0.5f + x, outlinePercent/2, -mapSizeY / 2f + 0.5f + y) * tileSize;
     }
     Coord PositionToCoord(float x, float y) {
-        
-        Debug.Log("Tile: " + (x/(mapSizeX*2) * (tileSize/2)-1) + " : " + (y/(mapSizeY*2) * (tileSize/2) - mapSizeY/2));
-        return new Coord(Mathf.RoundToInt(x/(mapSizeX*2) * (tileSize/2))-1,Mathf.RoundToInt(y/(mapSizeY*2) * (tileSize/2) - mapSizeX/2));
+        x += MapSizeX / 2;
+        y += MapSizeY / 2;
+        return new Coord(Mathf.RoundToInt((x/tileSize)),Mathf.RoundToInt((y/tileSize)));
     }
     
     Coord GetRandomCoord() {
@@ -232,6 +232,7 @@ public class MapGenerator : MonoBehaviour {
         return point;
     }
     public void CalculateMapSpawnSuitability() {
+        viableSpawnPositions = new List<Vector3>();
         int[,] tmpMap = new int[mapSizeX,mapSizeY];
         int defaultValue = (mapSizeX * mapSizeY) * 2;
         //reset map values
@@ -245,6 +246,28 @@ public class MapGenerator : MonoBehaviour {
         foreach (var unit in GameManager.instance.Units) {
             Coord unitTile = PositionToCoord(unit.transform.position.x, unit.transform.position.z);
             CalculateDistances(tmpMap, unitTile.x,unitTile.y);
+        }
+
+        int highestDistance = 0;
+        List<Coord> spawnTiles = new List<Coord>();
+        int distance;
+        for (int i = 0; i < mapSpawnSuitabilityValues.GetLength(0); i++) {
+            for (int j = 0; j < mapSpawnSuitabilityValues.GetLength(1); j++) {
+                distance = mapSpawnSuitabilityValues[i, j];
+                if (distance > highestDistance) {
+                    highestDistance = distance;
+                    spawnTiles.Add(new Coord(i,j));
+                    for (int k = spawnTiles.Count-1; k >= 0; k--) {
+                        if (mapSpawnSuitabilityValues[spawnTiles[k].x, spawnTiles[k].y] <= highestDistance - 4) {
+                            spawnTiles.RemoveAt(k);
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach (var tile in spawnTiles) {
+            viableSpawnPositions.Add(CoordToPosition(tile.x, tile.y));
         }
     }
     void CalculateDistances(int[,] map, int playerRow, int playerCol) {

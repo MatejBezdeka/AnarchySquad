@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EnemyManager : MonoBehaviour {
+    System.Random rn = new System.Random();
     [SerializeField] GameObject enemyPrefab;
-
     [SerializeField] List<Stats> statsList;
     [SerializeField] List<Weapon> weaponsList;
     //one time, contiunious spawning, wave, after some die
@@ -38,15 +37,16 @@ public class EnemyManager : MonoBehaviour {
         Debug.Log(row);
     }
     IEnumerator EnemySpawner() {
-        WaitForSeconds waitTime = new WaitForSeconds(5);
+        WaitForSeconds waitTime = new WaitForSeconds(10);
         while (true) {
             //SpawnEnemy();
+            SpawnWave(1);
             yield return waitTime;
         }
     }
     void SpawnEnemy() {
-        Transform randomTile = map.GetRandomOpenTile();
-        Vector3 position = randomTile.position;
+        //Transform randomTile = map.GetRandomOpenTile();
+        Vector3 position = map.ViableSpawnPositionses[rn.Next(map.ViableSpawnPositionses.Count)];
         position.y = 6 + 1;
         Instantiate(enemyPrefab, position, Quaternion.identity);
     }
