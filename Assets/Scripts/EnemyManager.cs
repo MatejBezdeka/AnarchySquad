@@ -26,6 +26,16 @@ public class EnemyManager : MonoBehaviour {
             map.CalculateMapSpawnSuitability();
             SpawnEnemy();
         }
+
+        string row = "";
+        for (int i = 0; i < map.TilesX; i++) {
+            for (int j = 0; j < map.TilesY; j++) {
+                row += map.MapSpawnSuitabilityValues[i,j] + " ";
+            }
+
+            row += "\n";
+        }
+        Debug.Log(row);
     }
     IEnumerator EnemySpawner() {
         WaitForSeconds waitTime = new WaitForSeconds(5);
