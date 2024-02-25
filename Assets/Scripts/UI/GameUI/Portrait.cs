@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace World {
     [RequireComponent(typeof(Button), typeof(Outline))]
-    public class Portrait : MonoBehaviour{
+    public class Portrait : MonoBehaviour, IButton{
         public static event Action<SquadUnit> selectedDeselectedUnit;
         //Button button;
+        public Settings.ButtonSounds Sound { get { return Settings.ButtonSounds.normal; } }
         [SerializeField] Button button;
         [SerializeField] Slider hpSlider;
         [SerializeField] Image picture;
@@ -34,6 +35,7 @@ namespace World {
             outline.enabled = unit.selected;
         }
         void Clicked() {
+            IButton.PlayButtonSound.Invoke(Sound);
             selectedDeselectedUnit?.Invoke(unit);
             UpdateOutline(null);
         }

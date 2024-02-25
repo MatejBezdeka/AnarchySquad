@@ -37,6 +37,15 @@ public static class Extensions
             array[i] = temp;
         }
         return array;
+    }public static T[] ShuffleArray<T>(T[] array) {
+        System.Random rn = new System.Random();
+        for (int i = 0; i < array.Length-1; i++) {
+            int randomIndex = rn.Next(i, array.Length);
+            T temp = array[randomIndex];
+            array[randomIndex] = array[i];
+            array[i] = temp;
+        }
+        return array;
     }
 
     public static Vector3 GetRotatedVector3(this Vector3 point,int count, int index) {

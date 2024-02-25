@@ -5,11 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class RadioButton : MonoBehaviour {
+public class RadioButton : MonoBehaviour, IButton {
     Button button;
     [SerializeField] List<RadioButton> buttonsInGroup;
     [SerializeField] bool enabledFromStart = true;
     [SerializeField] GameObject childObject;
+    // sound
+    public Settings.ButtonSounds sound;
+    public Settings.ButtonSounds Sound { get { return sound; } }
+    
     public bool Enabled {
         get => button.interactable;
         set {
@@ -35,6 +39,7 @@ public class RadioButton : MonoBehaviour {
         foreach (RadioButton btn in buttonsInGroup) {
             btn.Enabled = true;
         }
+        IButton.PlayButtonSound.Invoke(Sound);
         Enabled = false;
     }
 }

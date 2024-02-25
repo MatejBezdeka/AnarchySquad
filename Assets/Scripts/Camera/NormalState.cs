@@ -87,7 +87,9 @@ namespace Camera {
                         for (int i = 0; i < player.selectedUnits.Count; i++) {
                             if (player.selectedUnits[i].CurrentState.GetType() == typeof(AttackUnitState)) {
                                 player.selectedUnits[i].SetNewState(new NormalUnitState(player.selectedUnits[i]));
+                                
                             }
+                            player.selectedUnits[0].PlayAudioClip(Unit.AudioClips.roger);
                             Vector3 position = hit.point.GetRotatedVector3(player.selectedUnits.Count, i);
                             player.selectedUnits[i].SetDestination(position);
                             player.MakePointWhereUnitIsMoving(position);

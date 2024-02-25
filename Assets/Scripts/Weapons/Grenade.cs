@@ -1,24 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class Grenade : MonoBehaviour {
     [SerializeField] ParticleSystem explodeParticle;
     [SerializeField] float range;
     [SerializeField] float lifeTime;
     [SerializeField] bool hitSquaders = false;
     [SerializeField] int damage;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip clip;
     float currentLifeTime = 0;
+    bool exploded = false;
+    
     void Update() {
         currentLifeTime += Time.deltaTime;
-        if (currentLifeTime >= lifeTime) {
+        if (currentLifeTime >= lifeTime && !exploded) {
+            audioSource.PlayOneShot(clip);
+            exploded = true;
             Explode();
         }
+        
     }
-
+    
     void Explode() {
         Collider[] hit = Physics.OverlapSphere(transform.position, range);
-        Debug.Log(hit.Length);
+        //Debug.Log(hit.Length);
         foreach (var collision in hit) {
             if (collision.tag == "Anarchist" && !hitSquaders) {
                 collision.GetComponent<Unit>().GetHit(damage);
@@ -28,6 +35,11 @@ public class Grenade : MonoBehaviour {
                 collision.GetComponent<Unit>().GetHit(damage);
             }
         }
+        Destroy(gameObject.GetComponent<MeshRenderer>());
+        Invoke(nameof(DestroySelf),clip.length);
+    }
+
+    void DestroySelf() {
         Destroy(gameObject);
     }
 }

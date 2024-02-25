@@ -49,7 +49,7 @@ public class Shop : MonoBehaviour {
         ShopButton.showDescription += ShowDescription;
         ShopButton.hideDescription += HideDescription;
         ShopButton.deselected += Deselect;
-        IUnitButton.clickedUnitButton += ClickedUnit;
+        UnitButton.clickedUnitButton += ClickedUnit;
         StartMissionButton.startingGame += SaveUnitsForNextScene;
         InstantiateList(unitsShopGameObject, new List<ShopItem>(unitStats));
         InstantiateList(weaponsShopGameObject, new List<ShopItem>(weapons));
@@ -60,7 +60,8 @@ public class Shop : MonoBehaviour {
         SelectedTeamMemberContainer.showUnitDescription += ShowUnitDescription;
         plusMemberPrefab = Instantiate(plusMemberPrefab, containerGameObject.transform);
         pointsSlider.maxValue = points;
-        UpdateSlider();        
+        UpdateSlider();
+        Settings.Music.ChangeAmbientMusic(Settings.AmbientMusic.Hub);
     }
 
     void UpdateSlider() {

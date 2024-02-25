@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class DeleteSaveButton : MonoBehaviour
+using UnityEngine.UI;
+[RequireComponent(typeof(Button))]
+public class DeleteSaveButton : MonoBehaviour, IButton
 {
-    // Start is called before the first frame update
+    public Settings.ButtonSounds sound;
+    public Settings.ButtonSounds Sound { get { return sound; } }
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void Clicked()
     {
-        
+        IButton.PlayButtonSound.Invoke(Sound);
     }
 }

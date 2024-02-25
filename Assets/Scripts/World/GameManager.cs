@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour {
         //startGame
         //wakeup units
         //Start UI
+        Settings.Music.ChangeAmbientMusic(Settings.AmbientMusic.BatleField);
+        Settings.Music.StartMusic();
     }
 
     void FixedUpdate() {
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour {
         if ((int)newTime == -2) {
             //Unpause
             TimeChanged(time);
+            Settings.Music.ResumeMusic();
         }else if ((int)newTime == -1) {
             //Pause
             if (Time.timeScale != 0) {
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour {
             }
             Time.timeScale = 0;
             canvasManager.ChangeTimeLabelText("Paused");
+            Settings.Music.PauseMusic();
         }else {
             //change time speed
             if (newTime > maxTimeSpeed || newTime < minTimeSpeed) {

@@ -5,9 +5,10 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class ShopButton : MonoBehaviour {
+public class ShopButton : MonoBehaviour, IButton {
     public static Action deselected;
     static Action buttonSelected;
+    public Settings.ButtonSounds Sound { get { return Settings.ButtonSounds.normal; } }
     public static event Action<Tuple<Shop.types, int>> itemClicked;
     public static event Action<Tuple<Shop.types, int>> showDescription;
     public static event Action hideDescription;
@@ -38,6 +39,7 @@ public class ShopButton : MonoBehaviour {
     }
     void Clicked() {
         itemClicked!.Invoke(new Tuple<Shop.types, int>(type, id));
+        IButton.PlayButtonSound.Invoke(Sound);
         buttonSelected.Invoke();
         button.interactable = false;
     }

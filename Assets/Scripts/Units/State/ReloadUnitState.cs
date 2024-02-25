@@ -38,6 +38,7 @@ public class ReloadUnitState : UnitState {
             currentStage = stateStages.update;
             return;
         }
+        unit.PlayAudioClip(SquadUnit.AudioClips.reload);
         base.Exit(state);
     }
 }

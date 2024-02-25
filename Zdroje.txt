@@ -10,3 +10,10 @@ křestní jména
 https://www.cs.cmu.edu/Groups/AI/areas/nlp/corpora/names/male.txt
 shader vody
 https://ameye.dev/notes/stylized-water-shader/
+Sound efekty
+-https://jdsherbert.itch.io/ultimate-ui-sfx-pack --- Credits "JDSherbert"
+-https://assetstore.unity.com/packages/audio/ambient/nature/nature-essentials-208227
+-https://assetstore.unity.com/packages/audio/music/electronic/electronic-music-songpack-214055
+
+https://assetstore.unity.com/packages/audio/ambient/sci-fi/free-sci-fi-and-cyberpunk-music-pack-264590 ??
+https://assetstore.unity.com/packages/audio/ambient/sci-fi/retro-synth-80-90-s-191422 ??

@@ -29,6 +29,11 @@ public class Weapon : ShopItem {
 
     [SerializeField, Range(0.01f, 1.15f)] protected float Spread;
     [SerializeField] Sprite icon;
+
+    [Header("Weapon sounds")] 
+    [SerializeField] AudioClip shootSound;
+
+    public AudioClip ShootSound => shootSound;
     public Sprite Icon => icon;
     
     public int Damage => damage;
@@ -46,7 +51,6 @@ public class Weapon : ShopItem {
     }
 
     protected virtual void Shoot(Unit unit, Unit target) {
-        Debug.Log("shoot");
         Vector3 newPos = target.transform.position + target.Agent.velocity;
         Vector3 offset = new Vector3(RandomOffset(unit.stats.Accuracy), RandomOffset(unit.stats.Accuracy), RandomOffset(unit.stats.Accuracy));
         newPos += offset;
@@ -55,6 +59,7 @@ public class Weapon : ShopItem {
                 1080));
         bullet.GetComponent<Bullet>().StartBullet(unit);
         bullet.GetComponent<Rigidbody>().AddForce(newPos - unit.muzzle.transform.position);
+        unit.PlayAudioClip(Unit.AudioClips.shoot);
     }
 
     float RandomOffset(float accuracy) {

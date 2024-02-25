@@ -26,7 +26,7 @@ public class EnemyManager : MonoBehaviour {
             SpawnEnemy();
         }
 
-        string row = "";
+        /*string row = "";
         for (int i = 0; i < map.TilesX; i++) {
             for (int j = 0; j < map.TilesY; j++) {
                 row += map.MapSpawnSuitabilityValues[i,j] + " ";
@@ -34,7 +34,7 @@ public class EnemyManager : MonoBehaviour {
 
             row += "\n";
         }
-        Debug.Log(row);
+        Debug.Log(row);*/
     }
     IEnumerator EnemySpawner() {
         WaitForSeconds waitTime = new WaitForSeconds(10);

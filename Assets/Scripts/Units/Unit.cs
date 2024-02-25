@@ -6,17 +6,22 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = System.Random;
+
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(AudioSource))]
 public class Unit : MonoBehaviour {
+    static protected Random rn = new Random();
     public event Action<float> needToReload;
-    [SerializeField] public Stats stats;
-    [SerializeField] public Weapon weapon;
-    [SerializeField] public Weapon secondaryWeapon;
+    [Header("=== Unit Stats ===")]
+    [HideInInspector] public Stats stats;
+    [HideInInspector] public Weapon weapon;
+    [HideInInspector] public Weapon secondaryWeapon;
     [SerializeField, Tooltip("Material for debug sphere that indicates range of unit")] protected Material debugSphereMaterial;
     [SerializeField, Tooltip("Material for plane that will indicate selected unit")] protected Material selectMaterial;
     [SerializeField, Range(0.1f, 1), Tooltip("How often is an unit gonna update and respond")] protected float responseTime = 0.5f;
     [SerializeField] public GameObject muzzle;
-    [SerializeField] NavMeshAgent agent;
+    NavMeshAgent agent;
     [Header("Grenade")]
     [SerializeField] GameObject grenadePrefab;
     [SerializeField, Range(1,100)] protected float maxGrenadeDistance;
@@ -29,9 +34,20 @@ public class Unit : MonoBehaviour {
     public float CurrentStamina { get; protected set; }
     public int CurrentAmmo { get; protected set; }
     protected int secondaryAmmo; 
-    public string UnitName = "No name";
+    [HideInInspector] public string UnitName = "No name";
+    protected AudioSource audioSource;
+    [Header("== Unit Audio === ")]
+    [SerializeField] AudioClip[] hurtSound;
+    [SerializeField] AudioClip[] dieSound;
+    [SerializeField] AudioClip[] rogerSounds;
+    [SerializeField] AudioClip[] selectSounds;
+    [SerializeField] AudioClip[] reloadSounds;
+    public enum AudioClips {
+        reload, select, shoot, roger
+    }
     protected virtual void Start() {
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
         agent.speed = stats.Speed;
         agent.angularSpeed *= 2;
         CurrentHp = stats.MaxHp;
@@ -105,5 +121,22 @@ public class Unit : MonoBehaviour {
         rigidBody.AddForce(force, ForceMode.VelocityChange);
     }
 
-    
+    public void PlayAudioClip(AudioClips clip) {
+        switch (clip) {
+            case AudioClips.roger:
+                audioSource.PlayOneShot(rogerSounds[rn.Next(rogerSounds.Length)]);
+                break;
+            case AudioClips.reload:
+                audioSource.PlayOneShot(reloadSounds[rn.Next(reloadSounds.Length)]);
+                break;
+            case AudioClips.select:
+                audioSource.PlayOneShot(selectSounds[rn.Next(selectSounds.Length)]);
+                break;
+            case AudioClips.shoot:
+                audioSource.PlayOneShot(weapon.ShootSound);
+                break;
+        }
+        
+    }
+
 }

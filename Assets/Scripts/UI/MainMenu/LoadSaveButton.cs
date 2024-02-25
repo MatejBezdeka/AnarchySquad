@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class LoadSaveButton : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+[RequireComponent(typeof(Button))]
+public class LoadSaveButton : MonoBehaviour, IButton {
+    public Settings.ButtonSounds sound;
+    public Settings.ButtonSounds Sound {
+        get { return sound; }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Start() {
+        transform.GetComponent<Button>().onClick.AddListener(Load);
     }
+
+    void Load() {
+        IButton.PlayButtonSound.Invoke(Sound);
+        SceneManager.LoadScene("Hub");
+    }
+
 }

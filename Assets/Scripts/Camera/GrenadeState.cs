@@ -33,6 +33,7 @@ namespace Camera {
             player.selectedUnit.ThrowGrenade(destination);
             line.enabled = false; 
             Exit(new NormalState(player));
+            player.selectedUnit.PlayAudioClip(Unit.AudioClips.roger);
         }
 
         protected override void RightClick() {

@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewGameButton : MonoBehaviour
-{
-    // Start is called before the first frame update
+public class NewGameButton : MonoBehaviour, IButton {
+    public Settings.ButtonSounds sound;
+    public Settings.ButtonSounds Sound { get { return sound; } }
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void Clicked()
     {
-        
+        IButton.PlayButtonSound.Invoke(Sound);
     }
 }

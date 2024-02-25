@@ -4,7 +4,7 @@ using Units;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SelectedTeamMemberContainer : IUnitButton {
+public class SelectedTeamMemberContainer : UnitButton {
     public static event Action<int> RemoveUnit;
     public static event Action<Tuple<Shop.types, int>> RemoveElement;
     public static event Action hideDescription;
@@ -72,7 +72,7 @@ public class SelectedTeamMemberContainer : IUnitButton {
         statsImage.sprite = placeholderStatsImg;
         statsRButton.SetActive(false);
         RemoveElement!.Invoke(new Tuple<Shop.types, int>(Shop.types.unit, id));
-
+        IButton.PlayButtonSound.Invoke(Settings.ButtonSounds.error);
     }
     public void SetWeapon(Weapon weapon) {
         weaponImg.sprite = weapon.Icon;
@@ -83,7 +83,7 @@ public class SelectedTeamMemberContainer : IUnitButton {
         weaponImg.sprite = placeholderWeaponImg;
         weaponRButton.SetActive(false);
         RemoveElement!.Invoke(new Tuple<Shop.types, int>(Shop.types.weapon, id));
-
+        IButton.PlayButtonSound.Invoke(Settings.ButtonSounds.error);
     }
     public void SetSecondaryWeapon(Weapon weapon) {
         secondaryWeaponImg.sprite = weapon.Icon;
@@ -93,6 +93,7 @@ public class SelectedTeamMemberContainer : IUnitButton {
         secondaryWeaponImg.sprite = placeholderWeaponImg;
         secondaryWeaponRButton.SetActive(false);
         RemoveElement!.Invoke(new Tuple<Shop.types, int>(Shop.types.secondaryWeapon, id));
+        IButton.PlayButtonSound.Invoke(Settings.ButtonSounds.error);
     }
     /*public void SetUnit(SquadUnit unit, int id) {
         this.id = id;
@@ -105,10 +106,10 @@ public class SelectedTeamMemberContainer : IUnitButton {
     }*/
     void RemoveButtonClicked() {
         RemoveUnit?.Invoke(id);
+        IButton.PlayButtonSound.Invoke(Settings.ButtonSounds.error);
         Destroy(gameObject);
     }
     public void PointerEnter() {
-        Debug.Log("aa");
         showUnitDescription!.Invoke(id);
     }
     public void PointerExit() {

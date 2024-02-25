@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class ExitButton : MonoBehaviour
+public class ExitButton : MonoBehaviour, IButton
 {
+    public AudioClip Clip { get; }
     void Start() {
         GetComponent<Button>().onClick.AddListener(ExitApp);
     }
@@ -14,4 +15,6 @@ public class ExitButton : MonoBehaviour
     void ExitApp() {
         Application.Quit();
     }
+
+    public Settings.ButtonSounds Sound { get; }
 }

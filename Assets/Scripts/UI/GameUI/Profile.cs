@@ -6,10 +6,10 @@ using Units;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Profile : MonoBehaviour
+public class Profile : MonoBehaviour, IButton
 {
     public static event Action grenadeAction;
-
+    public Settings.ButtonSounds Sound { get { return Settings.ButtonSounds.normal; } }
     [Header("Profile")] 
     [SerializeField] Slider hpSlider;
     [SerializeField] TextMeshProUGUI hpText;
@@ -138,17 +138,21 @@ public class Profile : MonoBehaviour
     // these interact with the unit
     void RunButtonClicked() {
         ((SquadUnit)currentUnit).ToggleSprint();
+        IButton.PlayButtonSound.Invoke(Sound);
     }
 
     void ReloadButtonClicked() {
         ((SquadUnit)currentUnit).ReloadNow();
+        IButton.PlayButtonSound.Invoke(Sound);
     }
 
     void SwitchWeaponsClicked() {
         ((SquadUnit)currentUnit).StartSwitchingWeaponsNow();
+        IButton.PlayButtonSound.Invoke(Sound);
     }
     // this one interacts with playerControl
     void GrenadeButtonClicked() {
         grenadeAction?.Invoke();
+        IButton.PlayButtonSound.Invoke(Sound);
     }
 }
