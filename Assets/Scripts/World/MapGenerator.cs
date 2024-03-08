@@ -117,8 +117,8 @@ public class MapGenerator : MonoBehaviour {
                 float newScale = (1 - outlinePercent) * tileSize;
                 newScale = rn.Next(minBuildingSize, maxBuildingSize);
                 //obstaclePosition.y = tileSize + (tileSize - newScale.y/2);
-                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + Vector3.up * (tileSize/2 + newScale/2), Quaternion.Euler(0,rn.Next(0,4) * 90,0));
-                newObstacle.localScale = new Vector3(tileSize,newScale,tileSize);
+                Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + Vector3.up * tileSize/2, Quaternion.Euler(0,rn.Next(0,4) * 90,0));
+                newObstacle.localScale = new Vector3(tileSize/2,newScale,tileSize/2);
                 newObstacle.parent = mapHolder;
                 allOpenCoords.Remove(randomCoord);
             }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyUnit : Unit {
     private SquadUnit closestEnemy = null;
     private float closestDistance = float.MaxValue;
+    float morale;
     void Start() {
         base.Start();
 //         StartCoroutine(SlowUpdate());
@@ -33,6 +34,14 @@ public class EnemyUnit : Unit {
 
     protected override void Die() {
         StopCoroutine(SlowUpdate());
+        //add points?
+        //check if game over
+        //death sound
         base.Die();
+        
+    }
+
+    public override bool isSquadUnit() {
+        return false;
     }
 }

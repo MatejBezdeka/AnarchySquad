@@ -6,7 +6,9 @@ public class SwitchWeaponState : UnitState {
     float currentCooldown = 0;
     float cooldown = 3;
     bool switched = false;
-    public SwitchWeaponState(SquadUnit unit) : base(unit) {
+    SquadUnit unit;
+    public SwitchWeaponState(Unit unit) : base(unit) {
+        this.unit = unit as SquadUnit;
     }
     protected override void Enter() {
         Debug.Log("switching");

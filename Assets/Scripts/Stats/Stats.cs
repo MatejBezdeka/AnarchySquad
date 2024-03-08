@@ -10,7 +10,6 @@ public class Stats : ShopItem {
     [SerializeField, Range(20, 200)] float maxStamina;
     [SerializeField, Range(1,10)] float accuracy;
     [SerializeField] protected Sprite icon;
-    //Unit[] enemiesInRange;
 
     #region getters
     public int MaxHp => maxHp;

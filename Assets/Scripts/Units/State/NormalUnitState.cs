@@ -6,7 +6,7 @@ public class NormalUnitState : UnitState {
     float restCooldown = 2;
     float currentCooldown = 0;
     public SquadUnit bel;
-    public NormalUnitState(SquadUnit unit) : base(unit) {
+    public NormalUnitState(Unit unit) : base(unit) {
     }
 
     protected override void Enter() {

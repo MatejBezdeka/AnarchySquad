@@ -10,7 +10,7 @@ public class AttackUnitState : UnitState {
     bool attacking = false;
     float currentCooldown = 0;
     int currentBurst = 0;
-    public AttackUnitState(SquadUnit unit, Unit target) : base(unit) {
+    public AttackUnitState(Unit unit, Unit target) : base(unit) {
         this.target = target;
     }
     protected override void Enter() {

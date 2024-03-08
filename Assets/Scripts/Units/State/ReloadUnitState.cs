@@ -7,11 +7,11 @@ public class ReloadUnitState : UnitState {
     float currentCooldown = 0;
     bool reloaded = false;
     UnitState previousState;
-    public ReloadUnitState(SquadUnit unit, float reloadTime, UnitState previousState) : base(unit) {
+    public ReloadUnitState(Unit unit, float reloadTime, UnitState previousState) : base(unit) {
         this.reloadTime = reloadTime;
         this.previousState = previousState;
     }
-    public ReloadUnitState(SquadUnit unit, float reloadTime) : base(unit) {
+    public ReloadUnitState(Unit unit, float reloadTime) : base(unit) {
         this.reloadTime = reloadTime;
         previousState = new NormalUnitState(unit);
     }
@@ -38,7 +38,7 @@ public class ReloadUnitState : UnitState {
             currentStage = stateStages.update;
             return;
         }
-        unit.PlayAudioClip(SquadUnit.AudioClips.reload);
+        unit.PlayAudioClip(Unit.AudioClips.reload);
         base.Exit(state);
     }
 }

@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class EnemyManager : MonoBehaviour {
+    
+    
     System.Random rn = new System.Random();
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] List<Stats> statsList;
     [SerializeField] List<Weapon> weaponsList;
     //one time, contiunious spawning, wave, after some die
-    float confidance;
+    float confidence;
     float difficulty;
     float currentWaveCooldown;
     float waveCooldown;

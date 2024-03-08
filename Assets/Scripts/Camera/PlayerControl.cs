@@ -48,6 +48,8 @@ public class PlayerControl : MonoBehaviour {
     RaycastHit currentHit;
     public List<SquadUnit> selectedUnits { get; private set; } = new List<SquadUnit>();
     public Unit selectedUnit { get; private set; }
+    float moveCalcCurrentCooldown = 0;
+    float moveCalcCooldown = 0.06f;
     //states
     PlayerState currentState;
     public PlayerState nextState;
@@ -148,12 +150,16 @@ public class PlayerControl : MonoBehaviour {
         float currentInputRotation = rotationAction.ReadValue<float>();
         float currentInputZoom = -zoomAction.ReadValue<float>();
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
+        float frameRate = (1 / Time.deltaTime);
+        Debug.Log((1 / Time.deltaTime) + " " + frameRate);
         //smooth the values
-        currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20, Time.fixedDeltaTime);
+        //smoothMove /= frameRate;
+        currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20, Time.unscaledDeltaTime);
+        //smoothRotation /= frameRate;
+        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20, Time.unscaledDeltaTime);
+        //smoothZoom /= frameRate;
+        currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20, Time.unscaledDeltaTime);
         
-        currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20, Time.fixedDeltaTime);
-        
-        currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20, Time.fixedDeltaTime);
         //check boundaries for camera to not go too far or too close
         ZoomDistanceCheck(currentZoom < 0, ref currentZoom);
         //move camera

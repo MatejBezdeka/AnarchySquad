@@ -6,21 +6,15 @@ using UnityEngine;
 using UnityEngine.AI;
 [Serializable]
 public class SquadUnit : Unit {
-   
-    public event Action updateUI;
-    public event Action<float> reloading;
-    public event Action<float> startReloading;
     public event Action<float> switching;
     public event Action<float> startSwitching;
-    UnitState currentState;
     [SerializeField] GameObject selectionIndicator;
-    public bool selected { get; private set; } = false;
     [SerializeField] Material trajectoryLine;
-    public UnitState CurrentState => currentState;
     //[SerializeField] AudioClip
-    
     [SerializeField] AudioClip switchWeaponSoundStart;
     [SerializeField] AudioClip switchWeaponSoundEnd;
+    [HideInInspector] public Weapon secondaryWeapon;
+    protected int secondaryAmmo;
     protected override void Start() {
         base.Start();
         /*GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -29,14 +23,22 @@ public class SquadUnit : Unit {
         debugSphere.transform.localPosition = new Vector3(0, 0, 0);
         debugSphere.GetComponent<MeshRenderer>().material = debugSphereMaterial;
         Destroy(debugSphere.GetComponent<SphereCollider>());*/
-        
+        if (secondaryWeapon) {
+            secondaryAmmo = secondaryWeapon.MaxAmmo;
+        }
         currentState = new NormalUnitState(this);
     }
 
     public override void GetHit(int damage) {
         base.GetHit(damage);
+        //TODO check if game is over
+        // get minus points
     }
-    
+
+    public override bool isSquadUnit() {
+        return true;
+    }
+
     public void Select() {
         PlayAudioClip(AudioClips.select);
         selectionIndicator.SetActive(true);
@@ -47,19 +49,7 @@ public class SquadUnit : Unit {
         selectionIndicator.SetActive(false);
         selected = false;
     }
-    void Update() {
-        currentState = currentState.Process();
-        updateUI?.Invoke();
-    }
-
-    public void InvokeReloading(float time) {
-        reloading?.Invoke(time);
-    }
-
-    public void InvokeStartReloading(float time) {
-        startReloading?.Invoke(time);
-        PlayAudioClip(AudioClips.reload);
-    }
+    
     public void InvokeSwitching(float time) {
         switching?.Invoke(time);
     }

@@ -6,36 +6,38 @@
   <component name="ChangeListManager">
     <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/Background/Background 3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Background/Background 3.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Misc/Sun.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Misc/Sun.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/Grenade.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/Grenade.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Pistol.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Pistol.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SMG.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/SMG.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioMixer.mixer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioMixer.mixer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI/Portrait.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI/Portrait.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI/Profile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI/Profile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/DeleteSaveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/DeleteSaveButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/ExitButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/ExitButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/LoadSaveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/LoadSaveButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/NewGameButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/NewGameButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/RadioButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/RadioButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/IUnitButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/IUnitButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitButton.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/PlusMemberButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/PlusMemberButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/SelectedTeamMemberContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/SelectedTeamMemberContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/Shop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/startMissionButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/startMissionButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/AttackUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/AttackUnitState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/NormalUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/NormalUnitState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/ReloadUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/ReloadUnitState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/RunUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/RunUnitState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/SwitchWeaponState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/SwitchWeaponState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/UnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/UnitState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Grenade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Grenade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Gradient.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/Gradient.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right filling.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right filling.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Squader.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Squader.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water Shader/Materials/Shader Graphs_Stylized Water.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water Shader/Materials/Shader Graphs_Stylized Water.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water Shader/Textures/Foam 5.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water Shader/Textures/Foam 5.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water Shader/Textures/Normals 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water Shader/Textures/Normals 1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zdroje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Zdroje.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UsedMusic/Retro Synth/Can't espace with us .wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UsedMusic/Retro Synth/Can't espace with us .wav.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +189,8 @@
       <workItem from="1708284963489" duration="1646000" />
       <workItem from="1708617103569" duration="14622000" />
       <workItem from="1708778172405" duration="26075000" />
+      <workItem from="1708962440079" duration="3513000" />
+      <workItem from="1709654816092" duration="26876000" />
     </task>
     <servers />
   </component>
@@ -196,4 +200,36 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs</url>
+          <line>132</line>
+          <properties documentPath="C:\Users\mata\Documents\GitHub\AnarchySquad\Assets\Scripts\Units\Unit.cs" initialLine="131" containingFunctionPresentation="Method 'ThrowGrenade'">
+            <startOffsets>
+              <option value="4041" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4042" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs</url>
+          <line>128</line>
+          <properties documentPath="C:\Users\mata\Documents\GitHub\AnarchySquad\Assets\Scripts\Units\Unit.cs" initialLine="128" containingFunctionPresentation="Method 'SetDestination'">
+            <startOffsets>
+              <option value="3944" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3945" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>

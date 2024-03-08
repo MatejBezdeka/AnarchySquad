@@ -40,6 +40,10 @@ public class Profile : MonoBehaviour, IButton
         switchButton.onClick.AddListener(SwitchWeaponsClicked);
     }
 
+    void Update() {
+        
+    }
+
     void UpdateData() {
         hpSlider.value = currentUnit.CurrentHp;
         hpText.text = currentUnit.CurrentHp + "/" + currentUnit.stats.MaxHp;
@@ -76,7 +80,7 @@ public class Profile : MonoBehaviour, IButton
                 hpSlider.maxValue = currentUnit.stats.MaxHp;
                 ammoSlider.maxValue = currentUnit.weapon.MaxAmmo;
                 staminaSlider.maxValue = currentUnit.stats.MaxStamina;
-                switchButton.interactable = unit.secondaryWeapon;
+                switchButton.interactable = squader.secondaryWeapon;
             }
             else {
                 //Enemy

@@ -10,9 +10,9 @@ public abstract class UnitState
     }
     protected stateStages currentStage = stateStages.entry;
     UnitState nextState;
-    protected SquadUnit unit;
+    protected Unit unit;
 
-    protected UnitState(SquadUnit unit) {
+    protected UnitState(Unit unit) {
         this.unit = unit;
     }
 

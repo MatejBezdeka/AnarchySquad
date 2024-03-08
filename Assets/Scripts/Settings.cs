@@ -46,26 +46,34 @@ public class Settings : MonoBehaviour {
     }
 
     public void StartMusic() {
-        delay = 0;
         Extensions.ShuffleArray(soundtrackClips);
-        foreach (var track in soundtrackClips) {
-            musicAudioSource.clip = track;
-            musicAudioSource.PlayScheduled(delay);
-            delay += track.length;
-        }
-
+        musicAudioSource.clip = soundtrackClips[0];
+        delay = soundtrackClips[0].length;
+        currentSong = 0;
         musicAudioSource.Play();
         StartCoroutine(MusicChecker());
     }
 
     IEnumerator MusicChecker() {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1);
-        delay--;
-        if (delay >= 0) {
-            yield return waitForSeconds;
+        while (true) {
+            Debug.Log("ggg");
+            delay--;
+            if (delay >= 0) {
+                yield return new WaitForSeconds(1);
+            }
+            else {
+                currentSong++;
+                if (currentSong >= soundtrackClips.Length) {
+                    Extensions.ShuffleArray(soundtrackClips);
+                    currentSong = 0;
+                }
+
+                musicAudioSource.clip = soundtrackClips[currentSong];
+                delay = soundtrackClips[currentSong].length;
+                musicAudioSource.Play();
+                yield return new WaitForSeconds(1);
+            }
         }
-        
-        yield return waitForSeconds;
     }
     
     public void ResumeMusic() {

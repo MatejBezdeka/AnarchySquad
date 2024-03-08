@@ -1,71 +1,78 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Units;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 using Random = System.Random;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(AudioSource))]
-public class Unit : MonoBehaviour {
-    static protected Random rn = new Random();
+public abstract class Unit : MonoBehaviour {
+    static Random rn = new Random();
+    //TODO simplify profile communication
+    public event Action updateUI;
+    public event Action<float> reloading;
+    public event Action<float> startReloading;
     public event Action<float> needToReload;
-    [Header("=== Unit Stats ===")]
+    public enum AudioClips { select, roger, reload, shoot,  }
+    
+    [HideInInspector] public string UnitName = "NaN";
+    
+    public int CurrentHp { get; private set; }
+    public float CurrentStamina { get; private set; }
+    public int CurrentAmmo { get; protected set; }
+    public bool selected { get; protected set; } = false;
+
+    [Header("=== Unit Settings ===")]
     [HideInInspector] public Stats stats;
     [HideInInspector] public Weapon weapon;
-    [HideInInspector] public Weapon secondaryWeapon;
-    [SerializeField, Tooltip("Material for debug sphere that indicates range of unit")] protected Material debugSphereMaterial;
-    [SerializeField, Tooltip("Material for plane that will indicate selected unit")] protected Material selectMaterial;
     [SerializeField, Range(0.1f, 1), Tooltip("How often is an unit gonna update and respond")] protected float responseTime = 0.5f;
-    [SerializeField] public GameObject muzzle;
-    NavMeshAgent agent;
-    [Header("Grenade")]
+    [SerializeField] public GameObject muzzle; //TODO gun should have a its own model and muzzle
+    //possibility to see range of the unit's gun
+    //[SerializeField, Tooltip("Material for debug sphere that indicates range of unit")] protected Material debugSphereMaterial;
+    
+    [Header("=== Grenade ===")]
     [SerializeField] GameObject grenadePrefab;
     [SerializeField, Range(1,100)] protected float maxGrenadeDistance;
     [SerializeField, Range(1,89)] float launchAngle = 35f;
-    public NavMeshAgent Agent => agent;
+    
     public float LaunchAngle => launchAngle;
     public float MaxGrenadeDistance => maxGrenadeDistance;
-    protected Unit targetedUnit;
-    public int CurrentHp { get; protected set; }
-    public float CurrentStamina { get; protected set; }
-    public int CurrentAmmo { get; protected set; }
-    protected int secondaryAmmo; 
-    [HideInInspector] public string UnitName = "No name";
-    protected AudioSource audioSource;
+    
     [Header("== Unit Audio === ")]
+    [SerializeField] protected AudioSource audioSource;
+    [SerializeField] protected AudioSource audioRadioSource;
     [SerializeField] AudioClip[] hurtSound;
     [SerializeField] AudioClip[] dieSound;
     [SerializeField] AudioClip[] rogerSounds;
     [SerializeField] AudioClip[] selectSounds;
     [SerializeField] AudioClip[] reloadSounds;
-    public enum AudioClips {
-        reload, select, shoot, roger
-    }
+    
+    NavMeshAgent agent;
+    public NavMeshAgent Agent => agent;
+    
+    protected UnitState currentState;
+    public UnitState CurrentState => currentState;
+    
+    
+    
     protected virtual void Start() {
         agent = GetComponent<NavMeshAgent>();
-        audioSource = GetComponent<AudioSource>();
         agent.speed = stats.Speed;
         agent.angularSpeed *= 2;
         CurrentHp = stats.MaxHp;
         CurrentStamina = stats.MaxStamina;
         CurrentAmmo = weapon.MaxAmmo;
-        if (secondaryWeapon) {
-            secondaryAmmo = secondaryWeapon.MaxAmmo;
-        }
     }
-    public float Sprint() {
+    void Update() {
+        currentState = currentState.Process();
+        updateUI?.Invoke();
+    }
+
+    #region stamina
+    public void Sprint() {
         CurrentStamina -= 2f;
         if (CurrentStamina < 0) {
             CurrentStamina = 0;
         }
-        return CurrentStamina;
-    }
-    public void Reloaded() {
-        CurrentAmmo = weapon.MaxAmmo;
     }
     public void AddStamina() {
         CurrentStamina += 1.5f;
@@ -73,30 +80,30 @@ public class Unit : MonoBehaviour {
             CurrentStamina = stats.MaxStamina;
         }
     }
-    List<Unit> DetectEnemiesInProximity() {
-        //Detect
-        return null;
-    }
+    #endregion
+    #region health
 
     public virtual void GetHit(int damage) {
         damage = (int)(damage * (1f - (stats.Armor * 0.25f) * 0.04f));
         if ((CurrentHp -= damage) <= 0) {
             Destroy(gameObject);
+            
+        }
+        else {
+            // 20% play hurt sound
         }
     }
-
-    public void SetDestination(Vector3 destination) {
-        agent.SetDestination(destination);
-        //možná chytřejší AI?
-        //agent.SetAreaCost();
-    }
-
-    public Vector3 GetMoveVector() {
-        return agent.velocity;
-    }
-
+    
     protected virtual void Die() {
+        //TODO play die sound
         Destroy(this);
+    }
+    
+    #endregion
+    #region ammo
+
+    public void Reloaded() {
+        CurrentAmmo = weapon.MaxAmmo;
     }
 
     public void DeductAmmo() {
@@ -105,6 +112,24 @@ public class Unit : MonoBehaviour {
             needToReload?.Invoke(weapon.ReloadTime);
         }
     }
+    
+    public void InvokeReloading(float time) {
+        reloading?.Invoke(time);
+    }
+
+    public void InvokeStartReloading(float time) {
+        startReloading?.Invoke(time);
+        PlayAudioClip(AudioClips.reload);
+    }
+    
+    #endregion
+
+    public abstract bool isSquadUnit();
+
+    public void SetDestination(Vector3 destination) {
+        agent.SetDestination(destination);
+    }
+
     public void ThrowGrenade(Vector3 target) {
         GameObject grenade = Instantiate(grenadePrefab, muzzle.transform.position, Quaternion.identity);
         Rigidbody rigidBody = grenade.GetComponent<Rigidbody>();
@@ -124,13 +149,19 @@ public class Unit : MonoBehaviour {
     public void PlayAudioClip(AudioClips clip) {
         switch (clip) {
             case AudioClips.roger:
-                audioSource.PlayOneShot(rogerSounds[rn.Next(rogerSounds.Length)]);
+                if (!audioRadioSource.isPlaying) {
+                    audioRadioSource.PlayOneShot(rogerSounds[rn.Next(rogerSounds.Length)]);
+                }
                 break;
             case AudioClips.reload:
-                audioSource.PlayOneShot(reloadSounds[rn.Next(reloadSounds.Length)]);
+                if (!audioRadioSource.isPlaying) {
+                    audioRadioSource.PlayOneShot(reloadSounds[rn.Next(reloadSounds.Length)]);
+                }
                 break;
             case AudioClips.select:
-                audioSource.PlayOneShot(selectSounds[rn.Next(selectSounds.Length)]);
+                if (!audioRadioSource.isPlaying) { 
+                    audioRadioSource.PlayOneShot(selectSounds[rn.Next(selectSounds.Length)]);
+                }
                 break;
             case AudioClips.shoot:
                 audioSource.PlayOneShot(weapon.ShootSound);
@@ -138,5 +169,5 @@ public class Unit : MonoBehaviour {
         }
         
     }
-
+    
 }
