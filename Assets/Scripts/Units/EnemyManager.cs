@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class EnemyManager : MonoBehaviour {
-    
-    
     System.Random rn = new System.Random();
+    int maxenemyCount = 16;
     [SerializeField] GameObject enemyPrefab;
+    [SerializeField] List<EnemyUnit> enemyUnits;
     [SerializeField] List<Stats> statsList;
     [SerializeField] List<Weapon> weaponsList;
     //one time, contiunious spawning, wave, after some die
@@ -23,8 +23,8 @@ public class EnemyManager : MonoBehaviour {
     }
 
     void SpawnWave(int count) {
+        map.CalculateMapSpawnSuitability();
         for (int i = 0; i < count; i++) {
-            map.CalculateMapSpawnSuitability();
             SpawnEnemy();
         }
 
@@ -47,10 +47,14 @@ public class EnemyManager : MonoBehaviour {
         }
     }
     void SpawnEnemy() {
-        //Transform randomTile = map.GetRandomOpenTile();
         Vector3 position = map.ViableSpawnPositionses[rn.Next(map.ViableSpawnPositionses.Count)];
         position.y = 6 + 1;
-        Instantiate(enemyPrefab, position, Quaternion.identity);
+        enemyUnits.Add(
+            UnitFactory.SpawnUnit(
+                enemyPrefab,
+                new UnitBlueprint(Names.GetRandomName(), statsList[rn.Next(statsList.Count)], weaponsList[rn.Next(weaponsList.Count)]),
+                position)
+            as EnemyUnit);
     }
 
     

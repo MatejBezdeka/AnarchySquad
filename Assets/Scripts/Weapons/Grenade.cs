@@ -27,11 +27,11 @@ public class Grenade : MonoBehaviour {
         Collider[] hit = Physics.OverlapSphere(transform.position, range);
         //Debug.Log(hit.Length);
         foreach (var collision in hit) {
-            if (collision.tag == "Anarchist" && !hitSquaders) {
+            if (collision.CompareTag("Anarchist") && !hitSquaders) {
                 collision.GetComponent<Unit>().GetHit(damage);
             }
 
-            if (collision.tag == "Squader" && hitSquaders) {
+            if (collision.CompareTag("Squader") && hitSquaders) {
                 collision.GetComponent<Unit>().GetHit(damage);
             }
         }

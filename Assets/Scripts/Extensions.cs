@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public static class Extensions
 {
     public static void CalculateDistance(this Transform unit, Transform point, out float distance) {
         distance = (float) Math.Sqrt(Math.Pow(unit.position.x - point.position.x,2) + Math.Pow(unit.position.y - point.position.y,2));
     }
+
+    
     public static bool TargetVisibility(this Transform transform, Vector3 targetPos, string tag) {
         Physics.Raycast(new Ray(transform.position, targetPos - transform.position), out RaycastHit hit, 299);
         //Debug.DrawRay(transform.position, targetPos - transform.position,Color.red, 1);

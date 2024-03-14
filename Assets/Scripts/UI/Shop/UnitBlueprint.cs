@@ -9,6 +9,21 @@ public class UnitBlueprint {
     public Weapon weapon;
     public Weapon secondaryWeapon;
     public bool useSecAsMain = false;
+    
+    public UnitBlueprint() { }
+    
+    public UnitBlueprint(string name, Stats stats, Weapon weapon) {
+        this.name = name;
+        this.stats = stats;
+        this.weapon = weapon;
+    }
+    public UnitBlueprint(string name, Stats stats, Weapon weapon, Weapon secondaryWeapon) {
+        this.name = name;
+        this.stats = stats;
+        this.weapon = weapon;
+        this.secondaryWeapon = secondaryWeapon;
+    }
+
     public bool IsValid() {
         if (weapon == null && secondaryWeapon != null) {
             useSecAsMain = true;

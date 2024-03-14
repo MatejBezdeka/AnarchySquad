@@ -7,17 +7,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Office 1
-  m_Shader: {fileID: 4800000, guid: 84bd9e40c45b4f84e9e65d4d27e418da, type: 3}
+  m_Name: BuildingsMainMenu
+  m_Shader: {fileID: -6465566751694194690, guid: 07f948e9f2a898b4484a0267750efd3c,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -59,43 +61,80 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Bands: 10
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Bands: 8
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _Bottom_Strength: 1
     - _BumpScale: 1
+    - _CastShadows: 1
+    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float: 1
+    - _Float_1: 0.5
     - _GlossMapScale: 1
-    - _Glossiness: 0.163
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HorizontalSpeed: 0.2
-    - _Limiter: 0
-    - _MaxValue: 0.75
-    - _Metallic: 0.271
-    - _MinValue: 0.25
+    - _MaxValue: 1
+    - _Metalic: 0
+    - _Metallic: 0
+    - _MinValue: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline: 0
     - _Parallax: 0.02
-    - _Scale: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothess: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Strength: 1
+    - _Surface: 0
+    - _Top_Strength: 0.93
     - _UVSec: 0
-    - _VerticalSpeed: 0.2
+    - _WorkflowMode: 1
+    - _ZTest: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
-    - Color_1C7EE47: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
-    - Color_6FAA8252: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
-    - _Background: {r: 1, g: 1, b: 1, a: 1}
-    - _BottomColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Color: {r: 0.41509432, g: 0.40138838, b: 0.40138838, a: 1}
-    - _EmissionColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TopColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+    - _BottomColor: {r: 0.23137252, g: 0.8862745, b: 0.51473886, a: 1}
+    - _Bottom_Color: {r: 0.6320754, g: 0.5754272, b: 0.5754272, a: 1}
+    - _Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
+    - _Color_1: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Emmision: {r: 1, g: 1, b: 1, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+    - _TopColor: {r: 0.1071111, g: 0.60616016, b: 0.7830189, a: 1}
+    - _Top_Color: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &5337581938952789538
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

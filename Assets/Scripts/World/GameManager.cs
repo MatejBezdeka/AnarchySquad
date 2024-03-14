@@ -9,8 +9,6 @@ using UnityEngine.Serialization;
 public class GameManager : MonoBehaviour {
     //Singleton
     public static GameManager instance = new GameManager();
-    UnitFactory unitFactory = new UnitFactory();
-    
     [Header("=== Game Settings ===")]
     [SerializeField, Range(1.1f, 4)] float maxTimeSpeed = 2;
     [SerializeField, Range(0.1f, 1f)] float minTimeSpeed = 0.2f;
@@ -47,7 +45,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        //Debug.Log("Updating");
+        
     }
     
     
@@ -87,7 +85,7 @@ public class GameManager : MonoBehaviour {
             Vector3 rotatedSpawnPoint = spawnPoint.GetRotatedVector3(SquadParameters.Units.Count, i);
             rotatedSpawnPoint.y += 1;
             //GameObject newUnit = Instantiate(unitPrefab, new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
-            units.Add(unitFactory.SpawnUnit(unitPrefab, SquadParameters.Units[i], rotatedSpawnPoint));
+            units.Add(UnitFactory.SpawnUnit(unitPrefab, SquadParameters.Units[i], rotatedSpawnPoint) as SquadUnit) ;
             
         }
     }

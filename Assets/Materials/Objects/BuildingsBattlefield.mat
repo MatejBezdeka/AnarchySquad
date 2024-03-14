@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gradient Custom Blend Points
+  m_Name: BuildingsBattlefield
   m_Shader: {fileID: -6465566751694194690, guid: 07f948e9f2a898b4484a0267750efd3c,
     type: 3}
   m_Parent: {fileID: 0}

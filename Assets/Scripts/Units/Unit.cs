@@ -46,7 +46,7 @@ public abstract class Unit : MonoBehaviour {
     [SerializeField] AudioClip[] selectSounds;
     [SerializeField] AudioClip[] reloadSounds;
     
-    NavMeshAgent agent;
+    protected NavMeshAgent agent;
     public NavMeshAgent Agent => agent;
     
     protected UnitState currentState;

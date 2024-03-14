@@ -6,38 +6,108 @@
   <component name="ChangeListManager">
     <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Background/Background 3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Background/Background 3.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackHubButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BackHubButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BigCube Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BigCube Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BigCube.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BigCube.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Building.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Building.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Carl.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Carl.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Empty.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Empty.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ErrorMessage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ErrorMessage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gradient Custom Blend Points.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/IButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/IButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InportModel.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Light.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Light.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Projectiles/Bullet.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Projectiles/Bullet.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Material.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Material.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Unit Class.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Unit Class.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Office 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Office 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Office 2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Office 2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Office.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Office.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/Anarchist Grenade.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/Anarchist Grenade.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/BulletSquad.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/BulletSquad.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/QuestionMarkWhite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/QuestionMarkWhite.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Roof.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Roof.fbx.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Pistol.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Pistol.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SMG.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/SMG.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioMixer.mixer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioMixer.mixer.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI/Profile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI/Profile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Assault Rifle.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Assault Rifle.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Boot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Boot.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Pistol.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Pistol.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/SharpShooter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/SharpShooter.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Shield.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Shield.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Skull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Skull.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Pistol.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Pistol.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SMG 1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SMG 1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SMG.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/SMG.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Shoot SMG.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Shoot SMG.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Shotgun.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Shotgun.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Sniper Rifle.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Sniper Rifle.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objective.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objective.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitBlueprint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitBlueprint.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/AttackUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/AttackUnitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/NormalUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/NormalUnitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/ReloadUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/ReloadUnitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/RunUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/RunUnitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/SwitchWeaponState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/SwitchWeaponState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/UnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/UnitState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Gradient.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/Gradient.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame right filling.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Frame right filling.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Squader.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Squader.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UsedMusic/Retro Synth/Can't espace with us .wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UsedMusic/Retro Synth/Can't espace with us .wav.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Grenade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Grenade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ShopBackGround 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ShopBackGround 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ShopBackGround.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ShopBackGround.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Squader.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Squader.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 3.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 3.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 4.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 4.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 5.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 5.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 6.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 6.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 7.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI 7.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/scout.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,10 +125,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c2d036c16ca64e0eb93703a3b13e733a171c00/7d/d9ceff01/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c2d036c16ca64e0eb93703a3b13e733a171c00/e3/5f6eb2b2/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/BackHubButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ErrorMessage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/IButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Loading/LoadingText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Map.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapsGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Settings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/GameUI/Profile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -191,6 +260,8 @@
       <workItem from="1708778172405" duration="26075000" />
       <workItem from="1708962440079" duration="3513000" />
       <workItem from="1709654816092" duration="26876000" />
+      <workItem from="1710177151226" duration="7125000" />
+      <workItem from="1710440958866" duration="7487000" />
     </task>
     <servers />
   </component>
@@ -208,10 +279,10 @@
           <line>132</line>
           <properties documentPath="C:\Users\mata\Documents\GitHub\AnarchySquad\Assets\Scripts\Units\Unit.cs" initialLine="131" containingFunctionPresentation="Method 'ThrowGrenade'">
             <startOffsets>
-              <option value="4041" />
+              <option value="4051" />
             </startOffsets>
             <endOffsets>
-              <option value="4042" />
+              <option value="4052" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
@@ -221,10 +292,10 @@
           <line>128</line>
           <properties documentPath="C:\Users\mata\Documents\GitHub\AnarchySquad\Assets\Scripts\Units\Unit.cs" initialLine="128" containingFunctionPresentation="Method 'SetDestination'">
             <startOffsets>
-              <option value="3944" />
+              <option value="3954" />
             </startOffsets>
             <endOffsets>
-              <option value="3945" />
+              <option value="3955" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />

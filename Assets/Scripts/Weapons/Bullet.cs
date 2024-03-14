@@ -3,19 +3,20 @@ using UnityEngine;
 
 namespace Units {
     public class Bullet : MonoBehaviour {
+        [SerializeField] bool squadBullet;
         Vector3 start;
         float range;
         float maxRange;
         float maxTime = 15;
         float bulletSpeed = 10;
         float currentTime = 0;
+        
         int baseDamage;
         float distance;
         public void StartBullet(Unit shotBy) {
             start = shotBy.transform.position;
             range = shotBy.weapon.EffectiveRange;
             maxRange = shotBy.weapon.MaxEffectiveRange;
-            
         }
 
         void Update() {
@@ -26,11 +27,8 @@ namespace Units {
             }
         }
         void OnCollisionEnter(Collision other) {
-            switch (other.transform.tag) {
-                case "Squader":
-                case "Anarchist":
-                    other.gameObject.GetComponent<Unit>().GetHit(Damage());
-                    break;
+            if (!squadBullet && other.transform.CompareTag("Squader") || squadBullet && other.transform.CompareTag("Anarchist")) {
+                other.gameObject.GetComponent<Unit>().GetHit(Damage());
             }
             Destroy(gameObject);
         }
