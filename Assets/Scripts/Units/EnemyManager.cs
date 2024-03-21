@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,19 +12,34 @@ public class EnemyManager : MonoBehaviour {
     //one time, contiunious spawning, wave, after some die
     float confidence;
     float difficulty;
-    float currentWaveCooldown;
-    float waveCooldown;
+    float waveCooldown = 999;
+    float currentWaveCooldown = 0;
+    float calculateMapCooldown = 5;
+    float currentMapCooldown = 0;
     
     MapGenerator map;
     void Start() {
         map = GameManager.instance.MapGenerator;
-        StartCoroutine(EnemySpawner());
-        //CalculateMapSpawnSuitability();
+        //StartCoroutine(EnemySpawner());
+        map.CalculateMapSpawnSuitability();
         SpawnWave(1);
     }
 
+    void Update() {
+        currentWaveCooldown += Time.deltaTime;
+        currentMapCooldown += Time.deltaTime;
+        if (currentWaveCooldown > waveCooldown) {
+            currentWaveCooldown = 0;
+            SpawnWave(0);
+        }
+
+        if (currentMapCooldown > calculateMapCooldown) {
+            calculateMapCooldown = 0;
+            map.CalculateMapSpawnSuitability();
+        }
+    }
+
     void SpawnWave(int count) {
-        map.CalculateMapSpawnSuitability();
         for (int i = 0; i < count; i++) {
             SpawnEnemy();
         }
@@ -37,14 +53,6 @@ public class EnemyManager : MonoBehaviour {
             row += "\n";
         }
         Debug.Log(row);*/
-    }
-    IEnumerator EnemySpawner() {
-        WaitForSeconds waitTime = new WaitForSeconds(10);
-        while (true) {
-            //SpawnEnemy();
-            SpawnWave(1);
-            yield return waitTime;
-        }
     }
     void SpawnEnemy() {
         Vector3 position = map.ViableSpawnPositionses[rn.Next(map.ViableSpawnPositionses.Count)];

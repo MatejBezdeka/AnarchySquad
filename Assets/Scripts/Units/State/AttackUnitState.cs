@@ -43,7 +43,7 @@ public class AttackUnitState : UnitState {
     }
 
     void Reload(float reloadTime) {
-        Exit(new ReloadUnitState(unit, reloadTime, this));
+        Exit(new ReloadUnitState(unit, this));
     }
     protected override void Exit(UnitState state) {
         unit.Agent.ResetPath();

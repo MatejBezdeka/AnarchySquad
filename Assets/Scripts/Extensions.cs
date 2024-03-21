@@ -13,17 +13,15 @@ public static class Extensions
     public static bool TargetVisibility(this Transform transform, Vector3 targetPos, string tag) {
         Physics.Raycast(new Ray(transform.position, targetPos - transform.position), out RaycastHit hit, 299);
         //Debug.DrawRay(transform.position, targetPos - transform.position,Color.red, 1);
-        Debug.Log(tag + " " + hit.transform.tag);
         if (hit.transform.CompareTag(tag)) {
-
             return true;
         }
         return false;
     }
 
     public static bool TargetDistance(this Transform transform, Vector3 targetPos, float maxRange) {
-        //Debug.Log("distancing");
         if (Vector3.Distance(transform.position, targetPos) < maxRange) {
+            //in range
             return true;
         }
         //out of distance

@@ -9,7 +9,7 @@ public class RunUnitState : UnitState {
     float currentCooldown = 0;
     float speedMultiplayer = 2;
     float originalSpeed;
-    public RunUnitState(SquadUnit unit) : base(unit) {
+    public RunUnitState(Unit unit) : base(unit) {
     }
     protected override void Enter() {
         base.Enter();

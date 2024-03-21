@@ -7,12 +7,12 @@ public class ReloadUnitState : UnitState {
     float currentCooldown = 0;
     bool reloaded = false;
     UnitState previousState;
-    public ReloadUnitState(Unit unit, float reloadTime, UnitState previousState) : base(unit) {
-        this.reloadTime = reloadTime;
+    public ReloadUnitState(Unit unit, UnitState previousState) : base(unit) {
+        this.reloadTime = unit.weapon.ReloadTime;
         this.previousState = previousState;
     }
-    public ReloadUnitState(Unit unit, float reloadTime) : base(unit) {
-        this.reloadTime = reloadTime;
+    public ReloadUnitState(Unit unit) : base(unit) {
+        this.reloadTime = unit.weapon.ReloadTime;
         previousState = new NormalUnitState(unit);
     }
     protected override void Enter() {

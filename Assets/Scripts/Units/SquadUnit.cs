@@ -65,7 +65,7 @@ public class SquadUnit : Unit {
 
     public void ReloadNow() {
         if (currentState is ReloadUnitState || CurrentAmmo == weapon.MaxAmmo) { return; }
-        currentState.ForceChangeState(new ReloadUnitState(this, weapon.ReloadTime));
+        currentState.ForceChangeState(new ReloadUnitState(this));
         PlayAudioClip(AudioClips.reload);
     }
 

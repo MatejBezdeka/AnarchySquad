@@ -4,19 +4,36 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyUnit : Unit {
-    private SquadUnit closestEnemy = null;
-    private float closestDistance = float.MaxValue;
+    public SquadUnit closestEnemy { get; private set; } = null;
+    public float closestDistance { get; private set; } = float.MaxValue;
+    const float maxMorale = 200;
     float morale = 100;
+
+    public float Morale {
+        get { return morale; }
+        set {
+            morale = value;
+            if (morale > maxMorale) {
+                morale = maxMorale;
+            }else if (morale < 0) {
+                morale = 0;
+            }
+                
+        }
+    }
     float moraleLoseDistance;
-    void Start() {
+
+    protected override void Start() {
+        currentState = new EnemyNormalState(this);
+        StartCoroutine(SlowUpdate());
         base.Start();
-        if (7.5f > (weapon.EffectiveRange * 0.75f) || 18 < (weapon.EffectiveRange * 0.75f)) {
+        if (10 > (weapon.EffectiveRange * 0.75f) || 40 < (weapon.EffectiveRange * 0.75f)) {
             moraleLoseDistance = 10;
         }
         else {
             moraleLoseDistance = weapon.EffectiveRange * 0.75f;
         }
-        StartCoroutine(SlowUpdate());
+
     }
     IEnumerator SlowUpdate() {
         WaitForSeconds waitTime = new WaitForSeconds(responseTime);
@@ -32,7 +49,13 @@ public class EnemyUnit : Unit {
         //add points?
         //check if game over
         //death sound
+        StopCoroutine(SlowUpdate());
         base.Die();
+    }
+
+    public override void GetHit(int damage) {
+        base.GetHit(damage);
+        morale -= CurrentHp < stats.MaxHp / 2 ? 10 : 5;
     }
 
     public override bool isSquadUnit() {
@@ -48,18 +71,22 @@ public class EnemyUnit : Unit {
             for ( int i = 1; i < path.corners.Length; ++i ) { 
                 currentDistance += Vector3.Distance( path.corners[i-1], path.corners[i]);
                 if (closestDistance < moraleLoseDistance) {
-                    morale--;
+                    Morale--;
                 }
             }
             if (currentDistance < distance) {
                 distance = currentDistance;
                 closestEnemy = unit;
                 if (distance > moraleLoseDistance) {
-                    morale += 3;
+                    Morale += 1.25f;
                 }
             }
         }
         closestDistance = currentDistance;
         Debug.Log(closestEnemy);
+    }
+
+    float DifficultyNomilize(int difficulty) {
+        return (float)((Mathf.Log(difficulty)) / 2.5 * difficulty + 1);
     }
 }

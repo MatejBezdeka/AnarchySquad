@@ -56,7 +56,6 @@ public class Settings : MonoBehaviour {
 
     IEnumerator MusicChecker() {
         while (true) {
-            Debug.Log("ggg");
             delay--;
             if (delay >= 0) {
                 yield return new WaitForSeconds(1);
@@ -94,7 +93,6 @@ public class Settings : MonoBehaviour {
                 ambientAudioSource.Play();
                 break;
             case AmbientMusic.Hub:
-                Debug.Log("B");
                 ambientAudioSource.clip = HubMenuClipLoop;
                 ambientAudioSource.Play();
                 break;

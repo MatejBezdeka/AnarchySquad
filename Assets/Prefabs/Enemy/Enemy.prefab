@@ -241,7 +241,7 @@ MonoBehaviour:
   UnitName: No name
   stats: {fileID: 11400000, guid: 428bc9961a581fa409489bd317a50872, type: 2}
   weapon: {fileID: 11400000, guid: 9c31afbd0d61c1347a28627ddcd39c5f, type: 2}
-  responseTime: 0.5
+  responseTime: 1
   muzzle: {fileID: 619358403020231759}
   grenadePrefab: {fileID: 754246055655193558, guid: b845c9ada5f169b49b852f90f869d686,
     type: 3}

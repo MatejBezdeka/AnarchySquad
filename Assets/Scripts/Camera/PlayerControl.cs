@@ -151,7 +151,7 @@ public class PlayerControl : MonoBehaviour {
         float currentInputZoom = -zoomAction.ReadValue<float>();
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
         float frameRate = (1 / Time.deltaTime);
-        Debug.Log((1 / Time.deltaTime) + " " + frameRate);
+        //Debug.Log((1 / Time.deltaTime) + " " + frameRate);
         //smooth the values
         //smoothMove /= frameRate;
         currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20, Time.unscaledDeltaTime);
