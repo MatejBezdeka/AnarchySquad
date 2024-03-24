@@ -67,12 +67,14 @@ public class EnemyUnit : Unit {
         float currentDistance = 0;
         NavMeshPath path = new NavMeshPath();
         foreach (var unit in GameManager.instance.Units) {
+            currentDistance = 0;
             NavMesh.CalculatePath(transform.position, unit.transform.position, NavMesh.AllAreas, path);
-            for ( int i = 1; i < path.corners.Length; ++i ) { 
+            for ( int i = 1; i < path.corners.Length; ++i ) {
                 currentDistance += Vector3.Distance( path.corners[i-1], path.corners[i]);
-                if (closestDistance < moraleLoseDistance) {
-                    Morale--;
-                }
+                
+            }
+            if (closestDistance < moraleLoseDistance) {
+                Morale--;
             }
             if (currentDistance < distance) {
                 distance = currentDistance;
@@ -89,4 +91,29 @@ public class EnemyUnit : Unit {
     float DifficultyNomilize(int difficulty) {
         return (float)((Mathf.Log(difficulty)) / 2.5 * difficulty + 1);
     }
+
+    public void Chill() {
+        morale += 0.2f;
+    }
+
+    public void SetDestinationToSafety() {
+        Vector3 closestPosition = this.transform.position;
+        float distance = float.MaxValue;
+        float currentDistance = 0;
+        NavMeshPath path = new NavMeshPath();
+        foreach (Vector3 position in GameManager.instance.MapGenerator.ViableSpawnPositionses) {
+            currentDistance = 0;
+            for ( int i = 1; i < path.corners.Length; ++i ) {
+                currentDistance += Vector3.Distance( path.corners[i-1], path.corners[i]);
+                
+            }
+            if (distance > currentDistance) {
+                distance = currentDistance;
+                closestPosition = position;
+            }
+        }
+
+        agent.SetDestination(closestPosition);
+    }
+        
 }
