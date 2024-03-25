@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using Random = System.Random;
 
 public class MapGenerator : MonoBehaviour {
     [Header("Settings")]
@@ -287,5 +288,28 @@ public class MapGenerator : MonoBehaviour {
             mapSpawnSuitabilityValues[row, col] = distance;
             queue.Enqueue((row, col, distance));
         }
+    }
+
+    public Vector3 GetSaferPosition(Vector3 position) {
+        Random rn = new Random();
+        Coord unitCoord = PositionToCoord(position.x, position.y);
+        List<Coord> saferCoords = new List<Coord>();
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                int neighborX = unitCoord.x + x;
+                int neighborY = unitCoord.y + y;
+                if (neighborX >= 0 && neighborX < mapSpawnSuitabilityValues.GetLength(0) && neighborY >= 0 &&
+                    neighborY < mapSpawnSuitabilityValues.GetLength(1)) {
+                    if (mapSpawnSuitabilityValues[neighborX,neighborY] >= mapSpawnSuitabilityValues[unitCoord.x,unitCoord.y]) {
+                        saferCoords.Add(new Coord(neighborX, neighborY));
+                    }
+                }
+            }
+        }
+        unitCoord = saferCoords[rn.Next(0, saferCoords.Count)];
+        Vector3 newPosition = CoordToPosition(unitCoord.x, unitCoord.y);
+        newPosition += new Vector3(rn.Next(-50,50)/50f * tileSize,0,rn.Next(-50,50)/50f * tileSize);
+        return newPosition;
+
     }
 }

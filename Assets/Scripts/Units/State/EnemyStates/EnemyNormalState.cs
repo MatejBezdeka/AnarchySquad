@@ -25,10 +25,12 @@ public class EnemyNormalState : NormalUnitState {
                 unit.ThrowGrenade(unit.closestEnemy.transform.position);
             }
             if (unit.weapon.MaxAmmo/5 <= unit.CurrentAmmo) {
+                
                 Exit(new EnemyAttackState(unit, unit.closestEnemy));
             }
             else {
-                
+                unit.SetDestinationToSafety();
+                Exit();
             }
             //attack state/reload state/go for objective
         }

@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyUnit : Unit {
+    enum walkState {
+        standing,
+        goingTo,
+        reatreat,
+        backUp
+    }
+
+    private walkState currentWalkState;
     public SquadUnit closestEnemy { get; private set; } = null;
     public float closestDistance { get; private set; } = float.MaxValue;
     const float maxMorale = 200;
@@ -33,13 +41,16 @@ public class EnemyUnit : Unit {
         else {
             moraleLoseDistance = weapon.EffectiveRange * 0.75f;
         }
-
+        currentWalkState = walkState.standing;
     }
     IEnumerator SlowUpdate() {
         WaitForSeconds waitTime = new WaitForSeconds(responseTime);
         while (true) {
             morale += 0.25f;
             UpdateClosestEnemy();
+            if (agent.pathStatus == 0) {
+                currentWalkState = walkState.standing;
+            }
             yield return waitTime;
         }
     }
@@ -115,5 +126,8 @@ public class EnemyUnit : Unit {
 
         agent.SetDestination(closestPosition);
     }
-        
+
+    public void SetDestinationToSaferPlace() {
+        agent.SetDestination(GameManager.instance.MapGenerator.GetSaferPosition(transform.position));
+    }
 }
