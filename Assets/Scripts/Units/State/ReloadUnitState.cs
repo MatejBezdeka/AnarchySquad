@@ -6,14 +6,14 @@ public class ReloadUnitState : UnitState {
     float reloadTime;
     float currentCooldown = 0;
     bool reloaded = false;
-    UnitState previousState;
-    public ReloadUnitState(Unit unit, UnitState previousState) : base(unit) {
+    UnitState nextState;
+    public ReloadUnitState(Unit unit, UnitState nextState) : base(unit) {
         this.reloadTime = unit.weapon.ReloadTime;
-        this.previousState = previousState;
+        this.nextState = nextState;
     }
     public ReloadUnitState(Unit unit) : base(unit) {
         this.reloadTime = unit.weapon.ReloadTime;
-        previousState = new NormalUnitState(unit);
+        nextState = new NormalUnitState(unit);
     }
     protected override void Enter() {
         unit.InvokeStartReloading(reloadTime);
@@ -27,7 +27,7 @@ public class ReloadUnitState : UnitState {
         if (currentCooldown > reloadTime) {
             unit.Reloaded();
             reloaded = true;
-            Exit(previousState);
+            Exit(nextState);
         }
     }
     protected override void Exit(UnitState state) {

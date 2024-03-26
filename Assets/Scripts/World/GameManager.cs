@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField, Range(1.1f, 4)] float maxTimeSpeed = 2;
     [SerializeField, Range(0.1f, 1f)] float minTimeSpeed = 0.2f;
     [SerializeField] MapGenerator mapGenerator;
+    public Save currentSave;
     public MapGenerator MapGenerator => mapGenerator;
     #region variables
     float time = 1;

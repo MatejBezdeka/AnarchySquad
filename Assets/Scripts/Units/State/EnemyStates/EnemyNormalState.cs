@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class EnemyNormalState : NormalUnitState {
     EnemyUnit unit;
     int chillCooldown = 1;
     float currentChillCooldown = 0;
+    Random rn = new Random();
     public EnemyNormalState(Unit unit) : base(unit) {
         this.unit = unit as EnemyUnit;
     }
@@ -25,14 +27,16 @@ public class EnemyNormalState : NormalUnitState {
                 unit.ThrowGrenade(unit.closestEnemy.transform.position);
             }
             if (unit.weapon.MaxAmmo/5 <= unit.CurrentAmmo) {
-                
                 Exit(new EnemyAttackState(unit, unit.closestEnemy));
             }
             else {
-                unit.SetDestinationToSafety();
-                Exit();
+                if (rn.Next(0,1) == 0) {
+                    unit.SetDestinationToSafety();
+                    Exit(new ReloadUnitState(unit, new EnemyAttackState(unit, unit.closestEnemy)));
+                }else {
+                    //go for objective
+                }
             }
-            //attack state/reload state/go for objective
         }
         else {
             if (unit.weapon.MaxAmmo != unit.CurrentAmmo) {

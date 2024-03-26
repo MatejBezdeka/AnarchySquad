@@ -15,7 +15,7 @@ MonoBehaviour:
   k_AssetVersion: 11
   k_AssetPreviousVersion: 11
   m_RendererType: 1
-  m_RendererData: {fileID: 0}
+  m_RendererData: {fileID: 11400000, guid: 03b2b53d3cb03c14cbf44c6a668a5348, type: 2}
   m_RendererDataList:
   - {fileID: 11400000, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
   m_DefaultRendererIndex: 0
