@@ -6,22 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Objects/BuildingsMainMenu.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Objects/BuildingsMainMenu.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/NewGameButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu/NewGameButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/EnemyNormalState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/EnemyNormalState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/ReloadUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/ReloadUnitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP - High fidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP - High fidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Flag right.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Flag right.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/arrow 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/arrow 1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/arrow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/arrow.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/inverted Flag.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/inverted Flag.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water Shader/Materials/Shader Graphs_Stylized Water.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water Shader/Materials/Shader Graphs_Stylized Water.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water Shader/URP-HighFidelity-Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water Shader/URP-HighFidelity-Renderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zdroje.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Zdroje.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MissionSelector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MissionSelector.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,6 +172,8 @@
       <workItem from="1711356570472" duration="5964000" />
       <workItem from="1711379303412" duration="15727000" />
       <workItem from="1711471861126" duration="3226000" />
+      <workItem from="1711564607564" duration="3735000" />
+      <workItem from="1711621462513" duration="14177000" />
     </task>
     <servers />
   </component>

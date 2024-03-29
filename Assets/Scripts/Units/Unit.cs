@@ -12,7 +12,7 @@ public abstract class Unit : MonoBehaviour {
     public event Action<float> reloading;
     public event Action<float> startReloading;
     public event Action<float> needToReload;
-    public enum AudioClips { select, roger, reload, shoot,  }
+    public enum AudioClips { select, roger, reload, shoot, }
     
     [HideInInspector] public string UnitName = "NaN";
     
