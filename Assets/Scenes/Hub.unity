@@ -3065,7 +3065,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1311216449}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1945136906}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: RemoveListeners
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1311216449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3920,7 +3932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1627030825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4792,7 +4804,7 @@ MonoBehaviour:
     type: 3}
   unitStats:
   - {fileID: 11400000, guid: 7581dadd708834a48873ba4941ce90dd, type: 2}
-  - {fileID: 11400000, guid: 2f6f5ae1026fb484e97689bc02db592b, type: 2}
+  - {fileID: 11400000, guid: 7eabd27cc8fc33c459c825a6d8647572, type: 2}
   - {fileID: 11400000, guid: bef305316cddc344cbb78200d9ef5878, type: 2}
   - {fileID: 11400000, guid: 2088552c2339924429f1736b07efcf43, type: 2}
   - {fileID: 11400000, guid: 6446f9272c26c8f4d92da028decfcae9, type: 2}

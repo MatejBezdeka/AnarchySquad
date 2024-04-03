@@ -34,9 +34,11 @@ public class Settings : MonoBehaviour {
     [SerializeField] AudioSource ambientAudioSource;
     float delay = 0;
     void Start() {
-        Music = this;
-        IButton.PlayButtonSound += PlayButtonSound;
-        DontDestroyOnLoad(transform.gameObject);
+        if (Music == null) {
+            Music = this;
+            IButton.PlayButtonSound += PlayButtonSound;
+            DontDestroyOnLoad(transform.gameObject);
+        }
         ChangeAmbientMusic(AmbientMusic.MainMenu);
     }
 

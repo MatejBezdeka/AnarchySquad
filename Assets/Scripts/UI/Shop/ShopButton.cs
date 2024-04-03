@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class ShopButton : MonoBehaviour, IButton {
+public class ShopButton : UIButton {
     public static Action deselected;
     static Action buttonSelected;
     public Settings.ButtonSounds Sound { get { return Settings.ButtonSounds.normal; } }
@@ -17,11 +17,9 @@ public class ShopButton : MonoBehaviour, IButton {
     [SerializeField] TextMeshProUGUI costText;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] Image image;
-    private Button button;
     //[SerializeField] private TextMeshProUGUI priceText;
-    void Start() {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(Clicked);
+    protected override void Start() {
+        base.Start();
         transform.localScale = Vector3.one;
         buttonSelected += () => { button.interactable = true; };
     }
@@ -37,17 +35,13 @@ public class ShopButton : MonoBehaviour, IButton {
     public void PointerExit() {
         hideDescription!.Invoke();
     }
-    void Clicked() {
+    protected override void Functionality() {
         itemClicked!.Invoke(new Tuple<Shop.types, int>(type, id));
-        IButton.PlayButtonSound.Invoke(Sound);
         buttonSelected.Invoke();
         button.interactable = false;
     }
 
-    public void Selected() {
-        
-    }
-
+    public void Selected() { }
     public void Deselected() {
         Debug.Log("deselected");
         deselected.Invoke();

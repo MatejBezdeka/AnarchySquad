@@ -245,4 +245,17 @@ public class Shop : MonoBehaviour {
         SceneManager.LoadSceneAsync("LoadingScene");
         SceneManager.LoadSceneAsync("Battlefield");
     }
+
+    public void RemoveListeners() {
+        ShopButton.itemClicked -= ClickedItem;
+        ShopButton.showDescription -= ShowDescription;
+        ShopButton.hideDescription -= HideDescription;
+        ShopButton.deselected -= Deselect;
+        UnitButton.clickedUnitButton -= ClickedUnit;
+        StartMissionButton.startingGame -= SaveUnitsForNextScene;
+        SelectedTeamMemberContainer.RemoveUnit -= RemoveUnit;
+        SelectedTeamMemberContainer.RemoveElement -= RemoveElement;
+        SelectedTeamMemberContainer.hideDescription -= HideDescription;
+        SelectedTeamMemberContainer.showUnitDescription -= ShowUnitDescription;
+    }
 }

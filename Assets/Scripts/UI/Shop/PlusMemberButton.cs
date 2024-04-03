@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class PlusMemberButton : UnitButton
 {
     void Start() {
-        GetComponent<Button>().onClick.AddListener(Clicked);
+        button = GetComponent<Button>();
+        button.onClick.AddListener(Clicked);
     }
 
     protected override int GetId() {
@@ -17,5 +18,9 @@ public class PlusMemberButton : UnitButton
 
     protected override Shop.types GetButtonType() {
         return Shop.types.none;
+    }
+
+    private void OnDestroy() {
+        button.onClick.RemoveAllListeners();
     }
 }

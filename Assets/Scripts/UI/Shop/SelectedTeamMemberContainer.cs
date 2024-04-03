@@ -36,10 +36,8 @@ public class SelectedTeamMemberContainer : UnitButton {
     
     protected void Start() {
         removeButton.onClick.AddListener(RemoveButtonClicked);
-
         statsAddButton.onClick.AddListener(() => { clickedButton = Shop.types.unit; Clicked(); });
         statsRemoveButton.onClick.AddListener(RemoveStats);
-        
         weaponAddButton.onClick.AddListener(() => { clickedButton = Shop.types.weapon; Clicked(); });
         weaponRemoveButton.onClick.AddListener(RemoveWeapon);
         secondaryWeaponAddButton.onClick.AddListener(() => { clickedButton = Shop.types.secondaryWeapon; Clicked(); });
@@ -48,7 +46,7 @@ public class SelectedTeamMemberContainer : UnitButton {
         unitName.text = placeHolderName;
         
     }
-    
+
     protected override int GetId() {
         return id;
     }
@@ -114,5 +112,15 @@ public class SelectedTeamMemberContainer : UnitButton {
     }
     public void PointerExit() {
         hideDescription!.Invoke();
+    }
+
+    private void OnDestroy() {
+        removeButton.onClick.RemoveAllListeners();
+        statsAddButton.onClick.RemoveAllListeners();
+        statsRemoveButton.onClick.RemoveAllListeners();
+        weaponAddButton.onClick.RemoveAllListeners();
+        weaponRemoveButton.onClick.RemoveAllListeners();
+        secondaryWeaponAddButton.onClick.RemoveAllListeners();
+        secondaryWeaponRemoveButton.onClick.RemoveAllListeners();
     }
 }

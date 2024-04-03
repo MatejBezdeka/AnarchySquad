@@ -13,8 +13,10 @@ public class NewGameButton : MonoBehaviour, IButton {
     }
 
     void Clicked() {
-        GameManager.instance.currentSave = new Save(Random.Range(int.MinValue + 64, int.MaxValue - 64));
         IButton.PlayButtonSound.Invoke(Sound);
-        SceneManager.LoadScene("Hub");
+        System.Random rn = new System.Random();
+        Save.NewSave(0,rn.Next(int.MinValue + 64, int.MaxValue - 64));
+        SceneManager.UnloadSceneAsync("Scenes/MainMenu");
+        SceneManager.LoadScene("Scenes/MissionSelector");
     }
 }

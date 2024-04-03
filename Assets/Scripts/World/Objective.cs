@@ -1,18 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Objective : MonoBehaviour
+[CreateAssetMenu] [Serializable]
+public class Objective : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public enum ObjectiveType {
+        Eliminate,// survive, capture,
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    /*
+     * Eliminate - kill all enemies/enemy
+     * Survive some time
+     * 
+     */
+    [SerializeField] private ObjectiveType type;
+    [SerializeField] private string name;
+    public bool Completed() {
+        switch (type) {
+            case ObjectiveType.Eliminate:
+                if (GameManager.instance.Enemies.Count == 0) {
+                    return true;
+                }
+                break;
+        }
+        return false;
     }
 }
