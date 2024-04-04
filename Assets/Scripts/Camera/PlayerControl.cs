@@ -1,12 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using Camera;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using World;
 [RequireComponent(typeof(UnityEngine.Camera), typeof(PlayerInput))]
@@ -30,12 +25,14 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField] Texture2D interactCursor;
     //[SerializeField] GameObject grenadeIndicatorRadius;
     [SerializeField] LineRenderer grenadeIndicator;
+    [Header("Pause Panel")]
+    [SerializeField] GameObject pausePanel;
+    public GameObject PausePanel =>pausePanel;
 
     float xBorder;
     float zBorder;
     //===========//===========//===========//===========//===========//
     // Events
-    public static Action<float> changedTime;
     public static event Action<Unit> selectedNewUnit;
     public static event Action<Unit> deselectUnit;
     public event Action leftMouseButtonClicked;
@@ -46,14 +43,14 @@ public class PlayerControl : MonoBehaviour {
     PlayerInput playerInput;
     bool timeStopped = false;
     RaycastHit currentHit;
-    public List<SquadUnit> selectedUnits { get; private set; } = new List<SquadUnit>();
+    public List<SquadUnit> selectedUnits { get; } = new List<SquadUnit>();
     public Unit selectedUnit { get; private set; }
     float moveCalcCurrentCooldown = 0;
     float moveCalcCooldown = 0.06f;
     //states
     PlayerState currentState;
     public PlayerState nextState;
-    public bool shiftIsPressed => playerInput.actions["ShiftAction"].ReadValue<bool>();
+    //public bool shiftIsPressed => playerInput.actions["ShiftAction"].ReadValue<bool>();
 
     public enum cursorTypes {
         normal, goTo, attack, interact
@@ -130,7 +127,7 @@ public class PlayerControl : MonoBehaviour {
         timeChangeAction = playerInput.actions["TimeControl"];
         timeStopStartAction = playerInput.actions["TimeStopStart"];
         timeStopStartAction.started += _ => { 
-            changedTime?.Invoke(Time.timeScale == 0 ? -2f : -1f);
+            GameManager.instance.ChangeTime(Time.timeScale == 0 ? -2f : -1f);
             timeStopped = !timeStopped;
         };
         escapeAction = playerInput.actions["Esc"];
@@ -150,8 +147,6 @@ public class PlayerControl : MonoBehaviour {
         float currentInputRotation = rotationAction.ReadValue<float>();
         float currentInputZoom = -zoomAction.ReadValue<float>();
         Vector2 currentInputMove = moveAction.ReadValue<Vector2>();
-        float frameRate = (1 / Time.deltaTime);
-        //Debug.Log((1 / Time.deltaTime) + " " + frameRate);
         //smooth the values
         //smoothMove /= frameRate;
         currentMove = Vector2.SmoothDamp(currentMove, currentInputMove * moveSpeed, ref smoothMove, moveSmoothness, 20, Time.unscaledDeltaTime);
@@ -159,7 +154,6 @@ public class PlayerControl : MonoBehaviour {
         currentRotation = Mathf.SmoothDamp(currentRotation, currentInputRotation * rotationSpeed, ref smoothRotation, rotationSmoothness, 20, Time.unscaledDeltaTime);
         //smoothZoom /= frameRate;
         currentZoom = Mathf.SmoothDamp(currentZoom, currentInputZoom * zoomSpeed, ref smoothZoom, zoomSmoothness, 20, Time.unscaledDeltaTime);
-        
         //check boundaries for camera to not go too far or too close
         ZoomDistanceCheck(currentZoom < 0, ref currentZoom);
         //move camera
@@ -174,8 +168,6 @@ public class PlayerControl : MonoBehaviour {
             move.z = 0;
         }
         transform.position += move;
-        
-        //Debug.Log(transform.forward);
     }
 
     void TimeChange() {
@@ -183,12 +175,11 @@ public class PlayerControl : MonoBehaviour {
         if (currentTimeChange == 0) {
             return;
         }
-        changedTime?.Invoke(Time.timeScale + currentTimeChange * Time.deltaTime);
+        GameManager.instance.ChangeTime(Time.timeScale + currentTimeChange * Time.deltaTime);
     }
 
     public RaycastHit RayHit() {
         if (!Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000)) {
-            //Debug.Log("nothing");
             UpdateCursor(cursorTypes.normal);
             currentHit = new RaycastHit();
             hitSomething = false;
@@ -293,20 +284,6 @@ public class PlayerControl : MonoBehaviour {
         }
         currentCursor = type;
     }
-    /*void EscPressed() {
-        switch (currentState.currentState) {
-            case PlayerState.state.normal:
-                currentState.ChangeState(new PauseState(this));
-                break;
-            case PlayerState.state.grenade:
-                currentState.ChangeState(new NormalState(this));
-                break;
-            case PlayerState.state.pause:
-                currentState.ChangeState(new NormalState(this));
-                break;
-        }
-        //currentStage = stateStages.entry;
-    }*/
 
     PlayerState Process() {
         switch (currentState.currentStage) {

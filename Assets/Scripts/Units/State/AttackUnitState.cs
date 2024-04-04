@@ -29,6 +29,7 @@ public class AttackUnitState : UnitState {
 
     bool CheckConditions() {
             if (!unit.transform.TargetDistance(target.transform.position, unit.weapon.EffectiveRange)) {
+                Debug.Log(target.transform.position);
                 unit.Agent.SetDestination(target.transform.position);
                 currentCooldown /= 2;
                 return false;

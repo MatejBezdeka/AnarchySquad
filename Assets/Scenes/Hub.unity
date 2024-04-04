@@ -1294,11 +1294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765f51a8abd08254ebc77e03fdf055c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 0
   buttonsInGroup:
   - {fileID: 895057901}
   enabledFromStart: 0
   childObject: {fileID: 167753620}
-  sound: 0
 --- !u!1 &577432845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,11 +2116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765f51a8abd08254ebc77e03fdf055c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 0
   buttonsInGroup:
   - {fileID: 528394251}
   enabledFromStart: 1
   childObject: {fileID: 702693054}
-  sound: 0
 --- !u!1 &907534786
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,12 +3700,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765f51a8abd08254ebc77e03fdf055c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 0
   buttonsInGroup:
   - {fileID: 528394251}
   - {fileID: 895057901}
   enabledFromStart: 1
   childObject: {fileID: 125266763}
-  sound: 0
 --- !u!1 &1589407255
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,7 +4804,7 @@ MonoBehaviour:
     type: 3}
   unitStats:
   - {fileID: 11400000, guid: 7581dadd708834a48873ba4941ce90dd, type: 2}
-  - {fileID: 11400000, guid: 7eabd27cc8fc33c459c825a6d8647572, type: 2}
+  - {fileID: 11400000, guid: 2f6f5ae1026fb484e97689bc02db592b, type: 2}
   - {fileID: 11400000, guid: bef305316cddc344cbb78200d9ef5878, type: 2}
   - {fileID: 11400000, guid: 2088552c2339924429f1736b07efcf43, type: 2}
   - {fileID: 11400000, guid: 6446f9272c26c8f4d92da028decfcae9, type: 2}

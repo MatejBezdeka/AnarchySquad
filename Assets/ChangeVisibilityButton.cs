@@ -5,17 +5,10 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class ChangeVisibilityButton : MonoBehaviour, IButton {
+public class ChangeVisibilityButton : UIButton {
     [SerializeField] GameObject gameObjectToHide;
     [SerializeField] GameObject gameObjectToShow;
-    public Settings.ButtonSounds sound;
-    public Settings.ButtonSounds Sound { get; }
-    void Start() {
-        transform.GetComponent<Button>().onClick.AddListener(Click);
-    }
-
-    void Click() {
-        IButton.PlayButtonSound.Invoke(Sound);
+    protected override void Functionality() {
         gameObjectToShow.SetActive(true);
         gameObjectToHide.SetActive(false);
     }

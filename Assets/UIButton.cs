@@ -13,12 +13,10 @@ public abstract class UIButton : MonoBehaviour, IButton {
         button = gameObject.GetComponent<Button>();
         button.onClick.AddListener(Clicked);
     }
-
     void Clicked() {
         IButton.PlayButtonSound.Invoke(Sound);
         Functionality();
     }
-
     protected abstract void Functionality();
     private void OnDestroy() {
         button.onClick.RemoveAllListeners();

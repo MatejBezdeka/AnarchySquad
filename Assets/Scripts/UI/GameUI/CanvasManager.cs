@@ -8,7 +8,6 @@ using UnityEngine.UI;
 using World;
 
 public class CanvasManager : MonoBehaviour {
-    
     [Header("Objective & Time")]
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] TextMeshProUGUI timerText;
@@ -23,6 +22,7 @@ public class CanvasManager : MonoBehaviour {
     float timeCooldown = 0;
     int seconds = 0;
     int minutes = 0;
+    bool continueClock = true;
     //[SerializeField] Button abilityTwoButton;
     
 
@@ -43,7 +43,7 @@ public class CanvasManager : MonoBehaviour {
     IEnumerator Clock() {
         WaitForSecondsRealtime waitForSecondsRealtime = new WaitForSecondsRealtime(1);
         //WaitForSeconds waitForSeconds = new WaitForSeconds(1);
-        while (true) {
+        while (continueClock) {
             seconds++;
             if (seconds == 60) {
                 minutes++;
@@ -53,9 +53,6 @@ public class CanvasManager : MonoBehaviour {
             yield return waitForSecondsRealtime;
         }
     }
-    void Update() {
-        
-    }
     
     public void ChangeTimeLabelText(string text) {
         timeText.text = text;
@@ -63,6 +60,14 @@ public class CanvasManager : MonoBehaviour {
 
     void ChangeTimerLabelText(string text) {
         timerText.text = text;
+    }
+
+    public void StartTimer() {
+        continueClock = true;
+        StartCoroutine(Clock());
+    }
+    public void StopTimer() {
+        continueClock = false;
     }
 
     

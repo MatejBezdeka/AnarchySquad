@@ -1254,10 +1254,10 @@ RectTransform:
   m_Father: {fileID: 1192040093}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 510.58, y: -63.92065}
-  m_SizeDelta: {x: 382.56073, y: 127.8413}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303315498
 MonoBehaviour:
@@ -1271,13 +1271,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765f51a8abd08254ebc77e03fdf055c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 0
   buttonsInGroup:
   - {fileID: 1365698504}
   - {fileID: 891430232}
   - {fileID: 1802722064}
   enabledFromStart: 1
   childObject: {fileID: 264335992}
-  sound: 0
 --- !u!114 &303315499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3376,10 +3376,10 @@ RectTransform:
   m_Father: {fileID: 1192040093}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 828.14075, y: -63.92065}
-  m_SizeDelta: {x: 382.56073, y: 127.8413}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &891430232
 MonoBehaviour:
@@ -3393,13 +3393,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765f51a8abd08254ebc77e03fdf055c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 0
   buttonsInGroup:
   - {fileID: 1365698504}
   - {fileID: 303315498}
   - {fileID: 1802722064}
   enabledFromStart: 1
   childObject: {fileID: 1107585894}
-  sound: 0
 --- !u!114 &891430233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4355,10 +4355,10 @@ RectTransform:
   m_Father: {fileID: 1192040093}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1451.9592, y: -63.92065}
-  m_SizeDelta: {x: 359.95486, y: 127.8413}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1199644200
 MonoBehaviour:
@@ -5081,10 +5081,10 @@ RectTransform:
   m_Father: {fileID: 1192040093}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 192.14981, y: -63.92065}
-  m_SizeDelta: {x: 384.29962, y: 127.8413}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365698501
 MonoBehaviour:
@@ -5180,13 +5180,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765f51a8abd08254ebc77e03fdf055c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 0
   buttonsInGroup:
   - {fileID: 303315498}
   - {fileID: 891430232}
   - {fileID: 1802722064}
   enabledFromStart: 0
   childObject: {fileID: 1089641097}
-  sound: 0
 --- !u!1001 &1388974861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6334,10 +6334,10 @@ RectTransform:
   m_Father: {fileID: 1192040093}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1145.7014, y: -63.92065}
-  m_SizeDelta: {x: 382.56073, y: 127.8413}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802722064
 MonoBehaviour:
@@ -6351,13 +6351,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765f51a8abd08254ebc77e03fdf055c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: 0
   buttonsInGroup:
   - {fileID: 1365698504}
   - {fileID: 303315498}
   - {fileID: 891430232}
   enabledFromStart: 1
   childObject: {fileID: 1689090348}
-  sound: 0
 --- !u!114 &1802722065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8271,7 +8271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2120018204
 RectTransform:
   m_ObjectHideFlags: 0

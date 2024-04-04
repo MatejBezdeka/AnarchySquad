@@ -3,11 +3,6 @@
         public enum stateStages {
             entry, update, exit
         }
-
-        public enum state {
-            normal, grenade, pause
-        }
-
         public stateStages currentStage = stateStages.entry;
         protected PlayerControl player;
         protected PlayerState(PlayerControl player) {

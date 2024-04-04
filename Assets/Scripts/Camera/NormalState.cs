@@ -111,6 +111,8 @@ namespace Camera {
 
         
         protected override void Esc() {
+            player.PausePanel.SetActive(true);
+            GameManager.instance.ChangeTime(-3);
             Exit(new PauseState(player));
         }
     }

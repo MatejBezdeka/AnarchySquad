@@ -16,7 +16,13 @@ public class GameManager : MonoBehaviour {
     public Save currentSave;
     public MapGenerator MapGenerator => mapGenerator;
     #region variables
-    float time = 1;
+    float timeScale = 1;
+
+    public enum timeState {
+        hardPaused, normal
+    }
+
+    timeState currentTimeState = timeState.normal;
     CanvasManager canvasManager;
     [SerializeField] List<SquadUnit> units;
     public List<SquadUnit> Units => units;
@@ -26,7 +32,6 @@ public class GameManager : MonoBehaviour {
     
     void Awake() {
         instance = this;
-        PlayerControl.changedTime += TimeChanged;
         //generate
         canvasManager = GetComponent<CanvasManager>();
         mapGenerator.GenerateMap();
@@ -40,40 +45,58 @@ public class GameManager : MonoBehaviour {
         Settings.Music.ChangeAmbientMusic(Settings.AmbientMusic.BatleField);
         Settings.Music.StartMusic();
     }
-
-    void FixedUpdate() {
-        
-    }
-
-    void Update() {
-        
-    }
-    
-    
-    void TimeChanged(float newTime) {
-        if ((int)newTime == -2) {
-            //Unpause
-            TimeChanged(time);
-            Settings.Music.ResumeMusic();
-        }else if ((int)newTime == -1) {
-            //Pause
-            if (Time.timeScale != 0) {
-                time = Time.timeScale;
-            }
-            Time.timeScale = 0;
-            canvasManager.ChangeTimeLabelText("Paused");
-            Settings.Music.PauseMusic();
-        }else {
-            //change time speed
-            if (newTime > maxTimeSpeed || newTime < minTimeSpeed) {
-                return;
-            }
-            if (newTime == 0) {
-                newTime = time;
-            }
-
-            Time.timeScale = newTime;
-            canvasManager.ChangeTimeLabelText($"{Time.timeScale:0.00}" + " x");
+    public void ChangeTime(float newTime) {
+        switch (newTime) {
+            //Hard pause/unpause
+            case -3:
+                if (currentTimeState == timeState.hardPaused) {
+                    currentTimeState = timeState.normal;
+                    canvasManager.StartTimer();
+                    ChangeTime(-2);
+                    return;
+                }
+                
+                canvasManager.StopTimer();
+                if (Time.timeScale > 0) {
+                    ChangeTime(-1);
+                }
+                currentTimeState = timeState.hardPaused;
+                break;
+            case -2:
+                //Unpause
+                if (currentTimeState == timeState.hardPaused) {
+                    return;
+                }
+                ChangeTime(timeScale);
+                Settings.Music.ResumeMusic();
+                break;
+            case -1:
+                //Pause
+                if (currentTimeState == timeState.hardPaused) {
+                    return;
+                }
+                if (Time.timeScale != 0) {
+                    timeScale = Time.timeScale;
+                }
+                
+                Time.timeScale = 0;
+                canvasManager.ChangeTimeLabelText("Paused");
+                Settings.Music.PauseMusic();
+                break;
+            default:
+                if (currentTimeState == timeState.hardPaused) {
+                    return;
+                }
+                //change time speed
+                if (newTime > maxTimeSpeed || newTime < minTimeSpeed) {
+                    return;
+                }
+                if (newTime == 0) {
+                    newTime = timeScale;
+                }
+                Time.timeScale = newTime;
+                canvasManager.ChangeTimeLabelText($"{Time.timeScale:0.00}" + " x");
+                break;
         }
     }
 
