@@ -30,7 +30,7 @@ public class EnemyNormalState : NormalUnitState {
                 Exit(new EnemyAttackState(unit, unit.closestEnemy));
             }
             else {
-                if (rn.Next(0,1) == 0) {
+                if (/*rn.Next(0,2) == 0*/ true) {
                     unit.SetDestinationToSafety();
                     Exit(new ReloadUnitState(unit, new EnemyAttackState(unit, unit.closestEnemy)));
                 }else {

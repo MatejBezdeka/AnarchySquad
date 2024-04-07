@@ -12,7 +12,7 @@ public class UnitFactory : MonoBehaviour {
         comp.secondaryWeapon = secondary;
         return comp;
     }
-    public static Unit SpawnUnit(GameObject prefab, UnitBlueprint blueprint, Vector3 position) {
+    public static SquadUnit SpawnUnit(GameObject prefab, UnitBlueprint blueprint, Vector3 position) {
         GameObject newUnit = Instantiate(prefab, position, Quaternion.identity);
         SquadUnit comp = newUnit.GetComponent<SquadUnit>();
         comp.UnitName = blueprint.name;
@@ -26,6 +26,13 @@ public class UnitFactory : MonoBehaviour {
                 comp.secondaryWeapon = blueprint.secondaryWeapon;
             }
         }
+        return comp;
+    }
+    public static EnemyUnit SpawnEnemy(GameObject prefab, UnitBlueprint blueprint, Vector3 position) {
+        GameObject newUnit = Instantiate(prefab, position, Quaternion.identity);
+        EnemyUnit comp = newUnit.GetComponent<EnemyUnit>();
+        comp.UnitName = blueprint.name;
+        comp.stats = blueprint.stats;
         return comp;
     }
 }

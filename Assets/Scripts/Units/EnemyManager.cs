@@ -58,11 +58,10 @@ public class EnemyManager : MonoBehaviour {
         Vector3 position = map.ViableSpawnPositionses[rn.Next(map.ViableSpawnPositionses.Count)];
         position.y = 6 + 1;
         enemyUnits.Add(
-            UnitFactory.SpawnUnit(
+            UnitFactory.SpawnEnemy(
                 enemyPrefab,
                 new UnitBlueprint(Names.GetRandomName(), statsList[rn.Next(statsList.Count)], weaponsList[rn.Next(weaponsList.Count)]),
-                position)
-            as EnemyUnit);
+                position));
     }
 
     

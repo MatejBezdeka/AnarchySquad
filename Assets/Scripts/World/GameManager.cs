@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
         hardPaused, normal
     }
 
+    bool paused = false;
     timeState currentTimeState = timeState.normal;
     CanvasManager canvasManager;
     [SerializeField] List<SquadUnit> units;
@@ -50,16 +51,18 @@ public class GameManager : MonoBehaviour {
             //Hard pause/unpause
             case -3:
                 if (currentTimeState == timeState.hardPaused) {
+                    Debug.Log("H unpaused");
                     currentTimeState = timeState.normal;
                     canvasManager.StartTimer();
-                    ChangeTime(-2);
+                    if (!paused) {
+                        ChangeTime(-2);
+                    }
                     return;
                 }
-                
                 canvasManager.StopTimer();
-                if (Time.timeScale > 0) {
-                    ChangeTime(-1);
-                }
+                Time.timeScale = 0;
+                Settings.Music.PauseMusic();
+                Debug.Log("paused H");
                 currentTimeState = timeState.hardPaused;
                 break;
             case -2:
@@ -67,6 +70,8 @@ public class GameManager : MonoBehaviour {
                 if (currentTimeState == timeState.hardPaused) {
                     return;
                 }
+
+                paused = false;
                 ChangeTime(timeScale);
                 Settings.Music.ResumeMusic();
                 break;
@@ -78,7 +83,7 @@ public class GameManager : MonoBehaviour {
                 if (Time.timeScale != 0) {
                     timeScale = Time.timeScale;
                 }
-                
+                paused = true;
                 Time.timeScale = 0;
                 canvasManager.ChangeTimeLabelText("Paused");
                 Settings.Music.PauseMusic();

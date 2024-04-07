@@ -15544,9 +15544,9 @@ MonoBehaviour:
     type: 3}
   enemyUnits: []
   statsList:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d49a7b80dc5e275448f5541f8c177a2d, type: 2}
   weaponsList:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 1a29d4e7d18950e478c4614647d98499, type: 2}
 --- !u!1 &871225710
 GameObject:
   m_ObjectHideFlags: 0

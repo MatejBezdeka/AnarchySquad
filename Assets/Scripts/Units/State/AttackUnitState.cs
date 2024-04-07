@@ -7,9 +7,11 @@ using UnityEngine.UIElements;
 
 public class AttackUnitState : UnitState {
     Unit target;
-    bool attacking = false;
-    float currentCooldown = 0;
-    int currentBurst = 0;
+    protected bool attacking = false;
+    protected float currentCooldown = 0;
+    protected int currentBurst = 0;
+    bool repeat = true;
+    bool conditions;
     public AttackUnitState(Unit unit, Unit target) : base(unit) {
         this.target = target;
     }
@@ -17,6 +19,7 @@ public class AttackUnitState : UnitState {
         //StartCoroutine(CheckConditions());
         unit.needToReload += Reload;
         base.Enter();
+        
     }
 
     protected override void UpdateState() {
@@ -29,7 +32,7 @@ public class AttackUnitState : UnitState {
 
     bool CheckConditions() {
             if (!unit.transform.TargetDistance(target.transform.position, unit.weapon.EffectiveRange)) {
-                Debug.Log(target.transform.position);
+                //Debug.Log(target.transform.position);
                 unit.Agent.SetDestination(target.transform.position);
                 currentCooldown /= 2;
                 return false;
@@ -48,7 +51,7 @@ public class AttackUnitState : UnitState {
     }
     protected override void Exit(UnitState state) {
         unit.Agent.ResetPath();
+        repeat = false;
         base.Exit(state);
     }
-    
 }
