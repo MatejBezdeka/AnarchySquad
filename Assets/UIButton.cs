@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
 public abstract class UIButton : MonoBehaviour, IButton {
-    public Settings.ButtonSounds sound;
-    public Settings.ButtonSounds Sound => sound;
+    public AudioSettings.ButtonSounds sound;
+    public AudioSettings.ButtonSounds Sound => sound;
     protected Button button;
     protected virtual void Start() {
         button = gameObject.GetComponent<Button>();

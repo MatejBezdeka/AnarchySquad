@@ -6,8 +6,8 @@ using UnityEngine.UI;
 namespace UI {
     public class StartMissionButton : MonoBehaviour, IButton {
         public static event Action startingGame;
-        public Settings.ButtonSounds sound;
-        public Settings.ButtonSounds Sound { get { return sound; } }
+        public AudioSettings.ButtonSounds sound;
+        public AudioSettings.ButtonSounds Sound { get { return sound; } }
         
         private void Start() {
             

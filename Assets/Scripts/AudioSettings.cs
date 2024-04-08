@@ -4,8 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 [RequireComponent(typeof(AudioSource))]
-public class Settings : MonoBehaviour {
-    public static Settings Music;
+public class AudioSettings : MonoBehaviour {
+    public static AudioSettings Music;
     public enum AudioGroups {
         Master, Music, Effects, Ambient
     }

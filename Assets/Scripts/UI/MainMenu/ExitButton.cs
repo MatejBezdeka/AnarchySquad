@@ -16,5 +16,5 @@ public class ExitButton : MonoBehaviour, IButton
         Application.Quit();
     }
 
-    public Settings.ButtonSounds Sound { get; }
+    public AudioSettings.ButtonSounds Sound { get; }
 }

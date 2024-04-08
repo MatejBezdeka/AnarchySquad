@@ -7,7 +7,7 @@ namespace World {
     public class Portrait : MonoBehaviour, IButton{
         public static event Action<SquadUnit> selectedDeselectedUnit;
         //Button button;
-        public Settings.ButtonSounds Sound { get { return Settings.ButtonSounds.normal; } }
+        public AudioSettings.ButtonSounds Sound { get { return AudioSettings.ButtonSounds.normal; } }
         [SerializeField] Button button;
         [SerializeField] Slider hpSlider;
         [SerializeField] Image picture;

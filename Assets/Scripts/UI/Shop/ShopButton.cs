@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ShopButton : UIButton {
     public static Action deselected;
     static Action buttonSelected;
-    public Settings.ButtonSounds Sound { get { return Settings.ButtonSounds.normal; } }
+    public AudioSettings.ButtonSounds Sound { get { return AudioSettings.ButtonSounds.normal; } }
     public static event Action<Tuple<Shop.types, int>> itemClicked;
     public static event Action<Tuple<Shop.types, int>> showDescription;
     public static event Action hideDescription;

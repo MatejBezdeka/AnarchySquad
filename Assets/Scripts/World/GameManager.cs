@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour {
         //startGame
         //wakeup units
         //Start UI
-        Settings.Music.ChangeAmbientMusic(Settings.AmbientMusic.BatleField);
-        Settings.Music.StartMusic();
+        AudioSettings.Music.ChangeAmbientMusic(AudioSettings.AmbientMusic.BatleField);
+        AudioSettings.Music.StartMusic();
     }
     public void ChangeTime(float newTime) {
         switch (newTime) {
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
                 }
                 canvasManager.StopTimer();
                 Time.timeScale = 0;
-                Settings.Music.PauseMusic();
+                AudioSettings.Music.PauseMusic();
                 Debug.Log("paused H");
                 currentTimeState = timeState.hardPaused;
                 break;
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour {
 
                 paused = false;
                 ChangeTime(timeScale);
-                Settings.Music.ResumeMusic();
+                AudioSettings.Music.ResumeMusic();
                 break;
             case -1:
                 //Pause
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour {
                 paused = true;
                 Time.timeScale = 0;
                 canvasManager.ChangeTimeLabelText("Paused");
-                Settings.Music.PauseMusic();
+                AudioSettings.Music.PauseMusic();
                 break;
             default:
                 if (currentTimeState == timeState.hardPaused) {

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Profile : MonoBehaviour, IButton
 {
     public static event Action grenadeAction;
-    public Settings.ButtonSounds Sound { get { return Settings.ButtonSounds.normal; } }
+    public AudioSettings.ButtonSounds Sound { get { return AudioSettings.ButtonSounds.normal; } }
     [Header("Profile")] 
     [SerializeField] Slider hpSlider;
     [SerializeField] TextMeshProUGUI hpText;

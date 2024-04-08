@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class LoadSaveButton : MonoBehaviour, IButton {
-    public Settings.ButtonSounds sound;
-    public Settings.ButtonSounds Sound {
+    public AudioSettings.ButtonSounds sound;
+    public AudioSettings.ButtonSounds Sound {
         get { return sound; }
     }
 

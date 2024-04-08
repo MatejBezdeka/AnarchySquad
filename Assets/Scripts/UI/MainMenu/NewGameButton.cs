@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class NewGameButton : MonoBehaviour, IButton {
-    public Settings.ButtonSounds sound;
-    public Settings.ButtonSounds Sound { get { return sound; } }
+    public AudioSettings.ButtonSounds sound;
+    public AudioSettings.ButtonSounds Sound { get { return sound; } }
     void Start()
     {
         transform.GetComponent<Button>().onClick.AddListener(Clicked);

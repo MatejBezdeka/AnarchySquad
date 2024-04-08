@@ -7,8 +7,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class BackHubButton : MonoBehaviour, IButton
 {
-    public Settings.ButtonSounds sound;
-    public Settings.ButtonSounds Sound { get { return sound; } }
+    public AudioSettings.ButtonSounds sound;
+    public AudioSettings.ButtonSounds Sound { get { return sound; } }
     void Start()
     {
         gameObject.GetComponent<Button>().onClick.AddListener(Clicked);

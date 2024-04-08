@@ -61,7 +61,7 @@ public class Shop : MonoBehaviour {
         plusMemberPrefab = Instantiate(plusMemberPrefab, containerGameObject.transform);
         pointsSlider.maxValue = points;
         UpdateSlider();
-        Settings.Music.ChangeAmbientMusic(Settings.AmbientMusic.Hub);
+        AudioSettings.Music.ChangeAmbientMusic(AudioSettings.AmbientMusic.Hub);
     }
 
     void UpdateSlider() {
