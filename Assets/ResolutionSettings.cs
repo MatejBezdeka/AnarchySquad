@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,17 @@ public class ResolutionSettings : ListSetting
         label.text = items[value];
     }
 
+    private void OnEnable() {
+        int width = PlayerPrefs.GetInt("W");
+        int height =  PlayerPrefs.GetInt("H");
+        for (int i = 0; i < items.Count; i++) {
+            string resolution = items[i];
+            if (width + "x" + height == resolution) {
+                ChangeValue(i);
+                return;
+            }
+        }
+    }
     protected override void ApplySettings() {
         base.ApplySettings();
         var dimensions = items[value].Split("x");

@@ -13,7 +13,6 @@ public abstract class SettingsElement : MonoBehaviour {
     }
     protected abstract void ApplySettings();
     protected abstract void RevertSettings();
-
     void OnDestroy() {
         Settings.apliedSettings -= ApplySettings;
         Settings.exitedSettings -= RevertSettings;

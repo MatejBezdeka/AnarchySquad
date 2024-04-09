@@ -44,9 +44,26 @@ public abstract class ListSetting : SettingsElement {
         label.text = items[value];
     }
 
+    protected void ChangeValue(int newValue) {
+        if (newValue == value) {
+            previousButton.interactable = value != 0;
+            nextButton.interactable = value != items.Count-1;
+            label.text = items[value];
+            return;
+        } 
+        if (newValue < value) {
+            for (int i = 0; i < value - newValue; i++) {
+                PreviousOption();
+            }
+        }else if (newValue > value) {
+            for (int i = 0; i < newValue - value; i++) {
+                NextOption();
+            }
+        }
+    }
     protected override void RevertSettings() {
         value = previousValue;
-        label.text = items[value];
+        //label.text = items[value];
     }
 
     protected override void ApplySettings() {
