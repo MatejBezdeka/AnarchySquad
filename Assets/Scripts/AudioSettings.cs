@@ -43,7 +43,7 @@ public class AudioSettings : MonoBehaviour {
     }
 
     public void ChangeVolume(AudioGroups group, float value) {
-        if (value == 0) audioMixer.SetFloat(group.ToString(), 0);
+        if (value == 0) audioMixer.SetFloat(group.ToString(), 0.01f);
         else audioMixer.SetFloat(group.ToString(), Mathf.Log10(value / 120f) * 20);
     }
 

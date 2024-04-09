@@ -9,9 +9,9 @@ public abstract class SliderSetting : SettingsElement {
     [SerializeField] float maxValue;
     [SerializeField] float minValue;
     [SerializeField] bool wholeNumbers;
-    protected float previousValue;
     
     protected override void Start() {
+        base.Start();
         slider.onValueChanged.AddListener(ChangedValue);
         slider.wholeNumbers = wholeNumbers;
         slider.maxValue = maxValue;

@@ -9,12 +9,11 @@ public abstract class SettingsElement : MonoBehaviour {
     [SerializeField] protected int value;
     protected virtual void Start() {
         Settings.apliedSettings += ApplySettings;
-        Settings.exitedSettings += RevertSettings;
+        Settings.loadSettings += Load;
     }
     protected abstract void ApplySettings();
-    protected abstract void RevertSettings();
     void OnDestroy() {
         Settings.apliedSettings -= ApplySettings;
-        Settings.exitedSettings -= RevertSettings;
     }
+    protected abstract void Load();
 }

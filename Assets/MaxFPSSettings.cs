@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MaxFPSSettings : SliderSetting {
-    
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     protected override void ChangedValue(float val) {
         base.ChangedValue(val);
         if (slider.value == slider.maxValue) {
@@ -23,11 +17,11 @@ public class MaxFPSSettings : SliderSetting {
         else {
             Application.targetFrameRate = value;
         }
-        previousValue = slider.value;
+        PlayerPrefs.SetInt("Fr", (int)slider.value);
     }
-
-    protected override void RevertSettings() {
-        slider.value = previousValue;
-        ChangedValue(slider.value);
+    protected override void Load() {
+        value = PlayerPrefs.GetInt("Fr");
+        slider.value = value;
+        ChangedValue(value);
     }
 }

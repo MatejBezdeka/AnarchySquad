@@ -8,7 +8,6 @@ public abstract class ListSetting : SettingsElement {
     [SerializeField] Button previousButton;
     [SerializeField] bool cycleable;
     [SerializeField] protected List<string> items;
-    protected int previousValue;
     protected override void Start() {
         base.Start();
         nextButton.onClick.AddListener(NextOption);   
@@ -45,28 +44,19 @@ public abstract class ListSetting : SettingsElement {
     }
 
     protected void ChangeValue(int newValue) {
-        if (newValue == value) {
+        do {
             previousButton.interactable = value != 0;
             nextButton.interactable = value != items.Count-1;
-            label.text = items[value];
-            return;
-        } 
-        if (newValue < value) {
-            for (int i = 0; i < value - newValue; i++) {
-                PreviousOption();
+            if (newValue < value) {
+                for (int i = 0; i < value - newValue; i++) {
+                    PreviousOption();
+                }
+            }else if (newValue > value) {
+                for (int i = 0; i < newValue - value; i++) {
+                    NextOption();
+                }
             }
-        }else if (newValue > value) {
-            for (int i = 0; i < newValue - value; i++) {
-                NextOption();
-            }
-        }
-    }
-    protected override void RevertSettings() {
-        value = previousValue;
-        //label.text = items[value];
-    }
-
-    protected override void ApplySettings() {
-        previousValue = value;
+        } while (newValue != value);
+        label.text = items[value];
     }
 }
