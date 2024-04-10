@@ -6,25 +6,59 @@
   <component name="ChangeListManager">
     <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/AudioMixer.mixer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EliminateDisruptors.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EliminateDisruptors.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ListSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ListSetting.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MaxFPSSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MaxFPSSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ResolutionSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ResolutionSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AmbientVolumeSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AmbientVolumeSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChangeVisibilityButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChangeVisibilityButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CheckBoxSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CheckBoxSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EffectsVolumeSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EffectsVolumeSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExitBattlefield.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExitBattlefield.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GraphicsQualitySettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GraphicsQualitySettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/IdMissionButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/IdMissionButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ListSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ListSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MasterVolumeSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MasterVolumeSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MaxFPSSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MaxFPSSettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MissionInfoPanel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MissionInfoPanel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MissionPoint.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MissionPoint.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MusicVolumeSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MusicVolumeSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResolutionSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResolutionSettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResumeButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ResumeButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Save.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Save.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield - Copy.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield - Copy.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AudioSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-HighFidelity.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SettingsElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SettingsElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SliderSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SliderSetting.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VSyncSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VSyncSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/bluefair (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/bluefair (1).png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/checkmark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/checkmark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioSettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SettingsBody.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SettingsBody.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SettingsComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SettingsComponent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SettingsElement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SettingsElement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SliderSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SliderSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UIButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UIButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VSyncSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VSyncSettings.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,13 +70,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3c2c0d8b1b3a4f82a386dd1228359b8510000/e4/f0581528/AudioSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/AmbientVolumeSetting.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ChangeVisibilityButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GraphicsQualitySettings.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ListSetting.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MaxFPSSettings.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ResumeButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Save.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Loading/LoadingText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Map.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapsGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -51,7 +78,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/IEnemyState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/State/SwitchWeaponState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Settings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@14.0.8/Runtime/Debugging/DebugUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Runtime/ScriptableRendererData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -65,30 +91,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.46073902&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.46073902",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\matab\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\matab\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\matab\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\mata\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\mata\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\mata\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Desktop/BILDAS/AnarchySquad.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Build/AnarchySquad.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\mata\Documents\GitHub\AnarchySquad\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -121,10 +147,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19688">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="19688" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -196,6 +222,7 @@
       <workItem from="1712330889322" duration="14017000" />
       <workItem from="1712588982308" duration="18127000" />
       <workItem from="1712663518802" duration="1353000" />
+      <workItem from="1712765264399" duration="8634000" />
     </task>
     <servers />
   </component>

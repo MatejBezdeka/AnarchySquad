@@ -12,7 +12,9 @@ public abstract class ListSetting : SettingsElement {
         base.Start();
         nextButton.onClick.AddListener(NextOption);   
         previousButton.onClick.AddListener(PreviousOption);
-        previousButton.interactable = value != 0 && !cycleable;
+        if (!cycleable) {
+            previousButton.interactable = value != 0;
+        }
     }
 
     void NextOption() {
@@ -45,8 +47,10 @@ public abstract class ListSetting : SettingsElement {
 
     protected void ChangeValue(int newValue) {
         do {
-            previousButton.interactable = value != 0;
-            nextButton.interactable = value != items.Count-1;
+            if (!cycleable) {
+                previousButton.interactable = value != 0;
+                nextButton.interactable = value != items.Count-1;
+            }
             if (newValue < value) {
                 for (int i = 0; i < value - newValue; i++) {
                     PreviousOption();

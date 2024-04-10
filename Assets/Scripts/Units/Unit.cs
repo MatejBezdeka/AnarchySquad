@@ -22,8 +22,8 @@ public abstract class Unit : MonoBehaviour {
     public bool selected { get; protected set; } = false;
 
     [Header("=== Unit Settings ===")]
-    [HideInInspector] public Stats stats;
-    [HideInInspector] public Weapon weapon;
+    /*[HideInInspector]*/ public Stats stats;
+    /*[HideInInspector]*/ public Weapon weapon;
     [SerializeField, Range(0.1f, 1), Tooltip("How often is an unit gonna update and respond")] protected float responseTime = 0.5f;
     [SerializeField] public GameObject muzzle; //TODO gun should have a its own model and muzzle
     //possibility to see range of the unit's gun

@@ -16,7 +16,7 @@ public class ResolutionSettings : ListSetting
     }
     protected override void ApplySettings() {
         var dimensions = items[value].Split("x");
-        Screen.SetResolution(int.Parse(dimensions[0]), int.Parse(dimensions[0]), false);
+        Screen.SetResolution(int.Parse(dimensions[0]), int.Parse(dimensions[0]), PlayerPrefs.GetInt("Fs") == 1);
         PlayerPrefs.SetInt("Rw", int.Parse(dimensions[0]));
         PlayerPrefs.SetInt("Rh", int.Parse(dimensions[1]));
     }

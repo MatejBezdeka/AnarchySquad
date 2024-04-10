@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+[Serializable]
 public class Weapon : ShopItem {
 
     [Header("Weapon stats")] [SerializeField]

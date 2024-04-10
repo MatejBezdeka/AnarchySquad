@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[Serializable]
 [CreateAssetMenu(menuName = "Units/Stats")]
 public class Stats : ShopItem {
     [Header("stats")]
