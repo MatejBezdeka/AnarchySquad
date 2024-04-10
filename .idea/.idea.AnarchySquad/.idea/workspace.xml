@@ -6,59 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AmbientVolumeSetting.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AmbientVolumeSetting.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChangeVisibilityButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChangeVisibilityButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CheckBoxSetting.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CheckBoxSetting.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EffectsVolumeSetting.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EffectsVolumeSetting.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExitBattlefield.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExitBattlefield.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GraphicsQualitySettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GraphicsQualitySettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/IdMissionButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/IdMissionButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ListSetting.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ListSetting.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MasterVolumeSetting.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MasterVolumeSetting.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MaxFPSSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MaxFPSSettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MissionInfoPanel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MissionInfoPanel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MissionPoint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MissionPoint.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MusicVolumeSetting.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MusicVolumeSetting.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ResolutionSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ResolutionSettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ResumeButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ResumeButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Save.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Save.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield - Copy.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield - Copy.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioSettings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SettingsBody.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SettingsBody.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SettingsComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SettingsComponent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SettingsElement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SettingsElement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SliderSetting.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SliderSetting.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VSyncSettings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VSyncSettings.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +169,7 @@
       <workItem from="1712330889322" duration="14017000" />
       <workItem from="1712588982308" duration="18127000" />
       <workItem from="1712663518802" duration="1353000" />
-      <workItem from="1712765264399" duration="8634000" />
+      <workItem from="1712765264399" duration="9416000" />
     </task>
     <servers />
   </component>
