@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 0
   description: 
-  bulletPrefab: {fileID: 0}
-  damage: 0
-  maxAmmo: 0
+  bulletPrefab: {fileID: 2660651700256969146, guid: 03f2baab1a83d3340b4f8e69efad4d33,
+    type: 3}
+  damage: 5
+  maxAmmo: 7
   timeBetweenShots: 2
-  reloadTime: 1
-  effectiveRange: 0
-  maxEffectiveRange: 0
-  Spread: 0
+  reloadTime: 3
+  effectiveRange: 10
+  maxEffectiveRange: 15
+  Spread: 0.164
   icon: {fileID: 0}
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 1de437e3c94602a4980ab64e5d180233, type: 3}

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 0
   description: 
-  maxHp: 0
-  armor: 0
-  speed: 0
-  maxStamina: 0
-  accuracy: 0
+  maxHp: 15
+  armor: 10
+  speed: 5
+  maxStamina: 45.5
+  accuracy: 3.24
   icon: {fileID: 0}
