@@ -72,7 +72,7 @@ public class Shop : MonoBehaviour {
     void InstantiateList(GameObject body,List<ShopItem> list) {
         for (int i = 0; i < list.Count; i++) {
             var comp = Instantiate(itemPrefab).GetComponent<ShopButton>();
-            comp.transform.parent = body.transform;
+            comp.transform.SetParent(body.transform);
             comp.type = list[0].GetType();
             comp.id = i;
             comp.SetGraphics(list[i].itemName, list[i].Cost, list[i].GetSprite());

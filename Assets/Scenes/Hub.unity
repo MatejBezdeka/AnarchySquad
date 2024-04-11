@@ -4804,7 +4804,7 @@ MonoBehaviour:
     type: 3}
   unitStats:
   - {fileID: 11400000, guid: 7581dadd708834a48873ba4941ce90dd, type: 2}
-  - {fileID: 11400000, guid: 2f6f5ae1026fb484e97689bc02db592b, type: 2}
+  - {fileID: 11400000, guid: 7eabd27cc8fc33c459c825a6d8647572, type: 2}
   - {fileID: 11400000, guid: bef305316cddc344cbb78200d9ef5878, type: 2}
   - {fileID: 11400000, guid: 2088552c2339924429f1736b07efcf43, type: 2}
   - {fileID: 11400000, guid: 6446f9272c26c8f4d92da028decfcae9, type: 2}

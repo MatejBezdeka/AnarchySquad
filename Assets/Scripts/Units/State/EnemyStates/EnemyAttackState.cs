@@ -19,6 +19,8 @@ public class EnemyAttackState : AttackUnitState
     }
 
     protected override void UpdateState() {
+        Debug.Log("E attack");
+        base.UpdateState();
         if (CheckConditions()) {
             unit.transform.Rotate(Vector3.RotateTowards(unit.transform.forward, target.transform.position - unit.transform.position, 5, 5));
             currentCooldown += Time.deltaTime;
@@ -29,10 +31,10 @@ public class EnemyAttackState : AttackUnitState
     protected override void Exit(UnitState state) {
         base.Exit(state);
     }
+    
     bool CheckConditions() {
         float targetDistance = Vector3.Distance(unit.transform.position, target.transform.position);
         if (targetDistance > unit.weapon.MaxEffectiveRange) {
-            Debug.Log(target.transform.position);
             unit.Agent.SetDestination(target.transform.position);
             currentCooldown /= 2;
             return false;

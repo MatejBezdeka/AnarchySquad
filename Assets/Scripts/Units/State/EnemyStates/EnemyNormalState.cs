@@ -14,10 +14,10 @@ public class EnemyNormalState : NormalUnitState {
     }
 
     protected override void UpdateState() {
+        Debug.Log("E normal");
         base.UpdateState();
-        if (unit.closestEnemy == null) { return; }
-
         currentChillCooldown += Time.deltaTime;
+        if (unit.closestEnemy == null) { return; }
         if (currentChillCooldown > chillCooldown) {
             unit.Chill();
         }

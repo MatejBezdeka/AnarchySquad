@@ -108,7 +108,7 @@ public class MissionInfoPanel : MonoBehaviour {
 
     public void ContinueButtonClicked() {
         Map map = missions[selectedMapId];
-        MapParameters.SetMapParameters(map.SizeX, map.SizeY, maxObstaclePercentage, map.Seed);
+        MapParameters.SetMapParameters(map.SizeX, map.SizeY, map.BuildingDensity, map.Seed);
         IdMissionButton.ButtonClicked -= SelectMission;
         IdMissionButton.ButtonPointerEntered -= ShowNewMissionInfo;
         IdMissionButton.ButtonPointerLeft -= HideInfo;

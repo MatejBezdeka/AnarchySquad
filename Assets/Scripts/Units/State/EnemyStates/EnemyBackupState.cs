@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBackupState : MonoBehaviour
+public class EnemyBackupState : UnitState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public EnemyBackupState(Unit unit) : base(unit) {
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    protected override void UpdateState() {
+        Debug.Log("E backup");
     }
 }

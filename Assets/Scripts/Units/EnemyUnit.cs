@@ -33,8 +33,8 @@ public class EnemyUnit : Unit {
 
     protected override void Start() {
         currentState = new EnemyNormalState(this);
-        StartCoroutine(SlowUpdate());
         base.Start();
+        StartCoroutine(SlowUpdate());
         if (10 > (weapon.EffectiveRange * 0.75f) || 40 < (weapon.EffectiveRange * 0.75f)) {
             moraleLoseDistance = 10;
         }
@@ -43,6 +43,7 @@ public class EnemyUnit : Unit {
         }
         currentWalkState = walkState.standing;
     }
+    
     IEnumerator SlowUpdate() {
         WaitForSeconds waitTime = new WaitForSeconds(responseTime);
         while (true) {
@@ -54,7 +55,6 @@ public class EnemyUnit : Unit {
             yield return waitTime;
         }
     }
-
     protected override void Die() {
         //StopCoroutine(SlowUpdate());
         //add points?
@@ -99,7 +99,7 @@ public class EnemyUnit : Unit {
         Debug.Log(closestEnemy);
     }
 
-    float DifficultyNomilize(int difficulty) {
+    float DifficultyNormalize(int difficulty) {
         return (float)((Mathf.Log(difficulty)) / 2.5 * difficulty + 1);
     }
 

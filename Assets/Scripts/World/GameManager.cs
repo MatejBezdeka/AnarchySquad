@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
     CanvasManager canvasManager;
     [SerializeField] List<SquadUnit> units;
     public List<SquadUnit> Units => units;
-    public List<EnemyUnit> Enemies /*{ get; private <- so I can edit it before I can spawn set; }*/ = new List<EnemyUnit>();
+    public List<EnemyUnit> enemies /*{ get; private <- so I can edit it before I can spawn set; }*/;
     [SerializeField] GameObject unitPrefab;
     #endregion
     
@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour {
             //Hard pause/unpause
             case -3:
                 if (currentTimeState == timeState.hardPaused) {
-                    Debug.Log("H unpaused");
                     currentTimeState = timeState.normal;
                     canvasManager.StartTimer();
                     if (!paused) {
@@ -62,7 +61,6 @@ public class GameManager : MonoBehaviour {
                 canvasManager.StopTimer();
                 Time.timeScale = 0;
                 AudioSettings.Music.PauseMusic();
-                Debug.Log("paused H");
                 currentTimeState = timeState.hardPaused;
                 break;
             case -2:

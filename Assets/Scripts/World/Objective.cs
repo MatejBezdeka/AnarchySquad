@@ -18,7 +18,7 @@ public class Objective : ScriptableObject
     public bool Completed() {
         switch (type) {
             case ObjectiveType.Eliminate:
-                if (GameManager.instance.Enemies.Count == 0) {
+                if (GameManager.instance.enemies.Count == 0) {
                     return true;
                 }
                 break;
