@@ -19,9 +19,8 @@ public class EnemyAttackState : AttackUnitState
     }
 
     protected override void UpdateState() {
-        Debug.Log("E attack");
-        base.UpdateState();
         if (CheckConditions()) {
+            unit.Agent.ResetPath();
             unit.transform.Rotate(Vector3.RotateTowards(unit.transform.forward, target.transform.position - unit.transform.position, 5, 5));
             currentCooldown += Time.deltaTime;
             unit.weapon.UpdateWeapon(unit, target, ref attacking,ref currentBurst, ref currentCooldown);
@@ -34,21 +33,17 @@ public class EnemyAttackState : AttackUnitState
     
     bool CheckConditions() {
         float targetDistance = Vector3.Distance(unit.transform.position, target.transform.position);
-        if (targetDistance > unit.weapon.MaxEffectiveRange) {
+        //Debug.Log(!unit.transform.TargetVisibility(target.transform.position, "Squader") + " " + (targetDistance > unit.weapon.MaxEffectiveRange));
+        if (!unit.transform.TargetVisibility(target.transform.position, "Squader") ||
+            targetDistance > unit.weapon.MaxEffectiveRange) {
             unit.Agent.SetDestination(target.transform.position);
             currentCooldown /= 2;
             return false;
         }
-        if (!unit.transform.TargetVisibility(target.transform.position, "Squader")) {
-            unit.Agent.SetDestination(target.transform.position);
-            currentCooldown /= 2;
-            return false;
-        }
-        if (targetDistance < unit.weapon.EffectiveRange/3) {
+        if (targetDistance < unit.weapon.EffectiveRange/2) {
             unit.SetDestinationToSaferPlace();
             return true;
         }
-        unit.Agent.ResetPath();
         return true;
     }
 }

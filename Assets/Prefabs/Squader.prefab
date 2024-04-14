@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 304862624069283267}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SelectArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 5891029564421861456}
   - component: {fileID: -2692621076816783727}
   - component: {fileID: -3004496492142001005}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Squader
   m_TagString: Squader
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4781461764380167393}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.213661, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -220,7 +220,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -265,18 +265,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddff9bdecfcbf341848be8667902553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitName: No name
   stats: {fileID: 0}
   weapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
-  debugSphereMaterial: {fileID: 2100000, guid: c2ee77bb888c4d24f982b84f5494aad7, type: 2}
-  selectMaterial: {fileID: 2100000, guid: 69e42600b5e857f48a2d89d013785895, type: 2}
   responseTime: 0.5
   muzzle: {fileID: 7807617141368890752}
   grenadePrefab: {fileID: 8158859370022644794, guid: a7c37722dfff3274ca852e1d4530807a,
     type: 3}
   maxGrenadeDistance: 25
   launchAngle: 35
-  UnitName: No name
   audioSource: {fileID: -2692621076816783727}
   audioRadioSource: {fileID: -3004496492142001005}
   hurtSound:
@@ -304,6 +301,7 @@ MonoBehaviour:
     type: 3}
   switchWeaponSoundEnd: {fileID: 8300000, guid: 3a447a28495e92e40af39fb5b5338b7c,
     type: 3}
+  secondaryWeapon: {fileID: 0}
 --- !u!108 &1925555394972035555
 Light:
   m_ObjectHideFlags: 0
@@ -687,8 +685,7 @@ GameObject:
   - component: {fileID: 8590831737322180057}
   - component: {fileID: 4846880289201522272}
   - component: {fileID: 6896609043001994710}
-  - component: {fileID: 8876910019288143228}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,27 +758,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8876910019288143228
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7156338350041530065}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7807617141368890752
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4842569622054380802}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -20,14 +20,17 @@ public class RunUnitState : UnitState {
     protected override void UpdateState() {
         currentCooldown += Time.deltaTime;
         if (currentCooldown > tickCooldown) {
+            currentCooldown = 0;
             //Debug.Log(Math.Abs(unit.Agent.velocity.x) + Math.Abs(unit.Agent.velocity.z)  + " " + (unit.Agent.velocity.x + unit.Agent.velocity.z < 0.01f));
             if (Math.Abs(unit.Agent.velocity.x) + Math.Abs(unit.Agent.velocity.z) < 0.01f) {
                 unit.AddStamina();
-            }else if (unit.CurrentStamina== 0) {
-                unit.Sprint();
-                Exit(new NormalUnitState(unit));
+                unit.Agent.ResetPath();
+                return;
             }
-            currentCooldown = 0;
+            unit.Sprint();
+            if (unit.CurrentStamina == 0) {
+                Exit(new NormalUnitState(unit));    
+            }
         }
     }
 

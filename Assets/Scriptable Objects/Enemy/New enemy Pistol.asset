@@ -17,11 +17,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2660651700256969146, guid: 03f2baab1a83d3340b4f8e69efad4d33,
     type: 3}
   damage: 5
-  maxAmmo: 7
+  maxAmmo: 999
   timeBetweenShots: 2
   reloadTime: 3
-  effectiveRange: 10
-  maxEffectiveRange: 15
+  effectiveRange: 50
+  maxEffectiveRange: 70
   Spread: 0.164
   icon: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 1de437e3c94602a4980ab64e5d180233, type: 3}

@@ -20,7 +20,8 @@ public class PlusMemberButton : UnitButton
         return Shop.types.none;
     }
 
-    private void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
         button.onClick.RemoveAllListeners();
     }
 }

@@ -18,7 +18,7 @@ public abstract class UIButton : MonoBehaviour, IButton {
         Functionality();
     }
     protected abstract void Functionality();
-    private void OnDestroy() {
+    protected virtual void OnDestroy() {
         if (button != null) {
             button.onClick.RemoveAllListeners();
         }

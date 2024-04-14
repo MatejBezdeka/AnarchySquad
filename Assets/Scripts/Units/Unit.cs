@@ -84,6 +84,7 @@ public abstract class Unit : MonoBehaviour {
     #region health
 
     public virtual void GetHit(int damage) {
+        Debug.Log("AAAHHH");
         damage = (int)(damage * (1f - (stats.Armor * 0.25f) * 0.04f));
         if ((CurrentHp -= damage) <= 0) {
             Destroy(gameObject);

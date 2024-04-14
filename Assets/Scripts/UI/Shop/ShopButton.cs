@@ -46,4 +46,11 @@ public class ShopButton : UIButton {
         Debug.Log("deselected");
         deselected.Invoke();
     }
+
+    protected override void OnDestroy() {
+        base.OnDestroy();
+        if (button != null) {
+            buttonSelected -= () => { button.interactable = true; };
+        }
+    }
 }

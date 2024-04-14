@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   maxHp: 15
   armor: 10
-  speed: 5
+  speed: 2
   maxStamina: 45.5
   accuracy: 3.24
   icon: {fileID: 0}

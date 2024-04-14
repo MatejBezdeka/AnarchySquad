@@ -11,12 +11,12 @@ PrefabInstance:
     - target: {fileID: 2549332483671750298, guid: a7c37722dfff3274ca852e1d4530807a,
         type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 768
+      value: 772
       objectReference: {fileID: 0}
     - target: {fileID: 2549332483671750298, guid: a7c37722dfff3274ca852e1d4530807a,
         type: 3}
       propertyPath: m_IncludeLayers.m_Bits
-      value: 247
+      value: 243
       objectReference: {fileID: 0}
     - target: {fileID: 4557235184180469097, guid: a7c37722dfff3274ca852e1d4530807a,
         type: 3}
@@ -36,12 +36,12 @@ PrefabInstance:
     - target: {fileID: 5480673727718417684, guid: a7c37722dfff3274ca852e1d4530807a,
         type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 256
+      value: 260
       objectReference: {fileID: 0}
     - target: {fileID: 5480673727718417684, guid: a7c37722dfff3274ca852e1d4530807a,
         type: 3}
       propertyPath: m_IncludeLayers.m_Bits
-      value: 247
+      value: 243
       objectReference: {fileID: 0}
     - target: {fileID: 7606243686488625770, guid: a7c37722dfff3274ca852e1d4530807a,
         type: 3}

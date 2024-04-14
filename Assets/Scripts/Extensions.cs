@@ -11,21 +11,14 @@ public static class Extensions
     }
 
     public static bool TargetVisibility(this Transform transform, Vector3 targetPos, string tag) {
-        Physics.Raycast(new Ray(transform.position, targetPos - transform.position), out RaycastHit hit, 299);
-        //Debug.DrawRay(transform.position, targetPos - transform.position,Color.red, 1);
-        if (hit.transform.CompareTag(tag)) {
-            return true;
-        }
-        return false;
+        Physics.Raycast(new Ray(transform.position, targetPos - transform.position), out RaycastHit hit, 399);
+        //Debug.DrawRay(transform.position, targetPos - transform.position,Color.red, 0.1f);
+        //Debug.Log(hit.transform.tag + " " + hit.transform.name + " | " + tag);
+        return hit.transform.CompareTag(tag);
     }
 
     public static bool TargetDistance(this Transform transform, Vector3 targetPos, float maxRange) {
-        if (Vector3.Distance(transform.position, targetPos) < maxRange) {
-            //in range
-            return true;
-        }
-        //out of distance
-        return false;
+        return Vector3.Distance(transform.position, targetPos) < maxRange;
     }
 
     public static T[] ShuffleArray<T>(T[] array, int seed) {

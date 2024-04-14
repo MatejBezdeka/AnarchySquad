@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 8062280618451136300}
   - component: {fileID: 8036565328400302437}
   - component: {fileID: 6184457849436384444}
-  - component: {fileID: 8012041755475674988}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -58,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3611149138014241170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.011, y: 0, z: 0.806}
+  m_LocalPosition: {x: 0.375, y: 0, z: 0.806}
   m_LocalScale: {x: 0.42548, y: 0.21274, z: 0.9640951}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -116,27 +115,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8012041755475674988
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3611149138014241170}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.00000023841858}
 --- !u!1 &6849713316551132462
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6849713316551132462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3636613, y: 6, z: -2.032}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -239,8 +217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: No name
-  stats: {fileID: 11400000, guid: 428bc9961a581fa409489bd317a50872, type: 2}
-  weapon: {fileID: 11400000, guid: 9c31afbd0d61c1347a28627ddcd39c5f, type: 2}
+  stats: {fileID: 11400000, guid: d49a7b80dc5e275448f5541f8c177a2d, type: 2}
+  weapon: {fileID: 11400000, guid: 1a29d4e7d18950e478c4614647d98499, type: 2}
   responseTime: 1
   muzzle: {fileID: 619358403020231759}
   grenadePrefab: {fileID: 754246055655193558, guid: b845c9ada5f169b49b852f90f869d686,
@@ -269,7 +247,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

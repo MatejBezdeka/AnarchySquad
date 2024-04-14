@@ -16,7 +16,6 @@ public class AttackUnitState : UnitState {
         this.target = target;
     }
     protected override void Enter() {
-        //StartCoroutine(CheckConditions());
         unit.needToReload += Reload;
         base.Enter();
         
@@ -24,6 +23,7 @@ public class AttackUnitState : UnitState {
 
     protected override void UpdateState() {
         if (CheckConditions()) {
+            unit.Agent.ResetPath();
             unit.transform.Rotate(Vector3.RotateTowards(unit.transform.forward, target.transform.position - unit.transform.position, 5, 5));
             currentCooldown += Time.deltaTime;
             unit.weapon.UpdateWeapon(unit, target, ref attacking,ref currentBurst, ref currentCooldown);
@@ -31,18 +31,12 @@ public class AttackUnitState : UnitState {
     }
 
     bool CheckConditions() {
-            if (!unit.transform.TargetDistance(target.transform.position, unit.weapon.EffectiveRange)) {
+            if (!unit.transform.TargetDistance(target.transform.position, unit.weapon.EffectiveRange) || !unit.transform.TargetVisibility(target.transform.position, "Anarchist")) {
                 //Debug.Log(target.transform.position);
                 unit.Agent.SetDestination(target.transform.position);
                 currentCooldown /= 2;
                 return false;
             }
-            if (!unit.transform.TargetVisibility(target.transform.position, "Anarchist")) {
-                unit.Agent.SetDestination(target.transform.position);
-                currentCooldown /= 2;
-                return false;
-            }
-            unit.Agent.ResetPath();
             return true;
     }
 

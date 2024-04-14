@@ -12,4 +12,9 @@ public abstract class UnitButton : MonoBehaviour, IButton {
         IButton.PlayButtonSound.Invoke(Sound);
         clickedUnitButton!.Invoke(new Tuple<int, Shop.types>(GetId(), GetButtonType())); 
     }
+    protected virtual void OnDestroy() {
+        if (button != null) {
+            button.onClick.RemoveAllListeners();
+        }
+    }
 }

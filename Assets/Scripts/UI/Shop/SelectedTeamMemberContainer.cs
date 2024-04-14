@@ -122,5 +122,8 @@ public class SelectedTeamMemberContainer : UnitButton {
         weaponRemoveButton.onClick.RemoveAllListeners();
         secondaryWeaponAddButton.onClick.RemoveAllListeners();
         secondaryWeaponRemoveButton.onClick.RemoveAllListeners();
+        if (button != null) {
+            button.onClick.RemoveAllListeners();
+        }
     }
 }

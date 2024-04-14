@@ -96,7 +96,7 @@ public class EnemyUnit : Unit {
             }
         }
         closestDistance = currentDistance;
-        Debug.Log(closestEnemy);
+        //Debug.Log(closestEnemy);
     }
 
     float DifficultyNormalize(int difficulty) {
