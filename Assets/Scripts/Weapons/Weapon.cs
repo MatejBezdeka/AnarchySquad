@@ -66,9 +66,7 @@ public class Weapon : ShopItem {
     float RandomOffset(float accuracy) {
         return 0.01f * Random.Range(-accuracy, accuracy) + Random.Range(-Spread, Spread);
     }
-
     
-
     public override Shop.types GetType() {
         return Shop.types.weapon;
     }
@@ -76,7 +74,6 @@ public class Weapon : ShopItem {
     public override Sprite GetSprite() {
         return icon;
     }
-
     public virtual string GetDescription() {
         return name + "\n" + "Bullet dmg: " + damage + "\nAmmo: " + maxAmmo + "\nCooldown: " + timeBetweenShots + "\nRange: 0 - " +
                effectiveRange + " - " + maxEffectiveRange + "\nSpread: " + Spread + "\n";

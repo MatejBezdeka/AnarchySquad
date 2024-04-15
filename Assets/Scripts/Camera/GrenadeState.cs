@@ -14,10 +14,6 @@ namespace Camera {
             this.line = line;
             player.UpdateCursor(PlayerControl.cursorTypes.attack);
         }
-        public override void Enter() {
-            base.Enter();
-        }
-
         public override void Update() {
             if (CursorOverUI()) {
                 line.enabled = false; return;

@@ -76,17 +76,6 @@ public class AudioSettings : MonoBehaviour {
             }
         }
     }
-    
-    public void ResumeMusic() {
-        
-    }
-
-    public void PauseMusic() {
-        
-    }
-    public void StopMusic() {
-        
-    }
 
     public void ChangeAmbientMusic(AmbientMusic group) {
         switch (group) {
@@ -105,10 +94,6 @@ public class AudioSettings : MonoBehaviour {
         }
     }
 
-    public void PlayEffectClip(AudioClip clip) {
-        effectsAudioSource.PlayOneShot(clip);
-    }
-
     void PlayButtonSound(ButtonSounds buttonGroup) {
         switch (buttonGroup) {
             case ButtonSounds.error:
@@ -117,7 +102,6 @@ public class AudioSettings : MonoBehaviour {
             case ButtonSounds.succesful:
                 effectsAudioSource.PlayOneShot(SuccesfulButtonClip);
                 break;
-            case ButtonSounds.normal:
             default:
                 effectsAudioSource.PlayOneShot(NormalButtonClip);
                 break;

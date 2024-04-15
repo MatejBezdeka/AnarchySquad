@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour {
                 }
                 canvasManager.StopTimer();
                 Time.timeScale = 0;
-                AudioSettings.Music.PauseMusic();
                 currentTimeState = timeState.hardPaused;
                 break;
             case -2:
@@ -71,7 +70,6 @@ public class GameManager : MonoBehaviour {
 
                 paused = false;
                 ChangeTime(timeScale);
-                AudioSettings.Music.ResumeMusic();
                 break;
             case -1:
                 //Pause
@@ -84,7 +82,6 @@ public class GameManager : MonoBehaviour {
                 paused = true;
                 Time.timeScale = 0;
                 canvasManager.ChangeTimeLabelText("Paused");
-                AudioSettings.Music.PauseMusic();
                 break;
             default:
                 if (currentTimeState == timeState.hardPaused) {

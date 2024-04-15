@@ -25,7 +25,7 @@ public class Grenade : MonoBehaviour {
     
     void Explode() {
         Collider[] hit = Physics.OverlapSphere(transform.position, range);
-        //Debug.Log(hit.Length);
+        explodeParticle.Play();
         foreach (var collision in hit) {
             if (collision.CompareTag("Anarchist") && !hitSquaders) {
                 collision.GetComponent<Unit>().GetHit(damage);
