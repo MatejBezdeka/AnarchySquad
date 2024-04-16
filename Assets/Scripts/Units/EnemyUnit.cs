@@ -55,13 +55,13 @@ public class EnemyUnit : Unit {
             yield return waitTime;
         }
     }
-    protected override void Die() {
+    protected void Die() {
         //StopCoroutine(SlowUpdate());
         //add points?
         //check if game over
         //death sound
         StopCoroutine(SlowUpdate());
-        base.Die();
+        Destroy(gameObject);
     }
 
     public override void GetHit(int damage) {

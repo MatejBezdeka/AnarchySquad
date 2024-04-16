@@ -1,3 +1,8 @@
 v shopu dodělat obrázky a zbytek možností+
 select ctverec + ||
 name panel (list na spodní liště) - ||
+
+grenade cooldown
+win
+restarting bugz
+can start without choosing new units

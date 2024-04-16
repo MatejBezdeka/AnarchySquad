@@ -75,7 +75,7 @@ public class Weapon : ShopItem {
         return icon;
     }
     public virtual string GetDescription() {
-        return name + "\n" + "Bullet dmg: " + damage + "\nAmmo: " + maxAmmo + "\nCooldown: " + timeBetweenShots + "\nRange: 0 - " +
+        return name + "\n" + "Bullet dmg: " + damage + "\nAmmo: " + maxAmmo + "\nCooldown: " + timeBetweenShots + "\nRange: " +
                effectiveRange + " - " + maxEffectiveRange + "\nSpread: " + Spread + "\n";
     }
 }

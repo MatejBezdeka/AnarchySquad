@@ -45,6 +45,7 @@ public class Shop : MonoBehaviour {
     List<UnitBlueprint> unitBlueprints = new List<UnitBlueprint>();
 
     void Start() {
+        points = PlayerPrefs.GetInt("MS")+1 * 500;
         ShopButton.itemClicked += ClickedItem;
         ShopButton.showDescription += ShowDescription;
         ShopButton.hideDescription += HideDescription;
@@ -62,6 +63,8 @@ public class Shop : MonoBehaviour {
         pointsSlider.maxValue = points;
         UpdateSlider();
         AudioSettings.Music.ChangeAmbientMusic(AudioSettings.AmbientMusic.Hub);
+        
+        
     }
 
     void UpdateSlider() {

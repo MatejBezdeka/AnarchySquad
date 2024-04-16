@@ -70,7 +70,7 @@ public class Save {
     }
     public static void NewSave(int saveId,int gameSeed) {
         PlayerPrefs.SetInt("GS", gameSeed);
-        PlayerPrefs.SetInt("PT", 200);
+        PlayerPrefs.SetInt("PT", 500);
         PlayerPrefs.SetInt("MS", 0);
         PlayerPrefs.SetString("DT", DateTime.Now.ToString("HH:mm dd.MM.yyyy"));
         Random rn = new Random(gameSeed);

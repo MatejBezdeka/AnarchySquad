@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
 
@@ -55,22 +56,20 @@ public class MissionInfoPanel : MonoBehaviour {
                 foreach (var point in missionPoints) {
                     float distanceX = Mathf.Abs(posx - point.transform.localPosition.x);
                     float distanceY = Mathf.Abs(posy - point.transform.localPosition.y);
-
-                    if (distanceX < missionRect.width && distanceY < missionRect.height)
-                    {
-                        overlapping = true;
-                    }
+                    if (distanceX < missionRect.width && distanceY < missionRect.height) overlapping = true;
                 }
                 j++;
-                if (j == 50) {
-                    overlapping = false;
-                }
+                if (j == 50) { overlapping = false; }
             } while (overlapping);
-            
+            int difficulty = PlayerPrefs.GetInt("MS");
+            points.text = (difficulty+1) * 500 + " points";
+            missionsDone.text = difficulty + "/6";
+            difficulty = difficulty == 0 ? 1 : difficulty;
+            difficulty = difficulty == 6 ? 5 : difficulty;
             IdMissionButton newPoint = Instantiate(missionPrefab, map).GetComponent<IdMissionButton>();
-;            newPoint.id = missionPoints.Count;
+            newPoint.id = missionPoints.Count;
             missionPoints.Add(newPoint);
-            missions.Add(new Map(rn.Next(int.MinValue+64, int.MaxValue-64), maxSideDifference, minObstaclePercentage, maxObstaclePercentage, 1, objectives[rn.Next(0,objectives.Length)]));
+            missions.Add(new Map(rn.Next(int.MinValue+64, int.MaxValue-64), maxSideDifference, minObstaclePercentage, maxObstaclePercentage, difficulty, objectives[rn.Next(0,objectives.Length)]));
             newPoint.transform.localPosition = new Vector3(posx, posy, 0);
         }  
     }

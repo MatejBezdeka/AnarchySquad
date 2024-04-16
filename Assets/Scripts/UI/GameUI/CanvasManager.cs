@@ -70,15 +70,8 @@ public class CanvasManager : MonoBehaviour {
         continueClock = false;
     }
 
-    
-
-    
-
-    void SwitchButtonClicked() {
-        Debug.Log("not implemeted yet");
-    }
-
-    void AbilityButtonClicked() {
-        Debug.Log("not implemeted yet");
+    public void RemovePortrait(int id) {
+        portraits[id].Delete();
+        portraits.RemoveAt(id);
     }
 }

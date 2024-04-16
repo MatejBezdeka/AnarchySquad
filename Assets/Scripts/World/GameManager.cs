@@ -13,13 +13,16 @@ public class GameManager : MonoBehaviour {
     [SerializeField, Range(1.1f, 4)] float maxTimeSpeed = 2;
     [SerializeField, Range(0.1f, 1f)] float minTimeSpeed = 0.2f;
     [SerializeField] MapGenerator mapGenerator;
+    [SerializeField] PlayerControl player;
+    [SerializeField] GameObject winScreen;
+    [SerializeField] GameObject gameOverScreen;
     public Save currentSave;
     public MapGenerator MapGenerator => mapGenerator;
     #region variables
     float timeScale = 1;
 
     public enum timeState {
-        hardPaused, normal
+        hardPaused, normal, end
     }
 
     bool paused = false;
@@ -47,6 +50,9 @@ public class GameManager : MonoBehaviour {
         AudioSettings.Music.StartMusic();
     }
     public void ChangeTime(float newTime) {
+        if (currentTimeState == timeState.end) {
+            
+        }
         switch (newTime) {
             //Hard pause/unpause
             case -3:
@@ -111,6 +117,24 @@ public class GameManager : MonoBehaviour {
             //GameObject newUnit = Instantiate(unitPrefab, new Vector3(rotatedSpawnPoint.x, rotatedSpawnPoint.y + 1f, rotatedSpawnPoint.z), Quaternion.identity);
             units.Add(UnitFactory.SpawnUnit(unitPrefab, SquadParameters.Units[i], rotatedSpawnPoint) as SquadUnit) ;
             
+        }
+    }
+
+    public void UnitDied(Unit deadUnit) {
+        for (int i = 0; i < units.Count; i++) {
+            if (units[i] == deadUnit) {
+                if (units[i].selected) {
+                    player.SelectDeselectUnit(units[i]);
+                }
+                canvasManager.RemovePortrait(i);
+                units.RemoveAt(i);
+                if (enemies.Count == 0) {
+                    currentTimeState = timeState.end;
+                    gameOverScreen.transform.gameObject.SetActive(true);
+                    Time.timeScale = 0;
+                    //Save.DeleteData();
+                }
+            }
         }
     }
 }

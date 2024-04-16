@@ -17,6 +17,7 @@ namespace Units {
             start = shotBy.transform.position;
             range = shotBy.weapon.EffectiveRange;
             maxRange = shotBy.weapon.MaxEffectiveRange;
+            baseDamage = shotBy.weapon.Damage;
         }
 
         void Update() {
@@ -27,6 +28,10 @@ namespace Units {
             }
         }
         void OnCollisionEnter(Collision other) {
+            Debug.Log(other.transform.tag + other.transform.name);
+            if (other.transform.CompareTag("Bullet")) {
+                return;
+            }
             if (!squadBullet && other.transform.CompareTag("Squader") || squadBullet && other.transform.CompareTag("Anarchist")) {
                 other.gameObject.GetComponent<Unit>().GetHit(Damage());
             }
@@ -37,7 +42,6 @@ namespace Units {
             if (distance < range) {
                 return baseDamage;
             }
-            Debug.Log( "damage: " + (baseDamage * ((100 - ((maxRange - range) - (distance - range)) * 2) * 0.01)));
             return (int)(baseDamage * ((100 - ((maxRange - range) - (distance - range)) * 2) * 0.01));
         }
     }

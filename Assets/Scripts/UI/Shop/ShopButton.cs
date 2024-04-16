@@ -21,7 +21,7 @@ public class ShopButton : UIButton {
     protected override void Start() {
         base.Start();
         transform.localScale = Vector3.one;
-        buttonSelected += () => { button.interactable = true; };
+        buttonSelected += SetButtonInteractable;
     }
 
     public void SetGraphics(string name, int cost, Sprite image) {
@@ -37,7 +37,7 @@ public class ShopButton : UIButton {
     }
     protected override void Functionality() {
         itemClicked!.Invoke(new Tuple<Shop.types, int>(type, id));
-        buttonSelected.Invoke();
+        buttonSelected?.Invoke();
         button.interactable = false;
     }
 
@@ -49,8 +49,11 @@ public class ShopButton : UIButton {
 
     protected override void OnDestroy() {
         base.OnDestroy();
+        buttonSelected -= SetButtonInteractable;
+    }
+    void SetButtonInteractable() {
         if (button != null) {
-            buttonSelected -= () => { button.interactable = true; };
+            button.interactable = true;
         }
     }
 }

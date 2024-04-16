@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a571742f3fc440fb220ba010da212c2, type: 3}
+  m_Name: Pistol MK4
+  m_EditorClassIdentifier: 
+  cost: 75
+  description: "pistol\t"
+  bulletPrefab: {fileID: 2660651700256969146, guid: 48b0fd2765c962441b5909b59ea8ab9b,
+    type: 3}
+  damage: 15
+  maxAmmo: 7
+  timeBetweenShots: 2
+  reloadTime: 3.5
+  effectiveRange: 25
+  maxEffectiveRange: 40
+  Spread: 0.3
+  icon: {fileID: 21300000, guid: 314867e59e6c36f478f5c7d16cd27981, type: 3}
+  shootSound: {fileID: 8300000, guid: 1de437e3c94602a4980ab64e5d180233, type: 3}

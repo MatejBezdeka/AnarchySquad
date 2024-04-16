@@ -32,6 +32,9 @@ public class EnemyAttackState : AttackUnitState
     }
     
     bool CheckConditions() {
+        if (target == null) {
+            Exit(new NormalUnitState(unit));
+        }
         float targetDistance = Vector3.Distance(unit.transform.position, target.transform.position);
         //Debug.Log(!unit.transform.TargetVisibility(target.transform.position, "Squader") + " " + (targetDistance > unit.weapon.MaxEffectiveRange));
         if (!unit.transform.TargetVisibility(target.transform.position, "Squader") ||

@@ -42,5 +42,16 @@ namespace World {
         void UpdateHpSlider() {
             hpSlider.value = unit.CurrentHp;
         }
+
+        void SetActiconSprite() {
+            
+        }
+
+        public void Delete() {
+            button.onClick.RemoveAllListeners();
+            PlayerControl.selectedNewUnit -= UpdateOutline;
+            unit.updateUI -= UpdateHpSlider;
+            Destroy(gameObject);
+        }
     }
 }
