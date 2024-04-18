@@ -28,13 +28,6 @@ public class SquadUnit : Unit {
         }
         currentState = new NormalUnitState(this);
     }
-
-    public override void GetHit(int damage) {
-        base.GetHit(damage);
-        //TODO check if game is over
-        // get minus points
-    }
-
     public override bool isSquadUnit() {
         return true;
     }

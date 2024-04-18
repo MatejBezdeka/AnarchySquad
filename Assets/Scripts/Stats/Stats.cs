@@ -6,10 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Units/Stats")]
 public class Stats : ShopItem {
     [Header("stats")]
-    [SerializeField, Range(1, 100)] int maxHp;
-    [SerializeField, Range(1,100)] float armor;
-    [SerializeField, Range(0.1f,5)] float speed;
-    [SerializeField, Range(20, 200)] float maxStamina;
+    [SerializeField, Range(1, 500)] int maxHp;
+    [SerializeField, Range(1, 150)] float armor;
+    [SerializeField, Range(0.5f,5)] float speed;
+    [SerializeField, Range(1, 200)] float maxStamina;
     [SerializeField, Range(1,10)] float accuracy;
     [SerializeField] protected Sprite icon;
 

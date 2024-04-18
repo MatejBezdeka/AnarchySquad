@@ -274,12 +274,11 @@ MonoBehaviour:
     type: 3}
   maxGrenadeDistance: 25
   launchAngle: 35
+  currentGrenadeCooldown: -1
   audioSource: {fileID: -2692621076816783727}
   audioRadioSource: {fileID: -3004496492142001005}
-  hurtSound:
-  - {fileID: 8300000, guid: fa1b0ba38a3ec834ab0e32aa628face8, type: 3}
-  dieSound:
-  - {fileID: 8300000, guid: fa1b0ba38a3ec834ab0e32aa628face8, type: 3}
+  hurtSound: []
+  dieSound: []
   rogerSounds:
   - {fileID: 8300000, guid: 3daf7c3e15dd2234a83d86b6aa8cc045, type: 3}
   - {fileID: 8300000, guid: b076a4895b689f34288b766453afab0e, type: 3}

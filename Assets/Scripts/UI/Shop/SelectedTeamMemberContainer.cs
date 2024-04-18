@@ -34,17 +34,17 @@ public class SelectedTeamMemberContainer : UnitButton {
     [SerializeField] GameObject secondaryWeaponRButton;
     //[SerializeField] string placeHolderClass;
     
-    protected void Start() {
+    protected override void Start() {
+        base.Start();
         removeButton.onClick.AddListener(RemoveButtonClicked);
-        statsAddButton.onClick.AddListener(() => { clickedButton = Shop.types.unit; Clicked(); });
+        statsAddButton.onClick.AddListener(() => { clickedButton = Shop.types.unit; Functionality(); });
         statsRemoveButton.onClick.AddListener(RemoveStats);
-        weaponAddButton.onClick.AddListener(() => { clickedButton = Shop.types.weapon; Clicked(); });
+        weaponAddButton.onClick.AddListener(() => { clickedButton = Shop.types.weapon; Functionality(); });
         weaponRemoveButton.onClick.AddListener(RemoveWeapon);
-        secondaryWeaponAddButton.onClick.AddListener(() => { clickedButton = Shop.types.secondaryWeapon; Clicked(); });
+        secondaryWeaponAddButton.onClick.AddListener(() => { clickedButton = Shop.types.secondaryWeapon; Functionality(); });
         secondaryWeaponRemoveButton.onClick.AddListener(RemoveSecondaryWeapon);
         statsImage.sprite = placeholderStatsImg;
         unitName.text = placeHolderName;
-        
     }
 
     protected override int GetId() {
@@ -114,7 +114,8 @@ public class SelectedTeamMemberContainer : UnitButton {
         hideDescription!.Invoke();
     }
 
-    private void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
         removeButton.onClick.RemoveAllListeners();
         statsAddButton.onClick.RemoveAllListeners();
         statsRemoveButton.onClick.RemoveAllListeners();
@@ -122,8 +123,5 @@ public class SelectedTeamMemberContainer : UnitButton {
         weaponRemoveButton.onClick.RemoveAllListeners();
         secondaryWeaponAddButton.onClick.RemoveAllListeners();
         secondaryWeaponRemoveButton.onClick.RemoveAllListeners();
-        if (button != null) {
-            button.onClick.RemoveAllListeners();
-        }
     }
 }

@@ -43,9 +43,9 @@ public class Shop : MonoBehaviour {
     [SerializeField] GameObject plusMemberPrefab; 
     List<SelectedTeamMemberContainer> containers = new List<SelectedTeamMemberContainer>();
     List<UnitBlueprint> unitBlueprints = new List<UnitBlueprint>();
-
     void Start() {
-        points = PlayerPrefs.GetInt("MS")+1 * 500;
+        Debug.Log("GGGGGGGGG");
+        points = PlayerPrefs.GetInt("MS") * 500 + 500;
         ShopButton.itemClicked += ClickedItem;
         ShopButton.showDescription += ShowDescription;
         ShopButton.hideDescription += HideDescription;
@@ -62,9 +62,6 @@ public class Shop : MonoBehaviour {
         plusMemberPrefab = Instantiate(plusMemberPrefab, containerGameObject.transform);
         pointsSlider.maxValue = points;
         UpdateSlider();
-        AudioSettings.Music.ChangeAmbientMusic(AudioSettings.AmbientMusic.Hub);
-        
-        
     }
 
     void UpdateSlider() {
@@ -90,7 +87,7 @@ public class Shop : MonoBehaviour {
             return;
         }
         if (obj.Item2 != selectedItemType) {
-            Debug.Log(obj.Item2 + "  : " + selectedItemType);
+            //Debug.Log(obj.Item2 + "  : " + selectedItemType);
             if (obj.Item2 == types.secondaryWeapon && selectedItemType == types.weapon) {
                 //ignore
             }
@@ -204,7 +201,9 @@ public class Shop : MonoBehaviour {
         if (containers.Count == maxUnitsCount) {
             return;
         }
-        GameObject container = Instantiate(memberPrefab, containerGameObject.transform);
+        GameObject container = Instantiate(
+            memberPrefab,
+            containerGameObject.transform);
         var comp = container.GetComponent<SelectedTeamMemberContainer>();
         comp.SetId(containers.Count);
         containers.Add(comp);
@@ -244,8 +243,8 @@ public class Shop : MonoBehaviour {
         foreach (var comp in unitBlueprints) {
             SquadParameters.Units.Add(comp);    
         }
-
-        SceneManager.LoadSceneAsync("LoadingScene");
+        unitBlueprints.Clear();
+        SceneManager.LoadScene("LoadingScene");
         SceneManager.LoadSceneAsync("Battlefield");
     }
 

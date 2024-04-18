@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6745a745e80b564faefecf83ae37d00, type: 3}
   m_Name: Tank MK5
   m_EditorClassIdentifier: 
-  cost: 65
+  cost: 200
   description: tank it
-  maxHp: 80
-  armor: 33
-  speed: 0.7
-  maxStamina: 20
+  maxHp: 200
+  armor: 50
+  speed: 1.2
+  maxStamina: 15
   accuracy: 5.2
   icon: {fileID: 21300000, guid: 4ff4ed7986c4e9a45a0c56ff37c3d4be, type: 3}

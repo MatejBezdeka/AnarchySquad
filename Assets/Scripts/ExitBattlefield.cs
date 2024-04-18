@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class ExitBattlefield : UIButton
 {
     protected override void Functionality() {
-        SceneManager.LoadScene("Scenes/MainMenu");
+        AudioSettings.Music.StopMusic();
+        SceneManager.LoadScene("Scenes/MainMenu", LoadSceneMode.Single);
         SceneManager.UnloadSceneAsync("Scenes/Battlefield");
     }
-
 }

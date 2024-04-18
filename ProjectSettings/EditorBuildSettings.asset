@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MissionSelector.unity
     guid: 79accd35bda88084ca11284940267cf1
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 9e6ac1d4ac978e443bdba2a4a68aae0f
   m_configObjects: {}

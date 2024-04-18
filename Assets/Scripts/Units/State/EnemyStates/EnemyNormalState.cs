@@ -13,17 +13,20 @@ public class EnemyNormalState : NormalUnitState {
         this.unit = unit as EnemyUnit;
     }
 
+    protected override void Enter() {
+        base.Enter();
+    }
+
     protected override void UpdateState() {
-        Debug.Log("E normal");
         base.UpdateState();
         currentChillCooldown += Time.deltaTime;
         if (unit.closestEnemy == null) { return; }
         if (currentChillCooldown > chillCooldown) {
-            unit.Chill();
+            unit.RegenMorale();
         }
         if (Math.Abs(unit.closestDistance - unit.closestEnemy.weapon.MaxEffectiveRange) < 1 && unit.transform.TargetVisibility(unit.closestEnemy.transform.position, "Squader")) {
             //in range of the closest enemy && visible
-            if (unit.Morale < 30) {
+            if (unit.Morale < 30 && unit.currentGrenadeCooldown < 0) {
                 unit.ThrowGrenade(unit.closestEnemy.transform.position);
             }
             if (unit.weapon.MaxAmmo/5 <= unit.CurrentAmmo) {
@@ -32,7 +35,7 @@ public class EnemyNormalState : NormalUnitState {
             else {
                 if (/*rn.Next(0,2) == 0*/ true) {
                     unit.SetDestinationToSafety();
-                    Exit(new ReloadUnitState(unit, new EnemyAttackState(unit, unit.closestEnemy)));
+                    Exit(new EnemyReloadUnitState(unit, new EnemyAttackState(unit, unit.closestEnemy)));
                 }else {
                     //go for objective
                 }
@@ -40,10 +43,13 @@ public class EnemyNormalState : NormalUnitState {
         }
         else {
             if (unit.weapon.MaxAmmo != unit.CurrentAmmo) {
-                unit.CurrentState.ForceChangeState(new ReloadUnitState(unit, this));
+                unit.CurrentState.ForceChangeState(new EnemyReloadUnitState(unit, this));
             }
             if (unit.Morale > 70) {
                 Exit(new EnemyAttackState(unit, unit.closestEnemy));
+            }
+            else {
+                unit.SetDestinationToSafety();
             }
         }
     }

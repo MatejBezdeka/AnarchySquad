@@ -36,13 +36,13 @@ public class Save {
         this.date = date;
     }
 
-    public void SaveData(List<SquadUnit> units, List<EnemyUnit> enUnits, int currentSeed) {
+    public void SaveData(int currentSeed) {
         PlayerPrefs.SetInt("GS", gameSeed);
         PlayerPrefs.SetInt("PT", points);
         PlayerPrefs.SetInt("MS", missionsDone);
         PlayerPrefs.SetString("DT", DateTime.Now.ToString("HH:mm dd.MM. yyyy"));
         PlayerPrefs.SetInt("CS", currentSeed);
-        if (inGame) {
+        /*if (inGame) {
             PlayerPrefs.SetInt("IG", 1);
             for (int i = 0; i < units.Count; i++) {
                 //JSON Units
@@ -54,7 +54,7 @@ public class Save {
         }
         else {
             PlayerPrefs.SetInt("IG", 0);
-        }
+        }*/
     }
 
     public static Save GetSave(int saveId) {

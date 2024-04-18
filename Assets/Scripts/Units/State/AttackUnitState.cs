@@ -34,13 +34,13 @@ public class AttackUnitState : UnitState {
         if (target == null) {
             Exit(new NormalUnitState(unit));
         }
-            if (!unit.transform.TargetDistance(target.transform.position, unit.weapon.EffectiveRange) || !unit.transform.TargetVisibility(target.transform.position, "Anarchist")) {
-                //Debug.Log(target.transform.position);
-                unit.Agent.SetDestination(target.transform.position);
-                currentCooldown /= 2;
-                return false;
-            }
-            return true;
+        if (!unit.transform.TargetDistance(target.transform.position, unit.weapon.EffectiveRange) || !unit.transform.TargetVisibility(target.transform.position, "Anarchist")) {
+            //Debug.Log(target.transform.position);
+            unit.Agent.SetDestination(target.transform.position);
+            currentCooldown /= 2;
+            return false;
+        }
+        return true;
     }
 
     void Reload(float reloadTime) {

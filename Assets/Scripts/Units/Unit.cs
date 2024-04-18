@@ -33,7 +33,8 @@ public abstract class Unit : MonoBehaviour {
     [SerializeField] GameObject grenadePrefab;
     [SerializeField, Range(1,100)] protected float maxGrenadeDistance;
     [SerializeField, Range(1,89)] float launchAngle = 35f;
-    
+    public float grenadeCooldown { get; } = 30;
+    public float currentGrenadeCooldown = -1;
     public float LaunchAngle => launchAngle;
     public float MaxGrenadeDistance => maxGrenadeDistance;
     
@@ -64,6 +65,12 @@ public abstract class Unit : MonoBehaviour {
     }
     void Update() {
         currentState = currentState.Process();
+        if (currentGrenadeCooldown >= 0) {
+            currentGrenadeCooldown += Time.deltaTime;
+            if (currentGrenadeCooldown >= grenadeCooldown) {
+                currentGrenadeCooldown = -10;
+            }
+        }
         updateUI?.Invoke();
     }
 
@@ -86,14 +93,9 @@ public abstract class Unit : MonoBehaviour {
     public virtual void GetHit(int damage) {
         damage = (int)(damage * (1f - (stats.Armor * 0.25f) * 0.04f));
         if ((CurrentHp -= damage) <= 0) {
-            if (selected) {
-                
-            }
             GameManager.instance.UnitDied(this);
             Destroy(gameObject);
-            
         }
-        
     }
 
     #endregion
@@ -128,6 +130,7 @@ public abstract class Unit : MonoBehaviour {
     }
 
     public void ThrowGrenade(Vector3 target) {
+        currentGrenadeCooldown = 0;
         GameObject grenade = Instantiate(grenadePrefab, muzzle.transform.position, Quaternion.identity);
         Rigidbody rigidBody = grenade.GetComponent<Rigidbody>();
         //Asssited code with ChatGpt ==== ==== ==== ====

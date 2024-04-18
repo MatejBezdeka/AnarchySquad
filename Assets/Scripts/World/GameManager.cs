@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField, Range(0.1f, 1f)] float minTimeSpeed = 0.2f;
     [SerializeField] MapGenerator mapGenerator;
     [SerializeField] PlayerControl player;
-    [SerializeField] GameObject winScreen;
+    
     [SerializeField] GameObject gameOverScreen;
     public Save currentSave;
     public MapGenerator MapGenerator => mapGenerator;
@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour {
             units.Add(UnitFactory.SpawnUnit(unitPrefab, SquadParameters.Units[i], rotatedSpawnPoint) as SquadUnit) ;
             
         }
+        SquadParameters.Units.Clear();
     }
 
     public void UnitDied(Unit deadUnit) {
@@ -128,13 +129,19 @@ public class GameManager : MonoBehaviour {
                 }
                 canvasManager.RemovePortrait(i);
                 units.RemoveAt(i);
-                if (enemies.Count == 0) {
-                    currentTimeState = timeState.end;
+                if (units.Count == 0) {
+                    StopTimeDefinitevely();
                     gameOverScreen.transform.gameObject.SetActive(true);
-                    Time.timeScale = 0;
-                    //Save.DeleteData();
+                    Save.DeleteData();
+                    return;
                 }
             }
         }
+    }
+
+    public void StopTimeDefinitevely() {
+        AudioSettings.Music.StopMusic();
+        currentTimeState = timeState.end;
+        Time.timeScale = 0;
     }
 }

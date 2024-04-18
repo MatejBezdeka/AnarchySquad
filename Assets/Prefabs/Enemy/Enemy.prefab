@@ -217,26 +217,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: No name
-  stats: {fileID: 11400000, guid: d49a7b80dc5e275448f5541f8c177a2d, type: 2}
-  weapon: {fileID: 11400000, guid: 1a29d4e7d18950e478c4614647d98499, type: 2}
+  stats: {fileID: 0}
+  weapon: {fileID: 0}
   responseTime: 1
   muzzle: {fileID: 619358403020231759}
   grenadePrefab: {fileID: 754246055655193558, guid: b845c9ada5f169b49b852f90f869d686,
     type: 3}
   maxGrenadeDistance: 25
   launchAngle: 35
+  currentGrenadeCooldown: -1
   audioSource: {fileID: 8928364569755450481}
   audioRadioSource: {fileID: 8260203121377597460}
   hurtSound:
-  - {fileID: 8300000, guid: fa1b0ba38a3ec834ab0e32aa628face8, type: 3}
+  - {fileID: 8300000, guid: f9207e5e9c8efd044ba4ad8be2941fc6, type: 3}
   dieSound:
-  - {fileID: 8300000, guid: fa1b0ba38a3ec834ab0e32aa628face8, type: 3}
+  - {fileID: 8300000, guid: f9207e5e9c8efd044ba4ad8be2941fc6, type: 3}
   rogerSounds:
-  - {fileID: 8300000, guid: fa1b0ba38a3ec834ab0e32aa628face8, type: 3}
+  - {fileID: 8300000, guid: f9207e5e9c8efd044ba4ad8be2941fc6, type: 3}
   selectSounds:
-  - {fileID: 8300000, guid: fa1b0ba38a3ec834ab0e32aa628face8, type: 3}
+  - {fileID: 8300000, guid: f9207e5e9c8efd044ba4ad8be2941fc6, type: 3}
   reloadSounds:
-  - {fileID: 8300000, guid: fa1b0ba38a3ec834ab0e32aa628face8, type: 3}
+  - {fileID: 8300000, guid: f9207e5e9c8efd044ba4ad8be2941fc6, type: 3}
 --- !u!65 &830159433488083691
 BoxCollider:
   m_ObjectHideFlags: 0

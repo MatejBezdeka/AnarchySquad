@@ -9,8 +9,8 @@ public class ErrorMessage : MonoBehaviour {
     [SerializeField] GameObject messageHolder;
     public void SetErrorMessage(string text) {
         this.text.text = text;
-        messageHolder.SetActive(true);
         cooldown = 2;
+        messageHolder.SetActive(true);
     }
 
     void Update() {

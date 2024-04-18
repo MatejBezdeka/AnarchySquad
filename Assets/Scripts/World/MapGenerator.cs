@@ -255,8 +255,10 @@ public class MapGenerator : MonoBehaviour {
         for (int i = 0; i < mapSpawnSuitabilityValues.GetLength(0); i++) {
             for (int j = 0; j < mapSpawnSuitabilityValues.GetLength(1); j++) {
                 distance = mapSpawnSuitabilityValues[i, j];
-                if (distance > highestDistance) {
-                    highestDistance = distance;
+                if (distance > highestDistance-3) {
+                    if (distance > highestDistance) {
+                        highestDistance = distance;    
+                    }
                     spawnTiles.Add(new Coord(i,j));
                     for (int k = spawnTiles.Count-1; k >= 0; k--) {
                         if (mapSpawnSuitabilityValues[spawnTiles[k].x, spawnTiles[k].y] <= highestDistance - 3) {

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6745a745e80b564faefecf83ae37d00, type: 3}
   m_Name: Scout MK5
   m_EditorClassIdentifier: 
-  cost: 15
+  cost: 180
   description: scout
-  maxHp: 25
-  armor: 5
-  speed: 2.2
-  maxStamina: 50
-  accuracy: 3.5
+  maxHp: 100
+  armor: 20
+  speed: 3.3
+  maxStamina: 45
+  accuracy: 4.5
   icon: {fileID: 21300000, guid: f3d4d67b2a0b708478931598d62b3dbf, type: 3}

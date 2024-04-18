@@ -33,6 +33,7 @@ public class UnitFactory : MonoBehaviour {
         EnemyUnit comp = newUnit.GetComponent<EnemyUnit>();
         comp.UnitName = blueprint.name;
         comp.stats = blueprint.stats;
+        comp.weapon = blueprint.weapon;
         return comp;
     }
 }

@@ -5,13 +5,13 @@ using UnityEngine;
 public class GraphicsQualitySettings : ListSetting
 {
     protected override void ApplySettings() {
-        value = PlayerPrefs.GetInt("Gq");
-        ChangeValue(value);
+        PlayerPrefs.SetInt("Gq", value);
+        QualitySettings.SetQualityLevel(value);
     }
 
     protected override void Load() {
-        PlayerPrefs.SetInt("Gq", value);
-        QualitySettings.vSyncCount = value;
+        value = PlayerPrefs.GetInt("Gq");
+        ChangeValue(value);
     }
 
 }

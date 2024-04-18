@@ -33,6 +33,7 @@ public class MissionInfoPanel : MonoBehaviour {
     private int selectedMapId = -1;
 
     void Start() {
+        AudioSettings.Music.ChangeAmbientMusic(AudioSettings.AmbientMusic.Hub);
         Save currentSave = Save.GetSave(0);
         rn = new Random(currentSave.currentSeed);
         //load save

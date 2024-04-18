@@ -2,7 +2,9 @@ v shopu dodělat obrázky a zbytek možností+
 select ctverec + ||
 name panel (list na spodní liště) - ||
 
-grenade cooldown
-win
+win ?
+enemy automat zbytek
 restarting bugz
-can start without choosing new units
+-can start without choosing new units
+-shop buttons????
+musiik enemy

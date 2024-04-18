@@ -11058,7 +11058,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2560x1440
+  m_text: Low
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14614,9 +14614,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 17833c37a469d604c998284b971ba2a7, type: 3}
   - {fileID: 8300000, guid: 1ecbc4ca893514424b3b391184d00869, type: 3}
   - {fileID: 8300000, guid: 6cb9ff74a536944baab35afe99fc17ba, type: 3}
-  - {fileID: 8300000, guid: 3d472c788bcb94841ad65e6ddcdbc28f, type: 3}
-  - {fileID: 8300000, guid: bb32fbe58e3904a5d94ef8995c7d5570, type: 3}
-  - {fileID: 8300000, guid: 30510a35bfd53435e9963c3a7594417b, type: 3}
   AmbientClipLoop: {fileID: 8300000, guid: 660790bb19a97eb4581a05d90c81f369, type: 3}
   MainMenuClipLoop: {fileID: 8300000, guid: 054205af35efcb942be9610445479a7c, type: 3}
   HubMenuClipLoop: {fileID: 8300000, guid: f5ee21cf8fb714d6492f4bd36526832c, type: 3}

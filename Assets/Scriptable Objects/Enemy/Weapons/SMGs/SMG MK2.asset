@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc6ffd154f14bd1a1ad552f2ad584d3, type: 3}
+  m_Name: SMG MK2
+  m_EditorClassIdentifier: 
+  cost: 70
+  description: smg
+  bulletPrefab: {fileID: 2660651700256969146, guid: 03f2baab1a83d3340b4f8e69efad4d33,
+    type: 3}
+  damage: 11
+  maxAmmo: 18
+  timeBetweenShots: 3
+  reloadTime: 7
+  effectiveRange: 33
+  maxEffectiveRange: 45
+  Spread: 0.35
+  icon: {fileID: 21300000, guid: 0c3a9103270d6764db1dae0c52b30cf3, type: 3}
+  shootSound: {fileID: 8300000, guid: 73b277b0f97926f4195c8c764ad06676, type: 3}
+  burstSize: 3
+  timeBetweenBullets: 0.22

@@ -28,7 +28,7 @@ namespace Units {
             }
         }
         void OnCollisionEnter(Collision other) {
-            Debug.Log(other.transform.tag + other.transform.name);
+//            Debug.Log(other.transform.tag + other.transform.name);
             if (other.transform.CompareTag("Bullet")) {
                 return;
             }

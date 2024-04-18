@@ -56,6 +56,10 @@ public class AudioSettings : MonoBehaviour {
         StartCoroutine(MusicChecker());
     }
 
+    public void StopMusic() {
+        musicAudioSource.Stop();
+        StopCoroutine(MusicChecker());
+    }
     IEnumerator MusicChecker() {
         while (true) {
             delay--;

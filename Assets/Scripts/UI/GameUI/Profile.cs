@@ -25,6 +25,8 @@ public class Profile : MonoBehaviour, IButton
     [SerializeField] Button abilityOneButton;
     [SerializeField] Button reloadButton;
     [SerializeField] Button grenadeButton;
+    [SerializeField] Image grenadeCooldownImage;
+    [SerializeField] GameObject grenadeCooldownPanel;
 
     Unit currentUnit;
     bool isPlayerUnit;
@@ -62,6 +64,16 @@ public class Profile : MonoBehaviour, IButton
         staminaSlider.value = currentUnit.CurrentStamina;
         staminaText.text = currentUnit.CurrentStamina + "/" + currentUnit.stats.MaxStamina;
         nameLabel.text = currentUnit.UnitName;
+        
+        if (currentUnit.currentGrenadeCooldown <= 0) {
+            grenadeCooldownPanel.SetActive(false);
+            grenadeButton.interactable = true;
+        }
+        else {
+            grenadeButton.interactable = false;
+            grenadeCooldownPanel.SetActive(true);
+            grenadeCooldownImage.fillAmount = 1 - (currentUnit.currentGrenadeCooldown / currentUnit.grenadeCooldown);
+        }
     }
     
     void UpdateProfile(Unit unit) {

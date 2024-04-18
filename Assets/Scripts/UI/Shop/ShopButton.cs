@@ -36,6 +36,7 @@ public class ShopButton : UIButton {
         hideDescription!.Invoke();
     }
     protected override void Functionality() {
+        Debug.Log("sup");
         itemClicked!.Invoke(new Tuple<Shop.types, int>(type, id));
         buttonSelected?.Invoke();
         button.interactable = false;

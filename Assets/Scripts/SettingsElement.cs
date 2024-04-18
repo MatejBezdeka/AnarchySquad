@@ -10,6 +10,7 @@ public abstract class SettingsElement : MonoBehaviour {
     protected virtual void Start() {
         Settings.apliedSettings += ApplySettings;
         Settings.loadSettings += Load;
+        Load();
     }
     protected abstract void ApplySettings();
     void OnDestroy() {

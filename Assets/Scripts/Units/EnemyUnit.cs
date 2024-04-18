@@ -1,20 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyUnit : Unit {
+    public event Action<EnemyUnit> died; 
     enum walkState {
         standing,
         goingTo,
         reatreat,
         backUp
     }
-
     private walkState currentWalkState;
     public SquadUnit closestEnemy { get; private set; } = null;
     public float closestDistance { get; private set; } = float.MaxValue;
-    const float maxMorale = 200;
+    const float maxMorale = 120;
     float morale = 100;
 
     public float Morale {
@@ -35,19 +36,23 @@ public class EnemyUnit : Unit {
         currentState = new EnemyNormalState(this);
         base.Start();
         StartCoroutine(SlowUpdate());
-        if (10 > (weapon.EffectiveRange * 0.75f) || 40 < (weapon.EffectiveRange * 0.75f)) {
-            moraleLoseDistance = 10;
-        }
+        /*if (20 > (weapon.EffectiveRange * 0.75f)){
+            moraleLoseDistance = 20;
+        }else if(60 < (weapon.EffectiveRange * 0.75f)) {
+            moraleLoseDistance = 60;
+        } 
         else {
             moraleLoseDistance = weapon.EffectiveRange * 0.75f;
-        }
+        }*/
+        moraleLoseDistance = 40;
         currentWalkState = walkState.standing;
     }
     
     IEnumerator SlowUpdate() {
         WaitForSeconds waitTime = new WaitForSeconds(responseTime);
         while (true) {
-            morale += 0.25f;
+            Morale += 0.25f;
+            Debug.Log(currentState);
             UpdateClosestEnemy();
             if (agent.pathStatus == 0) {
                 currentWalkState = walkState.standing;
@@ -55,18 +60,13 @@ public class EnemyUnit : Unit {
             yield return waitTime;
         }
     }
-    protected void Die() {
-        //StopCoroutine(SlowUpdate());
-        //add points?
-        //check if game over
-        //death sound
-        StopCoroutine(SlowUpdate());
-        Destroy(gameObject);
-    }
 
     public override void GetHit(int damage) {
         base.GetHit(damage);
-        morale -= CurrentHp < stats.MaxHp / 2 ? 10 : 5;
+        Morale -= CurrentHp < stats.MaxHp / 2 ? 10 : 5;
+        died?.Invoke(this);
+        StopCoroutine(SlowUpdate());
+        Destroy(gameObject);
     }
 
     public override bool isSquadUnit() {
@@ -82,7 +82,6 @@ public class EnemyUnit : Unit {
             NavMesh.CalculatePath(transform.position, unit.transform.position, NavMesh.AllAreas, path);
             for ( int i = 1; i < path.corners.Length; ++i ) {
                 currentDistance += Vector3.Distance( path.corners[i-1], path.corners[i]);
-                
             }
             if (closestDistance < moraleLoseDistance) {
                 Morale--;
@@ -90,12 +89,16 @@ public class EnemyUnit : Unit {
             if (currentDistance < distance) {
                 distance = currentDistance;
                 closestEnemy = unit;
-                if (distance > moraleLoseDistance) {
-                    Morale += 1.25f;
-                }
             }
         }
         closestDistance = currentDistance;
+        foreach (var unit in GameManager.instance.Units) {
+            distance = (Vector3.Distance(transform.position, unit.transform.position));
+            if (distance < closestDistance) {
+                closestEnemy = unit;
+                closestDistance = distance;
+            }
+        }
         //Debug.Log(closestEnemy);
     }
 
@@ -103,8 +106,8 @@ public class EnemyUnit : Unit {
         return (float)((Mathf.Log(difficulty)) / 2.5 * difficulty + 1);
     }
 
-    public void Chill() {
-        morale += 0.2f;
+    public void RegenMorale() {
+        Morale += 0.2f;
     }
 
     public void SetDestinationToSafety() {

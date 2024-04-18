@@ -10,7 +10,6 @@ namespace UI {
         public AudioSettings.ButtonSounds Sound { get { return sound; } }
         
         private void Start() {
-            
             GetComponent<Button>().onClick.AddListener(Clicked);
         }
 
