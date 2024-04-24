@@ -6,79 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="90f1508f-0324-4101-9f36-3a47e42a46d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AnarchySquad/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anarchy Squad.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/Anarchy Squad.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/AudioMixer.mixer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ContinueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ContinueButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem/Controls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem/Controls.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemy/Squader.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemy/Squader.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Squader.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Squader.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battlefield.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Hub.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Breacher MK5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/GunnerMK5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Marksman MK5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Scout MK5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Classes/Tank MK5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Enemy/New enemy Pistol.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Enemy/New enemy Pistol.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Enemy/New enemy Stats.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Enemy/New enemy Stats.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExitBattlefield.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExitBattlefield.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MissionInfoPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MissionInfoPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Save.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Save.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SettingsElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SettingsElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/Stats.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ErrorMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ErrorMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI/Profile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI/Profile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Settings/AudioSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Settings/AudioSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Settings/FullscreenSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Settings/FullscreenSetting.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Settings/GraphicsQualitySettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Settings/GraphicsQualitySettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Settings/VSyncSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Settings/VSyncSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/PlusMemberButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/PlusMemberButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/SelectedTeamMemberContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/SelectedTeamMemberContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/Shop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/ShopButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/UnitButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/startMissionButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Shop/startMissionButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/SquadUnit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Portrait.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Portrait.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyState.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyState/EnemyState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyState/EnemyState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Prefabs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/AttackUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/AttackUnitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/EnemyAttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/EnemyAttackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/EnemyBackupState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/EnemyBackupState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/EnemyNormalState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/EnemyNormalState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/UnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/State/UnitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/World/MapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Bugs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/Enemy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/State/EnemyStates/Enemy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame Left Fill 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame Left Fill 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame Left Fill.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Frame Left Fill.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,27 +91,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.6273585",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.6273585&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\mata\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\mata\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\mata\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\mata\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\mata\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\mata\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Build/AnarchySquad.exe" />
@@ -208,10 +147,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="31432">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="31432" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -289,6 +228,7 @@
       <workItem from="1713201036751" duration="6039000" />
       <workItem from="1713277598708" duration="16360000" />
       <workItem from="1713372237571" duration="30008000" />
+      <workItem from="1713983712226" duration="1328000" />
     </task>
     <servers />
   </component>
